@@ -9,7 +9,7 @@ export default class Main extends React.Component {
     render () {
         return (
             <div>
-            WOLAAAAAAAAAAAAAAAAAAAAAAAA
+            Hola, soy anto...comenten
             </div>
         )
 
