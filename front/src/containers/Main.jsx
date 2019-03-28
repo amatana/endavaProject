@@ -1,4 +1,6 @@
 import React from 'react'
+import Login from '../components/Login';
+import { Route, Redirect, Switch, Link } from 'react-router-dom'
 
 export default class Main extends React.Component {
 
@@ -9,7 +11,9 @@ export default class Main extends React.Component {
     render () {
         return (
             <div>
-            Hola, soy anto...comenten
+                <Switch>
+                    <Route exact path="/" render={() => (<Login />)}/>
+                </Switch>
             </div>
         )
 
