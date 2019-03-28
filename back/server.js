@@ -10,8 +10,10 @@ var morgan = require('morgan');
 const db = require('./config/db');
 const apiRoutes = require('./routes');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const Candidate = require("./models/candidate");
 const sessionStore = new SequelizeStore({ db });
 const PORT = 3000;
+
 
 
 app.use(cookieParser());
@@ -65,6 +67,8 @@ passport.use(new LocalStrategy(
       .catch(done);
   }
 ));
+
+console.log()
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
