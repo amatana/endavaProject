@@ -10,10 +10,10 @@ const Interview= db.define('interview',{
         type: S.STRING,
     },
     sistDate:{
-
-    }
+        type: S.Date,
+    },
     HRDate:{
-
+        type: S.DATE,
     }
 })
 
