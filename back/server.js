@@ -12,6 +12,7 @@ const apiRoutes = require('./routes');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sessionStore = new SequelizeStore({ db });
 const PORT = 3000;
+const User = require('./models/User')
 
 
 app.use(cookieParser());
@@ -36,12 +37,12 @@ app.use('/api', apiRoutes);
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);
-}); /* esta funcion esta serializando el usuario=> como guardo el usuario */
+}); /* esta funcion esta serializando el User=> como guardo el User */
 
 passport.deserializeUser(function (id, done) {
-  Usuario.findById(id)
+  User.findById(id)
     .then(user => done(null, user));
-}); /* esta funcion esta deserializando el usuario => como veo el usuario */
+}); /* esta funcion esta deserializando el User => como veo el User */
 
 // ESTRATEGIAS DE AUTORIZACION
 
@@ -52,7 +53,7 @@ passport.use(new LocalStrategy(
   },
   function (username, password, done) {
     console.log('passport CL', username, password);
-    Usuario.findOne({ where: { email: username } })
+    User.findOne({ where: { email: username } })
       .then(function (user) {
         if (!user) {
           return done(null, false, { message: 'Incorrect username.' });
