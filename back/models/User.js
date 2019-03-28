@@ -36,17 +36,17 @@ const User = db.define('usuario', {
   }
 });
 
-Usuario.addHook('beforeCreate', (usuario) => {
+User.addHook('beforeCreate', (usuario) => {
   usuario.salt = crypto.randomBytes(20).toString('hex');
   usuario.password = usuario.hashPassword(usuario.password);
 });
 
 
-Usuario.prototype.hashPassword = function (password) {
+User.prototype.hashPassword = function (password) {
   return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
 };
 
-Usuario.prototype.validPassword = function (password) {
+User.prototype.validPassword = function (password) {
   return this.password === this.hashPassword(password);
 };
 
