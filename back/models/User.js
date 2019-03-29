@@ -17,7 +17,7 @@ const User = db.define('usuario', {
   },
   area: {
     type: S.ENUM,
-    values: ["RRHH", "Sistemas"],
+    values: ['RRHH', 'Sistemas'],
     allowNull: false
   },
   password: {
@@ -36,7 +36,6 @@ User.addHook('beforeCreate', (usuario) => {
   usuario.salt = crypto.randomBytes(20).toString('hex');
   usuario.password = usuario.hashPassword(usuario.password);
 });
-
 
 User.prototype.hashPassword = function (password) {
   return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
