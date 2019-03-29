@@ -2,9 +2,9 @@ const User = require('./User');
 const Interview = require('./Interview');
 const Answers = require ('./answers')
 
-User.belongsTo(Interview, { as: "userHR"});
-User.belongsTo(Interview, { as: "userSis1"});
-User.belongsTo(Interview, { as: "userSis2"});
+Interview.belongsTo(User, { as: "userHR"});
+Interview.belongsTo(User, { as: "userSis1"});
+Interview.belongsTo(User, { as: "userSis2"});
 
 
 Interview.belongsTo(Answers,{as:'interviewID'})
