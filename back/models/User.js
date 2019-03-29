@@ -7,10 +7,6 @@ const User = db.define('usuario', {
     type: S.STRING,
     allowNull: false
   },
-  apellido: {
-    type: S.STRING,
-    allowNull: false
-  },
   email: {
     type: S.STRING,
     allowNull: false,

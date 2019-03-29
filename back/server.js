@@ -11,7 +11,7 @@ const db = require('./config/db');
 const apiRoutes = require('./routes');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sessionStore = new SequelizeStore({ db });
-const PORT = 3000;
+const PORT = 3001;
 const User = require('./models/User')
 
 
