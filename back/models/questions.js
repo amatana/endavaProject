@@ -1,10 +1,13 @@
 const S = require('sequelize');
 const db = require('../config/db');
 
-const Preguntas = db.define('questions', {
-    contenido: {
-        type: S.TEXT,
-    }
-})
+const Questions = db.define('questions', {
+  content: {
+    type: S.TEXT
+  },
+  area: {
+    type: S.STRING
+  }
+});
 
-module.exports = Preguntas
+module.exports = Questions;
