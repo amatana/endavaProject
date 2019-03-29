@@ -11,6 +11,14 @@ const Candidate = db.define("candidate", {
 
     },
 
+    fullName: {
+        type: S.VIRTUAL,
+        get: function(){
+            return this.name + ' ' + this.surname;
+        }
+
+    },
+
     email: {
         type: S.STRING,
         unique: true,
@@ -40,12 +48,6 @@ const Candidate = db.define("candidate", {
     status: {
         type: S.STRING,
         
-    },
-},{
-    getterMethods: {
-      fullName() {
-        return this.name + ' ' + this.surname;
-      }
     },
 })
 

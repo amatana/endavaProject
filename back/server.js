@@ -14,8 +14,6 @@ const Candidate = require("./models/candidate");
 const sessionStore = new SequelizeStore({ db });
 const PORT = 3000;
 
-
-
 app.use(cookieParser());
 app.use(
   session({
