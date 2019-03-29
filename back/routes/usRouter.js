@@ -14,13 +14,13 @@ router.post('/create', (req, res) => {
     .then(data => res.status(201).send(data));
 });
 
-router.get('/user', (req,res) => {
-  res.send(req.user)
-})
+router.get('/user', (req, res) => {
+  res.send(req.user);
+});
 
-router.get('/getAll', (req,res) => {
+router.get('/getAll', (req, res) => {
   User.findAll()
-  .then(users => res.json(users))
-})
+    .then(users => res.json(users));
+});
 
 module.exports = router;
