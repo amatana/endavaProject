@@ -26,6 +26,7 @@ router.get('/getAll', (req, res) => {
     .then(users => res.json(users));
 });
 
+
 router.get('/pruebaPreg', (req, res) => {
   // Pregunta.create({
   //   content: 'A que hora inventaron los relojes?',
@@ -50,5 +51,6 @@ router.get('/pruebaPreg', (req, res) => {
 
   res.send(200);
 });
+
 
 module.exports = router;
