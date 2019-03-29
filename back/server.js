@@ -10,10 +10,11 @@ var morgan = require('morgan');
 const db = require('./config/db');
 const apiRoutes = require('./routes');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const Candidate = require("./models/candidate");
+const Candidate = require('./models/candidate');
 const sessionStore = new SequelizeStore({ db });
 const PORT = 3001;
-const User = require('./models/User')
+const User = require('./models/User');
+const Index = require('./routes/index');
 
 app.use(cookieParser());
 app.use(
@@ -23,14 +24,14 @@ app.use(
     resave: false,
     saveUninitialized: false
   })
-  );
-  
-  // ESTRATEGIAS DE LOGIN
-  
+);
+
+// ESTRATEGIAS DE LOGIN
+
 const LocalStrategy = require('passport-local').Strategy;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(passport.initialize()); /* esta linea es de configuracion y cuidado con el orden, poner antes de las rutas*/
+app.use(passport.initialize()); /* esta linea es de configuracion y cuidado con el orden, poner antes de las rutas */
 app.use(passport.session()); /* esta idem */
 app.use(morgan('dev'));
 app.use('/api', apiRoutes);
@@ -67,9 +68,11 @@ passport.use(new LocalStrategy(
   }
 ));
 
-console.log()
+console.log();
 
 app.use(express.static(path.resolve(__dirname, 'public')));
+
+app.use('/', Index);
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, './public/index.html'));
