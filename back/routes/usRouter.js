@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const passport = require('passport');
+const Questions = require('../models/questions');
+const Answer = require('../models/answers');
+const Tags = require('../models/tags');
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
   if (req.isAuthenticated()) {
@@ -14,13 +17,38 @@ router.post('/create', (req, res) => {
     .then(data => res.status(201).send(data));
 });
 
-router.get('/user', (req,res) => {
-  res.send(req.user)
-})
+router.get('/user', (req, res) => {
+  res.send(req.user);
+});
 
-router.get('/getAll', (req,res) => {
+router.get('/getAll', (req, res) => {
   User.findAll()
-  .then(users => res.json(users))
-})
+    .then(users => res.json(users));
+});
+
+router.get('/pruebaPreg', (req, res) => {
+  // Pregunta.create({
+  //   content: 'A que hora inventaron los relojes?',
+  //   area: 'Sist'
+  // })
+  //   .then(preg => console.log(preg));
+  // Tag.create({
+  //   tag: 'aca'
+  // });
+
+  // Pregunta.findOne({where: {id:'1'}})
+  // .then( pregunta => {
+  //   pregunta.setTags(['1','2','3','4'])
+  //   console.log('PREGUNTONTAAAAAA!',pregunta) ;
+  // })
+
+  Tags.findOne({where: {id:4}})
+  .then(tag => {
+    tag.setQuestions(['1','2','3','4']);
+    console.log('-------------')
+  })
+
+  res.send(200);
+});
 
 module.exports = router;
