@@ -14,13 +14,23 @@ router.post('/create', (req, res) => {
     .then(data => res.status(201).send(data));
 });
 
-router.get('/user', (req,res) => {
-  res.send(req.user)
-})
+router.get('/user', (req, res) => {
+  res.send(req.user);
+});
 
-router.get('/getAll', (req,res) => {
+router.get('/getAll', (req, res) => {
   User.findAll()
-  .then(users => res.json(users))
-})
+    .then(users => res.json(users));
+});
+
+router.delete('/delete/:id', (req, res) => {
+  User.destroy({ where: { id: req.params.id } })
+    .then(() => res.sendStatus(200))
+});
+
+router.get('/logOut', (req, res) => {
+  req.logout();
+  res.send({});
+});
 
 module.exports = router;
