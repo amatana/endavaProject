@@ -11,6 +11,8 @@ class AllUsers extends React.Component {
     this.state = {
       users: []
     };
+
+    this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount () {
@@ -19,10 +21,18 @@ class AllUsers extends React.Component {
       .then(users => this.setState({ users }));
   }
 
+  onClick (id) {
+    axios.delete(`/api/users/delete/${id}`)
+      .then(() => alert('Se eliminó correctamente al Usuario'))
+      .then(() => axios.get('/api/users/getAll'))
+      .then(res => res.data)
+      .then(users => this.setState({ users }));
+  }
+
   render () {
     return (
-    this.state.users && this.state.users.length < 1 ? <h2>Cargando...</h2>
-      : <AllUsersGrid users={this.state.users} user={this.props.user}/>
+      this.state.users && this.state.users.length < 1 ? <h2>Cargando...</h2>
+        : <AllUsersGrid onClick={this.onClick} users={this.state.users} user={this.props.user}/>
     );
   }
 }

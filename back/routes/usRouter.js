@@ -23,4 +23,14 @@ router.get('/getAll', (req, res) => {
     .then(users => res.json(users));
 });
 
+router.delete('/delete/:id', (req, res) => {
+  User.destroy({ where: { id: req.params.id } })
+    .then(() => res.sendStatus(200))
+});
+
+router.get('/logOut', (req, res) => {
+  req.logout();
+  res.send({});
+});
+
 module.exports = router;

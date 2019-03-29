@@ -17,9 +17,14 @@ export const createUser = (user) => dispatch =>
   axios.post('/api/users/create', { user })
     .then(res => res.data)
     .then(user => dispatch(setUser(user)))
-;
+  ;
 
 export const fetchUser = () => dispatch =>
   axios.get('/api/users/user')
-  .then(res => res.data)
-  .then(user => dispatch(setUser(user)))
+    .then(res => res.data)
+    .then(user => dispatch(setUser(user)))
+
+export const logOut = () => dispatch =>
+  axios.get('/api/users/logOut')
+    .then(res => res.data)
+    .then(user => dispatch(setUser(user)))
