@@ -43,10 +43,10 @@ router.get('/pruebaPreg', (req, res) => {
   // })
 
   Tags.findOne({where: {id:4}})
-  .then(tag => {
-    tag.setQuestions(['1','2','3','4']);
-    console.log('-------------')
-  })
+    .then(tag => {
+      tag.setQuestions(['1','2','3','4']);
+      console.log('-------------')
+    })
 
   res.send(200);
 });
