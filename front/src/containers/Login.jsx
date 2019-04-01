@@ -18,7 +18,6 @@ class Login extends React.Component {
   }
 
   handleChange (e) {
-    console.log("AVERGA SI APAREZCOOO", this.state)
     this.setState(
       { [e.target.name]: e.target.value });
   }
@@ -30,6 +29,7 @@ class Login extends React.Component {
       .then(() => {
         this.props.history.push('/home');
       })
+      .catch(() => alert('Combinación de Email y Contraseña incorrectas'))
     ;
   }
 
@@ -40,7 +40,7 @@ class Login extends React.Component {
   }
 }
 const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user
 });
 const mapDispatchToProps = (dispatch) => ({
   checkUserLogin: (user) => dispatch((checkUserLogin(user)))

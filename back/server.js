@@ -15,6 +15,9 @@ const sessionStore = new SequelizeStore({ db });
 const PORT = 3001;
 const User = require('./models/User');
 const Index = require('./routes/index');
+const sessionStore = new SequelizeStore({ db });
+const PORT = 3001;
+const User = require('./models/User');
 
 app.use(cookieParser());
 app.use(
@@ -67,8 +70,6 @@ passport.use(new LocalStrategy(
       .catch(done);
   }
 ));
-
-console.log();
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 

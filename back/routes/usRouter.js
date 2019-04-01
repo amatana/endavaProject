@@ -49,6 +49,14 @@ router.get('/pruebaPreg', (req, res) => {
     })
 
   res.send(200);
+router.delete('/delete/:id', (req, res) => {
+  User.destroy({ where: { id: req.params.id } })
+    .then(() => res.sendStatus(200))
+});
+
+router.get('/logOut', (req, res) => {
+  req.logout();
+  res.send({});
 });
 
 module.exports = router;
