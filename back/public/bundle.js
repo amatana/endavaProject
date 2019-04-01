@@ -86,6 +86,40 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./front/src/components/QuestionInput.jsx":
+/*!************************************************!*\
+  !*** ./front/src/components/QuestionInput.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+var QuestionInput = function QuestionInput(props) {
+  // Solicita lista de Tags al servidor y los convierte en un dropdown element
+  axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/tags').then(function (tags) {
+    console.log(tags);
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Select Question Tags"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Add Question"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "textbox",
+    name: "question",
+    className: "questionTextbox"
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (QuestionInput);
+
+/***/ }),
+
 /***/ "./front/src/components/addUser.jsx":
 /*!******************************************!*\
   !*** ./front/src/components/addUser.jsx ***!
@@ -379,6 +413,31 @@ var loginForm = function loginForm(props) {
 
 /***/ }),
 
+/***/ "./front/src/containers/AddQuestion.jsx":
+/*!**********************************************!*\
+  !*** ./front/src/containers/AddQuestion.jsx ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_QuestionInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/QuestionInput */ "./front/src/components/QuestionInput.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+var AddQuestion = function AddQuestion(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_QuestionInput__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (AddQuestion);
+
+/***/ }),
+
 /***/ "./front/src/containers/AddUser.jsx":
 /*!******************************************!*\
   !*** ./front/src/containers/AddUser.jsx ***!
@@ -619,7 +678,7 @@ var Home = function Home(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-4"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-4"
+    className: "col-lg-3"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     style: {
       width: '100%',
@@ -771,7 +830,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AddUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddUser */ "./front/src/containers/AddUser.jsx");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Home */ "./front/src/containers/Home.jsx");
 /* harmony import */ var _AllUsers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AllUsers */ "./front/src/containers/AllUsers.jsx");
-/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
+/* harmony import */ var _AddQuestion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AddQuestion */ "./front/src/containers/AddQuestion.jsx");
+/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -789,6 +849,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -860,10 +921,10 @@ function (_React$Component) {
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: "/questions",
+        path: "/questions/add",
         render: function render(_ref5) {
           var history = _ref5.history;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Home__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddQuestion__WEBPACK_IMPORTED_MODULE_7__["default"], {
             history: history,
             user: _this.props.user
           });
@@ -873,6 +934,16 @@ function (_React$Component) {
         path: "/allUsers",
         render: function render(_ref6) {
           var history = _ref6.history;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllUsers__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            user: _this.props.user,
+            history: history
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/",
+        render: function render(_ref7) {
+          var history = _ref7.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllUsers__WEBPACK_IMPORTED_MODULE_6__["default"], {
             user: _this.props.user,
             history: history
@@ -894,7 +965,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchUser: function fetchUser() {
-      return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_7__["fetchUser"])());
+      return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_8__["fetchUser"])());
     }
   };
 };

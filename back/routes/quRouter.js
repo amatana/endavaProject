@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Questions = require('../models/questions');
+const Tags = require('../models/tags');
 
 router.get('/:area', (req, res) => {
   Questions.findAll({
@@ -11,5 +12,12 @@ router.get('/:area', (req, res) => {
     .then(quest => res.send(quest));
 })
 ;
+
+router.get('tags', (req, res) => {
+  Tags.findAll()
+    .then(function (tags) {
+      res.send(tags);
+    });
+});
 
 module.exports = router;
