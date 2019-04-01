@@ -10,9 +10,11 @@ var morgan = require('morgan');
 const db = require('./config/db');
 const apiRoutes = require('./routes');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const Candidate = require('./models/candidate');
 const sessionStore = new SequelizeStore({ db });
 const PORT = 3001;
 const User = require('./models/User');
+const Index = require('./routes/index');
 
 app.use(cookieParser());
 app.use(
@@ -66,7 +68,14 @@ passport.use(new LocalStrategy(
   }
 ));
 
+<<<<<<< HEAD
+=======
+console.log();
+
+>>>>>>> a472813d6d075569ab1b2ba90cb8a4e2bafef40a
 app.use(express.static(path.resolve(__dirname, 'public')));
+
+app.use('/', Index);
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, './public/index.html'));
