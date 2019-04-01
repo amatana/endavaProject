@@ -68,11 +68,6 @@ passport.use(new LocalStrategy(
   }
 ));
 
-<<<<<<< HEAD
-=======
-console.log();
-
->>>>>>> a472813d6d075569ab1b2ba90cb8a4e2bafef40a
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.use('/', Index);
