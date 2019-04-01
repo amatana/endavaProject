@@ -11,7 +11,7 @@ export const checkUserLogin = (data) => dispatch =>
     .then(res => {
       return res.data;
     })
-    .then(data => dispatch(setUser(data)));
+    .then(usuario => dispatch(setUser(usuario)));
 
 export const createUser = (user) => dispatch =>
   axios.post('/api/users/create', { user })
