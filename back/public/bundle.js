@@ -496,6 +496,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
+ // eslint-disable-next-line no-unused-vars
 
 
 
@@ -529,7 +530,7 @@ function (_React$Component) {
       e.preventDefault();
 
       if (this.state.email.split('@')[1] !== 'endava.com') {
-        alert('El email debe pertenecer al dominio @envada.com');
+        alert('El email debe pertenecer al dominio @endava.com');
       } else {
         this.props.createUSer(this.state);
         return this.props.history.push('./');
@@ -690,61 +691,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   !*** ./front/src/containers/Home.jsx ***!
   \***************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-
-var Home = function Home(props) {
-  console.log('SOY LAS PROPS DEL HOME!!!', props);
-  console.log('USER', props.user);
-
-  if (props.user.isAdmin === true) {
-    var bnq = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      style: {
-        width: '100%',
-        margin: '20px',
-        fontSize: '30px'
-      },
-      className: "btn btn-lg boton"
-    }, "Questions"));
-  }
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-4"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    style: {
-      width: '100%',
-      marginBottom: '80px',
-      marginTop: '80px'
-    },
-    src: "./utils/logo.png"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/candidates"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    style: {
-      width: '100%',
-      margin: '20px',
-      fontSize: '30px'
-    },
-    className: "btn btn-lg boton"
-  }, "Candidates")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/questions"
-  }, bnq)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-4"
-  }));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Home);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/aniamat/BootCamp/endavaProject/front/src/containers/Home.jsx: Unexpected token, expected \":\" (17:2)\n\n\u001b[0m \u001b[90m 15 | \u001b[39m      \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m'col-lg-4'\u001b[39m \u001b[33m>\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 16 | \u001b[39m    \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 | \u001b[39m  )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 18 | \u001b[39m}\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 19 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 20 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m \u001b[33mHome\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n    at Object.raise (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:3851:17)\n    at Object.unexpected (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5165:16)\n    at Object.expect (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5151:28)\n    at Object.parseConditional (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5771:12)\n    at Object.parseMaybeConditional (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5763:17)\n    at Object.parseMaybeAssign (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5703:21)\n    at Object.parseParenAndDistinguishExpression (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6468:28)\n    at Object.parseExprAtom (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6262:21)\n    at Object.parseExprAtom (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:3570:20)\n    at Object.parseExprSubscripts (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Object.parseMaybeUnary (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Object.parseExprOps (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Object.parseMaybeConditional (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5756:23)\n    at Object.parseMaybeAssign (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5703:21)\n    at Object.parseExpression (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5651:23)\n    at Object.parseReturnStatement (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7671:28)\n    at Object.parseStatementContent (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7341:21)\n    at Object.parseStatement (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7293:17)\n    at Object.parseBlockOrModuleBlockBody (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7879:25)\n    at Object.parseBlockBody (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7866:10)\n    at Object.parseBlock (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7850:10)\n    at Object.parseFunctionBody (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6911:24)\n    at Object.parseArrowExpression (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6853:10)\n    at Object.parseParenAndDistinguishExpression (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6491:12)\n    at Object.parseExprAtom (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6262:21)\n    at Object.parseExprAtom (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:3570:20)\n    at Object.parseExprSubscripts (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Object.parseMaybeUnary (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Object.parseExprOps (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Object.parseMaybeConditional (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5756:23)");
 
 /***/ }),
 
@@ -944,7 +893,7 @@ function (_React$Component) {
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: "/addUser",
+        path: "/users/addUser",
         render: function render(_ref3) {
           var history = _ref3.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddUser__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -983,7 +932,7 @@ function (_React$Component) {
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: "/allUsers",
+        path: "/users/allUsers",
         render: function render(_ref7) {
           var history = _ref7.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllUsers__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -1076,8 +1025,8 @@ var checkUserLogin = function checkUserLogin(data) {
   return function (dispatch) {
     return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/users/login', data).then(function (res) {
       return res.data;
-    }).then(function (data) {
-      return dispatch(setUser(data));
+    }).then(function (usuario) {
+      return dispatch(setUser(usuario));
     });
   };
 };
