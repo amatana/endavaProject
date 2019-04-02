@@ -42,16 +42,18 @@ router.get('/pruebaPreg', (req, res) => {
   //   console.log('PREGUNTONTAAAAAA!',pregunta) ;
   // })
 
-  Tags.findOne({where: {id:4}})
+  Tags.findOne({ where: { id: 4 } })
     .then(tag => {
-      tag.setQuestions(['1','2','3','4']);
-      console.log('-------------')
-    })
+      tag.setQuestions(['1', '2', '3', '4']);
+      console.log('-------------');
+    });
 
   res.send(200);
+});
+
 router.delete('/delete/:id', (req, res) => {
   User.destroy({ where: { id: req.params.id } })
-    .then(() => res.sendStatus(200))
+    .then(() => res.sendStatus(200));
 });
 
 router.get('/logOut', (req, res) => {

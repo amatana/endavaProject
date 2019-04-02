@@ -8,16 +8,13 @@ const session = require('express-session');
 var path = require('path');
 var morgan = require('morgan');
 const db = require('./config/db');
-const apiRoutes = require('./routes');
+//const apiRoutes = require('./routes');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const Candidate = require('./models/candidate');
 const sessionStore = new SequelizeStore({ db });
 const PORT = 3001;
 const User = require('./models/User');
 const Index = require('./routes/index');
-const sessionStore = new SequelizeStore({ db });
-const PORT = 3001;
-const User = require('./models/User');
 
 app.use(cookieParser());
 app.use(
@@ -37,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize()); /* esta linea es de configuracion y cuidado con el orden, poner antes de las rutas */
 app.use(passport.session()); /* esta idem */
 app.use(morgan('dev'));
-app.use('/api', apiRoutes);
+//app.use('/api', apiRoutes);
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);
@@ -73,7 +70,7 @@ passport.use(new LocalStrategy(
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
-app.use('/', Index);
+app.use('/api', Index);
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, './public/index.html'));
