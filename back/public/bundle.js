@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./front/src/components/Header.jsx":
-/*!*****************************************!*\
-  !*** ./front/src/components/Header.jsx ***!
-  \*****************************************/
+/***/ "./front/src/components/QuestionInput.jsx":
+/*!************************************************!*\
+  !*** ./front/src/components/QuestionInput.jsx ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -97,56 +97,26 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
 
-
-var Header = function Header(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row header"
-  }, props.user && props.user.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      float: 'left'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    id: "imgHeader",
-    src: "/utils/user1.svg"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    id: "headerName"
-  }, props.user.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      float: 'right'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: function onClick(e) {
-      e.preventDefault();
-      props.logOut();
-      return props.history.push('/');
-    },
-    className: "btn btn-lg btnLogOut"
-  }, "LOG OUT"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null));
+var QuestionInput = function QuestionInput(props) {
+  // Solicita lista de Tags al servidor y los convierte en un dropdown element
+  axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/tags').then(function (tags) {
+    console.log(tags);
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Select Question Tags"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Add Question"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "textbox",
+    name: "question",
+    className: "questionTextbox"
+  })));
 };
 
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    user: state.user
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    logOut: function logOut() {
-      return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_2__["logOut"])());
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(Header));
+/* harmony default export */ __webpack_exports__["default"] = (QuestionInput);
 
 /***/ }),
 
@@ -428,6 +398,31 @@ var loginForm = function loginForm(props) {
 
 /***/ }),
 
+/***/ "./front/src/containers/AddQuestion.jsx":
+/*!**********************************************!*\
+  !*** ./front/src/containers/AddQuestion.jsx ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_QuestionInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/QuestionInput */ "./front/src/components/QuestionInput.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+var AddQuestion = function AddQuestion(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_QuestionInput__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (AddQuestion);
+
+/***/ }),
+
 /***/ "./front/src/containers/AddUser.jsx":
 /*!******************************************!*\
   !*** ./front/src/containers/AddUser.jsx ***!
@@ -658,40 +653,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   !*** ./front/src/containers/Home.jsx ***!
   \***************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-
-var Home = function Home(props) {
-  return props.user && props.user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "homeDisplay"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/candidates"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-lg botonHome"
-  }, "Admin Candidates")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/questions"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-lg botonHome"
-  }, "Admin Questions"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/users"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-lg botonHome"
-  }, "Admin Users")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "logoAbajo"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "imgHome",
-    src: "./utils/logo.png"
-  }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Vista de Todos los candidatos asignados al usuarios loggeado NO Admin");
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Home);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/aenoris/Desktop/endavaProject/front/src/containers/Home.jsx: Unterminated JSX contents (23:88)\n\n\u001b[0m \u001b[90m 21 | \u001b[39m      \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m'col-lg-4'\u001b[39m \u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 22 | \u001b[39m      \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 | \u001b[39m      \u001b[33m:\u001b[39m \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[33mVista\u001b[39m de \u001b[33mTodos\u001b[39m los candidatos asignados al usuarios loggeado \u001b[33mNO\u001b[39m \u001b[33mAdmin\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                                                                                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 24 | \u001b[39m  )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 25 | \u001b[39m}\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 26 | \u001b[39m\u001b[0m\n    at Object.raise (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:3851:17)\n    at Object.jsxReadToken (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:3203:14)\n    at Object.getTokenFromCode (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:3579:19)\n    at Object.nextToken (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:4049:12)\n    at Object.next (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:3989:10)\n    at Object.eat (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:3994:12)\n    at Object.expect (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5151:10)\n    at Object.jsxParseClosingElementAt (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:3482:10)\n    at Object.jsxParseElementAt (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:3501:37)\n    at Object.jsxParseElementAt (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:3505:32)\n    at Object.jsxParseElement (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:3558:17)\n    at Object.parseExprAtom (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:3565:19)\n    at Object.parseExprSubscripts (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Object.parseMaybeUnary (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Object.parseExprOps (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Object.parseMaybeConditional (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5756:23)\n    at Object.parseMaybeAssign (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5703:21)\n    at Object.parseParenAndDistinguishExpression (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:6468:28)\n    at Object.parseExprAtom (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:6262:21)\n    at Object.parseExprAtom (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:3570:20)\n    at Object.parseExprSubscripts (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Object.parseMaybeUnary (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Object.parseExprOps (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Object.parseMaybeConditional (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5756:23)\n    at Object.parseMaybeAssign (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5703:21)\n    at Object.parseExpression (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:5651:23)\n    at Object.parseReturnStatement (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:7671:28)\n    at Object.parseStatementContent (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:7341:21)\n    at Object.parseStatement (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:7293:17)\n    at Object.parseBlockOrModuleBlockBody (/home/aenoris/Desktop/endavaProject/node_modules/@babel/parser/lib/index.js:7879:25)");
 
 /***/ }),
 
@@ -820,7 +784,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AddUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddUser */ "./front/src/containers/AddUser.jsx");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Home */ "./front/src/containers/Home.jsx");
 /* harmony import */ var _AllUsers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AllUsers */ "./front/src/containers/AllUsers.jsx");
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
+/* harmony import */ var _AddQuestion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AddQuestion */ "./front/src/containers/AddQuestion.jsx");
 /* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -874,7 +838,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         render: function render(_ref) {
           var history = _ref.history;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Header, {
             fetchUser: _this.props.fetchUser,
             user: _this.props.user,
             history: history
@@ -920,19 +884,29 @@ function (_React$Component) {
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: "/questions",
+        path: "/questions/add",
         render: function render(_ref6) {
           var history = _ref6.history;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Home__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddQuestion__WEBPACK_IMPORTED_MODULE_7__["default"], {
             history: history,
             user: _this.props.user
           });
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: "/users/allUsers",
+        path: "/allUsers",
         render: function render(_ref7) {
           var history = _ref7.history;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllUsers__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            user: _this.props.user,
+            history: history
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/",
+        render: function render(_ref8) {
+          var history = _ref8.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllUsers__WEBPACK_IMPORTED_MODULE_6__["default"], {
             user: _this.props.user,
             history: history
@@ -28576,7 +28550,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

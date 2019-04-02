@@ -32,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize()); /* esta linea es de configuracion y cuidado con el orden, poner antes de las rutas */
 app.use(passport.session()); /* esta idem */
 app.use(morgan('dev'));
+
 app.use('/api', apiRoutes);
 
 passport.serializeUser(function (user, done) {
