@@ -140,7 +140,11 @@ function (_React$Component) {
   _createClass(AllQuestions, [{
     key: "setSelectedQuestion",
     value: function setSelectedQuestion(questionId, questionContent) {
+      console.log(questionContent);
       this.state.selectedQuestionID = questionId;
+      this.setState({
+        selectedQuestionContent: questionContent
+      });
     }
   }, {
     key: "setModifiedQuestion",
@@ -165,7 +169,7 @@ function (_React$Component) {
         id: "confirmDeleteModal",
         tabIndex: "-1",
         role: "dialog",
-        "aria-labelledby": "exampleModalLabel",
+        "aria-labelledby": "confirmDeleteLabel",
         "aria-hidden": "true"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-dialog",
@@ -176,7 +180,7 @@ function (_React$Component) {
         className: "modal-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "modal-title",
-        id: "exampleModalLabel"
+        id: "confirmDeleteLabel"
       }, "Are your sure you to delete this question?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "close",
@@ -202,7 +206,7 @@ function (_React$Component) {
         id: "editQuestionModal",
         tabIndex: "-1",
         role: "dialog",
-        "aria-labelledby": "exampleModalLabel",
+        "aria-labelledby": "editQuestionlLabel",
         "aria-hidden": "true"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal-dialog",
@@ -213,7 +217,7 @@ function (_React$Component) {
         className: "modal-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "modal-title",
-        id: "exampleModalLabel"
+        id: "editQuestionLabel"
       }, "Edit this question"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "close",
@@ -226,7 +230,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "form-control",
         "aria-label": "With textarea",
-        value: this.state.setModifiedQuestion,
+        placeholder: this.state.selectedQuestionContent,
         onChange: function onChange(e) {
           return _this2.setModifiedQuestion(e);
         }

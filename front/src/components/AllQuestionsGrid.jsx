@@ -11,7 +11,9 @@ export default class AllQuestions extends React.Component {
   }
 
   setSelectedQuestion (questionId, questionContent) {
+    console.log(questionContent);
     this.state.selectedQuestionID = questionId;
+    this.setState({ selectedQuestionContent: questionContent });
   }
 
   setModifiedQuestion (e) {
@@ -24,11 +26,11 @@ export default class AllQuestions extends React.Component {
     return (
       <div style={{ margin: '4% 9%', border: '2px solid #000000' }} >
 
-        <div className="modal fade" id="confirmDeleteModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="confirmDeleteModal" tabIndex="-1" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Are your sure you to delete this question?</h5>
+                <h5 className="modal-title" id="confirmDeleteLabel">Are your sure you to delete this question?</h5>
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -42,17 +44,17 @@ export default class AllQuestions extends React.Component {
           </div>
         </div>
 
-        <div className="modal fade" id="editQuestionModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="editQuestionModal" tabIndex="-1" role="dialog" aria-labelledby="editQuestionlLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Edit this question</h5>
+                <h5 className="modal-title" id="editQuestionLabel">Edit this question</h5>
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div className="input-group">
-                <textarea className="form-control" aria-label="With textarea" value={this.state.setModifiedQuestion} onChange={(e) => this.setModifiedQuestion(e)}></textarea>
+                <textarea className="form-control" aria-label="With textarea" placeholder={this.state.selectedQuestionContent} onChange={(e) => this.setModifiedQuestion(e)}></textarea>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
