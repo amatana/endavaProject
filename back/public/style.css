@@ -30,3 +30,12 @@
     align-content: space-between; 
     justify-content: space-between;  
 }
+
+.addcand{
+    text-align: right;
+    margin: 10px;
+}
+
+.btn-primaryList{
+    width: 100%
+}
