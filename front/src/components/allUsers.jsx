@@ -23,7 +23,7 @@ const AllUsers = (props) => {
                   <td style={{ textAlign: 'center', fontSize: '20px' }}>{user.area}</td>
                   <td style={{ textAlign: 'center', fontSize: '20px' }}>{user.isAdmin ? <h3 style={{ color: '#3da547' }}>TRUE</h3> : <h3>FALSE</h3>}</td>
                   <td>
-                    <img id='trashUser' src="/utils/garbage.svg"></img>
+                    <a><img onClick={() => props.onClick(user.id)} id='trashUser' src="/utils/garbage.svg"></img></a>
                   </td>
                 </tr>
               </tbody>

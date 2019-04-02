@@ -11,15 +11,20 @@ export const checkUserLogin = (data) => dispatch =>
     .then(res => {
       return res.data;
     })
-    .then(data => dispatch(setUser(data)));
+    .then(usuario => dispatch(setUser(usuario)));
 
 export const createUser = (user) => dispatch =>
   axios.post('/api/users/create', { user })
     .then(res => res.data)
     .then(user => dispatch(setUser(user)))
-;
+  ;
 
 export const fetchUser = () => dispatch =>
   axios.get('/api/users/user')
-  .then(res => res.data)
-  .then(user => dispatch(setUser(user)))
+    .then(res => res.data)
+    .then(user => dispatch(setUser(user)))
+
+export const logOut = () => dispatch =>
+  axios.get('/api/users/logOut')
+    .then(res => res.data)
+    .then(user => dispatch(setUser(user)))

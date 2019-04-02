@@ -3,14 +3,189 @@
     font-family:  'Roboto Condensed', sans-serif;
 }
 
-.addUser {
-    margin: 20px;
+.menuContainer {
     display: grid;
-    padding: 2% 4%;
-    border-radius: 30px;
-    font-size: 20px;
+    margin: auto;
+    text-align: center;
+    grid-template-columns: 1fr 2fr 1fr;
+    width: 100%;
+}
+
+.centrado {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    align-content: center;
 }
 
 .boton{
     background-color: #DE411B
+}
+
+.header{
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 0.05fr;
+    align-content: space-between; 
+    justify-content: space-between;  
+    background-color: #DE411B;
+    height: 70px;
+    padding: 8px;
+}
+
+.formLogin {
+    font-size: 30px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+}
+.mainLogin{
+    margin-top: 5%;
+}
+.topLogin{
+    margin-top: 3%;
+}
+
+.imgLogin{
+    width: 30%;
+}
+.imgHome{
+    width: 200px;
+    justify-content: center;
+}
+
+#loginh1{
+    color: #DE411B; 
+    margin: 0px;
+}
+
+.botonLogin {
+    width: 100%; 
+    margin: 20px auto;
+    font-size: 30px;
+    background-color: #DE411B
+}
+.headerLogin{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.homeDisplay{
+    width: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.botonHome{
+    background-color: #DE411B;
+    width: 100%;
+    margin: 3% 0px;
+    padding: 3%;
+    border-radius: 15px;
+}
+.logoAbajo{
+    position: absolute;
+    width: 100%;
+    bottom: 7px;
+    text-align: center
+}
+#imgHeader{
+    width: 40px; 
+    height: 40px; 
+    margin-left: 30px;
+}
+#headerName{
+    font-size: 25px;
+    margin-left: 15px;
+    vertical-align: bottom;
+    text-transform: uppercase;
+}
+.btnLogOut{
+    border: 1px solid black;
+     background-color: #F0F3F3;
+}
+
+@media (max-width: 992px) {
+    .formLogin{
+        font-size: 70px;
+        width: 100%;
+        padding: 5%;
+    } 
+    .inputLogin{
+        font-size: 60px;
+    }
+    .botonLogin{
+        padding: 5%;
+        margin-top: 10%;
+        font-size: 60px;
+        border-radius: 20px;
+    }
+    .imgLogin{
+        width: 50%;
+    }
+    .headerLogin{
+        margin-bottom: 7%;
+    }
+    #loginh1{
+        font-size: 60px;
+    }
+    .botonHome{
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 10%;
+        border-radius: 20px;
+        font-size: 50px;
+        justify-content: center;
+        padding: 55px 0px;
+    }
+    .homeDisplay{
+        width: 80%;
+    }
+    .imgHome{
+        width: 400px;
+    }
+    .header{
+        border-bottom: 1px solid black;
+        display: grid;
+        grid-template-columns: 1fr 0.05fr;
+        align-content: space-between; 
+        justify-content: space-between; 
+        background-color: #DE411B;
+        height: 150px;
+        padding: 8px 
+    }
+    #imgHeader{
+        width: 95px; 
+        height: 95px; 
+        margin: 30px;
+    }
+    #headerName{
+        font-size: 60px;
+        margin-bottom: 15px;
+        vertical-align: middle;
+        text-transform: uppercase;
+    }
+    .btnLogOut{
+        border: 1px solid black;
+        background-color: #F0F3F3;
+        width: 250px;
+        height: 80px;
+        font-size: 40px;
+        margin-top: 30px;
+    }
+}
+
+.addcand{
+    text-align: right;
+    margin: 10px;
+}
+
+.btn-primaryList{
+    width: 100%
 }
