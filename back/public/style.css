@@ -180,3 +180,12 @@
         margin-top: 30px;
     }
 }
+
+.addcand{
+    text-align: right;
+    margin: 10px;
+}
+
+.btn-primaryList{
+    width: 100%
+}
