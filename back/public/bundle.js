@@ -108,27 +108,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var Header = function Header(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row header",
-    style: {
-      backgroundColor: '#DE411B',
-      height: '5%',
-      padding: '8px'
-    }
+    className: "row header"
   }, props.user && props.user.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       float: 'left'
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    style: {
-      width: '30px',
-      height: '30px',
-      marginLeft: '30px'
-    },
+    id: "imgHeader",
     src: "/utils/user1.svg"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    style: {
-      fontSize: '20px'
-    }
+    id: "headerName"
   }, props.user.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       float: 'right'
@@ -139,11 +128,7 @@ var Header = function Header(props) {
       props.logOut();
       return props.history.push('/');
     },
-    className: "btn btn-lg",
-    style: {
-      border: '1px solid black',
-      backgroundColor: '#F0F3F3'
-    }
+    className: "btn btn-lg btnLogOut"
   }, "LOG OUT"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null));
 };
 
@@ -396,30 +381,27 @@ __webpack_require__.r(__webpack_exports__);
 
 var loginForm = function loginForm(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row",
-    style: {
-      marginTop: '50px',
-      padding: '20px'
-    }
+    className: "row formLogin"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-3"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-6 addUser"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: props.onSubmit
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    style: {
-      textAlign: 'center',
-      color: '#DE411B'
-    }
-  }, "LOGIN"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "headerLogin"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "topLogin"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "imgLogin",
+    src: "./utils/logo.png"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    id: "loginh1"
+  }, "LOGIN")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: props.onSubmit,
+    className: "mainLogin"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "exampleInputEmail1"
   }, "Email address"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "email",
     onChange: props.onChange,
-    className: "form-control",
+    className: "inputLogin form-control",
     id: "exampleInputEmail1",
     "aria-describedby": "emailHelp",
     name: "email",
@@ -430,31 +412,16 @@ var loginForm = function loginForm(props) {
     htmlFor: "exampleInputPassword1"
   }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "password",
-    className: "form-control",
+    className: "inputLogin form-control",
     onChange: props.onChange,
     id: "exampleInputPassword1",
     name: "password",
     placeholder: "Password"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-3"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-6"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    style: {
-      width: '100%',
-      marginTop: '20px',
-      fontSize: '30px'
-    },
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     onSubmit: props.onSubmit,
-    className: "btn btn-lg boton"
-  }, "Iniciar Sesi\xF3n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-3"
-  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-3"
-  }));
+    className: "btn btn-lg botonLogin"
+  }, "Login")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (loginForm);
@@ -691,9 +658,40 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   !*** ./front/src/containers/Home.jsx ***!
   \***************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/aniamat/BootCamp/endavaProject/front/src/containers/Home.jsx: Unexpected token, expected \":\" (17:2)\n\n\u001b[0m \u001b[90m 15 | \u001b[39m      \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m'col-lg-4'\u001b[39m \u001b[33m>\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 16 | \u001b[39m    \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 17 | \u001b[39m  )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 18 | \u001b[39m}\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 19 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 20 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m \u001b[33mHome\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n    at Object.raise (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:3851:17)\n    at Object.unexpected (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5165:16)\n    at Object.expect (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5151:28)\n    at Object.parseConditional (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5771:12)\n    at Object.parseMaybeConditional (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5763:17)\n    at Object.parseMaybeAssign (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5703:21)\n    at Object.parseParenAndDistinguishExpression (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6468:28)\n    at Object.parseExprAtom (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6262:21)\n    at Object.parseExprAtom (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:3570:20)\n    at Object.parseExprSubscripts (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Object.parseMaybeUnary (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Object.parseExprOps (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Object.parseMaybeConditional (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5756:23)\n    at Object.parseMaybeAssign (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5703:21)\n    at Object.parseExpression (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5651:23)\n    at Object.parseReturnStatement (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7671:28)\n    at Object.parseStatementContent (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7341:21)\n    at Object.parseStatement (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7293:17)\n    at Object.parseBlockOrModuleBlockBody (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7879:25)\n    at Object.parseBlockBody (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7866:10)\n    at Object.parseBlock (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:7850:10)\n    at Object.parseFunctionBody (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6911:24)\n    at Object.parseArrowExpression (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6853:10)\n    at Object.parseParenAndDistinguishExpression (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6491:12)\n    at Object.parseExprAtom (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:6262:21)\n    at Object.parseExprAtom (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:3570:20)\n    at Object.parseExprSubscripts (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5916:23)\n    at Object.parseMaybeUnary (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5896:21)\n    at Object.parseExprOps (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5783:23)\n    at Object.parseMaybeConditional (/home/aniamat/BootCamp/endavaProject/node_modules/@babel/parser/lib/index.js:5756:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var Home = function Home(props) {
+  return props.user && props.user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "homeDisplay"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/candidates"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-lg botonHome"
+  }, "Admin Candidates")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/questions"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-lg botonHome"
+  }, "Admin Questions"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/users"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-lg botonHome"
+  }, "Admin Users")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "logoAbajo"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "imgHome",
+    src: "./utils/logo.png"
+  }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Vista de Todos los candidatos asignados al usuarios loggeado NO Admin");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Home);
 
 /***/ }),
 
@@ -28543,7 +28541,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
