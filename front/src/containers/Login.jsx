@@ -27,7 +27,7 @@ class Login extends React.Component {
     const user = this.state;
     this.props.checkUserLogin(user)
       .then(() => {
-        this.props.history.push('/home');
+        this.props.history.push('/');
       })
       .catch(() => alert('Combinación de Email y Contraseña incorrectas'))
     ;
