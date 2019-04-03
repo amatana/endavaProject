@@ -6,6 +6,7 @@ import AddUser from './AddUser';
 import Home from './Home';
 import AllUsers from './AllUsers'
 import Header from '../components/Header';
+import UserHome from '../components/UserHome';
 
 import { fetchUser } from '../redux/action-creator/user-actions';
 
@@ -24,6 +25,7 @@ class Main extends React.Component {
           <Route exact path='/home' render={({ history }) => (<Home history={history} user={this.props.user}/>)} />
           <Route exact path='/candidates' render={({ history }) => (<Home history={history} user={this.props.user}/>)} />
           <Route exact path='/questions' render={({ history }) => (<Home history={history} user={this.props.user}/>)} />
+          <Route exact path='/users' render={({ history }) => (<UserHome history={history} user={this.props.user}/>)} />
           <Route exact path='/users/allUsers' render={({ history }) => (<AllUsers user={this.props.user} history={history} />)} />
         </Switch>
       </div>

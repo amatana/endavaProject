@@ -25,15 +25,21 @@
 
 .header{
     border-bottom: 1px solid black;
-    display: grid;
-    grid-template-columns: 1fr 0.05fr;
-    align-content: space-between; 
-    justify-content: space-between;  
     background-color: #DE411B;
     height: 70px;
     padding: 8px;
 }
+.headerDisplay{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content:  
+    justify-content: space-between;  
 
+}
+.iconHeader{
+    justify-self: end;
+}
 .formLogin {
     font-size: 30px;
     margin: 0 auto;
@@ -73,6 +79,10 @@
     justify-content: space-between;
     align-items: flex-end;
 }
+.homeBtn{
+    width: 50px;
+    height: 50px;
+}
 .homeDisplay{
     width: 50%;
     margin: 0;
@@ -89,6 +99,10 @@
     padding: 3%;
     border-radius: 15px;
 }
+#botonHeaderLogOut{
+    margin-right: 20px;
+    margin-left: 30px;
+}
 .logoAbajo{
     position: absolute;
     width: 100%;
@@ -101,7 +115,7 @@
     margin-left: 30px;
 }
 #headerName{
-    font-size: 25px;
+    font-size: 20px;
     margin-left: 15px;
     vertical-align: bottom;
     text-transform: uppercase;
@@ -110,8 +124,14 @@
     border: 1px solid black;
      background-color: #F0F3F3;
 }
+.titHome{
+    text-align: center;
+}
 
 @media (max-width: 992px) {
+    .leftHeader img, .leftHeader h5{
+        display:inline-block
+    }
     .formLogin{
         font-size: 70px;
         width: 100%;
@@ -119,6 +139,7 @@
     } 
     .inputLogin{
         font-size: 60px;
+        border: 1px solid black;
     }
     .botonLogin{
         padding: 5%;
@@ -152,10 +173,7 @@
     }
     .header{
         border-bottom: 1px solid black;
-        display: grid;
-        grid-template-columns: 1fr 0.05fr;
-        align-content: space-between; 
-        justify-content: space-between; 
+        display: block;
         background-color: #DE411B;
         height: 150px;
         padding: 8px 
@@ -178,5 +196,47 @@
         height: 80px;
         font-size: 40px;
         margin-top: 30px;
+    }
+    .titHome{
+        font-size: 90px;
+        padding: 25px;
+    }
+    .formSpace{
+        padding: 15px;
+    }
+    .formUser{
+        font-size: 65px;
+        padding: 10px 35px;
+    }
+    .tiny{
+        font-size: 40px;
+    }
+    #belongsTo{
+        font-size: 65px;
+        padding: 20px;
+    }
+    .radioScale{
+        transform: scale(4);
+    }
+    .labelSpacing{
+        padding: 40px;
+    }
+    #checkBox{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-left: 20px;
+    }
+    #textCheckBox{
+        padding-left: 40px; 
+        padding-top: 30px;
+        
+    }
+    .homeBtn{
+        width:100px;
+        height: 100px;
+        margin-top: 30px;
+    }
+    #botonHeaderLogOut{
+        margin-right: 10px;
     }
 }
