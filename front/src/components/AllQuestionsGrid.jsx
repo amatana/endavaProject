@@ -17,7 +17,7 @@ export default class AllQuestions extends React.Component {
   }
 
   setModifiedQuestion (e) {
-    this.state.selectedQuestionContent = e.target.value;
+    this.setState({ selectedQuestionContent: e.target.value });
   }
 
   render () {
@@ -54,7 +54,7 @@ export default class AllQuestions extends React.Component {
                 </button>
               </div>
               <div className="input-group">
-                <textarea className="form-control" aria-label="With textarea" placeholder={this.state.selectedQuestionContent} onChange={(e) => this.setModifiedQuestion(e)}></textarea>
+                <textarea className="form-control" aria-label="With textarea" value={this.state.selectedQuestionContent} onChange={(e) => this.setModifiedQuestion(e)}></textarea>
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
