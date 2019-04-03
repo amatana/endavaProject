@@ -20,9 +20,7 @@ class AllUsers extends React.Component {
   onClick (id) {
     axios.delete(`/api/users/delete/${id}`)
       .then(() => alert('Se eliminó correctamente al Usuario'))
-      .then(() => axios.get('/api/users/getAll'))
-      .then(res => res.data)
-      .then(users => this.setState({ users }));
+      .then(() => this.props.getAllUsers())
   }
 
   render () {
