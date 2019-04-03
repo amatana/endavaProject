@@ -13,7 +13,7 @@ Questions.belongsTo(Answers, { as: 'questionsID' });
 Questions.belongsToMany(Tags, { through: 'tags-questions' });
 Tags.belongsToMany(Questions, { through: 'tags-questions' });
 
-Answers.belongsTo(Questions);
+// Answers.belongsTo(Questions);
 
 module.exports = {
   User,

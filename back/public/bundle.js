@@ -1196,17 +1196,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ "./front/src/containers/AllCandidates.jsx":
 /*!************************************************!*\
   !*** ./front/src/containers/AllCandidates.jsx ***!
   \************************************************/
-=======
-/***/ "./front/src/containers/AllQuestionsList.jsx":
-/*!***************************************************!*\
-  !*** ./front/src/containers/AllQuestionsList.jsx ***!
-  \***************************************************/
->>>>>>> questionsList
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1216,14 +1209,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-<<<<<<< HEAD
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_allCandidates__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/allCandidates */ "./front/src/components/allCandidates.jsx");
-=======
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _components_AllQuestionsGrid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/AllQuestionsGrid */ "./front/src/components/AllQuestionsGrid.jsx");
->>>>>>> questionsList
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1234,29 +1221,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-=======
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
->>>>>>> questionsList
-=======
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
->>>>>>> Produccion
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-<<<<<<< HEAD
 /* eslint-disable no-unused-vars */
 
 
@@ -1298,7 +1270,75 @@ function (_React$Component) {
       }).then(function (users) {
         return _this2.setState({
           users: users
-=======
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return this.state.users && this.state.users.length < 1 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Cargando...") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_allCandidates__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        handleCandClick: this.handleCandClick,
+        input: this.state.input,
+        searchingFor: this.searchingFor,
+        handleChange: this.handleChange,
+        onClick: this.onClick,
+        users: this.state.users,
+        user: this.props.user
+      });
+    }
+  }]);
+
+  return AllCandidates;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(AllCandidates));
+
+/***/ }),
+
+/***/ "./front/src/containers/AllQuestionsList.jsx":
+/*!***************************************************!*\
+  !*** ./front/src/containers/AllQuestionsList.jsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/es/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _components_AllQuestionsGrid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/AllQuestionsGrid */ "./front/src/components/AllQuestionsGrid.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1357,34 +1397,10 @@ function (_React$Component) {
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/questions/reqAllQuestions/".concat(area)).then(function (res) {
         _this3.setState({
           allQuestions: res.data
->>>>>>> questionsList
         });
       });
     }
   }, {
-<<<<<<< HEAD
-    key: "render",
-    value: function render() {
-      return this.state.users && this.state.users.length < 1 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Cargando...") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_allCandidates__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        handleCandClick: this.handleCandClick,
-        input: this.state.input,
-        searchingFor: this.searchingFor,
-        handleChange: this.handleChange,
-        onClick: this.onClick,
-        users: this.state.users,
-        user: this.props.user
-      });
-    }
-  }]);
-
-  return AllCandidates;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    user: state.user
-  };
-=======
     key: "deleteQuestion",
     value: function deleteQuestion(questId) {
       return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/questions/delete/".concat(questId));
@@ -1439,18 +1455,13 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {};
->>>>>>> questionsList
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {};
 };
 
-<<<<<<< HEAD
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(AllCandidates));
-=======
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(AllQuestionsList));
->>>>>>> questionsList
 
 /***/ }),
 
@@ -1580,36 +1591,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-<<<<<<< HEAD
 /* eslint-disable no-unused-vars */
-=======
->>>>>>> questionsList
 
 
 
 var Home = function Home(props) {
-<<<<<<< HEAD
-  return props.user && props.user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "homeDisplay"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/candidates"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-lg botonHome"
-  }, "Admin Candidates")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/questions"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-lg botonHome"
-  }, "Admin Questions"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/users"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-lg botonHome"
-  }, "Admin Users")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "logoAbajo"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "imgHome",
-    src: "./utils/logo.png"
-  }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Vista de Todos los candidatos asignados al usuarios loggeado NO Admin");
-=======
   return props.user && props.user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1653,7 +1639,6 @@ var Home = function Home(props) {
   }, "Admin Users")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-4"
   })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No tenes permiso");
->>>>>>> questionsList
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -1785,20 +1770,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AddUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddUser */ "./front/src/containers/AddUser.jsx");
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Home */ "./front/src/containers/Home.jsx");
 /* harmony import */ var _AllUsers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AllUsers */ "./front/src/containers/AllUsers.jsx");
-<<<<<<< HEAD
 /* harmony import */ var _AllCandidates__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AllCandidates */ "./front/src/containers/AllCandidates.jsx");
-<<<<<<< HEAD
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
-=======
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
-/* harmony import */ var _AllQuestionsList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AllQuestionsList */ "./front/src/containers/AllQuestionsList.jsx");
->>>>>>> questionsList
-/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
-=======
 /* harmony import */ var _AddCandidate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AddCandidate */ "./front/src/containers/AddCandidate.jsx");
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
-/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
->>>>>>> leo
+/* harmony import */ var _AllQuestionsList__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./AllQuestionsList */ "./front/src/containers/AllQuestionsList.jsx");
+/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1818,6 +1794,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 /* eslint-disable no-unused-vars */
+
 
 
 
@@ -1881,24 +1858,9 @@ function (_React$Component) {
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: "/users/addUser",
+        path: "/addCandidate",
         render: function render(_ref4) {
           var history = _ref4.history;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddUser__WEBPACK_IMPORTED_MODULE_4__["default"], {
-            history: history
-          });
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-<<<<<<< HEAD
-        path: "/users/allUsers",
-        render: function render(_ref5) {
-          var history = _ref5.history;
-<<<<<<< HEAD
-=======
-        path: "/addCandidate",
-        render: function render(_ref5) {
-          var history = _ref5.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddCandidate__WEBPACK_IMPORTED_MODULE_8__["default"], {
             user: _this.props.user,
             history: history
@@ -1907,30 +1869,18 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/candidates",
-        render: function render(_ref6) {
-          var history = _ref6.history;
->>>>>>> leo
+        render: function render(_ref5) {
+          var history = _ref5.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllCandidates__WEBPACK_IMPORTED_MODULE_7__["default"], {
             history: history,
             user: _this.props.user
-=======
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllUsers__WEBPACK_IMPORTED_MODULE_6__["default"], {
-            user: _this.props.user,
-            history: history
->>>>>>> questionsList
           });
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-<<<<<<< HEAD
-        path: "/candidates",
+        path: "/questions",
         render: function render(_ref6) {
           var history = _ref6.history;
-=======
-        path: "/questions",
-        render: function render(_ref7) {
-          var history = _ref7.history;
->>>>>>> leo
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Home__WEBPACK_IMPORTED_MODULE_5__["default"], {
             history: history,
             user: _this.props.user
@@ -1938,18 +1888,29 @@ function (_React$Component) {
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-<<<<<<< HEAD
-        path: "/questions/allQuestions",
+        path: "/users/addUser",
         render: function render(_ref7) {
           var history = _ref7.history;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllQuestionsList__WEBPACK_IMPORTED_MODULE_8__["default"], {
-=======
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddUser__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            history: history
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
         path: "/users/allUsers",
         render: function render(_ref8) {
           var history = _ref8.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllUsers__WEBPACK_IMPORTED_MODULE_6__["default"], {
             user: _this.props.user,
->>>>>>> leo
+            history: history
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/questions/allQuestions",
+        render: function render(_ref9) {
+          var history = _ref9.history;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllQuestionsList__WEBPACK_IMPORTED_MODULE_10__["default"], {
             history: history
           });
         }
@@ -1969,7 +1930,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchUser: function fetchUser() {
-      return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_10__["fetchUser"])());
+      return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_11__["fetchUser"])());
     }
   };
 };
