@@ -1,4 +1,4 @@
-import { SET_CANDIDATE } from '../constants';
+import { SET_CANDIDATE, SET_CANDIDATES } from '../constants';
 import axios from 'axios';
 
 const setCandidate = (candidate) => ({
@@ -7,7 +7,18 @@ const setCandidate = (candidate) => ({
 
 });
 
+const setCandidates = (candidates) => ({
+  type: SET_CANDIDATES,
+  candidates
+});
+
 export const createCandidate = (candidate) => dispatch =>
   axios.post('/api/candidate/create', { candidate })
     .then(res => res.data)
     .then(candidate => dispatch(setCandidate(candidate)));
+
+export const getAllCandidates = () => dispatch =>
+  axios.get('/api/candidate/getAll')
+    .then(res => res.data)
+    .then(candidates => dispatch(setCandidates(candidates)));
+

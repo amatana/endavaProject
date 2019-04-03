@@ -13,6 +13,7 @@ class allCandidates extends React.Component {
   }
 
   render () {
+    console.log('SOY LAS PROPSSSSS', this.props);
     console.log('el nuevo entrevistador es', this.state.entrevistador);
     return (
       !this.props.user.isAdmin ? <h2>Lo siento, pero no tienes acceso para ver esta página</h2>
@@ -36,20 +37,20 @@ class allCandidates extends React.Component {
                 </tr>
               </thead>
 
-              {candidatos.map((campo, index = 0) => {
-                if (campo.estado.toLowerCase().includes(this.props.input)) {
+              {this.props.candidates.map((campo, index = 0) => {
+                if (campo.status.toLowerCase().includes(this.props.input)) {
                   return (
                     <tbody key={index++}>
                       <tr>
-                        <th style={{ textAlign: 'center', fontSize: '20px' }} scope="row">{campo.candidato}</th>
-                        <td style={{ textAlign: 'center', fontSize: '20px' }}>{campo.perfil}</td>
-                        <td style={{ textAlign: 'center', fontSize: '20px' }}>{campo.estado}</td>
-                        {campo.estado === 'Approbed HR'
+                        <th style={{ textAlign: 'center', fontSize: '20px' }} scope="row">{campo.name + ' ' + campo.surname}</th>
+                        <td style={{ textAlign: 'center', fontSize: '20px' }}>Acá van los perfiles</td>
+                        <td style={{ textAlign: 'center', fontSize: '20px' }}>{campo.status}</td>
+                        {campo.status === 'Approbed HR'
                           ? <td style={{ textAlign: 'center', fontSize: '20px' }}>
                             <button type="button" className="btn btn-primary btn-primaryList">Assign Sist.
                             </button>
                           </td>
-                          : campo.estado === 'Tech Approved'
+                          : campo.status === 'Tech Approved'
                             ? <td style={{ textAlign: 'center', fontSize: '20px' }}>
                               <button type="button" className="btn btn-primary btn-primaryList" data-toggle="modal" data-target=".bd-example-modal-sm">Generate report
                               </button>
@@ -68,10 +69,24 @@ class allCandidates extends React.Component {
                                 </div>
                               </div>
                             </td>
-                            : campo.estado === 'New'
+                            : campo.status === 'New'
                               ? <td style={{ textAlign: 'center', fontSize: '20px' }}>
-                                <button type="button" className="btn btn-primary btn-primaryList">Assign Hr.
+                                <button type="button" className="btn btn-primary btn-primaryList" data-toggle="modal" data-target=".bd-example-modal-sm">Assign Hr.
                                 </button>
+                                <div className="modal fade bd-example-modal-sm" tabIndex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                  <div className="modal-dialog modal-sm">
+                                    <div className="modal-content">
+                                      Selecciona al entrevistador:
+                                      {this.props.users.map((entrevistador, index = 0) => (
+                                        <div key={index++} className="list-group">
+                                          <div className="list-group">
+                                            <a className="list-group-item list-group-item-action" onClick={() => this.setState({ entrevistador: entrevistador.id })}>{entrevistador.nombre}</a>
+                                          </div>
+                                        </div>)
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
                               </td>
                               : <td style={{ textAlign: 'center', fontSize: '20px' }}>
                                 <button type="button" className="btn btn-primary btn-primaryList">Go to the pingo
