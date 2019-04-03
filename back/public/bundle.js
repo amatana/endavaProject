@@ -295,115 +295,218 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _containers_seed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../containers/seed */ "./front/src/containers/seed.js");
-/* harmony import */ var _containers_seed__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_containers_seed__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 /* eslint-disable no-unused-vars */
 
 
 
-var AllUsers = function AllUsers(props) {
-  return !props.user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Lo siento, pero no tienes acceso para ver esta p\xE1gina") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "addcand"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "button",
-    className: "btn btn-primary"
-  }, "Agregar candidato")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      margin: '4% 9%',
-      border: '2px solid #000000'
+
+var allCandidates =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(allCandidates, _React$Component);
+
+  function allCandidates() {
+    var _this;
+
+    _classCallCheck(this, allCandidates);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(allCandidates).call(this));
+    _this.state = {
+      entrevistador: '',
+      popInput: ''
+    };
+    return _this;
+  }
+
+  _createClass(allCandidates, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      console.log('el nuevo entrevistador es', this.state.entrevistador);
+      return !this.props.user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Lo siento, pero no tienes acceso para ver esta p\xE1gina") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "form-inline",
+        style: {
+          float: 'left',
+          margin: 'auto'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-search",
+        "aria-hidden": "true"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this.props.handleChange,
+        className: "form-control form-control-sm ml-3 w-75",
+        type: "text",
+        placeholder: "Filter by State",
+        "aria-label": "Search"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "addcand"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-primary"
+      }, "Agregar candidato")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          margin: '4% 9%',
+          border: '2px solid #000000'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", {
+        style: {
+          backgroundColor: '#EC6861'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        style: {
+          fontSize: '20px',
+          textAlign: 'center'
+        }
+      }, "CANDIDATE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        style: {
+          fontSize: '20px',
+          textAlign: 'center'
+        }
+      }, "PROFILE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        style: {
+          fontSize: '20px',
+          textAlign: 'center'
+        }
+      }, "STATE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        style: {
+          fontSize: '20px',
+          textAlign: 'center'
+        }
+      }, "ACTION"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        style: {
+          fontSize: '20px',
+          textAlign: 'center'
+        }
+      }))), _containers_seed__WEBPACK_IMPORTED_MODULE_1__["candidatos"].map(function (campo) {
+        var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+        if (campo.estado.toLowerCase().includes(_this2.props.input)) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
+            key: index++
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+            style: {
+              textAlign: 'center',
+              fontSize: '20px'
+            },
+            scope: "row"
+          }, campo.candidato), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+            style: {
+              textAlign: 'center',
+              fontSize: '20px'
+            }
+          }, campo.perfil), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+            style: {
+              textAlign: 'center',
+              fontSize: '20px'
+            }
+          }, campo.estado), campo.estado === 'Approbed HR' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+            style: {
+              textAlign: 'center',
+              fontSize: '20px'
+            }
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            type: "button",
+            className: "btn btn-primary btn-primaryList"
+          }, "Assign Sist.")) : campo.estado === 'Tech Approved' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+            style: {
+              textAlign: 'center',
+              fontSize: '20px'
+            }
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            type: "button",
+            className: "btn btn-primary btn-primaryList",
+            "data-toggle": "modal",
+            "data-target": ".bd-example-modal-sm"
+          }, "Generate report"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "modal fade bd-example-modal-sm",
+            tabIndex: "-1",
+            role: "dialog",
+            "aria-labelledby": "mySmallModalLabel",
+            "aria-hidden": "true"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "modal-dialog modal-sm"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "modal-content"
+          }, "Selecciona al entrevistador:", _containers_seed__WEBPACK_IMPORTED_MODULE_1__["entrevistadoresSist"].map(function (entrevistador) {
+            var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              key: index++,
+              className: "list-group"
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              className: "list-group"
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+              className: "list-group-item list-group-item-action",
+              onClick: function onClick() {
+                return _this2.setState({
+                  entrevistador: entrevistador
+                });
+              }
+            }, entrevistador)));
+          }))))) : campo.estado === 'New' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+            style: {
+              textAlign: 'center',
+              fontSize: '20px'
+            }
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            type: "button",
+            className: "btn btn-primary btn-primaryList"
+          }, "Assign Hr.")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+            style: {
+              textAlign: 'center',
+              fontSize: '20px'
+            }
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            type: "button",
+            className: "btn btn-primary btn-primaryList"
+          }, "Go to the pingo"))));
+        }
+
+        ;
+      }))));
     }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-    className: "table"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", {
-    style: {
-      backgroundColor: '#EC6861'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col",
-    style: {
-      fontSize: '20px',
-      textAlign: 'center'
-    }
-  }, "CANDIDATE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col",
-    style: {
-      fontSize: '20px',
-      textAlign: 'center'
-    }
-  }, "PROFILE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col",
-    style: {
-      fontSize: '20px',
-      textAlign: 'center'
-    }
-  }, "STATE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col",
-    style: {
-      fontSize: '20px',
-      textAlign: 'center'
-    }
-  }, "ACTION"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col",
-    style: {
-      fontSize: '20px',
-      textAlign: 'center'
-    }
-  }))), _containers_seed__WEBPACK_IMPORTED_MODULE_1___default.a.map(function (campo) {
-    var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
-      key: index++
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-      style: {
-        textAlign: 'center',
-        fontSize: '20px'
-      },
-      scope: "row"
-    }, campo.candidato), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      style: {
-        textAlign: 'center',
-        fontSize: '20px'
-      }
-    }, campo.perfil), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      style: {
-        textAlign: 'center',
-        fontSize: '20px'
-      }
-    }, campo.estado), campo.estado === 'Approbed HR' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      style: {
-        textAlign: 'center',
-        fontSize: '20px'
-      }
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      type: "button",
-      className: "btn btn-primary btn-primaryList"
-    }, "Assign Sist.")) : campo.estado === 'Tech Approved' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      style: {
-        textAlign: 'center',
-        fontSize: '20px'
-      }
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      type: "button",
-      className: "btn btn-primary btn-primaryList"
-    }, "Generate Report")) : campo.estado === 'New' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      style: {
-        textAlign: 'center',
-        fontSize: '20px'
-      }
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      type: "button",
-      className: "btn btn-primary btn-primaryList"
-    }, "Assign Hr.")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      style: {
-        textAlign: 'center',
-        fontSize: '20px'
-      }
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      type: "button",
-      className: "btn btn-primary btn-primaryList"
-    }, "Go to the pingo"))));
-  }))));
+  }]);
+
+  return allCandidates;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (AllUsers);
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(allCandidates));
 
 /***/ }),
 
@@ -721,9 +824,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -746,11 +849,21 @@ function (_React$Component) {
     _classCallCheck(this, AllCandidates);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AllCandidates).call(this, props));
-    _this.state = {};
+    _this.state = {
+      input: ''
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(AllCandidates, [{
+    key: "handleChange",
+    value: function handleChange(e) {
+      this.setState({
+        input: e.target.value
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -767,6 +880,10 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return this.state.users && this.state.users.length < 1 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Cargando...") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_allCandidates__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        handleCandClick: this.handleCandClick,
+        input: this.state.input,
+        searchingFor: this.searchingFor,
+        handleChange: this.handleChange,
         onClick: this.onClick,
         users: this.state.users,
         user: this.props.user
@@ -1246,10 +1363,15 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!**************************************!*\
   !*** ./front/src/containers/seed.js ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: candidatos, entrevistadoresSist, entrevistadoresHr */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var obj = [{
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "candidatos", function() { return candidatos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "entrevistadoresSist", function() { return entrevistadoresSist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "entrevistadoresHr", function() { return entrevistadoresHr; });
+var candidatos = [{
   candidato: 'Jesu Dio',
   perfil: 'Junior',
   estado: 'Approbed HR'
@@ -1278,7 +1400,8 @@ var obj = [{
   perfil: 'Semi-Senior',
   estado: 'Approbed HR'
 }];
-module.exports = obj;
+var entrevistadoresSist = ['Gaston d' + 'Hiriart', 'Ana Amat', 'Leonardo Carrocio', 'Joaquin Quiroga', 'Juan Manuel'];
+var entrevistadoresHr = ['Maria Elena Walsh', 'Virginia Lagos', 'Cristo Jesu', 'Profesor Jirafales', 'Pep Guardiola'];
 
 /***/ }),
 
@@ -28860,7 +28983,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
