@@ -13,7 +13,7 @@ const Home = (props) => {
         </div>
         <div className='col-lg-4' ></div>
       </div>
-      : <div>No tenes permiso</div>
+      : <div>{props.history.push('/login')}</div>
   );
 };
 

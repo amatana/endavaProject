@@ -13,11 +13,11 @@ const Header = (props) => {
             </img><h5 id='headerName'>{props.user.nombre}</h5>
           </div>
           <div className='iconHeader'>
-            <Link to='/home'><img src="/utils/home.png" className='homeBtn'/></Link>
+            <Link to='/'><img src="/utils/home.png" className='homeBtn'/></Link>
             <button id='botonHeaderLogOut' className='iconsHeader' onClick={(e) => {
               e.preventDefault();
               props.logOut();
-              return props.history.push('/');
+              return props.history.push('/login');
             }} className='btn btn-lg btnLogOut iconsHeader'>LOG OUT</button></div>
         </div>
         : <h2></h2>}
