@@ -33,9 +33,12 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-content:  
     justify-content: space-between;  
 
+}
+#trashUser{
+    cursor: pointer;
+    width: 2em;   
 }
 .iconHeader{
     justify-self: end;

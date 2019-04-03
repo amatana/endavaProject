@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 const AddUser = (props) => {
@@ -25,7 +26,7 @@ const AddUser = (props) => {
             </div>
 
             <div className='form-group formSpace'>
-            <h5 id='belongsTo'>Belongs to :</h5>
+              <h5 id='belongsTo'>Belongs to :</h5>
               <div className="form-check form-check-inline formSpace">
                 <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio1" value="Sistemas" />
                 <label className="form-check-label labelSpacing" htmlFor="inlineRadio1">    Sistemas  </label>
@@ -38,7 +39,7 @@ const AddUser = (props) => {
             </div>
 
             <div className="form-check formorm-check-inline formSpace checkBox" >
-              <input type="checkbox" style={{paddingBottom:'35px', marginLeft:'25px'}}value={true} onChange={props.onChange} className=" radioScale" id="isAdmin" name="isAdmin" /><span id='textCheckBox'>  isAdmin</span>
+              <input type="checkbox" style={{ paddingBottom: '35px', marginLeft: '25px' }}value={true} onChange={props.onChange} className=" radioScale" id="isAdmin" name="isAdmin" /><span id='textCheckBox'>  isAdmin</span>
             </div>
 
             <div><button onSubmit={props.onSubmit} type="submit" className="btn boton btn-lg botonLogin">Done</button></div>
