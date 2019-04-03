@@ -189,3 +189,18 @@
 .btn-primaryList{
     width: 100%
 }
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+.form-control{
+    text-align: left;
+    margin: 10px;
+}
+
+.list-group-item-action{
+    cursor: pointer
+}

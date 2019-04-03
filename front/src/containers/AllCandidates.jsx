@@ -7,9 +7,14 @@ import AllCandidatesGrid from '../components/allCandidates';
 class AllCandidates extends React.Component {
   constructor (props) {
     super(props);
-
     this.state = {
+      input: ''
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange (e) {
+    this.setState({ input: e.target.value });
   }
 
   componentDidMount () {
@@ -21,7 +26,7 @@ class AllCandidates extends React.Component {
   render () {
     return (
       this.state.users && this.state.users.length < 1 ? <h2>Cargando...</h2>
-        : <AllCandidatesGrid onClick={this.onClick} users={this.state.users} user={this.props.user}/>
+        : <AllCandidatesGrid handleCandClick={this.handleCandClick} input={this.state.input} searchingFor={this.searchingFor} handleChange={this.handleChange} onClick={this.onClick} users={this.state.users} user={this.props.user}/>
     );
   }
 }
