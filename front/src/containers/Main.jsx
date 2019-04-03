@@ -2,11 +2,13 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import Login from './Login';
 import AddUser from './AddUser';
 import Home from './Home';
 import AllUsers from './AllUsers';
 import AllCantidates from './AllCandidates';
+import AddCandidate from './AddCandidate';
 import Header from '../components/Header';
 import AllQuestionsList from './AllQuestionsList';
 
@@ -24,6 +26,7 @@ class Main extends React.Component {
         <Switch>
           <Route exact path="/" render={({ history }) => (<Login history={history} />)} />
           <Route exact path='/home' render={({ history }) => (<Home history={history} user={this.props.user}/>)} />
+          <Route exact path='/addCandidate' render={({ history }) => (<AddCandidate user={this.props.user} history={history} />)} />
           <Route exact path='/candidates' render={({ history }) => (<AllCantidates history={history} user={this.props.user}/>)} />
           <Route exact path='/questions' render={({ history }) => (<Home history={history} user={this.props.user}/>)} />
           <Route exact path='/users/addUser' render={({ history }) => (<AddUser history={history} />)} />
