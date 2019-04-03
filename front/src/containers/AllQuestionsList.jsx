@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 // eslint-disable-next-line no-unused-vars
@@ -57,9 +58,16 @@ class AllQuestionsList extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="dropdown show" >
         <h2>Question management</h2>
-        <AllQuestionsGrid onClick={this.onClick} questions={this.state.allQuestions}/>
+        <button type="button" className="btn btn-link" role="button" id="addQuestionIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ float: 'right' }} >
+          <img src="/utils/add.svg" width="50" />
+        </button>
+        <div className="dropdown-menu" aria-labelledby="addQuestionIcon">
+          <a className="dropdown-item">Add new question manually</a>
+          <a className="dropdown-item" href="/home">Add new question from file</a>
+        </div>
+        <AllQuestionsGrid onClick={this.onClick} questions={this.state.allQuestions} />
       </div>
     );
   }

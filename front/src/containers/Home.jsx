@@ -9,7 +9,7 @@ const Home = (props) => {
         <div className='col-lg-4'>
           <img style= { { width: '100%', marginBottom: '80px', marginTop: '80px' } } src = './utils/logo.png' />
           <Link to="/candidates"><button style={{ width: '100%', margin: '20px', fontSize: '30px' }} className="btn btn-lg boton">Admin Candidates</button></Link>
-          <Link to="/questions"><div><button style={{ width: '100%', margin: '20px', fontSize: '30px' }} className="btn btn-lg boton">Admin Questions</button></div></Link>
+          <Link to="/questions/allQuestions"><div><button style={{ width: '100%', margin: '20px', fontSize: '30px' }} className="btn btn-lg boton">Admin Questions</button></div></Link>
           <Link to="/users"><div><button style={{ width: '100%', margin: '20px', fontSize: '30px' }} className="btn btn-lg boton">Admin Users</button></div></Link>
         </div>
         <div className='col-lg-4' ></div>
