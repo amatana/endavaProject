@@ -9,27 +9,27 @@ const candidate = (props) => {
           <h1>Add new candidate</h1>
           <div className="form-group " >
             <label htmlFor="lastName">Last Name</label>
-            <input onChange={props.onChange} type="text" className="form-control" id="LastName" placeholder="Last Name" name='LastName'/>
+            <input onChange={props.onChange} type="text" className="form-control" id="LastName" placeholder="Last Name" name='name'/>
           </div>
           <div className="form-group">
             <label htmlFor="firsstName">First Name</label>
-            <input onChange={props.onChange} type="text" className="form-control" id="First Name" placeholder="First Name" name='FirstName'/>
+            <input onChange={props.onChange} type="text" className="form-control" id="First Name" placeholder="First Name" name='surname'/>
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input onChange={props.onChange} type="email" className="form-control" id="Email" placeholder="Email" name='Email'/>
+            <input onChange={props.onChange} type="email" className="form-control" id="Email" placeholder="Email" name='email'/>
           </div>
           <div className="form-group">
             <label htmlFor="number">Cell phone number</label>
-            <input onChange={props.onChange} type="tel" className="form-control" id="phone" placeholder="Cell phone number" name='CellPhone '/>
+            <input onChange={props.onChange} type="tel" className="form-control" id="phone" placeholder="Cell phone number" name='telNumber'/>
           </div>
           <div className="form-group">
             <label htmlFor="workExperince">Work Experience</label>
-            <textarea onChange={props.onChange} className="form-control" id="WorkExperience" rows="3" name="WorkExperience"></textarea>
+            <textarea onChange={props.onChange} className="form-control" id="WorkExperience" rows="3" name="expertise"></textarea>
           </div>
           <div className="form-group">
             <label htmlFor="url">URL Linkedin</label>
-            <input onChange={props.onChange} type="url" className="form-control" id="URLLinkedin" placeholder="URL Linkedin" name="URLLinkedin"/>
+            <input onChange={props.onChange} type="url" className="form-control" id="URLLinkedin" placeholder="URL Linkedin" name="url"/>
           </div>
           <div>
             <button onSubmit={props.onSubmit} type="submit" className="btn boton btn-lg">Add Applicant</button>

@@ -1,35 +1,30 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
 
 import AddCandidateComp from '../components/addcandidate';
+import { createCandidate } from '../redux/action-creator/candidate-actions';
 
 class AddCandidate extends React.Component {
   constructor (props) {
     super(props);
-
-    this.state = {
-      users: [],
-      candidate: {}
-    };
+    this.state = {};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit (e) {
     e.preventDefault();
-    // if (this.state.email.split('@')[1] !== 'endava.com') {
-    //   alert('El email debe pertenecer al dominio @envada.com');
-    // } else {
-    //   this.props.createUSer(this.state);
-    //   return this.props.history.push('./');
-    // }
+    console.log('el estado es', this.state);
+    this.props.createCandidate(this.state);
+    return this.props.history.push('./candidates');
   }
 
   handleChange (e) {
-    console.log('loque me llega al handleChage ', e.target.name, e.target.value);
-    // this.setState(
-    //   { [e.target.name]: e.target.value });
+    // console.log('loque me llega al handleChage ', e.target.name, e.target.value);
+    this.setState(
+      { [e.target.name]: e.target.value });
   }
 
   render () {
@@ -39,10 +34,10 @@ class AddCandidate extends React.Component {
   }
 }
 const mapStateToProps = (state) => ({
-  user: state.user
+  candidate: state.candidate
 });
 const mapDispatchToProps = (dispatch) => ({
-
+  createCandidate: (candidate) => dispatch(createCandidate(candidate))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCandidate);

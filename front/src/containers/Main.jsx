@@ -8,6 +8,7 @@ import AddUser from './AddUser';
 import Home from './Home';
 import AllUsers from './AllUsers';
 import AllCantidates from './AllCandidates';
+import AddCandidate from './AddCandidate';
 import Header from '../components/Header';
 
 import { fetchUser } from '../redux/action-creator/user-actions';
