@@ -661,6 +661,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _containers_seed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../containers/seed */ "./front/src/containers/seed.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -680,6 +681,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 /* eslint-disable no-unused-vars */
+
 
 
 
@@ -725,10 +727,12 @@ function (_React$Component) {
         "aria-label": "Search"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "addcand"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+        to: "/candidates/addCandidate"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn btn-primary"
-      }, "Agregar candidato")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Add Candidate"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
           margin: '4% 9%',
           border: '2px solid #000000'
@@ -1837,12 +1841,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
 /* harmony import */ var _AllQuestionsList__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./AllQuestionsList */ "./front/src/containers/AllQuestionsList.jsx");
 /* harmony import */ var _components_UserHome__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/UserHome */ "./front/src/components/UserHome.jsx");
-<<<<<<< HEAD
-/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
-=======
 /* harmony import */ var _components_candidateHome__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/candidateHome */ "./front/src/components/candidateHome.jsx");
 /* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
->>>>>>> 39c0fc75b47d02ddaddab3b20920db8fa2658701
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1876,10 +1876,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 39c0fc75b47d02ddaddab3b20920db8fa2658701
 var Main =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1961,24 +1958,9 @@ function (_React$Component) {
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-<<<<<<< HEAD
-        path: "/users/addUser",
-        render: function render(_ref7) {
-          var history = _ref7.history;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddUser__WEBPACK_IMPORTED_MODULE_4__["default"], {
-            history: history
-          });
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
-        path: "/users",
-        render: function render(_ref8) {
-          var history = _ref8.history;
-=======
         path: "/users",
         render: function render(_ref7) {
           var history = _ref7.history;
->>>>>>> 39c0fc75b47d02ddaddab3b20920db8fa2658701
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_UserHome__WEBPACK_IMPORTED_MODULE_11__["default"], {
             history: history,
             user: _this.props.user
@@ -1986,26 +1968,15 @@ function (_React$Component) {
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-<<<<<<< HEAD
-        path: "/users/allUsers",
-        render: function render(_ref9) {
-          var history = _ref9.history;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllUsers__WEBPACK_IMPORTED_MODULE_6__["default"], {
-            user: _this.props.user,
-=======
         path: "/users/addUser",
         render: function render(_ref8) {
           var history = _ref8.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddUser__WEBPACK_IMPORTED_MODULE_4__["default"], {
->>>>>>> 39c0fc75b47d02ddaddab3b20920db8fa2658701
             history: history
           });
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-<<<<<<< HEAD
-        path: "/questions/allQuestions",
-=======
         path: "/users/allUsers",
         render: function render(_ref9) {
           var history = _ref9.history;
@@ -2017,7 +1988,6 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/questions",
->>>>>>> 39c0fc75b47d02ddaddab3b20920db8fa2658701
         render: function render(_ref10) {
           var history = _ref10.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllQuestionsList__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2040,11 +2010,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchUser: function fetchUser() {
-<<<<<<< HEAD
-      return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_12__["fetchUser"])());
-=======
       return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_13__["fetchUser"])());
->>>>>>> 39c0fc75b47d02ddaddab3b20920db8fa2658701
     }
   };
 };
