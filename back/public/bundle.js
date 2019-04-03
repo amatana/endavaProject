@@ -1647,9 +1647,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Home = function Home(props) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
   return props.user && props.user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "homeDisplay"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1665,54 +1662,6 @@ var Home = function Home(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-lg botonHome"
   }, "Users Managment")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "logoAbajo"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "imgHome",
-    src: "./utils/logo.png"
-  }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Vista de Todos los candidatos asignados al usuarios loggeado NO Admin");
-=======
->>>>>>> 2af85f7b300cacab37424c09803ff586216901eb
-  return props.user && props.user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-4"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    style: {
-      width: '100%',
-      marginBottom: '80px',
-      marginTop: '80px'
-    },
-    src: "./utils/logo.png"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/candidates"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    style: {
-      width: '100%',
-      margin: '20px',
-      fontSize: '30px'
-    },
-    className: "btn btn-lg boton"
-  }, "Admin Candidates")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/questions/allQuestions"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    style: {
-      width: '100%',
-      margin: '20px',
-      fontSize: '30px'
-    },
-    className: "btn btn-lg boton"
-  }, "Admin Questions"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/users"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    style: {
-      width: '100%',
-      margin: '20px',
-      fontSize: '30px'
-    },
-    className: "btn btn-lg boton"
-  }, "Admin Users")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-4"
   })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "No tenes permiso");
 };
@@ -1847,30 +1796,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Home */ "./front/src/containers/Home.jsx");
 /* harmony import */ var _AllUsers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AllUsers */ "./front/src/containers/AllUsers.jsx");
 /* harmony import */ var _AllCandidates__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AllCandidates */ "./front/src/containers/AllCandidates.jsx");
-<<<<<<< HEAD
 /* harmony import */ var _AddCandidate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AddCandidate */ "./front/src/containers/AddCandidate.jsx");
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
 /* harmony import */ var _AllQuestionsList__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./AllQuestionsList */ "./front/src/containers/AllQuestionsList.jsx");
-/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
-=======
-<<<<<<< HEAD
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
-=======
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
-<<<<<<< HEAD
-/* harmony import */ var _AllQuestionsList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AllQuestionsList */ "./front/src/containers/AllQuestionsList.jsx");
->>>>>>> questionsList
-/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
-=======
-/* harmony import */ var _AddCandidate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AddCandidate */ "./front/src/containers/AddCandidate.jsx");
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
-/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
->>>>>>> leo
-=======
-/* harmony import */ var _components_UserHome__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/UserHome */ "./front/src/components/UserHome.jsx");
-/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
->>>>>>> segundoSprint
->>>>>>> 2af85f7b300cacab37424c09803ff586216901eb
+/* harmony import */ var _components_UserHome__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/UserHome */ "./front/src/components/UserHome.jsx");
+/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1890,6 +1820,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 /* eslint-disable no-unused-vars */
+
 
 
 
@@ -1984,39 +1915,28 @@ function (_React$Component) {
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-<<<<<<< HEAD
         path: "/users/addUser",
         render: function render(_ref7) {
           var history = _ref7.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddUser__WEBPACK_IMPORTED_MODULE_4__["default"], {
             history: history
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-        path: "/questions/allQuestions",
-        render: function render(_ref7) {
-          var history = _ref7.history;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllQuestionsList__WEBPACK_IMPORTED_MODULE_8__["default"], {
-=======
-=======
-        path: "/users",
-        render: function render(_ref7) {
-          var history = _ref7.history;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_UserHome__WEBPACK_IMPORTED_MODULE_8__["default"], {
-            history: history,
-            user: _this.props.user
->>>>>>> 2af85f7b300cacab37424c09803ff586216901eb
           });
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-<<<<<<< HEAD
-=======
->>>>>>> segundoSprint
->>>>>>> 2af85f7b300cacab37424c09803ff586216901eb
-        path: "/users/allUsers",
+        path: "/users",
         render: function render(_ref8) {
           var history = _ref8.history;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_UserHome__WEBPACK_IMPORTED_MODULE_11__["default"], {
+            history: history,
+            user: _this.props.user
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/users/allUsers",
+        render: function render(_ref9) {
+          var history = _ref9.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllUsers__WEBPACK_IMPORTED_MODULE_6__["default"], {
             user: _this.props.user,
             history: history
@@ -2025,8 +1945,8 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/questions/allQuestions",
-        render: function render(_ref9) {
-          var history = _ref9.history;
+        render: function render(_ref10) {
+          var history = _ref10.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllQuestionsList__WEBPACK_IMPORTED_MODULE_10__["default"], {
             history: history
           });
@@ -2047,15 +1967,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchUser: function fetchUser() {
-<<<<<<< HEAD
-      return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_11__["fetchUser"])());
-=======
-<<<<<<< HEAD
-      return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_10__["fetchUser"])());
-=======
-      return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_9__["fetchUser"])());
->>>>>>> segundoSprint
->>>>>>> 2af85f7b300cacab37424c09803ff586216901eb
+      return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_12__["fetchUser"])());
     }
   };
 };
