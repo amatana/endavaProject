@@ -319,10 +319,11 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -330,28 +331,32 @@ __webpack_require__.r(__webpack_exports__);
 
 var Header = function Header(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row header"
-  }, props.user && props.user.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      float: 'left'
-    }
+    className: " header"
+  }, props.user && props.user.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "headerDisplay"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "leftHeader"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     id: "imgHeader",
     src: "/utils/user1.svg"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     id: "headerName"
   }, props.user.nombre)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      float: 'right'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "iconHeader"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/home"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/utils/home.png",
+    className: "homeBtn"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", _defineProperty({
+    id: "botonHeaderLogOut",
+    className: "iconsHeader",
     onClick: function onClick(e) {
       e.preventDefault();
       props.logOut();
       return props.history.push('/');
-    },
-    className: "btn btn-lg btnLogOut"
-  }, "LOG OUT"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null));
+    }
+  }, "className", "btn btn-lg btnLogOut iconsHeader"), "LOG OUT"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null));
 };
 
 var mapStateToProps = function mapStateToProps(state) {
@@ -372,6 +377,50 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./front/src/components/UserHome.jsx":
+/*!*******************************************!*\
+  !*** ./front/src/components/UserHome.jsx ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var UserHome = function UserHome() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "homeDisplay"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "titHome"
+  }, "Users Managment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/users/addUser"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-lg botonHome"
+  }, "Add User")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/users/allUsers"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-lg botonHome"
+  }, "View all "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/home"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-lg botonHome"
+  }, "Go back")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "logoAbajo"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "imgHome",
+    src: "./utils/logo.png"
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (UserHome);
+
+/***/ }),
+
 /***/ "./front/src/components/addUser.jsx":
 /*!******************************************!*\
   !*** ./front/src/components/addUser.jsx ***!
@@ -387,7 +436,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var AddUser = function AddUser(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: props.onSubmit
+    onSubmit: props.onSubmit,
+    className: "formUser"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -397,91 +447,92 @@ var AddUser = function AddUser(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     style: {
       color: '#DE411B',
-      marginBottom: '15px'
-    }
-  }, "A\xD1ADIR UN NUEVO USUARIO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group"
+      paddingTop: '25px'
+    },
+    className: "titHome"
+  }, "CREATE NEW USER"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "formSpace form-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "nombre"
-  }, "Nombre y Apellido"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, "Full Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     onChange: props.onChange,
     type: "text",
-    className: "form-control",
+    className: "inputLogin form-control",
     id: "nombre",
     "aria-describedby": "emailHelp",
-    placeholder: "Nombre y Apellido",
     name: "nombre"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group"
+    className: "formSpace form-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "email"
   }, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     onChange: props.onChange,
     type: "email",
-    className: "form-control",
+    className: "inputLogin form-control",
     id: "email",
     name: "email",
-    "aria-describedby": "emailHelp",
-    placeholder: "Email"
+    "aria-describedby": "emailHelp"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     id: "emailHelp",
-    className: "form-text text-muted"
-  }, "Record\xE1 s\xF3lo ingresar casillas @endava.com ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group"
+    className: "form-text text-muted tiny"
+  }, "Remember you can only add @endava.com emails ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "formSpace form-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "password"
   }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     onChange: props.onChange,
     type: "password",
-    className: "form-control",
+    className: "inputLogin form-control",
     name: "password",
-    id: "password",
-    placeholder: "Password"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Pertenece al \xE1rea de :"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-check form-check-inline"
+    id: "password"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group formSpace"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    id: "belongsTo"
+  }, "Belongs to :"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-check form-check-inline formSpace"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     onChange: props.onChange,
-    className: "form-check-input",
+    className: "form-check-input radioScale",
     type: "radio",
     name: "area",
     id: "inlineRadio1",
     value: "Sistemas"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    className: "form-check-label",
+    className: "form-check-label labelSpacing",
     htmlFor: "inlineRadio1"
-  }, "Sistemas")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-check form-check-inline"
+  }, "    Sistemas  ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-check form-check-inline formSpace"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     onChange: props.onChange,
-    className: "form-check-input",
+    className: "form-check-input radioScale",
     type: "radio",
     name: "area",
     id: "inlineRadio2",
     value: "RRHH"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    className: "form-check-label",
+    className: "form-check-label labelSpacing",
     htmlFor: "inlineRadio2"
-  }, "Recursos Humanos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group formorm-check",
-    style: {
-      margin: '20px',
-      float: 'right'
-    }
+  }, "    RRHH  "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-check formorm-check-inline formSpace checkBox"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "checkbox",
+    style: {
+      paddingBottom: '35px',
+      marginLeft: '25px'
+    },
     value: true,
     onChange: props.onChange,
-    className: "form-check-input",
+    className: " radioScale",
     id: "isAdmin",
     name: "isAdmin"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    className: "form-check-label",
-    htmlFor: "isAdmin"
-  }, "Es Admin")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    id: "textCheckBox"
+  }, "  isAdmin")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onSubmit: props.onSubmit,
     type: "submit",
-    className: "btn boton btn-lg"
-  }, "A\xF1adir Usuario")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn boton btn-lg botonLogin"
+  }, "Done"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-3"
   }))));
 };
@@ -1603,7 +1654,7 @@ var Home = function Home(props) {
     to: "/users"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-lg botonHome"
-  }, "Admin Users")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Users Managment")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "logoAbajo"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "imgHome",
@@ -1791,6 +1842,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
 =======
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
+<<<<<<< HEAD
 /* harmony import */ var _AllQuestionsList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AllQuestionsList */ "./front/src/containers/AllQuestionsList.jsx");
 >>>>>>> questionsList
 /* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
@@ -1799,6 +1851,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Header */ "./front/src/components/Header.jsx");
 /* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
 >>>>>>> leo
+=======
+/* harmony import */ var _components_UserHome__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/UserHome */ "./front/src/components/UserHome.jsx");
+/* harmony import */ var _redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../redux/action-creator/user-actions */ "./front/src/redux/action-creator/user-actions.js");
+>>>>>>> segundoSprint
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1818,6 +1874,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 /* eslint-disable no-unused-vars */
+
 
 
 
@@ -1939,11 +1996,24 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
 <<<<<<< HEAD
+<<<<<<< HEAD
         path: "/questions/allQuestions",
         render: function render(_ref7) {
           var history = _ref7.history;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AllQuestionsList__WEBPACK_IMPORTED_MODULE_8__["default"], {
 =======
+=======
+        path: "/users",
+        render: function render(_ref7) {
+          var history = _ref7.history;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_UserHome__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            history: history,
+            user: _this.props.user
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+>>>>>>> segundoSprint
         path: "/users/allUsers",
         render: function render(_ref8) {
           var history = _ref8.history;
@@ -1969,7 +2039,11 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchUser: function fetchUser() {
+<<<<<<< HEAD
       return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_10__["fetchUser"])());
+=======
+      return dispatch(Object(_redux_action_creator_user_actions__WEBPACK_IMPORTED_MODULE_9__["fetchUser"])());
+>>>>>>> segundoSprint
     }
   };
 };
