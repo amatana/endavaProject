@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const passport = require('passport');
-// const Questions = require('../models/questions');
+const Pregunta = require('../models/questions');
 // const Answer = require('../models/answers');
 const Tags = require('../models/tags');
 
@@ -37,10 +37,12 @@ router.get('/logOut', (req, res) => {
 });
 
 router.get('/pruebaPreg', (req, res) => {
-  // Pregunta.create({
-  //   content: 'A que hora inventaron los relojes?',
-  //   area: 'Sist'
-  // })
+
+  console.log("LLEGO NUEVA PREGUNTA!")
+  Pregunta.create({
+    content: 'Este año es bisiento?',
+    area: 'RRHH'
+  });
   //   .then(preg => console.log(preg));
   // Tag.create({
   //   tag: 'aca'
@@ -52,11 +54,11 @@ router.get('/pruebaPreg', (req, res) => {
   //   console.log('PREGUNTONTAAAAAA!',pregunta) ;
   // })
 
-  Tags.findOne({ where: { id: 4 } })
-    .then(tag => {
-      tag.setQuestions(['1', '2', '3', '4']);
-      console.log('-------------');
-    });
+  // Tags.findOne({ where: { id: 4 } })
+  //   .then(tag => {
+  //     tag.setQuestions(['1', '2', '3', '4']);
+  //     console.log('-------------');
+  //   });
 
   res.send(200);
 });
