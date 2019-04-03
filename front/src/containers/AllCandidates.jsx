@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import AllCandidatesGrid from '../components/allCandidates';
+import { getAllCandidates } from '../redux/action-creator/candidate-actions';
+import { getAllUsers } from '../redux/action-creator/user-actions';
 
 class AllCandidates extends React.Component {
   constructor (props) {
@@ -13,29 +14,31 @@ class AllCandidates extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount () {
+    this.props.getAllUsers();
+    this.props.getAllCandidates();
+  }
+
   handleChange (e) {
     this.setState({ input: e.target.value });
   }
 
-  componentDidMount () {
-    axios.get('/api/users/getAll')
-      .then(res => res.data)
-      .then(users => this.setState({ users }));
-  }
-
   render () {
     return (
-      this.state.users && this.state.users.length < 1 ? <h2>Cargando...</h2>
-        : <AllCandidatesGrid handleCandClick={this.handleCandClick} input={this.state.input} searchingFor={this.searchingFor} handleChange={this.handleChange} onClick={this.onClick} users={this.state.users} user={this.props.user}/>
+      this.props.candidates && this.props.candidates.length < 1 ? <h2>Cargando...</h2>
+        : <AllCandidatesGrid handleCandClick={this.handleCandClick} input={this.state.input} searchingFor={this.searchingFor} handleChange={this.handleChange} candidates={this.props.candidates} onClick={this.onClick} users={this.props.users} user={this.props.user}/>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user,
+  users: state.users,
+  candidates: state.candidates
 });
 const mapDispatchToProps = (dispatch) => ({
-
+  getAllCandidates: () => dispatch(getAllCandidates()),
+  getAllUsers: () => dispatch(getAllUsers())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllCandidates);

@@ -5,15 +5,15 @@ const candidate = (props) => {
     <div className="form-group form-control-lg row formUser" style={{ marginTop: '50px', padding: '20px' }}>
       <div className='col-lg-3'></div>
       <div className='col-lg-6 addUser'>
-        <form onSubmit={props.onSubmit} className='formUser'>
+        <form onSubmit={props.onSubmit} >
           <h1 className='titHome'>Add new candidate</h1>
           <div className="form-group " >
-            <label htmlFor="lastName">Last Name</label>
-            <input onChange={props.onChange} type="text" className="form-control inputLogin" id="LastName" placeholder="Last Name" name='name'/>
+            <label htmlFor="lastName">First Name</label>
+            <input onChange={props.onChange} type="text" className="form-control inputLogin" id="LastName" placeholder="Name" name='name'/>
           </div>
           <div className="form-group">
-            <label htmlFor="firsstName">First Name</label>
-            <input onChange={props.onChange} type="text" className="form-control inputLogin" id="First Name" placeholder="First Name" name='surname'/>
+            <label htmlFor="firsstName">Last Name</label>
+            <input onChange={props.onChange} type="text" className="form-control inputLogin" id="First Name" placeholder="Last Name" name='surname'/>
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>

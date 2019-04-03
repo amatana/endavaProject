@@ -9,7 +9,9 @@ import { createCandidate } from '../redux/action-creator/candidate-actions';
 class AddCandidate extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {};
+    this.state = {
+      status: 'New'
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -18,11 +20,10 @@ class AddCandidate extends React.Component {
     e.preventDefault();
     console.log('el estado es', this.state);
     this.props.createCandidate(this.state);
-    return this.props.history.push('./candidates');
+    return this.props.history.push('/candidates');
   }
 
   handleChange (e) {
-    // console.log('loque me llega al handleChage ', e.target.name, e.target.value);
     this.setState(
       { [e.target.name]: e.target.value });
   }
