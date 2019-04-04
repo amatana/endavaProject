@@ -40,7 +40,7 @@ router.get('/pruebaPreg', (req, res) => {
 
   console.log("LLEGO NUEVA PREGUNTA!")
   Pregunta.create({
-    content: 'Este año es bisiento?',
+    content: 'ciento setenta mil?',
     area: 'RRHH'
   });
   //   .then(preg => console.log(preg));

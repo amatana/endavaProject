@@ -14,8 +14,8 @@ router.get('/delete/:id', (req, res) => {
   Questions.findById(req.params.id)
     .then(quest => {
       console.log('BORRAR: ', quest);
-      quest.destroy();
-      res.send(200);
+      quest.destroy()
+      .then(() => res.send(200));
     });
 });
 
