@@ -1,25 +1,27 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 // eslint-disable-next-line no-unused-vars
 import AllQuestionsGrid from '../components/AllQuestionsGrid';
+import { searchAllQuestions } from '../redux/action-creator/questionActions';
 
 class AllQuestionsList extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = {
-      allQuestions: [],
-      area: 'RRHH'
-    };
-
     this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount () {
-    this.searchAllQuestions(this.state.area);
+    console.log('ffffffffffffff', this.props);
+    this.props.searchAllQuestions(this.props.user.area);
+  }
+
+  componentDidUpdate (prevState) {
+    if (prevState.user.area !== this.props.user.area) {
+      this.props.user.area ? this.props.searchAllQuestions(this.props.user.area) : null;
+    }
   }
 
   onClick (questId, action, modifiedQuestion) {
@@ -27,7 +29,7 @@ class AllQuestionsList extends React.Component {
       case 'delete':
         this.deleteQuestion(questId)
           .then(res => {
-            this.searchAllQuestions(this.state.area);
+            this.props.searchAllQuestions(this.state.area);
           });
         break;
 
@@ -38,13 +40,6 @@ class AllQuestionsList extends React.Component {
     }
   }
 
-  searchAllQuestions (area) {
-    axios.get(`/api/questions/reqAllQuestions/${area}`)
-      .then(res => {
-        this.setState({ allQuestions: res.data });
-      });
-  }
-
   deleteQuestion (questId) {
     return axios.get(`/api/questions/delete/${questId}`);
   }
@@ -53,7 +48,7 @@ class AllQuestionsList extends React.Component {
     axios.post(`/api/questions/edit/${questId}`, {
       content: modifiedQuestion
     })
-      .then(modifiedQuestion => this.searchAllQuestions(this.state.area));
+      .then(modifiedQuestion => this.props.searchAllQuestions(this.state.area));
   }
 
   render () {
@@ -67,17 +62,18 @@ class AllQuestionsList extends React.Component {
           <a className="dropdown-item">Add new question manually</a>
           <a className="dropdown-item" href="/home">Add new question from file</a>
         </div>
-        <AllQuestionsGrid onClick={this.onClick} questions={this.state.allQuestions} />
+        <AllQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-
+  user: state.user,
+  allQuestions: state.allQuestions
 });
 const mapDispatchToProps = (dispatch) => ({
-
+  searchAllQuestions: (area) => dispatch(searchAllQuestions(area))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllQuestionsList);
