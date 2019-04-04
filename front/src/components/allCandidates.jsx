@@ -2,7 +2,7 @@
 import React from 'react';
 import { candidatos, entrevistadoresSist } from '../containers/seed';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 class allCandidates extends React.Component {
   constructor () {
@@ -21,20 +21,21 @@ class allCandidates extends React.Component {
         : <div>
           <form className="form-inline" style={{ float: 'left', margin: 'auto' }}>
             <i className="fas fa-search" aria-hidden="true"></i>
-            <input onChange={this.props.handleChange} className="form-control form-control-sm ml-3 w-75" type="text" placeholder="Filter by State" aria-label="Search" />
+            <input onChange={this.props.handleChange} className="form-control form-control-sm ml-3 w-75 inputSearch" type="text" placeholder="Filter by State" aria-label="Search" />
           </form>
           <div className='addcand'>
-          <Link to="/candidates/addCandidate"><button type="button" className="btn btn-primary">Add Candidate</button></Link>
+            <Link to="/candidates/addCandidate"><button type="button" className="btn boton">Add Candidate</button></Link>
           </div>
-          <div style={{ margin: '4% 9%', border: '2px solid #000000' }} >
+          <div  style={{ margin: '3% 1%'}}  >
+          <h1 className='titHome'>ALL CANDIDATES</h1>
             <table className="table">
-              <thead style={{ backgroundColor: '#EC6861' }}>
+              <thead style={{ backgroundColor: '#DE411B' }}>
                 <tr>
-                  <th scope="col" style={{ fontSize: '20px', textAlign: 'center' }}>CANDIDATE</th>
-                  <th scope="col" style={{ fontSize: '20px', textAlign: 'center' }}>PROFILE</th>
-                  <th scope="col" style={{ fontSize: '20px', textAlign: 'center' }}>STATE</th>
-                  <th scope="col" style={{ fontSize: '20px', textAlign: 'center' }}>ACTION</th>
-                  <th scope="col" style={{ fontSize: '20px', textAlign: 'center' }}></th>
+                  <th scope="col" className='tableHeading'>CANDIDATE</th>
+                  <th scope="col" className='tableHeading'>PROFILE</th>
+                  <th scope="col" className='tableHeading'>STATE</th>
+                  <th scope="col" className='tableHeading'>ACTION</th>
+                  <th scope="col" className='tableHeading'></th>
                 </tr>
               </thead>
 
@@ -43,17 +44,17 @@ class allCandidates extends React.Component {
                   return (
                     <tbody key={index++}>
                       <tr>
-                        <th style={{ textAlign: 'center', fontSize: '20px' }} scope="row">{campo.name + ' ' + campo.surname}</th>
-                        <td style={{ textAlign: 'center', fontSize: '20px' }}>Acá van los perfiles</td>
-                        <td style={{ textAlign: 'center', fontSize: '20px' }}>{campo.status}</td>
+                        <th className='tableHeading' scope="row">{campo.name + ' ' + campo.surname}</th>
+                        <td className='tableHeading'>Acá van los perfiles</td>
+                        <td className='tableHeading'>{campo.status}</td>
                         {campo.status === 'Approbed HR'
-                          ? <td style={{ textAlign: 'center', fontSize: '20px' }}>
-                            <button type="button" className="btn btn-primary btn-primaryList">Assign Sist.
+                          ? <td className='tableHeading'>
+                            <button type="button" className="btn boton btn-primaryList">Assign Sist.
                             </button>
                           </td>
                           : campo.status === 'Tech Approved'
-                            ? <td style={{ textAlign: 'center', fontSize: '20px' }}>
-                              <button type="button" className="btn btn-primary btn-primaryList" data-toggle="modal" data-target=".bd-example-modal-sm">Generate report
+                            ? <td className='tableHeading'>
+                              <button type="button" className="btn boton btn-primaryList" data-toggle="modal" data-target=".bd-example-modal-sm">Generate report
                               </button>
                               <div className="modal fade bd-example-modal-sm" tabIndex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                 <div className="modal-dialog modal-sm">
@@ -71,8 +72,8 @@ class allCandidates extends React.Component {
                               </div>
                             </td>
                             : campo.status === 'New'
-                              ? <td style={{ textAlign: 'center', fontSize: '20px' }}>
-                                <button type="button" className="btn btn-primary btn-primaryList" data-toggle="modal" data-target=".bd-example-modal-sm">Assign Hr.
+                              ? <td className='tableHeading'>
+                                <button type="button" className="btn boton btn-primaryList" data-toggle="modal" data-target=".bd-example-modal-sm">Assign Hr.
                                 </button>
                                 <div className="modal fade bd-example-modal-sm" tabIndex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                   <div className="modal-dialog modal-sm">
@@ -89,8 +90,8 @@ class allCandidates extends React.Component {
                                   </div>
                                 </div>
                               </td>
-                              : <td style={{ textAlign: 'center', fontSize: '20px' }}>
-                                <button type="button" className="btn btn-primary btn-primaryList">Go to the pingo
+                              : <td className='tableHeading'>
+                                <button type="button" className="btn boton btn-primaryList">Go to the pingo
                                 </button>
                               </td>}
                       </tr>

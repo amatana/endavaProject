@@ -433,7 +433,7 @@ var UserHome = function UserHome() {
     className: "homeDisplay"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "titHome"
-  }, "Users Managment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "USERS MANAGMENT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/users/addUser"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-lg botonHome"
@@ -468,10 +468,14 @@ var UserHome = function UserHome() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /* eslint-disable no-unused-vars */
 
 
 var AddUser = function AddUser(props) {
+  var _React$createElement;
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: props.onSubmit,
     className: "formUser"
@@ -482,11 +486,7 @@ var AddUser = function AddUser(props) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-6  addUser"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-    style: {
-      color: '#DE411B',
-      paddingTop: '25px'
-    },
-    className: "titHome"
+    className: "titHomeForms"
   }, "CREATE NEW USER"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "formSpace form-group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -551,19 +551,14 @@ var AddUser = function AddUser(props) {
     className: "form-check-label labelSpacing",
     htmlFor: "inlineRadio2"
   }, "    RRHH  "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-check formorm-check-inline formSpace checkBox"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: " form-check form-check-inline formSpace checkBox"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", (_React$createElement = {
     type: "checkbox",
-    style: {
-      paddingBottom: '35px',
-      marginLeft: '25px'
-    },
+    id: "checkboxIsAdm",
     value: true,
     onChange: props.onChange,
-    className: " radioScale",
-    id: "isAdmin",
-    name: "isAdmin"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: " radioScale"
+  }, _defineProperty(_React$createElement, "id", "isAdmin"), _defineProperty(_React$createElement, "name", "isAdmin"), _React$createElement)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     id: "textCheckBox"
   }, "  isAdmin")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onSubmit: props.onSubmit,
@@ -603,10 +598,11 @@ var candidate = function candidate(props) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-6 addUser"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: props.onSubmit
+    onSubmit: props.onSubmit,
+    className: "formUser"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "titHome"
-  }, "Add new candidate"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "titHomeForms"
+  }, "ADD NEW CANDIDATE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group "
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "lastName"
@@ -758,7 +754,7 @@ function (_React$Component) {
         "aria-hidden": "true"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         onChange: this.props.handleChange,
-        className: "form-control form-control-sm ml-3 w-75",
+        className: "form-control form-control-sm ml-3 w-75 inputSearch",
         type: "text",
         placeholder: "Filter by State",
         "aria-label": "Search"
@@ -768,48 +764,34 @@ function (_React$Component) {
         to: "/candidates/addCandidate"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
-        className: "btn btn-primary"
+        className: "btn boton"
       }, "Add Candidate"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
-          margin: '4% 9%',
-          border: '2px solid #000000'
+          margin: '3% 1%'
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "titHome"
+      }, "ALL CANDIDATES"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", {
         style: {
-          backgroundColor: '#EC6861'
+          backgroundColor: '#DE411B'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col",
-        style: {
-          fontSize: '20px',
-          textAlign: 'center'
-        }
+        className: "tableHeading"
       }, "CANDIDATE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col",
-        style: {
-          fontSize: '20px',
-          textAlign: 'center'
-        }
+        className: "tableHeading"
       }, "PROFILE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col",
-        style: {
-          fontSize: '20px',
-          textAlign: 'center'
-        }
+        className: "tableHeading"
       }, "STATE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col",
-        style: {
-          fontSize: '20px',
-          textAlign: 'center'
-        }
+        className: "tableHeading"
       }, "ACTION"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col",
-        style: {
-          fontSize: '20px',
-          textAlign: 'center'
-        }
+        className: "tableHeading"
       }))), this.props.candidates.map(function (campo) {
         var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
@@ -817,37 +799,22 @@ function (_React$Component) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
             key: index++
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-            style: {
-              textAlign: 'center',
-              fontSize: '20px'
-            },
+            className: "tableHeading",
             scope: "row"
           }, campo.name + ' ' + campo.surname), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-            style: {
-              textAlign: 'center',
-              fontSize: '20px'
-            }
+            className: "tableHeading"
           }, "Ac\xE1 van los perfiles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-            style: {
-              textAlign: 'center',
-              fontSize: '20px'
-            }
+            className: "tableHeading"
           }, campo.status), campo.status === 'Approbed HR' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-            style: {
-              textAlign: 'center',
-              fontSize: '20px'
-            }
+            className: "tableHeading"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             type: "button",
-            className: "btn btn-primary btn-primaryList"
+            className: "btn boton btn-primaryList"
           }, "Assign Sist.")) : campo.status === 'Tech Approved' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-            style: {
-              textAlign: 'center',
-              fontSize: '20px'
-            }
+            className: "tableHeading"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             type: "button",
-            className: "btn btn-primary btn-primaryList",
+            className: "btn boton btn-primaryList",
             "data-toggle": "modal",
             "data-target": ".bd-example-modal-sm"
           }, "Generate report"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -876,13 +843,10 @@ function (_React$Component) {
               }
             }, entrevistador)));
           }))))) : campo.status === 'New' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-            style: {
-              textAlign: 'center',
-              fontSize: '20px'
-            }
+            className: "tableHeading"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             type: "button",
-            className: "btn btn-primary btn-primaryList",
+            className: "btn boton btn-primaryList",
             "data-toggle": "modal",
             "data-target": ".bd-example-modal-sm"
           }, "Assign Hr."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -911,13 +875,10 @@ function (_React$Component) {
               }
             }, entrevistador.nombre)));
           }))))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-            style: {
-              textAlign: 'center',
-              fontSize: '20px'
-            }
+            className: "tableHeading"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             type: "button",
-            className: "btn btn-primary btn-primaryList"
+            className: "btn boton btn-primaryList"
           }, "Go to the pingo"))));
         }
 
@@ -958,82 +919,94 @@ __webpack_require__.r(__webpack_exports__);
 
 var AllUsers = function AllUsers(props) {
   return !props.user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Lo siento, pero no tienes acceso para ver esta p\xE1gina") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tableDiv",
     style: {
-      margin: '4% 9%',
-      border: '2px solid #000000'
+      margin: '3% 1%'
     }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "titHome"
+  }, "ALL USERS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
     className: "table"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", {
     style: {
-      backgroundColor: '#EC6861'
+      backgroundColor: '#DE411B'
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "col",
-    style: {
-      fontSize: '20px',
-      textAlign: 'center'
-    }
+    className: "tableHeading"
   }, "NOMBRE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "col",
-    style: {
-      fontSize: '20px',
-      textAlign: 'center'
-    }
+    className: "tableHeading"
   }, "EMAIL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "col",
-    style: {
-      fontSize: '20px',
-      textAlign: 'center'
-    }
+    className: "tableHeading"
   }, "\xC1REA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "col",
-    style: {
-      fontSize: '20px',
-      textAlign: 'center'
-    }
+    className: "tableHeading"
   }, "isAdmin"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "col",
-    style: {
-      fontSize: '20px',
-      textAlign: 'center'
-    }
-  }))), props.users && props.users.map(function (user) {
+    className: "tableHeading"
+  }, "Delete"))), props.users && props.users.map(function (user) {
     var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
       key: index++
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-      style: {
-        textAlign: 'center',
-        fontSize: '20px'
-      },
+      className: "tableHeading",
       scope: "row"
     }, user.nombre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      style: {
-        textAlign: 'center',
-        fontSize: '20px'
-      }
+      className: "tableHeading"
     }, user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      style: {
-        textAlign: 'center',
-        fontSize: '20px'
-      }
+      className: "tableHeading"
     }, user.area), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      style: {
-        textAlign: 'center',
-        fontSize: '20px'
-      }
+      className: "tableHeading"
     }, user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
       style: {
         color: '#3da547'
       }
     }, "TRUE") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "FALSE")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      onClick: function onClick() {
-        return props.onClick(user.id);
-      },
+      "data-toggle": "modal",
+      "data-target": "#exampleModal",
       id: "trashUser",
       src: "/utils/garbage.svg"
-    })))));
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      class: "modal fade",
+      id: "exampleModal",
+      tabindex: "-1",
+      role: "dialog",
+      "aria-labelledby": "exampleModalLabel",
+      "aria-hidden": "true"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      class: "modal-dialog",
+      role: "document"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      class: "modal-content"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      class: "modal-header"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+      class: "modal-title",
+      id: "exampleModalLabel"
+    }, "Reconfirm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      class: "close",
+      "data-dismiss": "modal",
+      "aria-label": "Close"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      "aria-hidden": "true"
+    }, "\xD7"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      class: "modal-body"
+    }, "Are you sure you want to delete this user?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      class: "modal-footer"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      class: "btn btn-secondary",
+      "data-dismiss": "modal"
+    }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      class: "btn btn-primary",
+      onClick: function onClick() {
+        return props.onClick(user.id);
+      }
+    }, "Yes"))))))));
   })));
 };
 
@@ -1061,7 +1034,7 @@ var UserHome = function UserHome() {
     className: "homeDisplay"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "titHome"
-  }, "Candidates Managment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "CANDIDATES MANAGMENT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/candidates/addCandidate"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-lg botonHome"
@@ -1349,7 +1322,7 @@ function (_React$Component) {
         alert('El email debe pertenecer al dominio @endava.com');
       } else {
         this.props.createUSer(this.state);
-        return this.props.history.push('./login');
+        return this.props.history.push('/login');
       }
     }
   }, {
@@ -1727,8 +1700,6 @@ function (_React$Component) {
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.delete("/api/users/delete/".concat(id)).then(function () {
-        return alert('Se eliminó correctamente al Usuario');
-      }).then(function () {
         return _this2.props.getAllUsers();
       });
     }
@@ -1798,7 +1769,9 @@ var Home = function Home(props) {
 
   return props.user && props.user.isAdmin ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "homeDisplay"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "HOME"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "titHome"
+  }, "HOME"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/candidates"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-lg botonHome"
@@ -1811,8 +1784,11 @@ var Home = function Home(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-lg botonHome"
   }, "Users Managment")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-lg-4"
-  })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.history.push('/login'));
+    className: "logoAbajo"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "imgHome",
+    src: "./utils/logo.png"
+  }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.history.push('/login'));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -29927,7 +29903,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
