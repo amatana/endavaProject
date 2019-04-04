@@ -22,6 +22,8 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { questId: action.questId });
     case EDIT_QUESTION:
       return Object.assign({}, state, { questId: action.questId });
+    case SET_QUESTIONS:
+      return Object.assign({}, state, { allQuestions: action.questions });
     default:
       return state;
   }

@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 import AllQuestionsGrid from '../components/AllQuestionsGrid';
 import { searchAllQuestions, deleteQuestion, editQuestion } from '../redux/action-creator/questionActions';
 
-function buildFileSelector(){
+function buildFileSelector () {
   const fileSelector = document.createElement('input');
   fileSelector.setAttribute('type', 'file');
   fileSelector.setAttribute('multiple', 'multiple');
@@ -17,16 +17,16 @@ function buildFileSelector(){
 class AllQuestionsList extends React.Component {
   constructor (props) {
     super(props);
-    this.state={
-      fileSelector: null,
-    }
-    this.handleFileSelect= this.handleFileSelect.bind(this);
+    this.state = {
+      fileSelector: null
+    };
+    this.handleFileSelect = this.handleFileSelect.bind(this);
     this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount () {
     this.props.searchAllQuestions(this.props.user.area);
-    this.setState({fileSelector: buildFileSelector()});
+    this.setState({ fileSelector: buildFileSelector() });
   }
 
   componentDidUpdate (prevState) {
@@ -45,23 +45,21 @@ class AllQuestionsList extends React.Component {
         this.props.editQuestion(questId, modifiedQuestion, this.props.user.area);
         break;
       case 'addManually':
-        this.props.history.push('/questions/addQuestionManually');
+        this.props.history.push('/questions/add');
         break;
       case 'addFromFile':
       this.props.history.push('/questions/addFromFile');
       break;
       default:
-        return;
+        
     }
   }
 
-  handleFileSelect(e){
+  handleFileSelect (e) {
     e.preventDefault();
-    console.log(this.state)
+    console.log(this.state);
     this.state.fileSelector.click();
   }
-
-
 
   render () {
     return (
@@ -87,7 +85,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   searchAllQuestions: (area) => dispatch(searchAllQuestions(area)),
   deleteQuestion: (questId, area) => dispatch(deleteQuestion(questId, area)),
-  editQuestion:  (questId, modifiedQuestion, area) => dispatch( editQuestion(questId, modifiedQuestion, area))
+  editQuestion: (questId, modifiedQuestion, area) => dispatch(editQuestion(questId, modifiedQuestion, area))
 
 });
 
