@@ -21,7 +21,8 @@ const Home = (props) => {
         </div>
         <div className='logoAbajo'><img className='imgHome' src='./utils/logo.png' /></div>
       </div>
-      : <div>{props.history.push('/login')}</div>
+      : null
+      //<div>{props.history.push('/login')}</div>
   );
 };
 
