@@ -1,54 +1,54 @@
-const S = require("sequelize");
-const db = require("../config/db")
+const S = require('sequelize');
+const db = require('../config/db');
 
-const Candidate = db.define("candidate", {
-    name: {
-        type: S.STRING,
-    },
+const Candidate = db.define('candidate', {
+  name: {
+    type: S.STRING
+  },
 
-    surname: {
-        type: S.STRING,
+  surname: {
+    type: S.STRING
 
-    },
+  },
 
-    fullName: {
-        type: S.VIRTUAL,
-        get: function(){
-            return this.name + ' ' + this.surname;
-        }
+  fullName: {
+    type: S.VIRTUAL,
+    get: function () {
+      return this.name + ' ' + this.surname;
+    }
 
-    },
+  },
 
-    email: {
-        type: S.STRING,
-        unique: true,
-        validate: {
-            isEmail: true,
-        }
-    },
+  email: {
+    type: S.STRING,
+    unique: true,
+    validate: {
+      isEmail: true
+    }
+  },
 
-    telNumber: {
-        type: S.INTEGER,
+  telNumber: {
+    type: S.INTEGER
 
-    },
+  },
 
-    expertise: {
-        type: S.TEXT,
+  expertise: {
+    type: S.TEXT
 
-    },
+  },
 
-    url: {
-        type: S.STRING,
-        validate: {
-            isUrl: true,
-        }
+  url: {
+    type: S.STRING,
+    validate: {
+      isUrl: true
+    }
 
-    },
+  },
 
-    status: {
-        type: S.STRING,
-        
-    },
-})
+  status: {
+    type: S.STRING
 
-module.exports = Candidate
+  }
+});
+
+module.exports = Candidate;

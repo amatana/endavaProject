@@ -1,4 +1,5 @@
-const CHECK_USER = 'CHECK_USER';
-const SET_USER = 'SET_USER';
-
-module.exports = { CHECK_USER, SET_USER };
+export const CHECK_USER = 'CHECK_USER';
+export const SET_USER = 'SET_USER';
+export const SET_CANDIDATE = 'SET_CANDIDATE';
+export const SET_CANDIDATES = 'SET_CANDIDATES';
+export const SET_USERS = 'SET_USERS';

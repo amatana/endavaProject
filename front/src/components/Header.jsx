@@ -1,23 +1,24 @@
 import React from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { logOut } from '../redux/action-creator/user-actions';
 import { connect } from 'react-redux';
 
 const Header = (props) => {
   return (
-    <div className='row header'>
+    <div className=' header'>
       {props.user && props.user.id
-        ? <div>
-          <div style={{ float: 'left' }}>
+        ? <div className='headerDisplay'>
+          <div className='leftHeader'>
             <img id='imgHeader' src="/utils/user1.svg">
-            </img><span id='headerName'>{props.user.nombre}</span>
+            </img><h5 id='headerName'>{props.user.nombre}</h5>
           </div>
-          <div style={{ float: 'right' }}>
-            <button onClick={(e) => {
+          <div className='iconHeader'>
+            <Link to='/'><img src="/utils/home.png" className='homeBtn'/></Link>
+            <button id='botonHeaderLogOut' className='iconsHeader' onClick={(e) => {
               e.preventDefault();
               props.logOut();
-              return props.history.push('/');
-            }} className='btn btn-lg btnLogOut'>LOG OUT</button></div>
+              return props.history.push('/login');
+            }} className='btn btn-lg btnLogOut iconsHeader'>LOG OUT</button></div>
         </div>
         : <h2></h2>}
     </div>

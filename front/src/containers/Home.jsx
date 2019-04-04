@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -10,17 +11,17 @@ const Home = (props) => {
   }
 
   return (
-    <div className='row'>
-      <div className='col-lg-4' >
+    props.user && props.user.isAdmin
+      ? <div>
+        <div className='homeDisplay'>
+        <h1>HOME</h1>
+          <Link to="/candidates"><button className="btn btn-lg botonHome">Candidates Managment</button></Link>
+          <Link to="/questions"><div><button className="btn btn-lg botonHome">Questions Managment</button></div></Link>
+          <Link to="/users"><div><button className="btn btn-lg botonHome">Users Managment</button></div></Link>
+        </div>
+        <div className='col-lg-4' ></div>
       </div>
-      <div className='col-lg-3'>
-        <img style= { { width: '100%', marginBottom: '80px', marginTop: '80px' } } src = './utils/logo.png' />
-        <Link to="/candidates"><button style={{ width: '100%', margin: '20px', fontSize: '30px' }} className="btn btn-lg boton">Candidates</button></Link>
-        <Link to="/questions">{bnq}</Link>
-      </div>
-      <div className='col-lg-4' >
-      </div>
-      : <div>Vista de Todos los candidatos asignados al usuarios loggeado NO Admin</div>
+      : <div>{props.history.push('/login')}</div>
   );
 };
 
