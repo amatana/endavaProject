@@ -3,9 +3,11 @@ const router = express.Router();
 const Questions = require('../models/questions');
 const Tags = require('../models/tags');
 
-router.get('/', (req, res) => {
-  console.log('LLEGASTE A /QUESTIONS');
-  res.send(200);
+router.get('/tags', (req, res) => {
+  Tags.findAll()
+    .then(function (tags) {
+      res.send(tags);
+    });
 });
 
 router.get('/delete/:id', (req, res) => {
@@ -48,11 +50,16 @@ router.post('/edit/:id', (req, res) => {
 // })
 ;
 
-router.get('tags', (req, res) => {
-  Tags.findAll()
-    .then(function (tags) {
-      res.send(tags);
-    });
+
+router.post('/create', (req, res) => {
+  console.log('area', req.body.area);
+  console.log('question', req.body.question);
+  console.log('tags', req.body.tags);
+  Questions.create({
+    content: req.body.question,
+    area: req.body.area
+  }).then(() => {
+  });
 });
 
 module.exports = router;
