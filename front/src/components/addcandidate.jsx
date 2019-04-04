@@ -5,8 +5,8 @@ const candidate = (props) => {
     <div className="form-group form-control-lg row formUser" style={{ marginTop: '50px', padding: '20px' }}>
       <div className='col-lg-3'></div>
       <div className='col-lg-6 addUser'>
-        <form onSubmit={props.onSubmit} >
-          <h1 className='titHome'>Add new candidate</h1>
+        <form onSubmit={props.onSubmit} className='formUser' >
+          <h1 className='titHomeForms'>ADD NEW CANDIDATE</h1>
           <div className="form-group " >
             <label htmlFor="lastName">First Name</label>
             <input onChange={props.onChange} type="text" className="form-control inputLogin" id="LastName" placeholder="Name" name='name'/>

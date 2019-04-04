@@ -8,7 +8,7 @@ const AddUser = (props) => {
         <div className='row'>
           <div className="col-lg-3"></div>
           <div className="col-lg-6  addUser">
-            <h2 style={{ color: '#DE411B', paddingTop: '25px' }} className='titHome'>CREATE NEW USER</h2>
+            <h2 className='titHomeForms'>CREATE NEW USER</h2>
             <div className="formSpace form-group" >
               <label htmlFor="nombre">Full Name</label>
               <input onChange={props.onChange} type="text" className="inputLogin form-control" id="nombre" aria-describedby="emailHelp" name="nombre" />
@@ -38,8 +38,8 @@ const AddUser = (props) => {
               </div>
             </div>
 
-            <div className="form-check formorm-check-inline formSpace checkBox" >
-              <input type="checkbox" style={{ paddingBottom: '35px', marginLeft: '25px' }}value={true} onChange={props.onChange} className=" radioScale" id="isAdmin" name="isAdmin" /><span id='textCheckBox'>  isAdmin</span>
+            <div className=" form-check form-check-inline formSpace checkBox" >
+              <input type="checkbox" id='checkboxIsAdm' value={true} onChange={props.onChange} className=" radioScale" id="isAdmin" name="isAdmin" /><span id='textCheckBox'>  isAdmin</span>
             </div>
 
             <div><button onSubmit={props.onSubmit} type="submit" className="btn boton btn-lg botonLogin">Done</button></div>

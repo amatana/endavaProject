@@ -38,7 +38,9 @@
 }
 #trashUser{
     cursor: pointer;
-    width: 2em;   
+    width: 2em;  
+    display: block;
+    margin: 0 auto; 
 }
 .iconHeader{
     justify-self: end;
@@ -129,11 +131,54 @@
 }
 .titHome{
     text-align: center;
+    padding-bottom: 2%;
+}
+.tableHeading{
+    font-size: 1.5em; 
+    text-align: center;
+}
+.inputSearch{
+    font-size: 1.5em;
+}
+#textCheckBox{
+    padding-left: 10px; 
+}
+#checkboxIsAdmin{
+    padding-bottom: 35px;
+    margin-left: -10px; 
 }
 
+@media (min-width: 992px){
+    .boton:hover{
+        background-color: #EC6861;
+    }
+    .botonHome:hover{
+        background-color: #EC6861;   
+    }
+    .titHomeForms{
+        color: #DE411B; 
+        padding-top: 25px;
+        text-align: center;
+        padding-bottom: 2%;
+        font-size: 1.8em;
+    }
+    .addUser{
+        font-size: 1.3em;
+    }
+}
 @media (max-width: 992px) {
-    .leftHeader img, .leftHeader h5{
-        display:inline-block
+    .inputSearch{
+        font-size: 2.5em;
+    }
+    .tableHeading{
+        font-size: 2em;
+        text-align: left; 
+    }
+    div.leftHeader{
+        display:inline-flex;
+    }
+    div.iconHeader{
+        display: inline-flex;
     }
     .formLogin{
         font-size: 70px;
@@ -187,10 +232,11 @@
         margin: 30px;
     }
     #headerName{
-        font-size: 60px;
+        font-size: 3em;
         margin-bottom: 15px;
         vertical-align: middle;
         text-transform: uppercase;
+        align-self: flex-end;
     }
     .btnLogOut{
         border: 1px solid black;
@@ -203,6 +249,7 @@
     .titHome{
         font-size: 90px;
         padding: 25px;
+        text-align: center;
     }
     .formSpace{
         padding: 15px;
@@ -231,8 +278,7 @@
     }
     #textCheckBox{
         padding-left: 40px; 
-        padding-top: 30px;
-        
+        padding-top: 30px; 
     }
     .homeBtn{
         width:100px;
@@ -242,6 +288,20 @@
     #botonHeaderLogOut{
         margin-right: 10px;
     }
+    .addUser{
+        font-size: 0.8em;
+    }
+    .titHomeForms{
+        color: #DE411B; 
+        padding-top: 25px;
+        text-align: center;
+        padding-bottom: 2%;
+        font-size: 1.8em;
+    }
+    #checkboxIsAdmin{
+        padding-bottom: 35px; 
+        margin-left: 35px;
+    }
 }
 
 .addcand{
@@ -249,9 +309,14 @@
     margin: 10px;
 }
 
+
 .btn-primaryList{
     width: 100%
+
 }
+
+
+
 
 .popup {
     position: relative;
@@ -267,3 +332,4 @@
 .list-group-item-action{
     cursor: pointer
 }
+
