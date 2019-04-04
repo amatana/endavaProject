@@ -1,21 +1,32 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 // eslint-disable-next-line no-unused-vars
 import AllQuestionsGrid from '../components/AllQuestionsGrid';
-import { searchAllQuestions } from '../redux/action-creator/questionActions';
+import { searchAllQuestions, deleteQuestion, editQuestion } from '../redux/action-creator/questionActions';
+
+function buildFileSelector(){
+  const fileSelector = document.createElement('input');
+  fileSelector.setAttribute('type', 'file');
+  fileSelector.setAttribute('multiple', 'multiple');
+  return fileSelector;
+}
 
 class AllQuestionsList extends React.Component {
   constructor (props) {
     super(props);
-
+    this.state={
+      fileSelector: null,
+    }
+    this.handleFileSelect= this.handleFileSelect.bind(this);
     this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount () {
-    console.log('ffffffffffffff', this.props);
     this.props.searchAllQuestions(this.props.user.area);
+    this.setState({fileSelector: buildFileSelector()});
   }
 
   componentDidUpdate (prevState) {
@@ -27,29 +38,30 @@ class AllQuestionsList extends React.Component {
   onClick (questId, action, modifiedQuestion) {
     switch (action) {
       case 'delete':
-        this.deleteQuestion(questId)
-          .then(res => {
-            this.props.searchAllQuestions(this.state.area);
-          });
+        this.props.deleteQuestion(questId,this.props.user.area)
         break;
 
       case 'edit':
-        this.editQuestion(questId, modifiedQuestion);
+        this.props.editQuestion(questId, modifiedQuestion, this.props.user.area);
         break;
+      case 'addManually':
+        this.props.history.push('/questions/addQuestionManually');
+        break;
+      case 'addFromFile':
+      this.props.history.push('/questions/addFromFile');
+      break;
       default:
+        return;
     }
   }
 
-  deleteQuestion (questId) {
-    return axios.get(`/api/questions/delete/${questId}`);
+  handleFileSelect(e){
+    e.preventDefault();
+    console.log(this.state)
+    this.state.fileSelector.click();
   }
 
-  editQuestion (questId, modifiedQuestion) {
-    axios.post(`/api/questions/edit/${questId}`, {
-      content: modifiedQuestion
-    })
-      .then(modifiedQuestion => this.props.searchAllQuestions(this.state.area));
-  }
+
 
   render () {
     return (
@@ -59,8 +71,8 @@ class AllQuestionsList extends React.Component {
           <img src="/utils/add.svg" width="50" />
         </button>
         <div className="dropdown-menu" aria-labelledby="addQuestionIcon">
-          <a className="dropdown-item">Add new question manually</a>
-          <a className="dropdown-item" href="/home">Add new question from file</a>
+          <button className="dropdown-item" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
+          <button className="dropdown-item" onClick={this.handleFileSelect}>Add new question from file</button>
         </div>
         <AllQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
       </div>
@@ -73,7 +85,10 @@ const mapStateToProps = (state) => ({
   allQuestions: state.allQuestions
 });
 const mapDispatchToProps = (dispatch) => ({
-  searchAllQuestions: (area) => dispatch(searchAllQuestions(area))
+  searchAllQuestions: (area) => dispatch(searchAllQuestions(area)),
+  deleteQuestion: (questId, area) => dispatch(deleteQuestion(questId, area)),
+  editQuestion:  (questId, modifiedQuestion, area) => dispatch( editQuestion(questId, modifiedQuestion, area))
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllQuestionsList);
