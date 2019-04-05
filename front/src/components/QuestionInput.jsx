@@ -15,7 +15,6 @@ const QuestionInput = (props) => {
           <h6 className='subTitles' style={{ fontSize: '2em', marginLeft: '15px', marginTop: '10px' }}>Select question tags: </h6>
           <div id='tagsDisplay'>
             <form onSubmit={props.submiTag} className='addTag'>
-
               <select name='dropdown' className='selectTag'>
                 {
                   props.tags.map(function (tag) {
@@ -43,7 +42,6 @@ const QuestionInput = (props) => {
               <br />
             </div>
           </div>
-
           <form name='question' onSubmit={props.submitQuestion}>
             <h6 style={{ fontSize: '2em', marginLeft: '15px', marginTop: '10px' }}>Question content: </h6>
             <div ><textarea type='textbox' name='question' className='questionTextbox' style={{ width: '96%', margin: '10px 20px', height: '90px', fontSize: '1.5em' }} /></div>
