@@ -52,15 +52,19 @@ router.get('/reqAllQuestions/:area', (req, res) => {
 ;
 
 
-router.post('/create', (req, res) => {
+router.post('/create', (req, res, next) => {
   console.log('area', req.body.area);
   console.log('question', req.body.question);
   console.log('tags', req.body.tags);
+
   Questions.create({
     content: req.body.question,
-    area: req.body.area
-  }).then(() => {
-  });
-});
+    area: req.body.area,
+  }).then(question => {
+    //I need to send an array with the tags IDs not names
+      question.setTags(req.body.tags); 
+  })
+  .catch(next);
+})
 
 module.exports = router;

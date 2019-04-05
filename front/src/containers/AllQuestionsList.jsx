@@ -38,9 +38,8 @@ class AllQuestionsList extends React.Component {
   onClick(questId, action, modifiedQuestion) {
     switch (action) {
       case 'delete':
-        this.props.deleteQuestion(questId, this.props.user.area)
+        this.props.deleteQuestion(questId, this.props.user.area);
         break;
-
       case 'edit':
         this.props.editQuestion(questId, modifiedQuestion, this.props.user.area);
         break;
@@ -50,8 +49,11 @@ class AllQuestionsList extends React.Component {
       case 'addFromFile':
         this.props.history.push('/questions/addFromFile');
         break;
-      default:
+      case 'addTag':
+        this.props.addTag();
+        break;
 
+      default:
     }
   }
 

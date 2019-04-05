@@ -1,3 +1,5 @@
+//Version de Ana
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -13,11 +15,10 @@ const QuestionInput = (props) => {
           <h6 className='subTitles'>Select question tags: </h6>
           <div id='tagsDisplay'>
             <form onSubmit={props.submiTag} className='addTag'>
-
               <select name='dropdown' className='selectTag'>
                 {
-                  props.tags && props.tags.map(function (tag) {
-                    return <option value={tag.tag} key={tag.id}>{tag.tag}</option>;
+                  props.tags.map(function (tag) {
+                    return <option value={tag.id} key={tag.id}>{tag.tag}</option>;
                   })
                 }
               </select>
@@ -28,19 +29,19 @@ const QuestionInput = (props) => {
             <div id='tagContainer'>
               <h5 style={{ marginLeft: '10px', color: '#DE411B' }} id='boxTitle'>TAGS SELECTED - Click on them to delete</h5>
               {/* <br />
-          <label style={{ color: 'red' }}>{props.alert}</label>
-          <br /> */}
+                <label style={{ color: 'red' }}>{props.alert}</label>
+                <br /> */
+              }
               <div>
                 {
-                  props.selectedTags.map(function (tag, i) {
-                    return <h6 id='tagBox'style={{ float: 'left', marginLeft: '15px', border: '1px solid black', padding: '7px', borderRadius: '8px', marginBottom: '10px' }} onClick={props.delete} name={i} key={i}>{tag}</h6>;
+                  props.selectedTags.map(function (tagId) {
+                    return <h6 style={{ float: 'left', marginLeft: '15px', border: '1px solid black', padding: '7px', borderRadius: '8px', marginBottom: '10px' }} onClick={props.delete} onClick={props.delete} name={tagId} key={tagId}>{props.tags[tagId - 1].tag}</h6>;
                   })
                 }
               </div>
               <br />
             </div>
           </div>
-
           <form name='question' onSubmit={props.submitQuestion}>
             <h6 className='subTitles'>Question content: </h6>
             <div ><textarea type='textbox' name='question' className='questionTextbox' /></div>
