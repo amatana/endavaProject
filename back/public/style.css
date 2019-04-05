@@ -156,6 +156,11 @@
     grid-template-columns: 1fr 2fr;
     width: 100%;
 }
+.subTitles{
+    font-size: 2em; 
+    margin-left: 15px; 
+    margin-top: 10px;
+}
 .addTag{
     display: grid;
     grid-template-columns: 1fr 0.1fr;
@@ -178,6 +183,23 @@ form h5 {
     border: 2px solid #DE411B;
     border-radius: 20px;
 }
+#addQuestBtn{
+    margin-right: 35px;
+    padding-bottom: 20px;
+    width: 60px;
+}
+.questionTextbox{
+    width: 96%;
+    margin: 10px 20px;
+    height: 90px; 
+    font-size: 1.5em;
+}
+.btnQuest{
+    width: 100%; 
+    padding: 20px; 
+    font-size: 1.5em;
+    margin-bottom: 30px; 
+}
 @media (min-width: 992px){
     .boton:hover{
         background-color: #EC6861;
@@ -197,12 +219,48 @@ form h5 {
     }
 }
 @media (max-width: 992px) {
+    .probandoModal{
+        display: contents;
+        font-size: 2em;
+    }
+    .probando2{
+        font-size: 2.5em; 
+    }
+    #addQuestBtn{
+        width: 120px;
+    }
+    .btnQuest{
+        font-size: 2em;
+    }
+    .questionTextbox{
+        height: 190px;
+        width: 96%;
+        margin: 10px 20px;
+        font-size: 1.5em;
+    }
     .inputSearch{
         font-size: 2.5em;
     }
     .tableHeading{
-        font-size: 2em;
+        font-size: 2.3em;
         text-align: left; 
+    }
+    #addTagBtn{
+        font-size: 2em;
+    }
+    #boxTitle{
+        font-size: 2em;
+    }
+    .selectTag{
+        font-size: 2em;
+    }
+    #tagBox{
+        font-size: 2em;
+    }
+    .subTitles{
+        font-size: 3em; 
+        margin-left: 15px; 
+        margin-top: 10px;
     }
     div.leftHeader{
         display:inline-flex;

@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 import AllQuestionsGrid from '../components/AllQuestionsGrid';
 import { searchAllQuestions, deleteQuestion, editQuestion } from '../redux/action-creator/questionActions';
 
-function buildFileSelector () {
+function buildFileSelector() {
   const fileSelector = document.createElement('input');
   fileSelector.setAttribute('type', 'file');
   fileSelector.setAttribute('multiple', 'multiple');
@@ -15,7 +15,7 @@ function buildFileSelector () {
 }
 
 class AllQuestionsList extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       fileSelector: null
@@ -24,21 +24,21 @@ class AllQuestionsList extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.searchAllQuestions(this.props.user.area);
     this.setState({ fileSelector: buildFileSelector() });
   }
 
-  componentDidUpdate (prevState) {
+  componentDidUpdate(prevState) {
     if (prevState.user.area !== this.props.user.area) {
       this.props.user.area ? this.props.searchAllQuestions(this.props.user.area) : null;
     }
   }
 
-  onClick (questId, action, modifiedQuestion) {
+  onClick(questId, action, modifiedQuestion) {
     switch (action) {
       case 'delete':
-        this.props.deleteQuestion(questId,this.props.user.area)
+        this.props.deleteQuestion(questId, this.props.user.area)
         break;
 
       case 'edit':
@@ -48,29 +48,30 @@ class AllQuestionsList extends React.Component {
         this.props.history.push('/questions/add');
         break;
       case 'addFromFile':
-      this.props.history.push('/questions/addFromFile');
-      break;
+        this.props.history.push('/questions/addFromFile');
+        break;
       default:
-        
+
     }
   }
 
-  handleFileSelect (e) {
+  handleFileSelect(e) {
     e.preventDefault();
     console.log(this.state);
     this.state.fileSelector.click();
   }
 
-  render () {
+  render() {
     return (
       <div className="dropdown show" >
-        <h2>Question management</h2>
         <button type="button" className="btn btn-link" role="button" id="addQuestionIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ float: 'right' }} >
-          <img src="/utils/add.svg" width="50" />
+          <img src="/utils/add.svg" width="50" id='addQuestBtn' />
         </button>
-        <div className="dropdown-menu" aria-labelledby="addQuestionIcon">
-          <button className="dropdown-item" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
-          <button className="dropdown-item" onClick={this.handleFileSelect}>Add new question from file</button>
+        <div className='modalQuest'>
+          <div className="dropdown-menu probandModal" aria-labelledby="addQuestionIcon">
+            <button className="dropdown-item probando2" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
+            <button className="dropdown-item probando2" onClick={this.handleFileSelect}>Add new question from file</button>
+          </div>
         </div>
         <AllQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
       </div>
