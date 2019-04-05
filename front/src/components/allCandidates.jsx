@@ -26,8 +26,8 @@ class allCandidates extends React.Component {
           <div className='addcand'>
             <Link to="/candidates/addCandidate"><button type="button" className="btn boton">Add Candidate</button></Link>
           </div>
-          <div  style={{ margin: '3% 1%'}}  >
-          <h1 className='titHome'>ALL CANDIDATES</h1>
+          <div className='tableDiv' style={{ margin: '3% 1%'}} >
+            <h2 className='titHome'>ALL CANDIDATES</h2>
             <table className="table">
               <thead style={{ backgroundColor: '#DE411B' }}>
                 <tr>
