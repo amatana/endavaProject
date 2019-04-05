@@ -1,5 +1,5 @@
 import React from 'react';
-import QuestionInput from '../components/QuestionInput';
+import TagInput from '../components/TagInput';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
@@ -20,6 +20,7 @@ class addTag extends React.Component {
     console.log("selectedTags",this.state.selectedTags);
     return (
       <div>
+        <p>Renderized</p>
         <TagInput />
       </div>
     );

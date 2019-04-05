@@ -131,7 +131,7 @@
 }
 .titHome{
     text-align: center;
-    padding-bottom: 2%;
+    padding: 1%;
 }
 .tableHeading{
     font-size: 1.5em; 
@@ -147,7 +147,37 @@
     padding-bottom: 35px;
     margin-left: -10px; 
 }
-
+.selectTag{
+    margin: 8px 5px;
+    padding: 0px 4px;
+}
+#tagsDisplay{
+    display: inline-grid;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+}
+.addTag{
+    display: grid;
+    grid-template-columns: 1fr 0.1fr;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+#addTagBtn{
+    margin: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background-color: rgb(17, 102, 49);
+    color: white;
+}
+form h5 {
+    align-self: center;
+    text-align: center;
+}
+#tagContainer{
+    margin: 15px 25px;
+    border: 2px solid #DE411B;
+    border-radius: 20px;
+}
 @media (min-width: 992px){
     .boton:hover{
         background-color: #EC6861;

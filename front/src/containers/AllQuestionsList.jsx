@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 import AllQuestionsGrid from '../components/AllQuestionsGrid';
 import { searchAllQuestions, deleteQuestion, editQuestion } from '../redux/action-creator/questionActions';
 
-function buildFileSelector () {
+function buildFileSelector() {
   const fileSelector = document.createElement('input');
   fileSelector.setAttribute('type', 'file');
   fileSelector.setAttribute('multiple', 'multiple');
@@ -15,7 +15,7 @@ function buildFileSelector () {
 }
 
 class AllQuestionsList extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       fileSelector: null
@@ -24,21 +24,21 @@ class AllQuestionsList extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.searchAllQuestions(this.props.user.area);
     this.setState({ fileSelector: buildFileSelector() });
   }
 
-  componentDidUpdate (prevState) {
+  componentDidUpdate(prevState) {
     if (prevState.user.area !== this.props.user.area) {
       this.props.user.area ? this.props.searchAllQuestions(this.props.user.area) : null;
     }
   }
 
-  onClick (questId, action, modifiedQuestion) {
+  onClick(questId, action, modifiedQuestion) {
     switch (action) {
       case 'delete':
-        this.props.deleteQuestion(questId,this.props.user.area)
+        this.props.deleteQuestion(questId, this.props.user.area);
         break;
       case 'edit':
         this.props.editQuestion(questId, modifiedQuestion, this.props.user.area);
@@ -48,23 +48,22 @@ class AllQuestionsList extends React.Component {
         break;
       case 'addFromFile':
         this.props.history.push('/questions/addFromFile');
-      break;
+        break;
       case 'addTag':
-        this.props.history.push('/questions/addTag');
-      break;
+        this.props.addTag();
+        break;
 
       default:
-        
     }
   }
 
-  handleFileSelect (e) {
+  handleFileSelect(e) {
     e.preventDefault();
     console.log(this.state);
     this.state.fileSelector.click();
   }
 
-  render () {
+  render() {
     return (
       <div className="dropdown show" >
         <h2>Question management</h2>

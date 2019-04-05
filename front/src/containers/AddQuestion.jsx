@@ -59,6 +59,7 @@ class addQuestion extends React.Component {
       question,
       tags
     });
+    this.setState({ selectedTags: [] });
   }
 
   componentDidMount () {
