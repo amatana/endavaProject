@@ -12,7 +12,7 @@ const QuestionInput = (props) => {
       <div>
         <h1 className='titHome'>ADD A NEW QUESTION</h1>
         <div id='responsiveNewQuestion'>
-          <h6 className='subTitles' style={{ fontSize: '2em', marginLeft: '15px', marginTop: '10px' }}>Select question tags: </h6>
+          <h6 className='subTitles'>Select question tags: </h6>
           <div id='tagsDisplay'>
             <form onSubmit={props.submiTag} className='addTag'>
               <select name='dropdown' className='selectTag'>
@@ -27,7 +27,7 @@ const QuestionInput = (props) => {
               <input type='submit' value='ADD TAG' id='addTagBtn' />
             </form>
             <div id='tagContainer'>
-              <h5 style={{ marginLeft: '10px', color: '#DE411B' }}>TAGS SELECTED - Click on them to delete</h5>
+              <h5 style={{ marginLeft: '10px', color: '#DE411B' }} id='boxTitle'>TAGS SELECTED - Click on them to delete</h5>
               {/* <br />
                 <label style={{ color: 'red' }}>{props.alert}</label>
                 <br /> */
@@ -43,11 +43,12 @@ const QuestionInput = (props) => {
             </div>
           </div>
           <form name='question' onSubmit={props.submitQuestion}>
-            <h6 style={{ fontSize: '2em', marginLeft: '15px', marginTop: '10px' }}>Question content: </h6>
-            <div ><textarea type='textbox' name='question' className='questionTextbox' style={{ width: '96%', margin: '10px 20px', height: '90px', fontSize: '1.5em' }} /></div>
+            <h6 className='subTitles'>Question content: </h6>
+            <div ><textarea type='textbox' name='question' className='questionTextbox' /></div>
             <br />
             <br />
-            <div style={{ padding: '0px 15%' }}><button style={{ width: '100%', padding: '20px' }} className='btn boton btn-lg' type='submit' > CREATE QUESTION</button></div>
+            <div style={{ padding: '0px 15%' }}><button  className='btn boton btn-lg btnQuest' type='submit' > CREATE QUESTION</button></div>
+            <div style={{margin: '0px 15%'}}><Link to='/questions'><button  className='btn boton btn-lg btnQuest' type='submit' > VIEW ALL </button></Link></div>
           </form>
         </div>
       </div>

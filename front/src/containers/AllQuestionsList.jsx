@@ -66,15 +66,14 @@ class AllQuestionsList extends React.Component {
   render() {
     return (
       <div className="dropdown show" >
-        <h2>Question management</h2>
         <button type="button" className="btn btn-link" role="button" id="addQuestionIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ float: 'right' }} >
-          <img src="/utils/add.svg" width="50" />
+          <img src="/utils/add.svg" width="50" id='addQuestBtn' />
         </button>
-        <div className="dropdown-menu" aria-labelledby="addQuestionIcon">
-          <button className="dropdown-item" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
-          <button className="dropdown-item" onClick={this.handleFileSelect}>Add new question from file</button>
-          <button className="dropdown-item" onClick={() => this.onClick(null, 'addTag')}>Add Tag</button>
-
+        <div className='modalQuest'>
+          <div className="dropdown-menu probandModal" aria-labelledby="addQuestionIcon">
+            <button className="dropdown-item probando2" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
+            <button className="dropdown-item probando2" onClick={this.handleFileSelect}>Add new question from file</button>
+          </div>
         </div>
         <AllQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
       </div>
