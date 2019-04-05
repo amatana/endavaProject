@@ -47,6 +47,7 @@ const QuestionInput = (props) => {
             <br />
             <br />
             <div style={{ padding: '0px 15%' }}><button  className='btn boton btn-lg btnQuest' type='submit' > CREATE QUESTION</button></div>
+            <div style={{margin: '0px 15%'}}><Link to='/questions'><button  className='btn boton btn-lg btnQuest' type='submit' > VIEW ALL </button></Link></div>
           </form>
         </div>
       </div>
