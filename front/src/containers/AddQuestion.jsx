@@ -32,6 +32,7 @@ class addQuestion extends React.Component {
       arr = this.state.selectedTags.concat(e.target.dropdown.value);
       this.setState({ selectedTags: arr });
       this.setState({ alert: '' });
+      console.log(this.state.selectedTags)
     } else {
       this.setState({ alert: 'The tag has already been added' });
     }
@@ -45,7 +46,6 @@ class addQuestion extends React.Component {
   }
 
   handleSubmitQuestion (e) {
-    console.log('this', this);
     e.preventDefault();
     let question = e.target.question.value;
     e.target.question.value = '';
@@ -54,7 +54,6 @@ class addQuestion extends React.Component {
 
   finalSubmit (question, tags) {
     let area = this.props.user.area;
-    console.log('props', this.props);
     Axios.post('/api/questions/create', {
       area,
       question,
@@ -65,13 +64,12 @@ class addQuestion extends React.Component {
   componentDidMount () {
     Axios.get('/api/questions/tags')
       .then(tags => {
-        console.log('TAAAAAAGGG', tags)
         this.setState({ tagsData: tags.data });
       });
   }
 
   render () {
-    console.log(this.state);
+    console.log("selectedTags",this.state.selectedTags);
     return (
       <div>
         <QuestionInput

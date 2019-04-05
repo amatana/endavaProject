@@ -6,15 +6,14 @@ const QuestionInput = (props) => {
   // Solicita lista de Tags al servidor y los convierte en un dropdown element
   return (
     <div>
-{console.log('aca estan las props',props)}
       <form onSubmit={props.submiTag}>
 
         <p>Select Question Tags</p>
 
         <select name='dropdown'>
           {
-            props.tags && props.tags.map(function (tag) {
-              return <option value={tag.tag} key={tag.id}>{tag.tag}</option>;
+            props.tags.map(function (tag) {
+              return <option value={tag.id} key={tag.id}>{tag.tag}</option>
             })
           }
         </select>
@@ -30,8 +29,8 @@ const QuestionInput = (props) => {
         <br />
         <div>
           {
-            props.selectedTags.map(function (tag, i) {
-              return <p style={{ float: 'left', marginLeft: '15px' }} onClick={props.delete} name={i} key={i}>{tag}</p>;
+            props.selectedTags.map(function (tagId) {
+              return <p style={{ float: 'left', marginLeft: '15px' }} onClick={props.delete} name={tagId} key={tagId}>{props.tags[tagId - 1].tag}</p>;
             })
           }
         </div>

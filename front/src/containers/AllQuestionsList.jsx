@@ -40,7 +40,6 @@ class AllQuestionsList extends React.Component {
       case 'delete':
         this.props.deleteQuestion(questId,this.props.user.area)
         break;
-
       case 'edit':
         this.props.editQuestion(questId, modifiedQuestion, this.props.user.area);
         break;
@@ -48,8 +47,12 @@ class AllQuestionsList extends React.Component {
         this.props.history.push('/questions/add');
         break;
       case 'addFromFile':
-      this.props.history.push('/questions/addFromFile');
+        this.props.history.push('/questions/addFromFile');
       break;
+      case 'addTag':
+        this.props.history.push('/questions/addTag');
+      break;
+
       default:
         
     }
@@ -71,6 +74,8 @@ class AllQuestionsList extends React.Component {
         <div className="dropdown-menu" aria-labelledby="addQuestionIcon">
           <button className="dropdown-item" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
           <button className="dropdown-item" onClick={this.handleFileSelect}>Add new question from file</button>
+          <button className="dropdown-item" onClick={() => this.onClick(null, 'addTag')}>Add Tag</button>
+
         </div>
         <AllQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
       </div>
