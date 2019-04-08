@@ -70,9 +70,9 @@ class AllQuestionsList extends React.Component {
           <img src="/utils/add.svg" width="50" id='addQuestBtn' />
         </button>
         <div className='modalQuest'>
-          <div className="dropdown-menu probandModal" aria-labelledby="addQuestionIcon">
-            <button className="dropdown-item probando2" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
-            <button className="dropdown-item probando2" onClick={this.handleFileSelect}>Add new question from file</button>
+          <div className="dropdown-menu" aria-labelledby="addQuestionIcon">
+            <button className="dropdown-item textModal" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
+            <button className="dropdown-item textModal" onClick={this.handleFileSelect}>Add new question from file</button>
           </div>
         </div>
         <AllQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
