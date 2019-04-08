@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ReactFileReader from 'react-file-reader';
 
-import { saveQuestionsFromFile } from '../redux/action-creator/questionActions';
+import { saveTagsFromFile, saveQuestionsFromFile } from '../redux/action-creator/questionActions';
 
 class AllSISQuestions extends React.Component {
   constructor (props) {
@@ -53,6 +53,7 @@ class AllSISQuestions extends React.Component {
         result.push(obj);
       }
 
+      this.props.saveTagsFromFile(result);
       this.props.saveQuestionsFromFile(result);
     };
 
@@ -70,7 +71,6 @@ class AllSISQuestions extends React.Component {
           <div className='modalQuest'>
             <div className="dropdown-menu probandModal" aria-labelledby="addQuestionIcon">
               <button className="dropdown-item probando2" onClick={() => this.props.onClick(null, 'addManually')}>Add new question manually</button>
-              {/* <button className="dropdown-item probando2" onClick={this.handleFiles}>Add new question from file</button> */}
               <ReactFileReader handleFiles={this.handleFiles} fileTypes={'.csv'}><button className="dropdown-item probando2">Upload questions from file</button></ReactFileReader>
             </div>
           </div>
@@ -127,7 +127,7 @@ class AllSISQuestions extends React.Component {
                   <tbody key={question.content}>
                     <tr>
                       <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.content} </td>
-                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">aca van los tags
+                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.tags.map( elemento => elemento.tag)}
                         <button onClick={() => this.setSelectedQuestion(question.id, question.content)} type="button" className="btn btn-link" style={{ float: 'right' }} data-toggle="modal" data-target="#confirmDeleteModal">
                           <img src="/utils/garbage.svg" width="40" />
                         </button>
@@ -149,6 +149,7 @@ class AllSISQuestions extends React.Component {
 }
 ;
 const mapDispatchToProps = (dispatch) => ({
+  saveTagsFromFile: (questionsArray) => dispatch(saveTagsFromFile(questionsArray)),
   saveQuestionsFromFile: (questionsArray) => dispatch(saveQuestionsFromFile(questionsArray))
 });
 

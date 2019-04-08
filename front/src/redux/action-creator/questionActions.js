@@ -27,6 +27,28 @@ export const editQuestion = (questId, modifiedQuestion, area) => dispatch =>
   })
     .then(() => dispatch(searchAllQuestions(area)));
 
-export const saveQuestionsFromFile = (questionsArray) => dispatch =>
-  axios.post('/api/questions/saveFromFile', { questions: questionsArray })
+export const saveQuestionsFromFile = (questionsArray) => dispatch => {
+  let arrayPromsises = [];
+  for (let i = 0; i < questionsArray.length; i++) {
+    arrayPromsises.push(axios.post('/api/questions/create', questionsArray[i]));
+  }
+  Promise.all(arrayPromsises)
     .then(() => dispatch(searchAllQuestions('Sistemas')));
+};
+
+export const saveTagsFromFile = (questionsArray) => dispatch => {
+  let arrayPromsises = [];
+  let arrayNonDuplicatedTags = [];
+  for (let j = 0; j < questionsArray.length; j++) {
+    for (let i = 0; i < questionsArray[j].tags.length; i++) {
+      if (arrayNonDuplicatedTags.indexOf(questionsArray[j].tags[i]) < 0) arrayNonDuplicatedTags.push(questionsArray[j].tags[i]);
+    }
+  }
+  for (let i = 0; i < arrayNonDuplicatedTags.length; i++) {
+    arrayPromsises.push(axios.post('/api/questions/create/tags', {
+      tag: arrayNonDuplicatedTags[i]
+    }));
+    Promise.all(arrayPromsises)
+      .then(() => {});
+  }
+};
