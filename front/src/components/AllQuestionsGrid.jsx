@@ -2,7 +2,7 @@
 import React from 'react';
 
 export default class AllQuestions extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       selectedQuestionID: null,
@@ -10,17 +10,17 @@ export default class AllQuestions extends React.Component {
     };
   }
 
-  setSelectedQuestion(questionId, questionContent) {
+  setSelectedQuestion (questionId, questionContent) {
     console.log(questionContent);
     this.state.selectedQuestionID = questionId;
     this.setState({ selectedQuestionContent: questionContent });
   }
 
-  setModifiedQuestion(e) {
+  setModifiedQuestion (e) {
     this.setState({ selectedQuestionContent: e.target.value });
   }
 
-  render() {
+  render () {
     const { onClick, questions } = this.props;
 
     return (
@@ -35,7 +35,7 @@ export default class AllQuestions extends React.Component {
                   <span aria-hidden="true" className='textModal'>&times;</span>
                 </button>
               </div>
-               <p className='textModal'>This action will delete selected question permanently</p>
+              <p className='textModal'>This action will delete selected question permanently</p>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary btn-lg" data-dismiss="modal">Cancel</button>
                 <button type="button" className="btn btn-danger btn-lg" onClick={() => onClick(this.state.selectedQuestionID, 'delete')} data-dismiss="modal" >Delete</button>
@@ -68,7 +68,7 @@ export default class AllQuestions extends React.Component {
           <table className="table">
             <thead style={{ backgroundColor: '#DE411B' }}>
               <tr>
-                <th scope="col" className='tableHeading' style={{textAlign:'left'}}>Questions Content</th>
+                <th scope="col" className='tableHeading' style={{ textAlign: 'left' }}>Questions Content</th>
               </tr>
             </thead>
 
@@ -76,7 +76,7 @@ export default class AllQuestions extends React.Component {
               return (
                 <tbody key={question.content}>
                   <tr>
-                    <td style={{ textAlign: 'left'}} className='tableHeading' scope="row">{question.content}
+                    <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.content}
                       <button onClick={() => this.setSelectedQuestion(question.id, question.content)} type="button" className="btn btn-link" style={{ float: 'right' }} data-toggle="modal" data-target="#confirmDeleteModal">
                         <img src="/utils/garbage.svg" width="40" />
                       </button>
