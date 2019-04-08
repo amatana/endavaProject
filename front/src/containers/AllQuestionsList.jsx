@@ -50,6 +50,7 @@ class AllQuestionsList extends React.Component {
 
   render () {
     return (
+
       this.props.user.area === 'RRHH'
         ? <div className="dropdown show" >
           <button type="button" className="btn btn-link" role="button" id="addQuestionIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ float: 'right' }} >

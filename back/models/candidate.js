@@ -28,7 +28,7 @@ const Candidate = db.define('candidate', {
   },
 
   telNumber: {
-    type: S.INTEGER
+    type: S.STRING
 
   },
 
