@@ -13,7 +13,10 @@ import AddCandidate from './AddCandidate';
 import Header from '../components/Header';
 import AllQuestionsList from './AllQuestionsList';
 import UserHome from '../components/UserHome';
-import CandidatesHome from '../components/candidateHome'
+import CandidatesHome from '../components/candidateHome';
+import TagsHome from '../components/tagsHome';
+import AddTag from '../containers/AddTag';
+
 
 import { fetchUser } from '../redux/action-creator/user-actions';
 
@@ -37,6 +40,7 @@ class Main extends React.Component {
           <Route exact path='/users/allUsers' render={({ history }) => (<AllUsers user={this.props.user} history={history} />)} />
           <Route exact path='/questions' render={({ history }) => (<AllQuestionsList history={history} />)} />
           <Route exact path='/questions/add' render={({ history }) => (<AddQuestion history={history} user={this.props.user}/>)} />
+          <Route exact path='/tags' render={({ history }) => (<AddTag history={history} user={this.props.user}/>)} />
         </Switch>
       </div>
     );
