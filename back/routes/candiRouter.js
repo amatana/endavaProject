@@ -14,4 +14,11 @@ router.get('/getAll', (req, res) => {
     .then(candidates => res.send(candidates));
 });
 
+
+router.get('/getOne/:id', (req, res) => {
+  Candidate.findByPk(req.params.id)
+    .then(candidate => res.send(candidate));
+});
+
+
 module.exports = router;
