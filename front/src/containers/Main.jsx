@@ -7,13 +7,13 @@ import Login from './Login';
 import AddUser from './AddUser';
 import Home from './Home';
 import AllUsers from './AllUsers';
-import AddQuestion from "./AddQuestion";
+import AddQuestion from './AddQuestion';
 import AllCantidates from './AllCandidates';
 import AddCandidate from './AddCandidate';
 import Header from '../components/Header';
 import AllQuestionsList from './AllQuestionsList';
 import UserHome from '../components/UserHome';
-import CandidatesHome from '../components/candidateHome'
+import CandidatesHome from '../components/candidateHome';
 
 import { fetchUser } from '../redux/action-creator/user-actions';
 
