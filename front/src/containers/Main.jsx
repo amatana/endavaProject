@@ -7,8 +7,9 @@ import Login from './Login';
 import AddUser from './AddUser';
 import Home from './Home';
 import AllUsers from './AllUsers';
-import AddQuestion from "./AddQuestion";
-import AllCandidates from './AllCandidates';
+import AddQuestion from './AddQuestion';
+import AllCantidates from './AllCandidates';
+
 import AddCandidate from './AddCandidate';
 import Header from '../components/Header';
 import AllQuestionsList from './AllQuestionsList';
