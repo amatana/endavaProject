@@ -1,12 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-
 const QuestionInput = (props) => {
   // Solicita lista de Tags al servidor y los convierte en un dropdown element
   return (
     <div>
-{console.log('aca estan las props',props)}
       <form onSubmit={props.submiTag}>
 
         <p>Select Question Tags</p>

@@ -65,7 +65,6 @@ class addQuestion extends React.Component {
   componentDidMount () {
     Axios.get('/api/questions/tags')
       .then(tags => {
-        console.log('TAAAAAAGGG', tags)
         this.setState({ tagsData: tags.data });
       });
   }
