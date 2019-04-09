@@ -26,7 +26,7 @@ class AllCandidates extends React.Component {
   render () {
     return (
       this.props.candidates && this.props.candidates.length < 1 ? <h2>Cargando...</h2>
-        : <AllCandidatesGrid handleCandClick={this.handleCandClick} input={this.state.input} searchingFor={this.searchingFor} handleChange={this.handleChange} candidates={this.props.candidates} onClick={this.onClick} users={this.props.users} user={this.props.user}/>
+        : <AllCandidatesGrid handleCandClick={this.handleCandClick} input={this.state.input} searchingFor={this.searchingFor} handleChange={this.handleChange} candidates={this.props.candidates} onClick={this.onClick} users={this.props.users} user={this.props.user} moreDetails={this.moreDetails}/>
     );
   }
 }

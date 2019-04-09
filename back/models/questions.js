@@ -10,6 +10,9 @@ const Questions = db.define('questions', {
   },
   area: {
     type: S.STRING
+  },
+  required: {
+    type: S.BOOLEAN
   }
 });
 
