@@ -26,7 +26,6 @@ class AllQuestionsList extends React.Component {
   }
 
   onClick (questId, action, modifiedQuestion) {
-    console.log("SE EJECUTO EL ONCLICK");
     switch (action) {
       case 'delete':
         this.props.deleteQuestion(questId, this.props.user.area);
