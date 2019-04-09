@@ -5,10 +5,10 @@ import axios from 'axios';
 const addTag = (props) => {
   console.log(props.allTags);
   let allTags = props.allTags.data;
-  let table = 
+  let table =
     allTags.map((tag) => {
       return <p>{tag}</p>;
-  })}
+    });
   // Solicita lista de Tags al servidor y los convierte en un dropdown element
   return (
     <div>

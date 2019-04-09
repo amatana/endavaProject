@@ -32,7 +32,6 @@ class AllSISQuestions extends React.Component {
     };
     var reader = new FileReader();
     reader.onload = (e) => {
-      console.log(this.props);
       let csv = reader.result;
       let lines = csv.split('\n');
       let result = [];
@@ -40,7 +39,6 @@ class AllSISQuestions extends React.Component {
       let currentline;
       let array;
       for (var i = 0; i < lines.length; i++) {
-        // console.log('INDICE', i);
         currentline = lines[i].split(';');
         array = JSON.parse(currentline[2]);
         obj = {
