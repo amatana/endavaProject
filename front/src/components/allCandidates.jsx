@@ -26,7 +26,7 @@ class allCandidates extends React.Component {
           <div className='addcand'>
             <Link to="/candidates/addCandidate"><button type="button" className="btn btn-lg boton">Add Candidate</button></Link>
           </div>
-          <div className='tableDiv' style={{ margin: '3% 1%'}} >
+          <div className='tableDiv' style={{ margin: '3% 1%' }} >
             <h2 className='titHome'>ALL CANDIDATES</h2>
             <table className="table">
               <thead style={{ backgroundColor: '#DE411B' }}>
@@ -47,7 +47,7 @@ class allCandidates extends React.Component {
                         <th className='tableHeading' scope="row">{campo.name + ' ' + campo.surname}</th>
                         <td className='tableHeading'>Acá van los perfiles</td>
                         <td className='tableHeading'>{campo.status}</td>
-                        {campo.status === 'Approbed HR'
+                        {campo.status === 'Approved HR'
                           ? <td className='tableHeading'>
                             <button type="button" className="btn boton btn-primaryList">Assign Sist.
                             </button>

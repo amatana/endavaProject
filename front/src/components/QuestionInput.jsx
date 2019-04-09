@@ -1,4 +1,4 @@
-//Version de Ana
+// Version de Ana
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -47,8 +47,8 @@ const QuestionInput = (props) => {
             <div ><textarea type='textbox' name='question' className='questionTextbox' /></div>
             <br />
             <br />
-            <div style={{ padding: '0px 15%' }}><button  className='btn boton btn-lg btnQuest' type='submit' > CREATE QUESTION</button></div>
-            <div style={{margin: '0px 15%'}}><Link to='/questions'><button  className='btn boton btn-lg btnQuest' type='submit' > VIEW ALL </button></Link></div>
+            <div style={{ padding: '0px 15%' }}><button className='btn boton btn-lg btnQuest' type='submit' > CREATE QUESTION</button></div>
+            <div style={{ margin: '0px 15%' }}><Link to='/questions'><button className='btn boton btn-lg btnQuest' type='submit' > VIEW ALL </button></Link></div>
           </form>
         </div>
       </div>

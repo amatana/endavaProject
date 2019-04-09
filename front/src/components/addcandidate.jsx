@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 const candidate = (props) => {
@@ -42,4 +43,3 @@ const candidate = (props) => {
 };
 
 export default candidate;
-

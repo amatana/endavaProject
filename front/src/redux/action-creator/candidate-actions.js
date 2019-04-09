@@ -21,4 +21,3 @@ export const getAllCandidates = () => dispatch =>
   axios.get('/api/candidate/getAll')
     .then(res => res.data)
     .then(candidates => dispatch(setCandidates(candidates)));
-

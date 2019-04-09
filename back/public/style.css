@@ -406,9 +406,6 @@ form h5 {
 
 }
 
-
-
-
 .popup {
     position: relative;
     display: inline-block;
@@ -424,3 +421,8 @@ form h5 {
     cursor: pointer
 }
 
+.probando{
+    display:grid;
+    grid-template-columns: 1fr 1fr
+
+}

@@ -38,7 +38,7 @@ const mapStateToProps = (state) => ({
   candidate: state.candidate
 });
 const mapDispatchToProps = (dispatch) => ({
-  createCandidate: (candidate) => dispatch(createCandidate(candidate))
+  getAllCandidates: () => dispatch(getAllCandidates())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCandidate);

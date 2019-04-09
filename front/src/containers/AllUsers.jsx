@@ -19,7 +19,7 @@ class AllUsers extends React.Component {
 
   onClick (id) {
     axios.delete(`/api/users/delete/${id}`)
-      .then(() => this.props.getAllUsers())
+      .then(() => this.props.getAllUsers());
   }
 
   render () {

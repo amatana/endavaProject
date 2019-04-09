@@ -1,9 +1,10 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 
 const AllUsers = (props) => {
   return (
     !props.user.isAdmin ? <h2>Lo siento, pero no tienes acceso para ver esta página</h2>
-      : <div className='tableDiv' style={{ margin: '3% 1%'}}  >
+      : <div className='tableDiv' style={{ margin: '3% 1%' }} >
         <h2 className='titHome'>ALL USERS</h2>
         <table className="table">
           <thead style={{ backgroundColor: '#DE411B' }}>
@@ -24,7 +25,7 @@ const AllUsers = (props) => {
                   <td className='tableHeading'>{user.area}</td>
                   <td className='tableHeading'>{user.isAdmin ? <h3 style={{ color: '#3da547' }}>TRUE</h3> : <h3>FALSE</h3>}</td>
                   <td>
-                    <a><img  data-toggle="modal" data-target="#exampleModal" id='trashUser' src="/utils/garbage.svg"></img></a>
+                    <a><img data-toggle="modal" data-target="#exampleModal" id='trashUser' src="/utils/garbage.svg"></img></a>
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -39,7 +40,7 @@ const AllUsers = (props) => {
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary"  onClick={() => props.onClick(user.id)}>Yes</button>
+                            <button type="button" class="btn btn-primary" onClick={() => props.onClick(user.id)}>Yes</button>
                           </div>
                         </div>
                       </div>
