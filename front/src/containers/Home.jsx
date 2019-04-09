@@ -18,10 +18,12 @@ const Home = (props) => {
           <Link to="/candidates"><button className="btn btn-lg botonHome">Candidates Managment</button></Link>
           <Link to="/questions"><div><button className="btn btn-lg botonHome">Questions Managment</button></div></Link>
           <Link to="/users"><div><button className="btn btn-lg botonHome">Users Managment</button></div></Link>
+          <Link to="/tags"><div><button className="btn btn-lg botonHome">Tag Managment</button></div></Link>
         </div>
         <div className='logoAbajo'><img className='imgHome' src='./utils/logo.png' /></div>
       </div>
-      : <div>{props.history.push('/login')}</div>
+      : null
+      //<div>{props.history.push('/login')}</div>
   );
 };
 

@@ -7,7 +7,7 @@ import Axios from 'axios';
 let arr = [];
 
 class addQuestion extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       tagsData: [],
@@ -20,7 +20,7 @@ class addQuestion extends React.Component {
     this.finalSubmit = this.finalSubmit.bind(this);
   }
 
-  handleSubmiTag (e) {
+  handleSubmiTag(e) {
     e.preventDefault();
     let found = this.state.selectedTags.find(function (element) {
       if (element === e.target.dropdown.value) {
@@ -32,54 +32,64 @@ class addQuestion extends React.Component {
       arr = this.state.selectedTags.concat(e.target.dropdown.value);
       this.setState({ selectedTags: arr });
       this.setState({ alert: '' });
+      console.log(this.state.selectedTags)
     } else {
-      this.setState({ alert: 'The tag has already been added' });
+      alert("The tag has aleady been added")
     }
   }
 
-  handleDelete (e) {
+  handleDelete(e) {
     let index = e.target.getAttribute('name');
     arr = this.state.selectedTags;
     arr.splice(index, 1);
     this.setState({ selectedTags: arr });
   }
 
-  handleSubmitQuestion (e) {
-    console.log('this', this);
+  handleSubmitQuestion(e) {
     e.preventDefault();
     let question = e.target.question.value;
     e.target.question.value = '';
     this.finalSubmit(question, this.state.selectedTags);
   }
 
-  finalSubmit (question, tags) {
-    let area = this.props.user.area;
-    console.log('props', this.props);
-    Axios.post('/api/questions/create', {
-      area,
-      question,
-      tags
-    });
+  finalSubmit(question, tags) {
+    console.log("tags", tags)
+    if (question !== "" &&	 tags.length > 0 ) {
+      console.log("question", question)
+      let area = this.props.user.area;
+      Axios.post('/api/questions/create', {
+        area,
+        question,
+        tags
+      });
+      this.setState({ selectedTags: [] });
+    } else if (question === "") {
+        alert("The Question Field cannot be empty")
+    } else {
+        alert("All questions must have tags asigned")
+
+    }
+
   }
 
-  componentDidMount () {
+  componentDidMount() {
     Axios.get('/api/questions/tags')
       .then(tags => {
         this.setState({ tagsData: tags.data });
       });
   }
 
-  render () {
-    console.log(this.state);
+  render() {
+    console.log("selectedTags", this.state.selectedTags);
     return (
       <div>
         <QuestionInput
-          submiTag = {this.handleSubmiTag}
-          submitQuestion = {this.handleSubmitQuestion}
-          delete = {this.handleDelete}
-          tags = {this.state.tagsData}
-          selectedTags = {this.state.selectedTags}
-          alert = {this.state.alert}
+          submiTag={this.handleSubmiTag}
+          submitQuestion={this.handleSubmitQuestion}
+          delete={this.handleDelete}
+          tags={this.state.tagsData}
+          selectedTags={this.state.selectedTags}
+          alert={this.state.alert}
         />
       </div>
     );

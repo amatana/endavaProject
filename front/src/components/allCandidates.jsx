@@ -24,10 +24,10 @@ class allCandidates extends React.Component {
             <input onChange={this.props.handleChange} className="form-control form-control-sm ml-3 w-75 inputSearch" type="text" placeholder="Filter by State" aria-label="Search" />
           </form>
           <div className='addcand'>
-            <Link to="/candidates/addCandidate"><button type="button" className="btn boton">Add Candidate</button></Link>
+            <Link to="/candidates/addCandidate"><button type="button" className="btn btn-lg boton">Add Candidate</button></Link>
           </div>
-          <div  style={{ margin: '3% 1%'}}  >
-          <h1 className='titHome'>ALL CANDIDATES</h1>
+          <div className='tableDiv' style={{ margin: '3% 1%'}} >
+            <h2 className='titHome'>ALL CANDIDATES</h2>
             <table className="table">
               <thead style={{ backgroundColor: '#DE411B' }}>
                 <tr>
