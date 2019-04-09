@@ -5,8 +5,12 @@ const Answers = db.define('answers', {
   observations: {
     type: S.TEXT
   },
-  punctuation: {
+  score: {
     type: S.INTEGER
+  },
+  answered: {
+    type: S.BOOLEAN,
+    defaultValue : false
   }
 });
 

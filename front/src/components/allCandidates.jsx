@@ -27,7 +27,7 @@ class allCandidates extends React.Component {
             <Link to="/candidates/addCandidate"><button type="button" className="btn btn-lg boton">Add Candidate</button></Link>
           </div>
           <div className='tableDiv' style={{ margin: '3% 1%' }} >
-            <h2 className='titHome'>ALL CANDIDATES</h2>
+            <h2 className='titHome'><a>ALL CANDIDATES</a> || <a onClick={() => this.props.fetchMyCandidates(this.props.user.id)}>MY CANDIDATES</a></h2>
             <table className="table">
               <thead style={{ backgroundColor: '#DE411B' }}>
                 <tr>
@@ -65,7 +65,7 @@ const mapStateToProps = (state) => ({
   user: state.user
 });
 const mapDispatchToProps = (dispatch) => ({
-
+  fetchMyCandidates : (userId) => dispatch(fetchMyCandidates(userId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(allCandidates);

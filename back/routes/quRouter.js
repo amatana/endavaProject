@@ -32,8 +32,9 @@ router.get('/tags', (req, res) => {
     });
 });
 
-router.post('/edit/:id', (req, res) => {
-  Questions.findById(req.params.id)
+
+  router.post('/edit/:id', (req, res) => {
+  Questions.findByPk(req.params.id)
     .then(question => {
       question.update({ content: req.body.content })
         .then(pepe => {
