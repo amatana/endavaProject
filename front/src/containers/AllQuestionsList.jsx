@@ -70,8 +70,8 @@ class AllQuestionsList extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user,
-  allQuestions: state.allQuestions
+  user: state.user.user,
+  allQuestions: state.question.allQuestions
 });
 const mapDispatchToProps = (dispatch) => ({
   searchAllQuestions: (area) => dispatch(searchAllQuestions(area)),

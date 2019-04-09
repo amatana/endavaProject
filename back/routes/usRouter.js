@@ -7,6 +7,8 @@ const Pregunta = require('../models/questions');
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
   if (req.isAuthenticated()) {
+    console.log("QUE CUERNO LLEGAA???", req.body)
+    console.log("QUE CUERNO MANDA LOGUEADO???", req.user)
     res.send(req.user);
   }
 });
