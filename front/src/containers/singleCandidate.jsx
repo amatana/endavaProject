@@ -11,8 +11,8 @@ class SingleCandidate extends React.Component {
     super(props);
     this.state = {
       userHRId: null,
-      userSIST1:null,
-      userSIST2:null,
+      userSIST1: null,
+      userSIST2: null
     };
 this.handleChangeId = this.handleChangeId.bind(this);
 this.submitHR = this.submitHR.bind(this);
@@ -22,7 +22,7 @@ this.createInterview = this.createInterview.bind(this);
 }
   componentDidMount () {
     this.props.getAllUsers();
-    this.props.fetchCandidate(this.props.idCand)
+    this.props.fetchCandidate(this.props.idCand);
   }
 
   createInterview (candidate) {
@@ -40,21 +40,39 @@ this.createInterview = this.createInterview.bind(this);
   }
 
   submitHR (idCandi) {
-    Axios.post('/api/candidate/setUserHR', { idUser: this.state.userHRId, idCandi })
+    console.log('ESTADO E IDS', this.state);
+    Axios.post('/api/candidate/setUserHR', {
+      idUser: this.state.userHRId || this.props.usersRH[0].id,
+      idCandi
+    })
       .then(() => this.props.fetchCandidate(this.props.idCand));
   }
   submitSIST1 (idCandi) {
-    Axios.post('/api/candidate/setUserSIST1', { idUser: this.state.userSIST1, idCandi })
+    Axios.post('/api/candidate/setUserSIST1', {
+      idUser: this.state.userSIST1 || this.props.usersSIST[0].id,
+      idCandi
+    })
       .then(() => this.props.fetchCandidate(this.props.idCand));
   }
   submitSIST2 (idCandi) {
-    Axios.post('/api/candidate/setUserSIST2', { idUser: this.state.userSIST2, idCandi })
+    Axios.post('/api/candidate/setUserSIST2', {
+      idUser: this.state.userSIST2 ||  this.props.usersSIST[0].id,
+      idCandi })
       .then(() => this.props.fetchCandidate(this.props.idCand));
   }
   render () {
     return (
       !!this.props.candidate && !!this.props.candidate.id &&
-      <ActionsCandidates users={this.props.users} user={this.props.user} onClickInterview={this.createInterview} candidate={this.props.candidate} submitHR={this.submitHR} handleChangeID={this.handleChangeId} handleSubSIS1={this.submitSIST1} handleSubSIS2={this.submitSIST2} />
+      <ActionsCandidates
+        usersRH={this.props.usersRH}
+        user={this.props.user}
+        candidate={this.props.candidate}
+        submitHR={this.submitHR}
+        handleChangeID={this.handleChangeId}
+        handleSubSIS1={this.submitSIST1}
+        handleSubSIS2={this.submitSIST2}
+        usersSIST={this.props.usersSIST}
+      />
     );
   }
 }
@@ -62,7 +80,8 @@ this.createInterview = this.createInterview.bind(this);
 const mapStateToProps = (state) => ({
   user: state.user.user,
   candidate: state.candidate.candidate,
-  users: state.user.users
+  usersRH: state.user.users.filter(user => user.area === 'RRHH'),
+  usersSIST: state.user.users.filter(user => user.area === 'Sistemas')
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchCandidate: (idUser, idCandi) => dispatch(fetchCandidate(idUser, idCandi)),
