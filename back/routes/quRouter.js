@@ -50,6 +50,7 @@ router.post('/create', (req, res, next) => {
           if (tagsArray[j].tag === req.body.tags[i]) tagIDsArray.push(tagsArray[j].id);
         }
       }
+      console.log('=======>', req.body);
       Questions.findOrCreate({ where: {
         content: req.body.content,
         area: req.body.area,
@@ -67,21 +68,21 @@ router.post('/create', (req, res, next) => {
     });
 });
 
-router.post('/saveFromFile', (req, res) => {
-  // console.log('--------------------', req.body.questions[1]);
-  let arregloPreguntas = req.body.questions;
-  let tagArray = [];
-  for (let index = 0; index < arregloPreguntas.length; index++) {
-    tagArray.push(arregloPreguntas[i].tags);
-  }
-  Questions.bulkCreate(req.body.questions)
-    .then((createdQuestions) => {
-      for (let i = 0; i < tagArray.length; i++) {
-        promiseArray.push(createdQuestions[i].setTags(array[i]));
-      }
-      res.send(200);
-    });
-});
+// router.post('/saveFromFile', (req, res) => {
+//   // console.log('--------------------', req.body.questions[1]);
+//   let arregloPreguntas = req.body.questions;
+//   let tagArray = [];
+//   for (let index = 0; index < arregloPreguntas.length; index++) {
+//     tagArray.push(arregloPreguntas[index].tags);
+//   }
+//   Questions.bulkCreate(req.body.questions)
+//     .then((createdQuestions) => {
+//       for (let i = 0; i < tagArray.length; i++) {
+//         promiseArray.push(createdQuestions[i].setTags(array[i]));
+//       }
+//       res.send(200);
+//     });
+// });
 
 router.post('/create/tags', (req, res) => {
   Tags.findOrCreate({ where: req.body })
