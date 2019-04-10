@@ -56,6 +56,7 @@ const ActionsCandidates = (props) => {
          }
           </select >
           <input type='submit' value='ASSIGN Sisemas' className='subBtn' onClick={() => props.handleSubSIS2(candidate.id)} />
+          <button onClick={() => props.onClickInterview(candidate.id)}>Boton de mierda</button>
         </div>
       </div>
     </div>

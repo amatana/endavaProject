@@ -3,7 +3,7 @@ import React from 'react';
 import { candidatos, entrevistadoresSist } from '../containers/seed';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchMyCandidates, getAllCandidates } from '../redux/action-creator/candidate-actions'
+import { fetchMyCandidates, getAllCandidates } from '../redux/action-creator/candidate-actions';
 
 class allCandidates extends React.Component {
   constructor () {
@@ -66,7 +66,7 @@ const mapStateToProps = (state) => ({
   user: state.user.user
 });
 const mapDispatchToProps = (dispatch) => ({
-  fetchMyCandidates : (userId) => dispatch(fetchMyCandidates(userId)),
+  fetchMyCandidates: (userId) => dispatch(fetchMyCandidates(userId)),
   getAllCandidates: () => dispatch(getAllCandidates())
 });
 

@@ -5,7 +5,7 @@ const Questions = db.define('questions', {
   content: {
     type: S.TEXT,
     validate: {
-      notEmpty: true,
+      notEmpty: true
     }
   },
   area: {
