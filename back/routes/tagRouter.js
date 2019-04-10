@@ -4,7 +4,8 @@ const Tags = require('../models/tags');
 
 router.post('/create', function (req, res) {
   let tag = req.body.tag;
-  Tags.create({ tag });
+  Tags.create({ tag })
+    .then(() => res.send(202));
 });
 
 router.get('/retrieve', function (req, res) {
