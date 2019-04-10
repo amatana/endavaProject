@@ -4,12 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const addTag = (props) => {
-  console.log(props.allTags);
   let allTags = props.allTags.data;
-  let table =
-    allTags && allTags.map((tag) => {
-      return <p>{tag}</p>;
-    });
   // Solicita lista de Tags al servidor y los convierte en un dropdown element
   return (
     <div>
@@ -23,6 +18,13 @@ const addTag = (props) => {
         </form>
       </div>
       <div id = 'table'>
+        {allTags && allTags.map((tag) => {
+          return (
+            <div className = 'cell'>
+              <h4><strong>{tag.tag}</strong></h4>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
