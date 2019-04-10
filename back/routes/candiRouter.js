@@ -39,6 +39,7 @@ router.get('/getMyCandidates/:userId', (req, res) => {
 
 // Funciones que asignan entrevistadores
 router.post('/setUserHR', (req, res) => {
+  console.log('REQ.BODYYYYYYY', req.body.idUser)
   Candidate.findByPk(req.body.idCandi)
     .then(candidate => {
       candidate.setInterviewerHR(req.body.idUser);
@@ -55,6 +56,7 @@ router.post('/setUserSIST1', (req, res) => {
 });
 
 router.post('/setUserSIST2', (req, res) => {
+  console.log('REQ.BODYYYYYYY', req.body.idUser)
   Candidate.findByPk(req.body.idCandi)
     .then(candidate => {
       candidate.setInterSIST2(req.body.idUser);
