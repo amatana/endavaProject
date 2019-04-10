@@ -1,7 +1,8 @@
 const express = require('express');
-const router = express.Router();
 const Questions = require('../models/questions');
 const Tags = require('../models/tags');
+
+const router = express.Router();
 
 router.get('/delete/:id', (req, res) => {
   Questions.findById(req.params.id)
@@ -18,6 +19,7 @@ router.get('/reqAllQuestions/:area', (req, res) => {
   }
   )
     .then(quest => {
+      // console.log("questions ============> ", quest)
       res.send(quest);
     });
 });
@@ -54,9 +56,10 @@ router.post('/create', (req, res, next) => {
         required: req.body.required
       } }
       )
-        .then((question, created) => {
+        .then(([question, created]) => {
           // I need to send an array with the tags IDs not names
-          if (created) question.setTags(tagIDsArray);
+          if (created) {
+            question.setTags(tagIDsArray);}
           res.send(200);
         })
         .catch(next);
@@ -82,7 +85,6 @@ router.post('/saveFromFile', (req, res) => {
 router.post('/create/tags', (req, res) => {
   Tags.findOrCreate({ where: req.body })
     .then(([tag, created]) => {
-      console.log('DUPLICÓ EL TAG?????????????', created);
       res.send(200);
     });
 });
