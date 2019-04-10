@@ -65,9 +65,9 @@ class SingleCandidate extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  user: state.user.user,
   candidate: state.candidate,
-  users: state.users
+  users: state.user.users
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchCandidate: (idUser, idCandi) => dispatch(fetchCandidate(idUser, idCandi)),

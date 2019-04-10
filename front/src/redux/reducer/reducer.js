@@ -3,11 +3,14 @@ import { combineReducers } from 'redux';
 import usersReducer from './usersReducer';
 import candidatesReducer from './candidatesReducer';
 import questionsReducer from './questionsReducer';
+import interviewsReducer from './interviewsReducer';
 
 export default combineReducers({
   user: usersReducer,
   candidate: candidatesReducer,
-  question: questionsReducer });
+  question: questionsReducer,
+  interview: interviewsReducer
+});
 
 // import { SET_USER, SET_CANDIDATE, SET_USERS, SET_CANDIDATES, SET_QUESTIONS, DELETE_QUESTION, EDIT_QUESTION } from '../constants';
 // const initialState = {

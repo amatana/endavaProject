@@ -61,7 +61,7 @@ class AllSISQuestions extends React.Component {
   render () {
     const { onClick, questions } = this.props;
     return (
-      <div > HOLA ENTRASTE AL SISTEMAS GRID
+      <div >
         <div className="dropdown show" >
           <button type="button" className="btn btn-link" role="button" id="addQuestionIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ float: 'right' }} >
             <img src="/utils/add.svg" width="50" id='addQuestBtn' />
@@ -111,7 +111,7 @@ class AllSISQuestions extends React.Component {
             </div>
           </div>
           <div className='tableDiv' style={{ margin: '3% 1%' }} >
-            <h2 className='titHome'>QUESTIONS MANAGMENT</h2>
+            <h2 className='titHome'>QUESTIONS MANAGEMENT</h2>
             <table className="table">
               <thead style={{ backgroundColor: '#DE411B' }}>
                 <tr>
@@ -125,7 +125,7 @@ class AllSISQuestions extends React.Component {
                   <tbody key={question.content}>
                     <tr>
                       <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.content} </td>
-                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.tags.map(elemento => elemento.tag)}
+                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.tags.map(question => {return (question.tag + " ")})}
                         <button onClick={() => this.setSelectedQuestion(question.id, question.content)} type="button" className="btn btn-link" style={{ float: 'right' }} data-toggle="modal" data-target="#confirmDeleteModal">
                           <img src="/utils/garbage.svg" width="40" />
                         </button>

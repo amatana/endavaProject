@@ -1,7 +1,8 @@
 const express = require('express');
-const router = express.Router();
 const Questions = require('../models/questions');
 const Tags = require('../models/tags');
+
+const router = express.Router();
 
 router.get('/delete/:id', (req, res) => {
   Questions.findById(req.params.id)
