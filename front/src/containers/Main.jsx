@@ -17,7 +17,6 @@ import CreateInterview from './CreateInterview';
 import TagsHome from '../components/tagsHome';
 import AddTag from '../containers/AddTag';
 import SistInterview from '../containers/SistInterview'
-
 import SingleCandidate from '../containers/singleCandidate'
 import { fetchUser } from '../redux/action-creator/user-actions';
 
