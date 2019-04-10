@@ -30,17 +30,17 @@ const AllUsers = (props) => {
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Reconfirm</h5>
+                            <h5 class="modal-title textModal" id="exampleModalLabel">Reconfirm</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <div class="modal-body">
+                          <div class="modal-body textModal">
                           Are you sure you want to delete this user?
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" onClick={() => props.onClick(user.id)}>Yes</button>
+                            <button type="button" class="btn btn-secondary textModal" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary textModal"  onClick={() => props.onClick(user.id)}>Yes</button>
                           </div>
                         </div>
                       </div>

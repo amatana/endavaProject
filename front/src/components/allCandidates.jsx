@@ -27,14 +27,14 @@ class allCandidates extends React.Component {
             <Link to="/candidates/addCandidate"><button type="button" className="btn btn-lg boton">Add Candidate</button></Link>
           </div>
           <div className='tableDiv' style={{ margin: '3% 1%' }} >
-            <h2 className='titHome'>ALL CANDIDATES</h2>
+            <h2 className='titHome'><a>ALL CANDIDATES</a> || <a onClick={() => this.props.fetchMyCandidates(this.props.user.id)}>MY CANDIDATES</a></h2>
             <table className="table">
               <thead style={{ backgroundColor: '#DE411B' }}>
                 <tr>
                   <th scope="col" className='tableHeading'>CANDIDATE</th>
                   <th scope="col" className='tableHeading'>PROFILE</th>
-                  <th scope="col" className='tableHeading'>STATE</th>
-                  <th scope="col" className='tableHeading'>ACTION</th>
+                  <th scope="col" className='tableHeading'>STATUS</th>
+                  <th scope="col" className='tableHeading'>DETAILS</th>
                   <th scope="col" className='tableHeading'></th>
                 </tr>
               </thead>
@@ -47,53 +47,7 @@ class allCandidates extends React.Component {
                         <th className='tableHeading' scope="row">{campo.name + ' ' + campo.surname}</th>
                         <td className='tableHeading'>Acá van los perfiles</td>
                         <td className='tableHeading'>{campo.status}</td>
-                        {campo.status === 'Approved HR'
-                          ? <td className='tableHeading'>
-                            <button type="button" className="btn boton btn-primaryList">Assign Sist.
-                            </button>
-                          </td>
-                          : campo.status === 'Tech Approved'
-                            ? <td className='tableHeading'>
-                              <button type="button" className="btn boton btn-primaryList" data-toggle="modal" data-target=".bd-example-modal-sm">Generate report
-                              </button>
-                              <div className="modal fade bd-example-modal-sm" tabIndex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                <div className="modal-dialog modal-sm">
-                                  <div className="modal-content">
-                                    Selecciona al entrevistador:
-                                    {entrevistadoresSist.map((entrevistador, index = 0) => (
-                                      <div key={index++} className="list-group">
-                                        <div className="list-group">
-                                          <a className="list-group-item list-group-item-action" onClick={() => this.setState({ entrevistador })}>{entrevistador}</a>
-                                        </div>
-                                      </div>)
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                            : campo.status === 'New'
-                              ? <td className='tableHeading'>
-                                <button type="button" className="btn boton btn-primaryList" data-toggle="modal" data-target=".bd-example-modal-sm">Assign Hr.
-                                </button>
-                                <div className="modal fade bd-example-modal-sm" tabIndex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                  <div className="modal-dialog modal-sm">
-                                    <div className="modal-content">
-                                      Selecciona al entrevistador:
-                                      {this.props.users.map((entrevistador, index = 0) => (
-                                        <div key={index++} className="list-group">
-                                          <div className="list-group">
-                                            <a className="list-group-item list-group-item-action" onClick={() => this.setState({ entrevistador: entrevistador.id })}>{entrevistador.nombre}</a>
-                                          </div>
-                                        </div>)
-                                      )}
-                                    </div>
-                                  </div>
-                                </div>
-                              </td>
-                              : <td className='tableHeading'>
-                                <button type="button" className="btn boton btn-primaryList">Go to the pingo
-                                </button>
-                              </td>}
+                        <td className='tableHeading'><Link to={`/candidates/${campo.id}`}><button>More Details</button></Link></td>
                       </tr>
                     </tbody>
                   )
@@ -111,7 +65,7 @@ const mapStateToProps = (state) => ({
   user: state.user
 });
 const mapDispatchToProps = (dispatch) => ({
-
+  fetchMyCandidates : (userId) => dispatch(fetchMyCandidates(userId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(allCandidates);
