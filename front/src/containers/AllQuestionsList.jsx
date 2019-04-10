@@ -1,41 +1,31 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 
-// eslint-disable-next-line no-unused-vars
 import AllQuestionsGrid from '../components/AllQuestionsGrid';
+import AllSISTQuestionsGrid from '../components/AllSISTQuestionsGrid';
 import { searchAllQuestions, deleteQuestion, editQuestion } from '../redux/action-creator/questionActions';
 
-function buildFileSelector() {
-  const fileSelector = document.createElement('input');
-  fileSelector.setAttribute('type', 'file');
-  fileSelector.setAttribute('multiple', 'multiple');
-  return fileSelector;
-}
-
 class AllQuestionsList extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       fileSelector: null
     };
-    this.handleFileSelect = this.handleFileSelect.bind(this);
     this.onClick = this.onClick.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.searchAllQuestions(this.props.user.area);
-    this.setState({ fileSelector: buildFileSelector() });
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate (prevState) {
     if (prevState.user.area !== this.props.user.area) {
       this.props.user.area ? this.props.searchAllQuestions(this.props.user.area) : null;
     }
   }
 
-  onClick(questId, action, modifiedQuestion) {
+  onClick (questId, action, modifiedQuestion) {
     switch (action) {
       case 'delete':
         this.props.deleteQuestion(questId, this.props.user.area);
@@ -57,33 +47,31 @@ class AllQuestionsList extends React.Component {
     }
   }
 
-  handleFileSelect(e) {
-    e.preventDefault();
-    console.log(this.state);
-    this.state.fileSelector.click();
-  }
-
-  render() {
+  render () {
     return (
-      <div className="dropdown show" >
-        <button type="button" className="btn btn-link" role="button" id="addQuestionIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ float: 'right' }} >
-          <img src="/utils/add.svg" width="50" id='addQuestBtn' />
-        </button>
-        <div className='modalQuest'>
-          <div className="dropdown-menu" aria-labelledby="addQuestionIcon">
-            <button className="dropdown-item textModal" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
-            <button className="dropdown-item textModal" onClick={this.handleFileSelect}>Add new question from file</button>
+
+      this.props.user.area === 'RRHH'
+        ? <div className="dropdown show" >
+          <button type="button" className="btn btn-link" role="button" id="addQuestionIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ float: 'right' }} >
+            <img src="/utils/add.svg" width="50" id='addQuestBtn' />
+          </button>
+          <div className='modalQuest'>
+            <div className="dropdown-menu probandModal" aria-labelledby="addQuestionIcon">
+              <button className="dropdown-item probando2" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
+              <button className="dropdown-item probando2" onClick={this.handleFileSelect}>Add new question from file</button>
+            </div>
           </div>
+          <AllQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
         </div>
-        <AllQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
-      </div>
+        : <AllSISTQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
+
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user,
-  allQuestions: state.allQuestions
+  user: state.user.user,
+  allQuestions: state.question.allQuestions
 });
 const mapDispatchToProps = (dispatch) => ({
   searchAllQuestions: (area) => dispatch(searchAllQuestions(area)),

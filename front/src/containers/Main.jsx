@@ -7,15 +7,19 @@ import Login from './Login';
 import AddUser from './AddUser';
 import Home from './Home';
 import AllUsers from './AllUsers';
-import AddQuestion from "./AddQuestion";
+import AddQuestion from './AddQuestion';
 import AllCandidates from './AllCandidates';
+
 import AddCandidate from './AddCandidate';
 import Header from '../components/Header';
 import AllQuestionsList from './AllQuestionsList';
 import UserHome from '../components/UserHome';
 import CandidatesHome from '../components/candidateHome';
-import SingleCandidate from '../containers/singleCandidate'
+import TagsHome from '../components/tagsHome';
+import AddTag from '../containers/AddTag';
+import SistInterview from '../containers/SistInterview'
 
+import SingleCandidate from '../containers/singleCandidate'
 import { fetchUser } from '../redux/action-creator/user-actions';
 
 class Main extends React.Component {
@@ -40,6 +44,9 @@ class Main extends React.Component {
           <Route exact path='/users/allUsers' render={({ history }) => (<AllUsers user={this.props.user} history={history} />)} />
           <Route exact path='/questions' render={({ history }) => (<AllQuestionsList history={history} />)} />
           <Route exact path='/questions/add' render={({ history }) => (<AddQuestion history={history} user={this.props.user}/>)} />
+          <Route exact path='/tags' render={({ history }) => (<AddTag history={history} user={this.props.user}/>)} />
+          <Route exact path='/questions/loadFile' render={({ history }) => (<LoadFile history={history}/>)} />
+          <Route exact path='/interview/sist' render={({ history }) => (<SistInterview history={history}/>)} />
         </Switch>
       </div>
     );
@@ -47,7 +54,7 @@ class Main extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user.user
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchUser: () => dispatch((fetchUser()))

@@ -32,9 +32,9 @@ class AllCandidates extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user,
-  users: state.users,
-  candidates: state.candidates
+  user: state.user.user,
+  users: state.user.users,
+  candidates: state.candidate.candidates
 });
 const mapDispatchToProps = (dispatch) => ({
   getAllCandidates: () => dispatch(getAllCandidates()),

@@ -4,10 +4,11 @@ const User = require('../models/User');
 const passport = require('passport');
 const Pregunta = require('../models/questions');
 // const Answer = require('../models/answers');
-const Tags = require('../models/tags');
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
   if (req.isAuthenticated()) {
+    console.log("QUE CUERNO LLEGAA???", req.body)
+    console.log("QUE CUERNO MANDA LOGUEADO???", req.user)
     res.send(req.user);
   }
 });
