@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -31,8 +32,8 @@ const QuestionInput = (props) => {
               }
               <div>
                 {
-                  props.selectedTags.map(function (tagId,i) {
-                    return <h6 style={{ float: 'left', marginLeft: '15px', border: '1px solid black', padding: '7px', borderRadius: '8px', marginBottom: '10px' }} onClick={props.delete} onClick={props.delete} name={i} key={tagId}>{props.tags[tagId - 1].tag}</h6>;
+                  props.selectedTags.map(function (tagId, i) {
+                    return <h6 style={{ float: 'left', marginLeft: '15px', border: '1px solid black', padding: '7px', borderRadius: '8px', marginBottom: '10px' }} onClick={props.delete} name={i} key={tagId}>{props.tags[tagId - 1].tag}</h6>;
                   })
                 }
               </div>
@@ -41,11 +42,13 @@ const QuestionInput = (props) => {
           </div>
           <form name='question' onSubmit={props.submitQuestion}>
             <h6 className='subTitles'>Question content: </h6>
-            <div ><textarea type='textbox' name='question' className='questionTextbox' /></div>
+            <div >
+              <textarea type='textbox' name='question' className='questionTextbox' />
+            </div>
             <br />
             <br />
-            <div style={{ padding: '0px 15%' }}><button  className='btn boton btn-lg btnQuest' type='submit' > CREATE QUESTION</button></div>
-            <div style={{margin: '0px 15%'}}><Link to='/questions'><button  className='btn boton btn-lg btnQuest' type='submit' > VIEW ALL </button></Link></div>
+            <div style={{ padding: '0px 15%' }}><button className='btn boton btn-lg btnQuest' type='submit' > CREATE QUESTION</button></div>
+            <div style={{ margin: '0px 15%' }}><Link to='/questions'><button className='btn boton btn-lg btnQuest' type='submit' > VIEW ALL </button></Link></div>
           </form>
         </div>
       </div>

@@ -14,15 +14,24 @@ class SingleCandidate extends React.Component {
       userSIST1:null,
       userSIST2:null,
     };
-
-    this.handleChangeId = this.handleChangeId.bind(this);
-    this.submitHR = this.submitHR.bind(this);
-    this.submitSIST1 = this.submitSIST1.bind(this);
-    this.submitSIST2 = this.submitSIST2.bind(this);
-  }
+this.handleChangeId = this.handleChangeId.bind(this);
+this.submitHR = this.submitHR.bind(this);
+this.submitSIST1 = this.submitSIST1.bind(this);
+this.submitSIST2 = this.submitSIST2.bind(this);
+this.createInterview = this.createInterview.bind(this);
+}
   componentDidMount () {
     this.props.getAllUsers();
     this.props.fetchCandidate(this.props.idCand)
+  }
+
+  createInterview (candidate) {
+    Axios.post('/api/interview/newInterv', {
+      candidateId: candidate
+    })
+      .then(interview => {
+        this.props.history.push(`/candidate/${candidate}/interview/${interview.data.id}`);
+      });
   }
 
   handleChangeId (e) {
@@ -45,7 +54,7 @@ class SingleCandidate extends React.Component {
   render () {
     return (
       !!this.props.candidate && !!this.props.candidate.id &&
-      <ActionsCandidates users={this.props.users} user={this.props.user} candidate={this.props.candidate} submitHR={this.submitHR} handleChangeID={this.handleChangeId} handleSubSIS1={this.submitSIST1} handleSubSIS2={this.submitSIST2} />
+      <ActionsCandidates users={this.props.users} user={this.props.user} onClickInterview={this.createInterview} candidate={this.props.candidate} submitHR={this.submitHR} handleChangeID={this.handleChangeId} handleSubSIS1={this.submitSIST1} handleSubSIS2={this.submitSIST2} />
     );
   }
 }
