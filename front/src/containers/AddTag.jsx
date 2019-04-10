@@ -14,20 +14,30 @@ class addTag extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   };
 
+  componentDidMount () {
+    axios.get('api/tags/retrieve')
+      .then((allTags) => {
+        this.setState({ allTags });
+      });
+  }
+
   handleChange (e) {
     let input = e.target.value;
-    if (input.length <= 10) {
+    if (input.length <= 15) {
       this.setState({ tagInput: input });
     }
   }
 
   handleSubmit (e) {
     e.preventDefault();
-    axios.post('api/tags/create', { tag: this.state.tagInput });
-    this.setState({ tagInput: '' });
-    axios.get('api/tags/retrieve')
-      .then((allTags) => {
-        this.setState({ allTags });
+    axios.post('api/tags/create', { tag: this.state.tagInput })
+      .then(() => {
+        console.log('olis');
+        this.setState({ tagInput: '' });
+        axios.get('api/tags/retrieve')
+          .then((allTags) => {
+            this.setState({ allTags });
+          });
       });
   }
 
@@ -35,10 +45,10 @@ class addTag extends React.Component {
     return (
       <div>
         <TagInput
-          handleSubmit = {this.handleSubmit}
-          handleChange = {this.handleChange}
-          tagInput = {this.state.tagInput}
-          allTags = {this.state.allTags}/>
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          tagInput={this.state.tagInput}
+          allTags={this.state.allTags} />
       </div>
     );
   }
