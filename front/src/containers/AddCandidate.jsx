@@ -52,7 +52,7 @@ class AddCandidate extends React.Component {
   }
 }
 const mapStateToProps = (state) => ({
-  candidate: state.candidate
+  candidate: state.candidate.candidate
 });
 const mapDispatchToProps = (dispatch) => ({
   createCandidate: (candidate) => dispatch(createCandidate(candidate))

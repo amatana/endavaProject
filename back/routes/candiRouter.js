@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Candidate = require('../models/candidate');
+const User = require('../models/User');
 
 router.post('/create', (req, res) => {
   console.log('lo que me llego al servidor ', req.body.candidate);
@@ -16,7 +17,48 @@ router.get('/getAll', (req, res) => {
 
 
 router.get('/getOne/:id', (req, res) => {
-  Candidate.findByPk(req.params.id)
+  Candidate.findByPk(req.params.id, {
+    include: [{ model: User, as: 'interviewerHR' }, { model: User, as: 'interSIST1' }, { model: User, as: 'interSIST2' }]
+  })
+    .then(candidate => {
+      res.send(candidate)
+      ;
+    });
+});
+
+// Trae los candidatos asignados al usuario loggeado
+router.get('/getMyCandidates/:userId', (req, res) => {
+  Candidate.findAll({
+    where: {
+      interviewerHRId: req.params.userId
+    }
+  })
+    .then(candidates => {
+      res.send(candidates)});
+});
+
+// Funciones que asignan entrevistadores
+router.post('/setUserHR', (req, res) => {
+  Candidate.findByPk(req.body.idCandi)
+    .then(candidate => {
+      candidate.setInterviewerHR(req.body.idUser);
+    })
+    .then(() => res.sendStatus(200));
+});
+
+router.post('/setUserSIST1', (req, res) => {
+  Candidate.findByPk(req.body.idCandi)
+    .then(candidate => {
+      candidate.setInterSIST1(req.body.idUser);
+    })
+    .then(() => res.sendStatus(200));
+});
+
+router.post('/setUserSIST2', (req, res) => {
+  Candidate.findByPk(req.body.idCandi)
+    .then(candidate => {
+      candidate.setInterSIST2(req.body.idUser);
+    })
     .then(candidate => res.send(candidate));
 });
 

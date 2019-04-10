@@ -1,8 +1,16 @@
+// Users constants
 export const CHECK_USER = 'CHECK_USER';
 export const SET_USER = 'SET_USER';
+export const SET_USERS = 'SET_USERS';
+
+// Candidates constants
 export const SET_CANDIDATE = 'SET_CANDIDATE';
 export const SET_CANDIDATES = 'SET_CANDIDATES';
-export const SET_USERS = 'SET_USERS';
+
+// Questions constants
 export const SET_QUESTIONS = 'SET_QUESTIONS';
 export const DELETE_QUESTION = 'DELETE_QUESTION';
 export const EDIT_QUESTION = 'EDIT_QUESTION';
+
+// Interviews constants
+export const SET_INTERVIEW = 'SET_INTERVIEW';
