@@ -27,6 +27,7 @@ class SingleCandidate extends React.Component {
 
   handleChangeId (e) {
     e.preventDefault();
+    console.log("==============*************************$$$$$$$$$$$$$$$$$$$$$$")
     this.setState({ [e.target.name]: Number(e.target.value) });
   }
 

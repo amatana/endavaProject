@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { fetchInterview } from '../redux/action-creator/interviewActions';
 
-class SistInterview extends React.Component {
+class PreSistInterview extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -36,4 +36,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchInterview: (interviewID) => dispatch(fetchInterview(interviewID))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SistInterview);
+export default connect(mapStateToProps, mapDispatchToProps)(PreSistInterview);
