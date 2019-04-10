@@ -16,6 +16,7 @@ import CandidatesHome from '../components/candidateHome';
 import CreateInterview from './CreateInterview';
 import TagsHome from '../components/tagsHome';
 import AddTag from '../containers/AddTag';
+import SistInterview from '../containers/SistInterview'
 
 import SingleCandidate from '../containers/singleCandidate'
 import { fetchUser } from '../redux/action-creator/user-actions';
@@ -44,6 +45,7 @@ class Main extends React.Component {
           <Route exact path='/questions/add' render={({ history }) => (<AddQuestion history={history} user={this.props.user}/>)} />
           <Route exact path='/tags' render={({ history }) => (<AddTag history={history} user={this.props.user}/>)} />
           <Route exact path='/questions/loadFile' render={({ history }) => (<LoadFile history={history}/>)} />
+          <Route exact path='/interview/sist' render={({ history }) => (<SistInterview history={history}/>)} />
         </Switch>
       </div>
     );
@@ -51,7 +53,7 @@ class Main extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user.user
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchUser: () => dispatch((fetchUser()))

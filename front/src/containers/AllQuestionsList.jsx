@@ -26,7 +26,6 @@ class AllQuestionsList extends React.Component {
   }
 
   onClick (questId, action, modifiedQuestion) {
-    console.log("SE EJECUTO EL ONCLICK");
     switch (action) {
       case 'delete':
         this.props.deleteQuestion(questId, this.props.user.area);
@@ -71,8 +70,8 @@ class AllQuestionsList extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user,
-  allQuestions: state.allQuestions
+  user: state.user.user,
+  allQuestions: state.question.allQuestions
 });
 const mapDispatchToProps = (dispatch) => ({
   searchAllQuestions: (area) => dispatch(searchAllQuestions(area)),

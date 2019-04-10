@@ -32,7 +32,6 @@ class AllSISQuestions extends React.Component {
     };
     var reader = new FileReader();
     reader.onload = (e) => {
-      console.log(this.props);
       let csv = reader.result;
       let lines = csv.split('\n');
       let result = [];
@@ -40,7 +39,6 @@ class AllSISQuestions extends React.Component {
       let currentline;
       let array;
       for (var i = 0; i < lines.length; i++) {
-        // console.log('INDICE', i);
         currentline = lines[i].split(';');
         array = JSON.parse(currentline[2]);
         obj = {
@@ -113,7 +111,7 @@ class AllSISQuestions extends React.Component {
             </div>
           </div>
           <div className='tableDiv' style={{ margin: '3% 1%' }} >
-            <h2 className='titHome'>QUESTIONS MANAGMENT</h2>
+            <h2 className='titHome'>QUESTIONS MANAGEMENT</h2>
             <table className="table">
               <thead style={{ backgroundColor: '#DE411B' }}>
                 <tr>
@@ -127,7 +125,7 @@ class AllSISQuestions extends React.Component {
                   <tbody key={question.content}>
                     <tr>
                       <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.content} </td>
-                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.tags.map( elemento => elemento.tag)}
+                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.tags.map(question => {return (question.tag + " ")})}
                         <button onClick={() => this.setSelectedQuestion(question.id, question.content)} type="button" className="btn btn-link" style={{ float: 'right' }} data-toggle="modal" data-target="#confirmDeleteModal">
                           <img src="/utils/garbage.svg" width="40" />
                         </button>
