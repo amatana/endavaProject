@@ -1,6 +1,11 @@
 * {
     box-sizing : border-box;
-    font-family:  'Roboto Condensed', sans-serif;
+    font-family:  'Roboto Condensed';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: normal;
+    letter-spacing: -0.01em;
 }
 
 .menuContainer {
@@ -198,7 +203,26 @@ form h5 {
     width: 100%; 
     padding: 20px; 
     font-size: 1.5em;
-    margin-bottom: 30px; 
+    margin: 30px 30px; 
+}
+.subBtn{
+    padding: 10px;
+    background-color:#169922;
+    border-radius: 30px;
+}
+.assignUser{
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    width: 50%;
+}
+#infoCandi{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 25px 20px;
+}
+#actions{
+    margin: 20px 20px;
 }
 @media (min-width: 992px){
     .boton:hover{

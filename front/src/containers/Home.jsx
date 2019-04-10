@@ -15,9 +15,9 @@ const Home = (props) => {
       ? <div>
         <div className='homeDisplay'>
         <h1 className='titHome'>HOME</h1>
-          <Link to="/candidates"><button className="btn btn-lg botonHome">Candidates Managment</button></Link>
+          <Link to="/candidates/allCandidates"><button className="btn btn-lg botonHome">Candidates Managment</button></Link>
           <Link to="/questions"><div><button className="btn btn-lg botonHome">Questions Managment</button></div></Link>
-          <Link to="/users"><div><button className="btn btn-lg botonHome">Users Managment</button></div></Link>
+          <Link to="/users/allUsers"><div><button className="btn btn-lg botonHome">Users Managment</button></div></Link>
         </div>
         <div className='logoAbajo'><img className='imgHome' src='./utils/logo.png' /></div>
       </div>
