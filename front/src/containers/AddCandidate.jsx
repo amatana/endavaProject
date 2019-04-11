@@ -25,7 +25,6 @@ class AddCandidate extends React.Component {
   componentDidMount () {
     Axios.get('api/tags/retrieve')
       .then((tags) => {
-        console.log("TAGSS", tags);
         this.setState({ tags });
       });
   }
@@ -79,6 +78,7 @@ class AddCandidate extends React.Component {
 const mapStateToProps = (state) => ({
   candidate: state.candidate
 });
+
 const mapDispatchToProps = (dispatch) => ({
   createCandidate: (candidate) => dispatch(createCandidate(candidate))
 });
