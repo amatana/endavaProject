@@ -19,10 +19,12 @@ class SingleCandidate extends React.Component {
     this.submitSIST1 = this.submitSIST1.bind(this);
     this.submitSIST2 = this.submitSIST2.bind(this);
     this.createInterview = this.createInterview.bind(this);
+    this.changeCandStatus = this.changeCandStatus.bind(this);
   }
   componentDidMount () {
     this.props.getAllUsers();
-    this.props.fetchCandidate(this.props.idCand);
+    if(this.props.user.area === 'Sistemas' ) this.props.fetchCandidate(this.props.idCand);
+    if(this.props.user.area === 'RRHH') this.props.getAllCandidates()
   }
 
   createInterview (candidate) {
@@ -40,7 +42,6 @@ class SingleCandidate extends React.Component {
   }
 
   submitHR (idCandi) {
-    console.log('ESTADO E IDS', this.state);
     Axios.post('/api/candidate/setUserHR', {
       idUser: this.state.userHRId || this.props.usersRH[0].id,
       idCandi
@@ -60,6 +61,11 @@ class SingleCandidate extends React.Component {
       idCandi })
       .then(() => this.props.fetchCandidate(this.props.idCand));
   }
+
+  changeCandStatus(idCandi) {
+    Axios.post('/api/candidate/changeStatus', {idCandi})
+    .then(() => this.props.fetchCandidate(this.props.idCand));
+  }
   render () {
     return (
       !!this.props.candidate && !!this.props.candidate.id &&
@@ -72,6 +78,7 @@ class SingleCandidate extends React.Component {
         handleSubSIS1={this.submitSIST1}
         handleSubSIS2={this.submitSIST2}
         usersSIST={this.props.usersSIST}
+        createInterview={this.createInterview}
       />
     );
   }

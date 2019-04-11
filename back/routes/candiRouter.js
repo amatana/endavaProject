@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Sequelize = require('sequelize');
 const Candidate = require('../models/candidate');
 const User = require('../models/User');
 
@@ -27,6 +28,23 @@ router.get('/getOne/:id', (req, res) => {
 });
 
 // Trae los candidatos asignados al usuario loggeado
+router.get('/getMyCandidates/:userId', (req, res) => {
+  const { userId } = req.params;
+  Candidate.findAll({
+    where: {
+      [Sequelize.Op.or]: [{
+        interviewerHRId: userId
+      }, {
+        interSIST1Id: userId
+      }, {
+        interSIST2Id: userId
+      }]
+    }
+  })
+    .then(candidates => {
+      res.send(candidates)});
+});
+
 router.get('/getMyCandidates/:userId', (req, res) => {
   Candidate.findAll({
     where: {
@@ -61,6 +79,11 @@ router.post('/setUserSIST2', (req, res) => {
     })
     .then(candidate => res.send(candidate));
 });
+
+//Funciones que cambian el estado del Candidato 
+router.post('/changeStatus', (req,res) => {
+  Candidate.findByPk(req.body.idCandi)
+})
 
 
 module.exports = router;

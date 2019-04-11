@@ -34,7 +34,7 @@ class Main extends React.Component {
           <Route exact path="/login" render={({ history }) => (<Login history={history} />)} />
           <Route exact path='/candidates' render={({ history }) => (<CandidatesHome history={history} user={this.props.user}/>)} />
           <Route exact path='/candidates/addCandidate' render={({ history }) => (<AddCandidate user={this.props.user} history={history} />)} />
-          <Route exact path='/candidates/allCandidates' render={({ history }) => (<AllCandidates history={history} user={this.props.user} />)} />
+          <Route path='/candidates/allCandidates' render={(props) => (<AllCandidates {...props} user={this.props.user} />)} />
           <Route exact path='/candidates/:idCand' render={({ history, match }) => (<SingleCandidate history={history} user={this.props.user} idCand={match.params.idCand}/>)} />
           <Route exact path='/candidates/:idCand/interview/:idInterv' render={({ history, match }) => (<CreateInterview idCand={match.params.idCand} history={history} idInter={match.params.idInterv} user={this.props.user}/>)} />
           <Route exact path='/users' render={({ history }) => (<UserHome history={history} user={this.props.user}/>)} />

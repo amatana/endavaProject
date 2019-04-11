@@ -14,7 +14,7 @@ const Header = (props) => {
           </div>
           <div className='iconHeader'>
             <Link to='/'><img src="/utils/home.png" className='homeBtn'/></Link>
-            <button id='botonHeaderLogOut' className='iconsHeader' onClick={(e) => {
+            <button id='botonHeaderLogOut' className='iconsHeader ActionsBotonesBlanco' onClick={(e) => {
               e.preventDefault();
               props.logOut();
               return props.history.push('/login');
