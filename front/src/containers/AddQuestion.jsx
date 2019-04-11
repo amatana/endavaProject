@@ -54,7 +54,7 @@ class addQuestion extends React.Component {
 
   finalSubmit (question, tags) {
     console.log('tags', tags);
-    if (question !== '' &&	 tags.length > 0) {
+    if (question !== '' && tags.length > 0) {
       console.log('question', question);
       let area = this.props.user.area;
       Axios.post('/api/questions/create', {

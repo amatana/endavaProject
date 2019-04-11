@@ -28,4 +28,3 @@ export const getAllCandidates = () => dispatch =>
 export const fetchCandidate = (id) => dispatch =>
   axios.get(`/api/candidate/getOne/${id}`)
     .then(candidate => dispatch(setCandidate(candidate.data)));
-

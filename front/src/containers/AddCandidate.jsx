@@ -5,20 +5,34 @@ import { connect } from 'react-redux';
 
 import AddCandidateComp from '../components/addcandidate';
 import { createCandidate } from '../redux/action-creator/candidate-actions';
+import Axios from 'axios';
 
 class AddCandidate extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       status: 'New',
-      messege: ''
+      messege: '',
+      tags: []
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.handleTagSubmit = this.handleTagSubmit.bind(this);
   }
+
+  componentDidMount () {
+    Axios.get('api/tags/retrieve')
+      .then((tags) => {
+        console.log("TAGSS", tags);
+        this.setState({ tags });
+      });
+  }
+
   handleSubmit (e) {
     e.preventDefault();
+    console.log(this.state);
     this.props.createCandidate(this.state)
       .then(error => {
         if (error) {
@@ -35,19 +49,30 @@ class AddCandidate extends React.Component {
     this.setState(
       { [e.target.name]: e.target.value });
   }
+
+  handleTagSubmit (e) {
+    e.preventDefault();
+    let toAdd = e.target.tagDropdown.value;
+    let arr = this.state.tags;
+    arr.push(toAdd);
+    this.setState({ tags: arr });
+  }
+
   onClick () {
     this.props.history.push('/candidates/allCandidates');
   }
 
   render () {
+    console.log('tagArray', this.state.tags);
     return (
       <AddCandidateComp
         onChange={this.handleChange}
         onSubmit={this.handleSubmit}
         messege={this.state.messege}
         onClick={this.onClick}
+        tags={this.state.tags}
+        handleTagSubmit={this.handleTagSubmit}
       />
-
     );
   }
 }

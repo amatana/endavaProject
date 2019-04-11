@@ -11,7 +11,19 @@ router.post('/create', function (req, res) {
 router.get('/retrieve', function (req, res) {
   Tags.findAll()
     .then((tags) => {
+      console.log('BACK TAGS', tags);
       res.send(tags);
+    });
+});
+
+router.post('/delete', function (req, res) {
+  Tags.destroy({
+    where: {
+      id: req.body.deleted
+    }
+  })
+    .then(() => {
+      res.send(202);
     });
 });
 
