@@ -13,7 +13,8 @@ class AddCandidate extends React.Component {
     this.state = {
       status: 'New',
       messege: '',
-      tags: []
+      allTags: [],
+      selectedTags: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,9 +24,9 @@ class AddCandidate extends React.Component {
   }
 
   componentDidMount () {
-    Axios.get('api/tags/retrieve')
-      .then((tags) => {
-        this.setState({ tags });
+    Axios.get('/api/tags/retrieve')
+      .then((allTags) => {
+        this.setState({ allTags: allTags.data });
       });
   }
 
@@ -51,10 +52,20 @@ class AddCandidate extends React.Component {
 
   handleTagSubmit (e) {
     e.preventDefault();
-    let toAdd = e.target.tagDropdown.value;
-    let arr = this.state.tags;
-    arr.push(toAdd);
-    this.setState({ tags: arr });
+    let index = e.target.tagDropdown.value;
+    let arr = this.state.selectedTags;
+    let found = arr.find((element) => {
+      if (element === this.state.allTags[index].tag) {
+        return element;
+      }
+    });
+
+    if (!found) {
+      arr.push(this.state.allTags[index].tag);
+      this.setState({ selectedTags: arr });
+    } else {
+      alert('The tag was aleady added');
+    }
   }
 
   onClick () {
@@ -69,7 +80,7 @@ class AddCandidate extends React.Component {
         onSubmit={this.handleSubmit}
         messege={this.state.messege}
         onClick={this.onClick}
-        tags={this.state.tags}
+        allTags={this.state.allTags}
         handleTagSubmit={this.handleTagSubmit}
       />
     );

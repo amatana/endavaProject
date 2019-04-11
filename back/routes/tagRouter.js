@@ -11,7 +11,6 @@ router.post('/create', function (req, res) {
 router.get('/retrieve', function (req, res) {
   Tags.findAll()
     .then((tags) => {
-      console.log('BACK TAGS', tags);
       res.send(tags);
     });
 });

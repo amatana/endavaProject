@@ -5,9 +5,24 @@ const User = require('../models/User');
 
 router.post('/create', (req, res) => {
   console.log('lo que me llego al servidor ', req.body.candidate);
-  Candidate.create(req.body.candidate)
+
+  let candidateData = {
+    name: req.body.candidate.name,
+    surname: req.body.candidate.surname,
+    email: req.body.candidate.email,
+    telNumber: req.body.candidate.telNumber,
+    expertise: req.body.candidate.expertise,
+    url: req.body.candidate.url,
+    status: req.body.candidate.status
+  };
+
+  console.log(candidateData);
+
+  Candidate.create(candidateData)
     .then(data => res.status(201).send(data))
     .catch(e => res.send({ error: e.errors[0].message }));
+
+  console.log('TAG ID ARRAY: ', req.body.candidate.selectedTags);
 });
 
 router.get('/getAll', (req, res) => {

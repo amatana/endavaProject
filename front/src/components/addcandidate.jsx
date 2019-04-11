@@ -64,9 +64,9 @@ const candidate = (props) => {
               <label htmlFor="tags">Profile Tags</label>
               <br/>
               <select name = 'tagDropdown'>
-                {/* {props.tags && props.tags.map((tag) => {
-                  return (<option value = {tag.id}>{tag.tag}</option>);
-                })} */}
+                {props.allTags && props.allTags.map((tag, i) => {
+                  return (<option value = {i}>{tag.tag}</option>);
+                })}
               </select>
               <input type="submit" value="Add Tag"/>
             </div>

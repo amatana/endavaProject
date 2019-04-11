@@ -16,11 +16,12 @@ class addTag extends React.Component {
   };
 
   componentDidMount () {
-    axios.get('api/tags/retrieve')
+    axios.get('/api/tags/retrieve')
       .then((allTags) => {
+        console.log('TAGS MOUNTED', allTags);
         this.setState({ allTags });
       });
-  }
+  };
 
   handleChange (e) {
     let input = e.target.value;
@@ -44,7 +45,6 @@ class addTag extends React.Component {
 
   handleDelete (e) {
     let index = e.target.getAttribute('name');
-    console.log(index);
     axios.post('api/tags/delete', { deleted: index })
       .then(() => {
         axios.get('api/tags/retrieve')
