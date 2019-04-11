@@ -15,10 +15,11 @@ router.get('/getAll', (req, res) => {
     .then(candidates => res.send(candidates));
 });
 
-
 router.get('/getOne/:id', (req, res) => {
   Candidate.findByPk(req.params.id, {
-    include: [{ model: User, as: 'interviewerHR' }, { model: User, as: 'interSIST1' }, { model: User, as: 'interSIST2' }]
+    include: [{ model: User, as: 'interviewerHR' },
+      { model: User, as: 'interSIST1' },
+      { model: User, as: 'interSIST2' }]
   })
     .then(candidate => {
       res.send(candidate)
@@ -34,7 +35,9 @@ router.get('/getMyCandidates/:userId', (req, res) => {
     }
   })
     .then(candidates => {
-      res.send(candidates)});
+      res.send(candidates)
+      ;
+    });
 });
 
 // Funciones que asignan entrevistadores
@@ -61,6 +64,5 @@ router.post('/setUserSIST2', (req, res) => {
     })
     .then(candidate => res.send(candidate));
 });
-
 
 module.exports = router;

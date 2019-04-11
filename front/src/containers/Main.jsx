@@ -16,8 +16,8 @@ import CandidatesHome from '../components/candidateHome';
 import CreateInterview from './CreateInterview';
 import TagsHome from '../components/tagsHome';
 import AddTag from '../containers/AddTag';
-import SistInterview from '../containers/SistInterview'
-import SingleCandidate from '../containers/singleCandidate'
+import SistInterview from '../containers/SistInterview';
+import SingleCandidate from '../containers/singleCandidate';
 import { fetchUser } from '../redux/action-creator/user-actions';
 
 class Main extends React.Component {
@@ -35,8 +35,32 @@ class Main extends React.Component {
           <Route exact path='/candidates' render={({ history }) => (<CandidatesHome history={history} user={this.props.user}/>)} />
           <Route exact path='/candidates/addCandidate' render={({ history }) => (<AddCandidate user={this.props.user} history={history} />)} />
           <Route exact path='/candidates/allCandidates' render={({ history }) => (<AllCandidates history={history} user={this.props.user} />)} />
-          <Route exact path='/candidates/:idCand' render={({ history, match }) => (<SingleCandidate history={history} user={this.props.user} idCand={match.params.idCand}/>)} />
-          <Route exact path='/candidates/:idCand/interview/:idInterv' render={({ history, match }) => (<CreateInterview idCand={match.params.idCand} history={history} idInter={match.params.idInterv} user={this.props.user}/>)} />
+
+          <Route exact
+            path='/candidates/:idCand'
+            render={({ history, match }) => (
+              <SingleCandidate
+                history={history}
+                user={this.props.user}
+                idCand={match.params.idCand}
+              />
+            )}
+          />
+          <Route exact
+            path='/candidates/:idCand/interview/:idInterv'
+            render={({ history, match }) => {
+              console.log('PLSS');
+              return (
+                <CreateInterview
+                  idCand={match.params.idCand}
+                  history={history}
+                  idInter={match.params.idInterv}
+                  user={this.props.user}
+                />
+              );
+            }}
+          />
+
           <Route exact path='/users' render={({ history }) => (<UserHome history={history} user={this.props.user}/>)} />
           <Route exact path='/users/addUser' render={({ history }) => (<AddUser history={history} />)} />
           <Route exact path='/users/allUsers' render={({ history }) => (<AllUsers user={this.props.user} history={history} />)} />

@@ -14,23 +14,23 @@ class SingleCandidate extends React.Component {
       userSIST1: null,
       userSIST2: null
     };
-this.handleChangeId = this.handleChangeId.bind(this);
-this.submitHR = this.submitHR.bind(this);
-this.submitSIST1 = this.submitSIST1.bind(this);
-this.submitSIST2 = this.submitSIST2.bind(this);
-this.createInterview = this.createInterview.bind(this);
-}
+    this.handleChangeId = this.handleChangeId.bind(this);
+    this.submitHR = this.submitHR.bind(this);
+    this.submitSIST1 = this.submitSIST1.bind(this);
+    this.submitSIST2 = this.submitSIST2.bind(this);
+    this.createInterview = this.createInterview.bind(this);
+  }
   componentDidMount () {
     this.props.getAllUsers();
     this.props.fetchCandidate(this.props.idCand);
   }
 
   createInterview (candidate) {
-    Axios.post('/api/interview/newInterv', {
+    Axios.post('/api/interview/newInterview', {
       candidateId: candidate
     })
       .then(interview => {
-        this.props.history.push(`/candidate/${candidate}/interview/${interview.data.id}`);
+        this.props.history.push(`/candidates/${candidate}/interview/${interview.data.id}`);
       });
   }
 
@@ -40,7 +40,6 @@ this.createInterview = this.createInterview.bind(this);
   }
 
   submitHR (idCandi) {
-    console.log('ESTADO E IDS', this.state);
     Axios.post('/api/candidate/setUserHR', {
       idUser: this.state.userHRId || this.props.usersRH[0].id,
       idCandi
@@ -56,7 +55,7 @@ this.createInterview = this.createInterview.bind(this);
   }
   submitSIST2 (idCandi) {
     Axios.post('/api/candidate/setUserSIST2', {
-      idUser: this.state.userSIST2 ||  this.props.usersSIST[0].id,
+      idUser: this.state.userSIST2 || this.props.usersSIST[0].id,
       idCandi })
       .then(() => this.props.fetchCandidate(this.props.idCand));
   }
@@ -72,6 +71,7 @@ this.createInterview = this.createInterview.bind(this);
         handleSubSIS1={this.submitSIST1}
         handleSubSIS2={this.submitSIST2}
         usersSIST={this.props.usersSIST}
+        onClickInterview={this.createInterview}
       />
     );
   }
