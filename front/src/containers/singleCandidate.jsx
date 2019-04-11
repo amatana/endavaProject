@@ -26,11 +26,11 @@ class SingleCandidate extends React.Component {
   }
 
   createInterview (candidate) {
-    Axios.post('/api/interview/newInterv', {
+    Axios.post('/api/interview/newInterview', {
       candidateId: candidate
     })
       .then(interview => {
-        this.props.history.push(`/candidate/${candidate}/interview/${interview.data.id}`);
+        this.props.history.push(`/candidates/${candidate}/interview/${interview.data.id}`);
       });
   }
 
@@ -40,7 +40,6 @@ class SingleCandidate extends React.Component {
   }
 
   submitHR (idCandi) {
-    console.log('ESTADO E IDS', this.state);
     Axios.post('/api/candidate/setUserHR', {
       idUser: this.state.userHRId || this.props.usersRH[0].id,
       idCandi
@@ -72,6 +71,7 @@ class SingleCandidate extends React.Component {
         handleSubSIS1={this.submitSIST1}
         handleSubSIS2={this.submitSIST2}
         usersSIST={this.props.usersSIST}
+        onClickInterview={this.createInterview}
       />
     );
   }

@@ -10,7 +10,7 @@ Candidate.belongsTo(User, { as: 'interviewerHR' });
 Candidate.belongsTo(User, { as: 'interSIST1' });
 Candidate.belongsTo(User, { as: 'interSIST2' });
 // Relación entre candidato y su entrevista
-Candidate.belongsTo(Interview, { as: 'entrevistaID' });
+Interview.belongsTo(Candidate, { as: 'candidateID' });
 
 // Relaciones entre Preguntas y Tags
 Questions.belongsToMany(Tags, { through: 'tags-questions' });
