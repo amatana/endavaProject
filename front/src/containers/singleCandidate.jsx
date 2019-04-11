@@ -14,12 +14,12 @@ class SingleCandidate extends React.Component {
       userSIST1: null,
       userSIST2: null
     };
-this.handleChangeId = this.handleChangeId.bind(this);
-this.submitHR = this.submitHR.bind(this);
-this.submitSIST1 = this.submitSIST1.bind(this);
-this.submitSIST2 = this.submitSIST2.bind(this);
-this.createInterview = this.createInterview.bind(this);
-}
+    this.handleChangeId = this.handleChangeId.bind(this);
+    this.submitHR = this.submitHR.bind(this);
+    this.submitSIST1 = this.submitSIST1.bind(this);
+    this.submitSIST2 = this.submitSIST2.bind(this);
+    this.createInterview = this.createInterview.bind(this);
+  }
   componentDidMount () {
     this.props.getAllUsers();
     this.props.fetchCandidate(this.props.idCand);
@@ -56,7 +56,7 @@ this.createInterview = this.createInterview.bind(this);
   }
   submitSIST2 (idCandi) {
     Axios.post('/api/candidate/setUserSIST2', {
-      idUser: this.state.userSIST2 ||  this.props.usersSIST[0].id,
+      idUser: this.state.userSIST2 || this.props.usersSIST[0].id,
       idCandi })
       .then(() => this.props.fetchCandidate(this.props.idCand));
   }
