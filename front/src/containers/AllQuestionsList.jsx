@@ -51,18 +51,7 @@ class AllQuestionsList extends React.Component {
     return (
 
       this.props.user.area === 'RRHH'
-        ? <div className="dropdown show" >
-          <button type="button" className="btn btn-link" role="button" id="addQuestionIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ float: 'right' }} >
-            <img src="/utils/add.svg" width="50" id='addQuestBtn' />
-          </button>
-          <div className='modalQuest'>
-            <div className="dropdown-menu probandModal" aria-labelledby="addQuestionIcon">
-              <button className="dropdown-item probando2" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
-              <button className="dropdown-item probando2" onClick={this.handleFileSelect}>Add new question from file</button>
-            </div>
-          </div>
-          <AllQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
-        </div>
+        ? <AllQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
         : <AllSISTQuestionsGrid onClick={this.onClick} questions={this.props.allQuestions} />
 
     );

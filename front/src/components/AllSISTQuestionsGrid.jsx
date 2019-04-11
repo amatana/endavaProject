@@ -52,7 +52,7 @@ class AllSISQuestions extends React.Component {
       }
 
       this.props.saveTagsFromFile(result);
-      this.props.saveQuestionsFromFile(result);
+      this.props.saveQuestionsFromFile(result, 'Sistemas');
     };
 
     reader.readAsText(files[0]);
@@ -125,7 +125,7 @@ class AllSISQuestions extends React.Component {
                   <tbody key={question.content}>
                     <tr>
                       <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.content} </td>
-                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.tags.map(question => {return (question.tag + " ")})}
+                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.tags.map(question => { return (question.tag + ' ') ;})}
                         <button onClick={() => this.setSelectedQuestion(question.id, question.content)} type="button" className="btn btn-link" style={{ float: 'right' }} data-toggle="modal" data-target="#confirmDeleteModal">
                           <img src="/utils/garbage.svg" width="40" />
                         </button>
@@ -148,7 +148,7 @@ class AllSISQuestions extends React.Component {
 ;
 const mapDispatchToProps = (dispatch) => ({
   saveTagsFromFile: (questionsArray) => dispatch(saveTagsFromFile(questionsArray)),
-  saveQuestionsFromFile: (questionsArray) => dispatch(saveQuestionsFromFile(questionsArray))
+  saveQuestionsFromFile: (questionsArray, area) => dispatch(saveQuestionsFromFile(questionsArray, area))
 });
 
 export default connect(null, mapDispatchToProps)(AllSISQuestions);

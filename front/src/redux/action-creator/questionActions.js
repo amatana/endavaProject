@@ -27,13 +27,13 @@ export const editQuestion = (questId, modifiedQuestion, area) => dispatch =>
   })
     .then(() => dispatch(searchAllQuestions(area)));
 
-export const saveQuestionsFromFile = (questionsArray) => dispatch => {
+export const saveQuestionsFromFile = (questionsArray, area) => dispatch => {
   let arrayPromsises = [];
   for (let i = 0; i < questionsArray.length; i++) {
     arrayPromsises.push(axios.post('/api/questions/create', questionsArray[i]));
   }
   Promise.all(arrayPromsises)
-    .then(() => dispatch(searchAllQuestions('Sistemas')));
+    .then(() => {console.log('=========== MANDO A BUSCAR LAS PREGUNTAS A BD= ==========', area);dispatch(searchAllQuestions(area))});
 };
 
 export const saveTagsFromFile = (questionsArray) => dispatch => {

@@ -1,13 +1,18 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { connect } from 'react-redux';
+import ReactFileReader from 'react-file-reader';
 
-export default class AllQuestions extends React.Component {
+import { saveTagsFromFile, saveQuestionsFromFile } from '../redux/action-creator/questionActions';
+
+class AllQuestionsGrid extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       selectedQuestionID: null,
       selectedQuestionContent: ''
     };
+    this.handleFiles = this.handleFiles.bind(this);
   }
 
   setSelectedQuestion (questionId, questionContent) {
@@ -20,12 +25,53 @@ export default class AllQuestions extends React.Component {
     this.setState({ selectedQuestionContent: e.target.value });
   }
 
+  handleFiles (files) {
+    let quoteRemover = function (str) {
+      let arr = str.slice(1, str.length - 1);
+      return arr;
+    };
+    var reader = new FileReader();
+    reader.onload = (e) => {
+      let csv = reader.result;
+      let lines = csv.split('\n');
+      let result = [];
+      let obj = {};
+      let currentline;
+      let array;
+      for (var i = 0; i < lines.length; i++) {
+        currentline = lines[i].split(';');
+        array = JSON.parse(currentline[2]);
+        obj = {
+          content: quoteRemover(currentline[0]),
+          // eslint-disable-next-line no-unneeded-ternary
+          required: currentline[1] === 'true' ? true : false,
+          tags: array,
+          area: 'RRHH'
+        };
+        result.push(obj);
+      }
+
+      this.props.saveTagsFromFile(result);
+      this.props.saveQuestionsFromFile(result, 'RRHH');
+    };
+
+    reader.readAsText(files[0]);
+  }
+
   render () {
     const { onClick, questions } = this.props;
 
     return (
-      <div >
-
+      <div className="dropdown show" >
+        <button type="button" className="btn btn-link" role="button" id="addQuestionIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ float: 'right' }} >
+          <img src="/utils/add.svg" width="50" id='addQuestBtn' />
+        </button>
+        <div className='modalQuest'>
+          <div className="dropdown-menu probandModal" aria-labelledby="addQuestionIcon">
+            <button className="dropdown-item probando2" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
+            <ReactFileReader handleFiles={this.handleFiles} fileTypes={'.csv'}><button className="dropdown-item probando2">Upload questions from file</button></ReactFileReader>
+          </div>
+        </div>
         <div className="modal fade" id="confirmDeleteModal" tabIndex="-1" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
@@ -95,3 +141,9 @@ export default class AllQuestions extends React.Component {
     );
   };
 }
+const mapDispatchToProps = (dispatch) => ({
+  saveTagsFromFile: (questionsArray) => dispatch(saveTagsFromFile(questionsArray)),
+  saveQuestionsFromFile: (questionsArray, area) => dispatch(saveQuestionsFromFile(questionsArray, area))
+});
+
+export default connect(null, mapDispatchToProps)(AllQuestionsGrid);
