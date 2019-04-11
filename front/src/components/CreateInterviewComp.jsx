@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+// import { Preguntas } from '../containers/seed';
 
 const CreateInterviewComp = (props) => (
-
   <div>
     <div className='probando'>
       <div >
@@ -17,12 +17,15 @@ const CreateInterviewComp = (props) => (
     </div>
 
     <form id='formCand'>
-      <div className="form-row">
-        <div className="form-group col-md-6">
-          <label htmlFor="inputEmail4" style={{ margin: '10px' }}>Pregunta</label>
-          <textarea style={{ margin: '5px' }} type="email" className="form-control" id="inputEmail4" placeholder="Respuesta"/>
+      {props.questions.map((pregunta) => (
+        <div key={pregunta.id} className="form-row">
+          <div className="form-group col-md-6">
+            <label htmlFor="inputEmail4" style={{ margin: '10px' }}>{pregunta.content}</label>
+            <textarea onChange={props.onChange} name={ pregunta.id }style={{ margin: '5px' }} type="email" className="form-control" id="inputEmail4" placeholder="Respuesta"/>
+          </div>
         </div>
-      </div>
+      ))}
+      <button type='button' onClick ={props.onSubmit}> Que miras pelotudo</button>
     </form>
   </div>
 );

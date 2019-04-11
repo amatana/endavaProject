@@ -4,12 +4,14 @@ import usersReducer from './usersReducer';
 import candidatesReducer from './candidatesReducer';
 import questionsReducer from './questionsReducer';
 import interviewsReducer from './interviewsReducer';
+import answersReducer from './answersReducer.js';
 
 export default combineReducers({
   user: usersReducer,
   candidate: candidatesReducer,
   question: questionsReducer,
-  interview: interviewsReducer
+  interview: interviewsReducer,
+  answers: answersReducer
 });
 
 // import { SET_USER, SET_CANDIDATE, SET_USERS, SET_CANDIDATES, SET_QUESTIONS, DELETE_QUESTION, EDIT_QUESTION } from '../constants';

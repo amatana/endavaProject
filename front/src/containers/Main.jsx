@@ -49,7 +49,6 @@ class Main extends React.Component {
           <Route exact
             path='/candidates/:idCand/interview/:idInterv'
             render={({ history, match }) => {
-              console.log('PLSS');
               return (
                 <CreateInterview
                   idCand={match.params.idCand}
