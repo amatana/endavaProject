@@ -31,7 +31,7 @@ const ActionsCandidates = (props) => {
             {props.usersRH.map(user => (
               <option value={user.id} key={user.id}>{user.nombre}</option>
             ))
-         }
+            }
           </select >
           <input type='submit' className='subBtn' value='ASSIGN RRHH' onClick={() => props.submitHR(candidate.id)} />
         </div>
@@ -42,7 +42,7 @@ const ActionsCandidates = (props) => {
             {props.usersSIST.map(user => (
               <option value={user.id} key={user.id}>{user.nombre}</option>
             ))
-         }
+            }
           </select >
           <input type='submit' className='subBtn' value='ASSIGN Sisemas' onClick={() => props.handleSubSIS1(candidate.id)} />
         </div>
@@ -53,7 +53,7 @@ const ActionsCandidates = (props) => {
             {props.usersSIST.map(user => (
               <option value={user.id} key={user.id}>{user.nombre}</option>
             ))
-         }
+            }
           </select >
           <input type='submit' value='ASSIGN Sisemas' className='subBtn' onClick={() => props.handleSubSIS2(candidate.id)} />
           <button onClick={() => props.onClickInterview(candidate.id)}>Boton de mierda</button>
