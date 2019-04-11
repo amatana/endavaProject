@@ -64,7 +64,7 @@ export default class AllQuestions extends React.Component {
           </div>
         </div>
         <div className='tableDiv' style={{ margin: '3% 1%' }} >
-          <h2 className='titHome'>QUESTIONS MANAGMENT</h2>
+          <h2 className='titHome'>QUESTIONS MANAGEMENT</h2>
           <table className="table">
             <thead style={{ backgroundColor: '#DE411B' }}>
               <tr>

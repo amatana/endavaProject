@@ -47,8 +47,7 @@ class addQuestion extends React.Component {
 
   handleSubmitQuestion (e) {
     e.preventDefault();
-    let question = e.target.question.value;
-    e.target.question.value = '';
+    let question = e.target[0].value;
     this.finalSubmit(question, this.state.selectedTags);
   }
 
@@ -59,10 +58,10 @@ class addQuestion extends React.Component {
       let area = this.props.user.area;
       Axios.post('/api/questions/create', {
         area,
-        question,
+        content: question,
+        required: null,
         tags
-      });
-      this.setState({ selectedTags: [] });
+      }).then(() => this.setState({ selectedTags: [] }));
     } else if (question === '') {
       alert('The Question Field cannot be empty');
     } else {
@@ -78,7 +77,6 @@ class addQuestion extends React.Component {
   }
 
   render () {
-    console.log('selectedTags', this.state.selectedTags);
     return (
       <div>
         <QuestionInput
