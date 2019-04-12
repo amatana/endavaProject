@@ -4,7 +4,7 @@ import CreateInterviewComp from '../components/CreateInterviewComp';
 import { connect } from 'react-redux';
 import { fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { searchHRQuestions } from '../redux/action-creator/questionActions';
-import { submitHRAnswers } from '../redux/action-creator/answersActions'
+import { submitHRAnswers } from '../redux/action-creator/answersActions';
 
 class CreateInterview extends React.Component {
   constructor (props) {
@@ -28,8 +28,8 @@ class CreateInterview extends React.Component {
 
   onSubmit (e) {
     e.preventDefault();
-    console.log('estado local', this.state);  
-    let a= this.state
+    console.log('estado local', this.state);
+    let a = this.state;
     this.props.submitHRAnswers(a);
   }
 
