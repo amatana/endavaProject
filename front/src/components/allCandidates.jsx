@@ -4,25 +4,29 @@ import { connect } from 'react-redux';
 import { Link, Router, Route } from 'react-router-dom';
 import { fetchMyCandidates, getAllCandidates } from '../redux/action-creator/candidate-actions';
 import CandidateTable from './candidatesTable';
-import RouteHook from 'react-route-hook';
-import { withRouter } from 'react-router';
 
 class allCandidates extends React.Component {
-  constructor () {
+  constructor() {
     super();
     this.state = {
       entrevistador: '',
-      popInput: ''
+      popInput: '',
+      candidates: []
     };
   }
 
-  componentDidMount () {
-    if (this.props.user.area === 'RRHH') this.props.getAllCandidates();
-    if (this.props.user.area === 'Sistemas') this.props.fetchMyCandidates(this.props.user.id);
+  componentDidMount() {
+    if (this.props.user.area === 'RRHH') {
+      this.props.getAllCandidates()
+        .then(candidates => this.setState({ candidates: candidates }));
+    } else {
+      this.props.fetchMyCandidates(this.props.user.id)
+        .then(candidates => this.setState({ candidates: candidates }));
+    }
   }
 
-  render () {
-    console.log('//////PROPS all Candidates///////', this.props);
+  render() {
+    console.log('============= SOY LAS PROPS DEL a', this.state)
     return (
       !this.props.user.isAdmin ? <h2>Lo siento, pero no tienes acceso para ver esta página</h2>
         : <div>
@@ -36,13 +40,20 @@ class allCandidates extends React.Component {
 
           <div className='tableDiv' style={{ margin: '3% 1%' }} >
             <h2 className='titHome'>
-              {!!(this.props.user.area === 'RRHH') && <button className='ActionsBotonesBlanco' onClick={() => this.props.getAllCandidates()}> ALL CANDIDATES </button>}
-              <button className='ActionsBotonesBlanco' onClick={() => this.props.fetchMyCandidates(this.props.user.id)}>MY CANDIDATES</button>
+              {!!(this.props.user.area === 'RRHH') && <button className='ActionsBotonesBlanco' onClick={() => {
+                this.props.getAllCandidates()
+                  .then(candidates => this.setState({ candidates: candidates }))
+              }}>
+                ALL CANDIDATES </button>}
+              <button className='ActionsBotonesBlanco' onClick={() => {
+                this.props.fetchMyCandidates(this.props.user.id)
+                  .then(candidates => this.setState({ candidates: candidates }))
+              }}>MY CANDIDATES</button>
             </h2>
           </div>
           <div>
             <CandidateTable
-              candidates={this.props.candidates}
+              candidates={this.state.candidates}
               input={this.props.input}
             />
           </div>
@@ -53,7 +64,8 @@ class allCandidates extends React.Component {
 
 const mapStateToProps = (state) => ({
   user: state.user.user,
-  candidates: state.candidate.candidates
+  // candidates: state.candidate.candidates,
+  // myCandidates: state.candidate.myCandidates
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchMyCandidates: (userId) => dispatch(fetchMyCandidates(userId)),

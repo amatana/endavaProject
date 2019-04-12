@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const CandidTable = (props) => {
+  console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&', props)
   return (
     <table className="table">
       <thead style={{ backgroundColor: '#DE411B' }}>
@@ -35,7 +36,7 @@ const CandidTable = (props) => {
 };
 const mapStateToProps = (state) => ({
   user: state.user.user,
-  candidates: state.candidate.candidates
+  // candidates: state.candidate.candidates
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchMyCandidates: (userId) => dispatch(fetchMyCandidates(userId)),

@@ -486,3 +486,8 @@ button.ActionsBotones{
     grid-template-columns: 1fr 1fr
 
 }
+
+#formCand{
+    margin-left: 5px;
+    margin-top: 60px
+}

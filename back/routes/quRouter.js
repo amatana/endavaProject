@@ -83,6 +83,11 @@ router.post('/create', (req, res, next) => {
 //     });
 // });
 
+router.get('/searchHRQuestions', (req, res) => {
+  Questions.findAll({ where: { area: 'RRHH' } })
+    .then(area => res.send(area));
+});
+
 router.post('/create/tags', (req, res) => {
   Tags.findOrCreate({ where: req.body })
     .then(([tag, created]) => {

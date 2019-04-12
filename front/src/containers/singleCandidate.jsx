@@ -27,11 +27,11 @@ class SingleCandidate extends React.Component {
   }
 
   createInterview (candidate) {
-    Axios.post('/api/interview/newInterv', {
+    Axios.post('/api/interview/newInterview', {
       candidateId: candidate
     })
       .then(interview => {
-        this.props.history.push(`/candidate/${candidate}/interview/${interview.data.id}`);
+        this.props.history.push(`/candidates/${candidate}/interview/${interview.data.id}`);
       });
   }
 
@@ -82,6 +82,7 @@ class SingleCandidate extends React.Component {
       usersSIST={this.props.usersSIST}
       createInterview={this.createInterview}
       changeCandStatus={this.changeCandStatus}
+      onClickInterview={this.createInterview}
     />
     );
   }
