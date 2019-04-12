@@ -1,38 +1,33 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { connect } from 'react-redux';
-import { getAllCandidates } from '../redux/action-creator/candidate-actions';
+// import { Preguntas } from '../containers/seed';
 
-class CreateInterviewComp extends React.Component {
-  componentDidMount () {
-    this.props.getAllCandidates();
-  }
+const CreateInterviewComp = (props) => (
+  <div>
+    <div className='probando'>
+      <div style={{marginLeft:'30px'}}>
+        <h2>Full name:</h2> {props.candidate.fullName}
+        <h2>Phone:</h2> {props.candidate.telNumber}
+        <h2>Email Adress:</h2> {props.candidate.email}
+      </div>
 
-  render () {
-    return (
-      <div>
-        <div className='probando'>
-          <div >
-            <h2>Full name:</h2> {this.props.candidates[0] && this.props.candidates[0].fullName}
-            <h2>Phone:</h2> {this.props.candidates[0] && this.props.candidates[0].telNumber}
-            <h2>Email Adress:</h2> {this.props.candidates[0] && this.props.candidates[0].email}
-          </div>
+      <div >
+        <h2>Tags:</h2> {'aca van los tags'}
+      </div>
+    </div>
 
-          <div >
-            <h2>Tags:</h2> {'aca van los tags'}
+    <form id='formCand'>
+      {props.questions.map((pregunta) => (
+        <div key={pregunta.id} className="form-row">
+          <div className="form-group col-md-6">
+            <label htmlFor="inputEmail4" style={{ margin: '10px' }}>{pregunta.content}</label>
+            <textarea onChange={props.onChange} name={ pregunta.id }style={{ margin: '5px' }} type="email" className="form-control" id="inputEmail4" placeholder="Respuesta"/>
           </div>
         </div>
-      </div>
-    );
-  };
-}
+      ))}
+      <button type='button' className='ActionsBotonesNaranja btn-lg' onClick ={props.onSubmit}>Submit</button>
+    </form>
+  </div>
+);
 
-const mapStateToProps = (state) => ({
-  candidates: state.candidates
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getAllCandidates: () => dispatch(getAllCandidates())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateInterviewComp);
+export default CreateInterviewComp;

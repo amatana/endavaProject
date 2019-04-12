@@ -5,7 +5,7 @@ import ReactFileReader from 'react-file-reader';
 
 import { saveTagsFromFile, saveQuestionsFromFile } from '../redux/action-creator/questionActions';
 
-class AllQuestions extends React.Component {
+class AllQuestionsGrid extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -40,43 +40,38 @@ class AllQuestions extends React.Component {
       let array;
       for (var i = 0; i < lines.length; i++) {
         currentline = lines[i].split(';');
-        console.log("==============================================",currentline[2] )
-        // array = JSON.parse(currentline[2]);
-        array = currentline[2];
+        array = JSON.parse(currentline[2]);
         obj = {
           content: quoteRemover(currentline[0]),
           // eslint-disable-next-line no-unneeded-ternary
           required: currentline[1] === 'true' ? true : false,
           tags: array,
-          area: 'Sistemas'
+          area: 'RRHH'
         };
         result.push(obj);
       }
 
       this.props.saveTagsFromFile(result);
-      this.props.saveQuestionsFromFile(result);
+      this.props.saveQuestionsFromFile(result, 'RRHH');
     };
 
     reader.readAsText(files[0]);
   }
 
-
   render () {
     const { onClick, questions } = this.props;
 
     return (
-
       <div className="dropdown show" >
         <button type="button" className="btn btn-link" role="button" id="addQuestionIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ float: 'right' }} >
           <img src="/utils/add.svg" width="50" id='addQuestBtn' />
         </button>
         <div className='modalQuest'>
           <div className="dropdown-menu probandModal" aria-labelledby="addQuestionIcon">
-            <button className="dropdown-item probando2" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
+            <button className="dropdown-item probando2" onClick={() => onClick(null, 'addManually')}>Add new question manually</button>
             <ReactFileReader handleFiles={this.handleFiles} fileTypes={'.csv'}><button className="dropdown-item probando2">Upload questions from file</button></ReactFileReader>
           </div>
         </div>
-
         <div className="modal fade" id="confirmDeleteModal" tabIndex="-1" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
@@ -146,10 +141,9 @@ class AllQuestions extends React.Component {
     );
   };
 }
-
 const mapDispatchToProps = (dispatch) => ({
   saveTagsFromFile: (questionsArray) => dispatch(saveTagsFromFile(questionsArray)),
-  saveQuestionsFromFile: (questionsArray) => dispatch(saveQuestionsFromFile(questionsArray))
+  saveQuestionsFromFile: (questionsArray, area) => dispatch(saveQuestionsFromFile(questionsArray, area))
 });
 
-export default connect(null, mapDispatchToProps)(AllQuestions);
+export default connect(null, mapDispatchToProps)(AllQuestionsGrid);
