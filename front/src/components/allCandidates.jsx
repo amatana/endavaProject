@@ -26,7 +26,6 @@ class allCandidates extends React.Component {
   }
 
   render() {
-    console.log('============= SOY LAS PROPS DEL a', this.state)
     return (
       !this.props.user.isAdmin ? <h2>Lo siento, pero no tienes acceso para ver esta página</h2>
         : <div>
