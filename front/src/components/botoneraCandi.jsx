@@ -14,11 +14,8 @@ class botonera extends React.Component {
   }
 
   componentDidUpdate (prevProps, prevState) {
-      console.log('PREV PROPSSSSSSSSS', prevProps)
-      console.log('PREV STTATEEEEEEEE', prevState)
-      console.log('SOY EL ESADO LOCLALLL', this.state)
-    if ( prevState !== this.state) {
-      this.props.changeCandStatus(this.props.candidate.id, this.state.status)
+    if (prevState !== this.state) {
+      this.props.changeCandStatus(this.props.candidate.id, this.state.status);
     }
   }
 
@@ -30,10 +27,11 @@ class botonera extends React.Component {
           ? (<div>
             <div id='botonesHR'>
               <button className='ActionsBotones' style={{ backgroundColor: '#0EB8DD' }}>Assign Interviewers</button>
-              <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }} onClick={() => {
-                this.props.onClickInterview(this.props.candidate.id);
-              }
-              }>Create Interview</button>
+              <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }}
+                onClick={() => {
+                  this.props.onClickInterview(this.props.candidate.id);
+                }
+                }>Create Interview</button>
               <button
                 className='ActionsBotones'
                 style={{ backgroundColor: '#0EDD4D' }}

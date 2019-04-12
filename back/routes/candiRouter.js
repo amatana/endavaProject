@@ -5,7 +5,6 @@ const Candidate = require('../models/candidate');
 const User = require('../models/User');
 
 router.post('/create', (req, res) => {
-  console.log('lo que me llego al servidor ', req.body.candidate);
   Candidate.create(req.body.candidate)
     .then(data => res.status(201).send(data))
     .catch(e => res.send({ error: e.errors[0].message }));
@@ -83,10 +82,8 @@ router.post('/setUserSIST2', (req, res) => {
 
 // Funciones que cambian el estado del Candidato
 router.put('/changeStatus', (req, res) => {
-  console.log('LO QUE MADO AL PUT', req.body)
   Candidate.findByPk(req.body.idCandi)
     .then(candidato => {
-      console.log('SOYBEL CANDIDATOOOOOO///', candidato)
       candidato.update({ status: req.body.status })
       res.sendStatus(200)
     })

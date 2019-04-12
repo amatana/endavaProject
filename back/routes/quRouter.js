@@ -19,7 +19,6 @@ router.get('/reqAllQuestions/:area', (req, res) => {
   }
   )
     .then(quest => {
-      // console.log("questions ============> ", quest)
       res.send(quest);
     });
 });
