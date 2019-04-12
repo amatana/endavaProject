@@ -240,7 +240,7 @@ form h5 {
 }
 #botonesHR{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
 }
 .ActionsBotonesNaranja{

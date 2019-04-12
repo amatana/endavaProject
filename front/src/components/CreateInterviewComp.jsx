@@ -5,7 +5,7 @@ import React from 'react';
 const CreateInterviewComp = (props) => (
   <div>
     <div className='probando'>
-      <div style={{marginLeft:'20px'}}>
+      <div style={{marginLeft:'30px'}}>
         <h2>Full name:</h2> {props.candidate.fullName}
         <h2>Phone:</h2> {props.candidate.telNumber}
         <h2>Email Adress:</h2> {props.candidate.email}
