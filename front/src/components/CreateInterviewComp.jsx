@@ -5,7 +5,7 @@ import React from 'react';
 const CreateInterviewComp = (props) => (
   <div>
     <div className='probando'>
-      <div >
+      <div style={{marginLeft:'20px'}}>
         <h2>Full name:</h2> {props.candidate.fullName}
         <h2>Phone:</h2> {props.candidate.telNumber}
         <h2>Email Adress:</h2> {props.candidate.email}
@@ -25,7 +25,7 @@ const CreateInterviewComp = (props) => (
           </div>
         </div>
       ))}
-      <button type='button' onClick ={props.onSubmit}> Que miras pelotudo</button>
+      <button type='button' className='ActionsBotonesNaranja btn-lg' onClick ={props.onSubmit}>Submit</button>
     </form>
   </div>
 );

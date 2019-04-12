@@ -133,6 +133,7 @@
 .btnLogOut{
     border: 1px solid black;
      background-color: #F0F3F3;
+     border-radius: 30px;
 }
 .titHome{
     text-align: center;
@@ -207,14 +208,18 @@ form h5 {
 }
 .subBtn{
     padding: 10px;
-    background-color:#169922;
+    background-color:white;
     border-radius: 30px;
+    border: 1px solid #DE411B;
+}
+.subBtn:hover{
+    background-color: #DE411B;
 }
 .assignUser{
-    margin-bottom: 30px;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    width: 60%;
+    width: 50%;
+    margin: 40px auto;
 }
 #infoCandi{
     display: grid;
@@ -223,6 +228,37 @@ form h5 {
 }
 #actions{
     margin: 20px 20px;
+}
+#botonesHR{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+}
+.ActionsBotonesNaranja{
+    margin: 10px;
+    padding: 20px;
+    border-radius: 30px;
+    border: 1px solid #DE411B;
+    background-color: #DE411B
+}
+.ActionsBotonesBlanco{
+    margin: 10px;
+    padding: 20px;
+    border-radius: 30px;
+    border: 1px solid #DE411B;
+    background-color: white;
+}
+.ActionsBotonesBlanco:hover{
+    background-color: #DE411B;
+}
+.ActionsBotonesNaranja:hover{
+    background-color: white;
+}
+button.ActionsBotones{
+    margin: 10px;
+    padding: 20px;
+    border-radius: 30px;
+    border: 1px solid black;
 }
 @media (min-width: 992px){
     .boton:hover{
