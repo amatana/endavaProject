@@ -16,7 +16,8 @@ import CandidatesHome from '../components/candidateHome';
 import CreateInterview from './CreateInterview';
 import TagsHome from '../components/tagsHome';
 import AddTag from '../containers/AddTag';
-import SistInterview from '../containers/SistInterview';
+import PreSistInterview from '../containers/PreSistInterview';
+
 import SingleCandidate from '../containers/singleCandidate';
 import { fetchUser } from '../redux/action-creator/user-actions';
 
@@ -67,7 +68,7 @@ class Main extends React.Component {
           <Route exact path='/questions/add' render={({ history }) => (<AddQuestion history={history} user={this.props.user}/>)} />
           <Route exact path='/tags' render={({ history }) => (<AddTag history={history} user={this.props.user}/>)} />
           <Route exact path='/questions/loadFile' render={({ history }) => (<LoadFile history={history}/>)} />
-          <Route exact path='/interview/sist' render={({ history }) => (<SistInterview history={history}/>)} />
+          <Route exact path='/preinterview/sist/:candID' render={({ history, match }) => (<PreSistInterview history={history} user={this.props.user} candID={match.params.candID}/>)} />
         </Switch>
       </div>
     );
