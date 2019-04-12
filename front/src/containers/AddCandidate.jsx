@@ -61,7 +61,7 @@ class AddCandidate extends React.Component {
     });
 
     if (!found) {
-      arr.push(this.state.allTags[index].tag);
+      arr.push(this.state.allTags[index].id);
       this.setState({ selectedTags: arr });
     } else {
       alert('The tag was aleady added');

@@ -19,8 +19,12 @@ router.post('/create', (req, res) => {
   console.log(candidateData);
 
   Candidate.create(candidateData)
-    .then(data => res.status(201).send(data))
-    .catch(e => res.send({ error: e.errors[0].message }));
+    .then((candidate) => {
+      candidate.setTags(req.body.candidate.selectedTags);
+    });
+
+  // .then(data => res.status(201).send(data))
+  // .catch(e => res.send({ error: e.errors[0].message }));
 
   console.log('TAG ID ARRAY: ', req.body.candidate.selectedTags);
 });
