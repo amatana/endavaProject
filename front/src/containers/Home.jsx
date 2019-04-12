@@ -3,11 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = (props) => {
-
-  if (props.user.isAdmin === true) {
-    var bnq = <div><button style={{ width: '100%', margin: '20px', fontSize: '30px' }} className="btn btn-lg boton">Questions</button></div>;
-  }
-
   return (
     props.user && props.user.isAdmin
       ? <div>

@@ -12,13 +12,14 @@ class SingleCandidate extends React.Component {
     this.state = {
       userHRId: null,
       userSIST1: null,
-      userSIST2: null
+      userSIST2: null,
     };
     this.handleChangeId = this.handleChangeId.bind(this);
     this.submitHR = this.submitHR.bind(this);
     this.submitSIST1 = this.submitSIST1.bind(this);
     this.submitSIST2 = this.submitSIST2.bind(this);
     this.createInterview = this.createInterview.bind(this);
+    this.changeCandStatus = this.changeCandStatus.bind(this);
   }
   componentDidMount () {
     this.props.getAllUsers();
@@ -56,23 +57,33 @@ class SingleCandidate extends React.Component {
   submitSIST2 (idCandi) {
     Axios.post('/api/candidate/setUserSIST2', {
       idUser: this.state.userSIST2 || this.props.usersSIST[0].id,
-      idCandi })
+      idCandi
+    })
       .then(() => this.props.fetchCandidate(this.props.idCand));
   }
+
+  changeCandStatus (idCandi, status) {
+    Axios.put('/api/candidate/changeStatus', { idCandi, status })
+      .then(() => this.props.fetchCandidate(this.props.idCand));
+  };
+
+
   render () {
     return (
       !!this.props.candidate && !!this.props.candidate.id &&
-      <ActionsCandidates
-        usersRH={this.props.usersRH}
-        user={this.props.user}
-        candidate={this.props.candidate}
-        submitHR={this.submitHR}
-        handleChangeID={this.handleChangeId}
-        handleSubSIS1={this.submitSIST1}
-        handleSubSIS2={this.submitSIST2}
-        usersSIST={this.props.usersSIST}
-        onClickInterview={this.createInterview}
-      />
+    <ActionsCandidates
+      usersRH={this.props.usersRH}
+      user={this.props.user}
+      candidate={this.props.candidate}
+      submitHR={this.submitHR}
+      handleChangeID={this.handleChangeId}
+      handleSubSIS1={this.submitSIST1}
+      handleSubSIS2={this.submitSIST2}
+      usersSIST={this.props.usersSIST}
+      createInterview={this.createInterview}
+      changeCandStatus={this.changeCandStatus}
+      onClickInterview={this.createInterview}
+    />
     );
   }
 }
