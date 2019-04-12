@@ -26,7 +26,7 @@ class botonera extends React.Component {
         {(this.props.user && this.props.user.area === 'RRHH')
           ? (<div>
             <div id='botonesHR'>
-              <button className='ActionsBotones' style={{ backgroundColor: '#0EB8DD' }}>Assign Interviewers</button>
+              {/* <button className='ActionsBotones' style={{ backgroundColor: '#0EB8DD' }}>Assign Interviewers</button> */}
               <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }}
                 onClick={() => {
                   this.props.onClickInterview(this.props.candidate.id);
@@ -45,9 +45,9 @@ class botonera extends React.Component {
           </div>)
           : (<div>
             <div id='botonesHR'>
-              <button className='ActionsBotones' style={{ backgroundColor: '#0EB8DD' }}>Assign Interviewer SIST</button>
+              {/* <button className='ActionsBotones' style={{ backgroundColor: '#0EB8DD' }}>Assign Interviewer SIST</button> */}
               <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }} onClick={() => this.props.onClickInterview(this.props.candidate.id)}>Prepare Interview SIST</button>
-              <button className='ActionsBotones' style={{ backgroundColor: '#0EDD4D' }} onClick={() => this.changeStatus('Approved Sist')}> Approve SIST</button>
+              <button className='ActionsBotones' style={{ backgroundColor: '#0EDD4D' }} onClick={() => this.changeStatus('Approved Sist')}> APPROVE SIST</button>
               <button className='ActionsBotones' style={{ backgroundColor: '#DD0E0E' }} onClick={() => this.changeStatus('Rejected Sist')}>Reject SIST</button>
             </div>
           </div>)
