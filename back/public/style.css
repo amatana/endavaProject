@@ -216,11 +216,10 @@ form h5 {
     background-color: #DE411B;
 }
 .assignUser{
-    margin-bottom: 30px;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    width: 70%;
-    margin: 10px auto;
+    width: 50%;
+    margin: 40px auto;
 }
 #infoCandi{
     display: grid;

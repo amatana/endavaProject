@@ -16,7 +16,6 @@ router.get('/getAll', (req, res) => {
     .then(candidates => res.send(candidates));
 });
 
-
 router.get('/getOne/:id', (req, res) => {
   Candidate.findByPk(req.params.id, {
     include: [{ model: User, as: 'interviewerHR' }, { model: User, as: 'interSIST1' }, { model: User, as: 'interSIST2' }]
@@ -42,7 +41,8 @@ router.get('/getMyCandidates/:userId', (req, res) => {
     }
   })
     .then(candidates => {
-      res.send(candidates)});
+      res.send(candidates); 
+});
 });
 
 router.get('/getMyCandidates/:userId', (req, res) => {
@@ -52,7 +52,8 @@ router.get('/getMyCandidates/:userId', (req, res) => {
     }
   })
     .then(candidates => {
-      res.send(candidates)});
+      res.send(candidates) 
+;});
 });
 
 // Funciones que asignan entrevistadores
@@ -80,10 +81,15 @@ router.post('/setUserSIST2', (req, res) => {
     .then(candidate => res.send(candidate));
 });
 
-//Funciones que cambian el estado del Candidato 
-router.post('/changeStatus', (req,res) => {
+// Funciones que cambian el estado del Candidato
+router.put('/changeStatus', (req, res) => {
+  console.log('LO QUE MADO AL PUT', req.body)
   Candidate.findByPk(req.body.idCandi)
-})
-
+    .then(candidato => {
+      console.log('SOYBEL CANDIDATOOOOOO///', candidato)
+      candidato.update({ status: req.body.status })
+      res.sendStatus(200)
+    })
+});
 
 module.exports = router;
