@@ -7,10 +7,6 @@ const setInterview = (interview) => ({
 });
 
 export const fetchInterview = (interviewID) => dispatch =>
-  axios.get('/api/interview/newInterview/' + interviewID)
-    .then((interview) => {
-      console.log('---------------------------------', interview.data);
-      dispatch(setInterview(interview.data));
-    }
-    )
+  axios.get('/api/interview/getInterview/' + interviewID)
+    .then((interview) => dispatch(setInterview(interview.data)));
 ;
