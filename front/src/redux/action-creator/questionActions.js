@@ -1,8 +1,14 @@
-import { SET_QUESTIONS, DELETE_QUESTION } from '../constants';
+import { SET_QUESTIONS, SET_HRQUESTIONS, DELETE_QUESTION } from '../constants';
 import axios from 'axios';
 
 const setQuestions = (questions) => ({
   type: SET_QUESTIONS,
+  questions
+
+});
+
+const setHRQuestions = (questions) => ({
+  type: SET_HRQUESTIONS,
   questions
 
 });
@@ -16,6 +22,10 @@ const setQuestions = (questions) => ({
 export const searchAllQuestions = (area) => dispatch =>
   axios.get('/api/questions/reqAllQuestions/' + area)
     .then(res => dispatch(setQuestions(res.data)));
+
+export const searchHRQuestions = () => dispatch =>
+  axios.get('/api/questions/searchHRQuestions/')
+    .then(res => dispatch(setHRQuestions(res.data)));
 
 export const deleteQuestion = (questId, area) => dispatch =>
   axios.get('/api/questions/delete/' + questId)
@@ -49,6 +59,6 @@ export const saveTagsFromFile = (questionsArray) => dispatch => {
       tag: arrayNonDuplicatedTags[i]
     }));
     Promise.all(arrayPromsises)
-      .then(() => {});
+      .then(() => { });
   }
 };
