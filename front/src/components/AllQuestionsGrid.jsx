@@ -68,7 +68,7 @@ class AllQuestionsGrid extends React.Component {
         </button>
         <div className='modalQuest'>
           <div className="dropdown-menu probandModal" aria-labelledby="addQuestionIcon">
-            <button className="dropdown-item probando2" onClick={() => this.onClick(null, 'addManually')}>Add new question manually</button>
+            <button className="dropdown-item probando2" onClick={() => onClick(null, 'addManually')}>Add new question manually</button>
             <ReactFileReader handleFiles={this.handleFiles} fileTypes={'.csv'}><button className="dropdown-item probando2">Upload questions from file</button></ReactFileReader>
           </div>
         </div>
