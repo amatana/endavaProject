@@ -12,6 +12,11 @@ const setCandidates = (candidates) => ({
   candidates
 });
 
+const setMyCandidates = (candidates) => ({
+  type: 'SET_MYCANDIDATES',
+  candidates
+});
+
 export const createCandidate = (candidate) => dispatch =>
   axios.post('/api/candidate/create', { candidate })
     .then(res => res.data)
@@ -23,7 +28,10 @@ export const createCandidate = (candidate) => dispatch =>
 export const getAllCandidates = () => dispatch =>
   axios.get('/api/candidate/getAll')
     .then(res => res.data)
-    .then(candidates => dispatch(setCandidates(candidates)));
+    .then(candidates => {
+      dispatch(setCandidates(candidates));
+      return candidates;
+    });
 
 export const fetchCandidate = (id) => dispatch =>
   axios.get(`/api/candidate/getOne/${id}`)
@@ -31,4 +39,7 @@ export const fetchCandidate = (id) => dispatch =>
 
 export const fetchMyCandidates = (userId) => dispatch =>
   axios.get('/api/candidate/getMyCandidates/' + userId)
-    .then(candidates => dispatch(setCandidates(candidates.data)));
+    .then(candidates => {
+      dispatch(setMyCandidates(candidates.data));
+      return candidates.data;
+    });

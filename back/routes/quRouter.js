@@ -19,7 +19,6 @@ router.get('/reqAllQuestions/:area', (req, res) => {
   }
   )
     .then(quest => {
-      // console.log("questions ============> ", quest)
       res.send(quest);
     });
 });
@@ -83,6 +82,11 @@ router.post('/create', (req, res, next) => {
 //       res.send(200);
 //     });
 // });
+
+router.get('/searchHRQuestions', (req, res) => {
+  Questions.findAll({ where: { area: 'RRHH' } })
+    .then(area => res.send(area));
+});
 
 router.post('/create/tags', (req, res) => {
   Tags.findOrCreate({ where: req.body })
