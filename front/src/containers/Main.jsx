@@ -29,7 +29,7 @@ class Main extends React.Component {
   render () {
     return (
       <div>
-        {/* <Route render= {({ history }) => (<Header fetchUser={this.props.fetchUser} user={this.props.user} history={history} />)} /> */}
+        <Route render= {({ history }) => (<Header fetchUser={this.props.fetchUser} user={this.props.user} history={history} />)} />
         <Switch>
           <Route exact path='/' render={({ history }) => (<Home history={history} user={this.props.user}/>)} />
           <Route exact path="/login" render={({ history }) => (<Login history={history} />)} />

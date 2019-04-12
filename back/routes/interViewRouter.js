@@ -12,11 +12,9 @@ router.post('/newInterview', (req, res) => {
     });
 });
 
-
 router.get('/getInterview/:id', (req, res) => {
   Interview.findByPk(1)
-  .then( (data) =>  res.send(data))
-  
+    .then((data) => res.send(data));
 })
 ;
 
