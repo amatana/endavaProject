@@ -29,12 +29,13 @@ class allCandidates extends React.Component {
     return (
       !this.props.user.isAdmin && !!(this.props.user.area === 'Sistemas')
         ? <div>
-          <form className="form-inline" style={{ float: 'left', margin: 'auto' }}>
-            <i className="fas fa-search" aria-hidden="true"></i>
-            <input onChange={this.props.handleChange} className="form-control form-control-sm ml-3 w-75 inputSearch" type="text" placeholder="Filter by State" aria-label="Search" />
-          </form>
           <div className='addcand'>
-            <Link to="/candidates/addCandidate"><button type="button" className="btn btn-lg ActionsBotonesNaranja">Add Candidate</button></Link>
+            <div><img style={{textAlign:'left', display: 'block'}} className='imgHome' src='./utils/logo.png' /></div>
+            <form className="form" style={{ float: 'left', margin: 'auto' }}>
+              <i className="fas fa-search" aria-hidden="true"></i>
+              <input onChange={this.props.handleChange} className="form-control form-control-sm ml-3 w-75 inputSearch" type="text" placeholder="Filter by State" aria-label="Search" />
+            </form>
+            <Link to="/candidates/addCandidate"><button type="button" className="btn btn-lg ActionsBotonesNaranja">Add Candidate + </button></Link>
           </div>
           <div className='tableDiv' style={{ margin: '3% 1%' }} >
             <h2 className='titHome'>
@@ -52,16 +53,17 @@ class allCandidates extends React.Component {
           </div>
         </div>
         : <div>
-          <form className="form-inline" style={{ float: 'left', margin: 'auto' }}>
-            <i className="fas fa-search" aria-hidden="true"></i>
-            <input onChange={this.props.handleChange} className="form-control form-control-sm ml-3 w-75 inputSearch" type="text" placeholder="Filter by State" aria-label="Search" />
-          </form>
           <div className='addcand'>
-            <Link to="/candidates/addCandidate"><button type="button" className="btn btn-lg ActionsBotonesNaranja">Add Candidate</button></Link>
-          </div>
+            <div><img style={{textAlign:'left', display: 'block', margin: '10px'}}  className='imgHome' src='/utils/logo.png' /></div>
+            <form className="form" >
+              <i className="fas fa-search" aria-hidden="true"></i>
+              <input onChange={this.props.handleChange} className="form-control inputSearch" type="text" placeholder="Filter by State" aria-label="Search" />
+            </form>
+              <Link to="/candidates/addCandidate"><button type="button" className="btn btn-lg ActionsBotonesNaranja">Add Candidate</button></Link>
+            </div>
 
-          <div className='tableDiv' style={{ margin: '3% 1%' }} >
-            <h2 className='titHome'>
+            <div className='tableDiv' >
+              <div></div>
               {!!(this.props.user.area === 'RRHH') && <button className='ActionsBotonesBlanco' onClick={() => {
                 this.props.getAllCandidates()
                   .then(candidates => this.setState({ candidates: candidates }));
@@ -71,27 +73,27 @@ class allCandidates extends React.Component {
                 this.props.fetchMyCandidates(this.props.user.id)
                   .then(candidates => this.setState({ candidates: candidates }));
               }}>MY CANDIDATES</button>
-            </h2>
+              <div></div>
+            </div>
+            <div>
+              <CandidateTable
+                candidates={this.state.candidates}
+                input={this.props.input}
+              />
+            </div>
           </div>
-          <div>
-            <CandidateTable
-              candidates={this.state.candidates}
-              input={this.props.input}
-            />
-          </div>
-        </div>
-    );
-  }
-}
-
+          );
+        }
+      }
+      
 const mapStateToProps = (state) => ({
-  user: state.user.user
-  // candidates: state.candidate.candidates,
-  // myCandidates: state.candidate.myCandidates
-});
+            user: state.user.user
+          // candidates: state.candidate.candidates,
+          // myCandidates: state.candidate.myCandidates
+        });
 const mapDispatchToProps = (dispatch) => ({
-  fetchMyCandidates: (userId) => dispatch(fetchMyCandidates(userId)),
-  getAllCandidates: () => dispatch(getAllCandidates())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(allCandidates);
+            fetchMyCandidates: (userId) => dispatch(fetchMyCandidates(userId)),
+          getAllCandidates: () => dispatch(getAllCandidates())
+        });
+        
+        export default connect(mapStateToProps, mapDispatchToProps)(allCandidates);
