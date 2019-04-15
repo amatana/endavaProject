@@ -3,6 +3,7 @@ const router = express.Router();
 const Sequelize = require('sequelize');
 const Candidate = require('../models/candidate');
 const User = require('../models/User');
+const Tag = require('../models/Tags')
 
 router.post('/create', (req, res) => {
   Candidate.create(req.body.candidate)
@@ -19,7 +20,8 @@ router.get('/getOne/:id', (req, res) => {
   Candidate.findByPk(req.params.id, {
     include: [{ model: User, as: 'interviewerHR' },
       { model: User, as: 'interSIST1' },
-      { model: User, as: 'interSIST2' }]
+      { model: User, as: 'interSIST2' },
+      { model: Tag }]
   })
     .then(candidate => {
       res.send(candidate)

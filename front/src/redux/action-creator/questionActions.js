@@ -1,4 +1,4 @@
-import { SET_QUESTIONS, SET_HRQUESTIONS, DELETE_QUESTION } from '../constants';
+import { SET_QUESTIONS, SET_HRQUESTIONS, DELETE_QUESTION, SET_CANDIDATE_QUESTIONS } from '../constants';
 import axios from 'axios';
 
 const setQuestions = (questions) => ({
@@ -11,6 +11,11 @@ const setHRQuestions = (questions) => ({
   type: SET_HRQUESTIONS,
   questions
 
+});
+
+const setCandidateQuestions = (candidateQuestions) => ({
+  type: SET_CANDIDATE_QUESTIONS,
+  candidateQuestions
 });
 
 // const setDeletedQuestion = (questId) => ({
@@ -43,7 +48,7 @@ export const saveQuestionsFromFile = (questionsArray, area) => dispatch => {
     arrayPromsises.push(axios.post('/api/questions/create', questionsArray[i]));
   }
   Promise.all(arrayPromsises)
-    .then(() => {console.log('=========== MANDO A BUSCAR LAS PREGUNTAS A BD= ==========', area);dispatch(searchAllQuestions(area))});
+    .then(() => { console.log('=========== MANDO A BUSCAR LAS PREGUNTAS A BD= ==========', area); dispatch(searchAllQuestions(area)); });
 };
 
 export const saveTagsFromFile = (questionsArray) => dispatch => {
@@ -62,3 +67,13 @@ export const saveTagsFromFile = (questionsArray) => dispatch => {
       .then(() => { });
   }
 };
+
+export const fetchCandidateQuestions = (tags) => dispatch => {
+  let arrayIdTags = [];
+  for (let i in tags) {
+    arrayIdTags.push(tags[i].id);
+  }
+  axios.post('/api/questions/candidateQuestions', { arrayIdTags })
+    .then(response => dispatch(setCandidateQuestions(response.data)));
+}
+;
