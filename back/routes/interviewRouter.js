@@ -17,7 +17,6 @@ router.post('/newInterview', (req, res) => {
 
 router.get('/getInterview/:id', (req, res) => {
   Interview.findOne({ where: { candidateIDId: req.params.id } })
-    // .then(data => console.log('0000000000000000000000000', data));
     .then(data => {
       res.send(data);
     });
