@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchInterview } from '../redux/action-creator/interviewActions';
+import { setInterviewCandidate } from '../redux/action-creator/interviewActions';
 import { fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { fetchCandidateQuestions } from '../redux/action-creator/questionActions';
 
@@ -12,9 +12,10 @@ class PreSistInterview extends React.Component {
     this.state = {
       candidato: {
         tags: []
-      },
+      }
     };
     this.onChangeCheckbox = this.onChangeCheckbox.bind(this);
+    this.onClickFunc = this.onClickFunc.bind(this);
   };
 
   componentDidMount () {
@@ -33,10 +34,21 @@ class PreSistInterview extends React.Component {
     let arrayQuestionsID = [];
     console.dir(e.target);
     for (let i = 0; i < this.props.candidateQuestions.length; i += 1) {
-      console.log(e.target[i].value, "++++++++++ ",e.target[i].checked);
-      if(e.target[i].checked) arrayQuestionsID.push(Number(e.target[i].value));
+      console.log(e.target[i].value, '++++++++++ ', e.target[i].checked);
+      if (e.target[i].checked) arrayQuestionsID.push(Number(e.target[i].value));
     }
-    console.log("arreglo de ID de pregutnas", arrayQuestionsID)
+    console.log('arreglo de ID de pregutnas', arrayQuestionsID);
+    console.log('CANDIDATO', this.props.candidate.id);
+    this.props.setInterviewCandidate({
+      candidateID: this.props.candidate.id,
+      questionsID: arrayQuestionsID
+    });
+    alert('Interview has been created! ');
+  }
+
+  onClickFunc () {
+    console.log('LEONARDOOOOOOOOOOO!!!!!!!!!!!!!!!!!!');
+    this.props.history.push('/PAGINA_DE_LEO');
   }
   render () {
     return (<div>
@@ -146,13 +158,10 @@ Select questions
           <legend>Select questions</legend>
           {this.props.candidateQuestions.map(preg => (
             <div key={preg.id}>
-              {/* <input type="checkbox" onChange={this.onChangeCheckbox} value={preg.id}></input>{preg.content} */}
-
               <input type="checkbox" name={preg.id} value={preg.id}></input>
               <label >{preg.content}</label>
             </div>
           ))}
-          {/* <div> */}
           <button
             style={{
               position: 'absolute',
@@ -165,21 +174,21 @@ Select questions
               boxSizing: 'border-box',
               borderRadius: '30px'
             }}>Create interview</button>
+          <div>
+            <button onClick={this.onClickFunc}
+              style={{
+                position: 'absolute',
+                width: '268px',
+                height: '60px',
+                left: '400px',
+                top: '1000px',
+                background: '#DE411C',
+                border: '1px solid #DE411C',
+                boxSizing: 'border-box',
+                borderRadius: '30px'
+              }}>Go to interview</button>
+          </div>
         </form>
-      </div>
-      <div>
-        <button
-          style={{
-            position: 'absolute',
-            width: '268px',
-            height: '60px',
-            left: '400px',
-            top: '1000px',
-            background: '#DE411C',
-            border: '1px solid #DE411C',
-            boxSizing: 'border-box',
-            borderRadius: '30px'
-          }}>Go to interview</button>
       </div>
     </div>);
   }
@@ -190,9 +199,9 @@ const mapStateToProps = (state) => ({
   candidateQuestions: state.question.candidateQuestions
 });
 const mapDispatchToProps = (dispatch) => ({
-  fetchInterview: (interviewID) => dispatch(fetchInterview(interviewID)),
   fetchCandidate: (candID) => dispatch(fetchCandidate(candID)),
-  fetchCandidateQuestions: (tags) => dispatch(fetchCandidateQuestions(tags))
+  fetchCandidateQuestions: (tags) => dispatch(fetchCandidateQuestions(tags)),
+  setInterviewCandidate: (obj) => dispatch(setInterviewCandidate(obj))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreSistInterview);
