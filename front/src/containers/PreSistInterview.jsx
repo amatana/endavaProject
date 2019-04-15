@@ -3,29 +3,41 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchInterview } from '../redux/action-creator/interviewActions';
+import { fetchCandidate } from '../redux/action-creator/candidate-actions';
+import { fetchCandidateQuestions } from '../redux/action-creator/questionActions';
 
 class PreSistInterview extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      interviewID: 1,
-      interview: {},
-      value: 'HOLA MUNDO! JUAN CARLOS HERMACORA',
-      listaDePregunta: ['chocolate', 'helado', 'flan', 'stolen', 'arroz con leche']
+      candidato: {
+        tags: []
+      },
     };
-  }
+    this.onChangeCheckbox = this.onChangeCheckbox.bind(this);
+  };
 
   componentDidMount () {
-    this.props.fetchInterview(this.state.interviewID);
+    this.props.fetchCandidate(this.props.candID);
   }
 
-  // componentDidUpdate (prevState) {
-  //   if (prevState.interview.id !== this.props.interview.id) {
-  //     this.setState({ interview: this.props.interview });
-  //     console.log('LLEGO LA ENTREVISTA CON ID: ', this.state.interviewID, 'CONTENIDO', this.state.interview);
-  //   }
-  // }
+  componentDidUpdate (prevState) {
+    if (prevState.candidate !== this.props.candidate) {
+      this.props.fetchCandidateQuestions(this.props.candidate.tags);
+      this.setState({ candidato: this.props.candidate });
+    }
+  }
 
+  onChangeCheckbox (e) {
+    e.preventDefault();
+    let arrayQuestionsID = [];
+    console.dir(e.target);
+    for (let i = 0; i < this.props.candidateQuestions.length; i += 1) {
+      console.log(e.target[i].value, "++++++++++ ",e.target[i].checked);
+      if(e.target[i].checked) arrayQuestionsID.push(Number(e.target[i].value));
+    }
+    console.log("arreglo de ID de pregutnas", arrayQuestionsID)
+  }
   render () {
     return (<div>
       <img src="/utils/Frame.png"></img>
@@ -55,60 +67,56 @@ class PreSistInterview extends React.Component {
         textAlign: 'center',
         color: '#FFFFFF' }}>
         CREATE CANDIDATE  + </div>
-      <h2 style={{ position: 'absolute',
-        width: '325px',
-        height: '22px',
-        left: '40px',
-        top: '155px',
+      <div>
+        <h2 style={{ position: 'absolute',
+          width: '325px',
+          height: '22px',
+          left: '40px',
+          top: '155px',
 
-        fontFamily: 'Roboto Condensed',
-        fontStyle: 'normal',
-        fontWeight: 'bold',
-        fontSize: '20px',
-        lineHeight: 'normal',
-        letterSpacing: '-0.01em',
+          fontFamily: 'Roboto Condensed',
+          fontStyle: 'normal',
+          fontWeight: 'bold',
+          fontSize: '20px',
+          lineHeight: 'normal',
+          letterSpacing: '-0.01em',
 
-        color: '#000000' }}>Candidate info</h2>
-      <input
-        className= 'testNew'
-        type="text"
-        value={this.state.value}
-      />
-      <button style={{ position: 'absolute',
-        left: '66.67%',
+          color: '#000000' }}>Candidate info
+        </h2>
+      </div>
+      <div>
+        <textarea className= 'testNew' type="text" value={
+          this.state.candidato.fullName + '\n' +
+              this.state.candidato.email + '\n' +
+              this.state.candidato.telNumber + '\n' +
+              this.state.candidato.url
+        }/>
+      </div>
+
+      <div style={{
+        position: 'absolute',
+        left: '70.67%',
         right: '22.22%',
         top: '20.21%',
-        bottom: '76.66%',
+        bottom: '76.66%' }}>
+        {this.state.candidato.tags.map(tag => (
+          <button key={tag.tag}
+            style={{
+              background: '#FFFFFF',
+              border: '1px solid #9BB4BE',
+              boxSizing: 'border-box',
+              borderRadius: '24px' }}>
+            <h4 style={{ fontFamily: 'Avenir',
+              fontSize: '14px',
+              lineHeight: '24px',
+              textAlign: 'center',
 
-        background: '#FFFFFF',
-        border: '1px solid #9BB4BE',
-        boxSizing: 'border-box',
-        borderRadius: '24px' }}>
-        <h4 style={{ fontFamily: 'Avenir',
-          fontSize: '14px',
-          lineHeight: '24px',
-          textAlign: 'center',
-
-          color: '#000000' }}><strong>Tag1</strong></h4>
-      </button>
-      <button style={{ position: 'absolute',
-        left: '79.17%',
-        right: '9.72%',
-        top: '20.21%',
-        bottom: '76.66%',
-
-        background: '#FFFFFF',
-        border: '1px solid #9BB4BE',
-        boxSizing: 'border-box',
-        borderRadius: '24px' }}>
-        <h4 style={{ fontFamily: 'Avenir',
-          fontSize: '14px',
-          lineHeight: '24px',
-          textAlign: 'center',
-
-          color: '#000000' }}><strong>Tag2</strong></h4>
-      </button>
-
+              color: '#000000'
+            }}>
+              <strong key={tag.tag}>{tag.tag}</strong></h4>
+          </button>
+        ))}
+      </div>
       < div style= {{ position: 'absolute',
         width: '325px',
         height: '22px',
@@ -134,17 +142,57 @@ Select questions
 
         background: 'rgba(155, 180, 190, 0.1)'
       }}>
-        {this.state.listaDePregunta.map(preg => (<li key={preg}>{preg}</li>)) }
+        <form onSubmit={this.onChangeCheckbox}>
+          <legend>Select questions</legend>
+          {this.props.candidateQuestions.map(preg => (
+            <div key={preg.id}>
+              {/* <input type="checkbox" onChange={this.onChangeCheckbox} value={preg.id}></input>{preg.content} */}
+
+              <input type="checkbox" name={preg.id} value={preg.id}></input>
+              <label >{preg.content}</label>
+            </div>
+          ))}
+          {/* <div> */}
+          <button
+            style={{
+              position: 'absolute',
+              width: '268px',
+              height: '60px',
+              left: '40px',
+              top: '1000px',
+              background: '#DE411C',
+              border: '1px solid #DE411C',
+              boxSizing: 'border-box',
+              borderRadius: '30px'
+            }}>Create interview</button>
+        </form>
+      </div>
+      <div>
+        <button
+          style={{
+            position: 'absolute',
+            width: '268px',
+            height: '60px',
+            left: '400px',
+            top: '1000px',
+            background: '#DE411C',
+            border: '1px solid #DE411C',
+            boxSizing: 'border-box',
+            borderRadius: '30px'
+          }}>Go to interview</button>
       </div>
     </div>);
   }
 }
 
 const mapStateToProps = (state) => ({
-
+  candidate: state.candidate.candidate,
+  candidateQuestions: state.question.candidateQuestions
 });
 const mapDispatchToProps = (dispatch) => ({
-  fetchInterview: (interviewID) => dispatch(fetchInterview(interviewID))
+  fetchInterview: (interviewID) => dispatch(fetchInterview(interviewID)),
+  fetchCandidate: (candID) => dispatch(fetchCandidate(candID)),
+  fetchCandidateQuestions: (tags) => dispatch(fetchCandidateQuestions(tags))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreSistInterview);
