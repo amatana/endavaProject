@@ -25,8 +25,6 @@ router.post('/create', (req, res) => {
     })
     .then(data => res.status(201).send(data));
   // .catch(e => res.send({ error: e.errors[0].message }));
-
-  console.log('TAG ID ARRAY: ', req.body.candidate.selectedTags);
 });
 
 router.get('/getAll', (req, res) => {

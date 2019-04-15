@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import AddTagInline from './addTagInline';
 
 const candidate = (props) => {
   return (
@@ -54,23 +55,22 @@ const candidate = (props) => {
               <label htmlFor="url">URL Linkedin</label>
               <input onChange={props.onChange} type="url" className="form-control inputLogin" id="URLLinkedin" placeholder="URL Linkedin" name="url" />
             </div>
+            <div className="form-group">
+              <label htmlFor="url">Profile Tags</label>
+              <AddTagInline
+                onSubmit={props.handleSubmit}
+                onClick={props.onClick}
+                handleDelete={props.handleDelete}
+                allTags={props.allTags}
+                handleTagSubmit={props.handleTagSubmit}
+                selectedTags={props.selectedTags} />
+            </div>
             <div>
               <button onSubmit={props.onSubmit} type="submit" className="btn boton btn-lg botonLogin btn-primary" data-toggle="modal" data-target="#exampleModal">Add Applicant</button>
               <button onClick={() => props.onClick()} className="btn boton btn-lg botonLogin btn-primary" >View All Candidates</button>
             </div>
           </form>
-          <form onSubmit = {props.handleTagSubmit}>
-            <div className="form-group">
-              <label htmlFor="tags">Profile Tags</label>
-              <br/>
-              <select name = 'tagDropdown'>
-                {props.allTags && props.allTags.map((tag, i) => {
-                  return (<option value = {i}>{tag.tag}</option>);
-                })}
-              </select>
-              <input type="submit" value="Add Tag"/>
-            </div>
-          </form>
+
         </div>
         <div className='col-lg-3'></div>
       </div>
