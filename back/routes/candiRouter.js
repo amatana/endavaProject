@@ -18,12 +18,12 @@ router.get('/getAll', (req, res) => {
 router.get('/getOne/:id', (req, res) => {
   Candidate.findByPk(req.params.id, {
     include: [{ model: User, as: 'interviewerHR' },
-    { model: User, as: 'interSIST1' },
-    { model: User, as: 'interSIST2' }]
+      { model: User, as: 'interSIST1' },
+      { model: User, as: 'interSIST2' }]
   })
     .then(candidate => {
       res.send(candidate)
-        ;
+      ;
     });
 });
 
@@ -58,7 +58,7 @@ router.get('/getMyCandidates/:userId', (req, res) => {
   })
     .then(candidates => {
       res.send(candidates)
-        ;
+      ;
     });
 });
 

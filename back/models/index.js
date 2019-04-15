@@ -23,6 +23,7 @@ Tags.belongsToMany(Candidate, { through: 'candidate_tags' });
 // Relación entre Entrevistas y Preguntas que se harán/hicieron en la misma.
 Interview.belongsToMany(Questions, { through: Answers });
 Questions.belongsToMany(Interview, { through: Answers });
+Interview.hasMany(Answers);
 
 module.exports = {
   User,

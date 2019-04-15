@@ -1,7 +1,5 @@
 const express = require('express');
-
 const Interview = require('../models/interview');
-
 const router = express.Router();
 
 router.post('/newInterview', (req, res) => {
@@ -10,7 +8,7 @@ router.post('/newInterview', (req, res) => {
       candidateIDId: req.body.candidateId }
   })
     .then(([interview, created]) => {
-      if(created) interview.setCandidateID(req.body.candidateId);
+      if (created) interview.setCandidateID(req.body.candidateId);
       res.send(interview);
     });
 });

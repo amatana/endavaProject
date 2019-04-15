@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import CreateInterviewComp from '../components/CreateInterviewComp';
+import ReportComp from '../components/ReportComp';
 import { connect } from 'react-redux';
 import { fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { searchHRQuestions } from '../redux/action-creator/questionActions';
@@ -10,7 +11,8 @@ class CreateInterview extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      interviewID: this.props.idInter
+      interviewID: this.props.idInter,
+      submitted: false
 
     };
     this.handleChange = this.handleChange.bind(this);
@@ -19,6 +21,7 @@ class CreateInterview extends React.Component {
   componentDidMount () {
     this.props.searchHRQuestions();
     this.props.fetchCandidate(this.props.idCand);
+    this.state.submitted && this.setState({ submitted: false });
   }
 
   handleChange (e) {
@@ -28,14 +31,31 @@ class CreateInterview extends React.Component {
 
   onSubmit (e) {
     e.preventDefault();
-    console.log('estado local', this.state);
     let a = this.state;
-    this.props.submitHRAnswers(a);
+    console.log('ddddddddddddddddddddddddddddddddddd');
+    this.props.submitHRAnswers(a)
+      .then(() => {
+        console.log('(((((((((((((((((((((((((((((((((((((((((((((((((((((((');
+        this.setState({ submitted: true });
+      });
   }
 
   render () {
     return (
-      <CreateInterviewComp onSubmit={this.onSubmit} onChange={this.handleChange} questions={this.props.questionsHR} candidate={this.props.candidate} />
+      !this.state.submitted
+        ? <CreateInterviewComp
+          onSubmit={this.onSubmit}
+          onChange={this.handleChange}
+          questions={this.props.questionsHR}
+          candidate={this.props.candidate}
+          idInter={this.props.idInter}
+        />
+        : <ReportComp
+          questions={this.props.questionsHR}
+          candidate={this.props.candidate}
+          idInter={this.props.idInter}
+          history={this.props.history}
+        />
     );
   }
 }
