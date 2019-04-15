@@ -91,10 +91,11 @@
 }
 .testNew{
     position: absolute;
-    width: 900px;
+    width: 400px;
     height: 236px;
     left: 40px;
     top: 207px;
+    resize: none;
 
     background: rgba(155, 180, 190, 0.1);
 }

@@ -67,22 +67,6 @@ router.post('/create', (req, res, next) => {
     });
 });
 
-// router.post('/saveFromFile', (req, res) => {
-//   // console.log('--------------------', req.body.questions[1]);
-//   let arregloPreguntas = req.body.questions;
-//   let tagArray = [];
-//   for (let index = 0; index < arregloPreguntas.length; index++) {
-//     tagArray.push(arregloPreguntas[index].tags);
-//   }
-//   Questions.bulkCreate(req.body.questions)
-//     .then((createdQuestions) => {
-//       for (let i = 0; i < tagArray.length; i++) {
-//         promiseArray.push(createdQuestions[i].setTags(array[i]));
-//       }
-//       res.send(200);
-//     });
-// });
-
 router.get('/searchHRQuestions', (req, res) => {
   Questions.findAll({ where: { area: 'RRHH' } })
     .then(area => res.send(area));
@@ -95,15 +79,29 @@ router.post('/create/tags', (req, res) => {
     });
 });
 
-router.get('/test', (req, res) => {
-  Questions.findAll(
-    {
-      include: [{
-        model: Tags }
-      ] }
-  )
-    .then(resultado => {
-      res.send(resultado);
+router.post('/candidateQuestions', (req, res) => {
+  console.log('=====================>>>>>>>>>>>>', req.body);
+  let questionArray = req.body.arrayIdTags;
+  let promisesArray = [];
+  let questionToSend = [];
+
+  for (let i in questionArray) {
+    promisesArray.push(
+      Tags.findByPk(questionArray[i], { include: [{
+        model: Questions } ] })
+    );
+  }
+  Promise.all(promisesArray)
+    .then(questionsArray => {
+      for (let i in questionsArray) {
+        for (let j in questionsArray[i].questions) {
+          questionToSend.push({
+            id: questionsArray[i].questions[j].id,
+            content: questionsArray[i].questions[j].content
+          });
+        }
+      }
+      res.send(questionToSend);
     });
 });
 module.exports = router;
