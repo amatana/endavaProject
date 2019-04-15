@@ -27,12 +27,19 @@
 .boton{
     background-color: #DE411B
 }
+tr.grey{
+    background-color: rgba(155, 180, 190, 0.1);
+}
+tr.white{
+    background-color: white;
+}
 
 .header{
-    border-bottom: 1px solid black;
-    background-color: #DE411B;
-    height: 70px;
+    /* border-bottom: 1px solid #DE411B; */
+    /* background-color: #DE411B; */
+    height: 85px;
     padding: 8px;
+    padding-bottom: 2%;
 }
 .headerDisplay{
     width: 100%;
@@ -71,6 +78,7 @@
 .imgHome{
     width: 200px;
     justify-content: center;
+    margin:10% 10% 5% 10%;
 }
 
 #loginh1{
@@ -104,27 +112,32 @@
     height: 50px;
 }
 .homeDisplay{
-    width: 50%;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+    /* position: absolute; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* -ms-transform: translate(-50%, -50%); */
+    /* transform: translate(-50%, -50%); */
 }
 .botonHome{
-    background-color: #DE411B;
-    width: 100%;
-    margin: 3% 0px;
-    padding: 3%;
-    border-radius: 15px;
+    background: #FFFFFF;
+    border: 1px solid #DE411C;
+    box-sizing: border-box;
+    border-radius: 20px;
 }
 #botonHeaderLogOut{
     margin-right: 20px;
     margin-left: 30px;
 }
+.homeDIV{
+    display: grid;
+    margin: 20px;
+}
 .logoAbajo{
-    position: absolute;
+    display: block;
+    /* position: absolute; */
     width: 100%;
     bottom: 7px;
     text-align: center
@@ -141,9 +154,10 @@
     text-transform: uppercase;
 }
 .btnLogOut{
-    border: 1px solid black;
-     background-color: #F0F3F3;
+    border: 2px solid black;
+     background-color: #DE411B;
      border-radius: 30px;
+     /* padding: 15px; */
 }
 .titHome{
     text-align: center;
@@ -153,8 +167,26 @@
     font-size: 1.5em; 
     text-align: center;
 }
+table.table{
+    width: 95%;
+    margin: 0 auto;
+}
+td.New{
+    color: yellow;
+}
+td.Approved{
+    color:green;
+}
+td.Rejected{
+    color: red;
+}
+.singleRow{
+    width: 90%;
+    margin: 0 auto;
+}
 .inputSearch{
     font-size: 1.5em;
+    text-align: left
 }
 #textCheckBox{
     padding-left: 10px; 
@@ -166,6 +198,29 @@
 .selectTag{
     margin: 8px 5px;
     padding: 0px 4px;
+}
+div.gridDot{
+    border: 3px solid black;
+    display: inline-block;
+    border-radius: 30px;
+    width: 30px;
+    margin: 5px;
+    height: 30px;
+}
+#candStatus{
+    font-size: 0.8em;
+}
+div.gridDot.New{
+    background-color: #FFD029;
+}
+div.gridDot.Approved{
+    background-color: #0EDD4D;
+}
+div.gridDot.Rejected{
+    background-color: #DD0E0E;
+}
+div.gridDot.Tech{
+    background-color: #0EB8DD;
 }
 #tagsDisplay{
     display: inline-grid;
@@ -246,7 +301,7 @@ form h5 {
 }
 .ActionsBotonesNaranja{
     margin: 10px;
-    padding: 20px;
+    padding: 15px;
     border-radius: 30px;
     border: 1px solid #DE411B;
     background-color: #DE411B
@@ -260,6 +315,11 @@ form h5 {
 }
 .ActionsBotonesBlanco:hover{
     background-color: #DE411B;
+}
+div.tableDiv{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-bottom: 30px;
 }
 .ActionsBotonesNaranja:hover{
     background-color: white;
@@ -275,7 +335,7 @@ button.ActionsBotones{
         background-color: #EC6861;
     }
     .botonHome:hover{
-        background-color: #EC6861;   
+        background-color: #DE411B;   
     }
     .titHomeForms{
         color: #DE411B; 
@@ -373,6 +433,10 @@ button.ActionsBotones{
         font-size: 50px;
         justify-content: center;
         padding: 55px 0px;
+        background: #FFFFFF;
+        border: 2px solid #DE411B;
+        box-sizing: border-box;
+        border-radius: 50px;
     }
     .homeDisplay{
         width: 80%;
@@ -381,9 +445,9 @@ button.ActionsBotones{
         width: 400px;
     }
     .header{
-        border-bottom: 1px solid black;
+        /* border-bottom: 1px solid black; */
         display: block;
-        background-color: #DE411B;
+        /* background-color: #DE411B; */
         height: 150px;
         padding: 8px 
     }
@@ -401,7 +465,7 @@ button.ActionsBotones{
     }
     .btnLogOut{
         border: 1px solid black;
-        background-color: #F0F3F3;
+        background-color: #DE411B;
         width: 250px;
         height: 80px;
         font-size: 40px;
@@ -467,7 +531,10 @@ button.ActionsBotones{
 
 .addcand{
     text-align: right;
-    margin: 10px;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    padding: 10px;
 }
 
 
