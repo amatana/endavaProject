@@ -17,6 +17,7 @@ import CreateInterview from './CreateInterview';
 import TagsHome from '../components/tagsHome';
 import AddTag from '../containers/AddTag';
 import PreSistInterview from '../containers/PreSistInterview';
+import InterviewSisCont from './InterviewSisCont';
 
 import SingleCandidate from '../containers/singleCandidate';
 import { fetchUser } from '../redux/action-creator/user-actions';
@@ -52,6 +53,19 @@ class Main extends React.Component {
             render={({ history, match }) => {
               return (
                 <CreateInterview
+                  idCand={match.params.idCand}
+                  history={history}
+                  idInter={match.params.idInterv}
+                  user={this.props.user}
+                />
+              );
+            }}
+          />
+          <Route exact
+            path='/candidates/:idCand/interviewSis/'
+            render={({ history, match }) => {
+              return (
+                <InterviewSisCont
                   idCand={match.params.idCand}
                   history={history}
                   idInter={match.params.idInterv}

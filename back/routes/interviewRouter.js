@@ -10,14 +10,17 @@ router.post('/newInterview', (req, res) => {
       candidateIDId: req.body.candidateId }
   })
     .then(([interview, created]) => {
-      if(created) interview.setCandidateID(req.body.candidateId);
+      if (created) interview.setCandidateID(req.body.candidateId);
       res.send(interview);
     });
 });
 
 router.get('/getInterview/:id', (req, res) => {
-  Interview.findByPk(1)
-    .then((data) => res.send(data));
+  Interview.findOne({ where: { candidateIDId: req.params.id } })
+    // .then(data => console.log('0000000000000000000000000', data));
+    .then(data => {
+      res.send(data);
+    });
 })
 ;
 

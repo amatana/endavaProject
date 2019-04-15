@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { checkUserLogin } from '../redux/action-creator/user-actions';
 import LoginForm from '../components/loginForm';
-import store from '../redux/store'
+import store from '../redux/store';
 
 class Login extends React.Component {
   constructor (props) {

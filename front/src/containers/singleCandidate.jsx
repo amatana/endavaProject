@@ -12,7 +12,7 @@ class SingleCandidate extends React.Component {
     this.state = {
       userHRId: null,
       userSIST1: null,
-      userSIST2: null,
+      userSIST2: null
     };
     this.handleChangeId = this.handleChangeId.bind(this);
     this.submitHR = this.submitHR.bind(this);
@@ -20,6 +20,7 @@ class SingleCandidate extends React.Component {
     this.submitSIST2 = this.submitSIST2.bind(this);
     this.createInterview = this.createInterview.bind(this);
     this.changeCandStatus = this.changeCandStatus.bind(this);
+    this.interviewSis = this.interviewSis.bind(this);
   }
   componentDidMount () {
     this.props.getAllUsers();
@@ -67,6 +68,9 @@ class SingleCandidate extends React.Component {
       .then(() => this.props.fetchCandidate(this.props.idCand));
   };
 
+  interviewSis (candidate) {
+    this.props.history.push(`/candidates/${candidate}/interviewSis/`);// falta el dato de la entrevista 
+  }
 
   render () {
     return (
@@ -83,6 +87,8 @@ class SingleCandidate extends React.Component {
       createInterview={this.createInterview}
       changeCandStatus={this.changeCandStatus}
       onClickInterview={this.createInterview}
+      onClickInterviewSis={this.interviewSis}
+      
     />
     );
   }
