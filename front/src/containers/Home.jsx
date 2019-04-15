@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 const Home = (props) => {
   return (
@@ -15,8 +15,7 @@ const Home = (props) => {
         </div>
         <div className='logoAbajo'><img className='imgHome' src='./utils/logo.png' /></div>
       </div>
-      : null
-      // <div>{props.history.push('/login')}</div>
+      : <Redirect to='./candidates/allCandidates'/>
   );
 };
 
