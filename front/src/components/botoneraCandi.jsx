@@ -34,7 +34,7 @@ class botonera extends React.Component {
                   }>Create Interview</button>
                 : <button
                   className='ActionsBotones'
-                  style={{ backgroundColor: '#808080' }}
+                  style={{ backgroundColor: '#20B2AA' }}
                   onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/hr/${this.props.candidate.InterviewIDId}`)}
                 >
                   View HR Report</button>}
