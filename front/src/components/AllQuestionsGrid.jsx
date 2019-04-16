@@ -6,7 +6,7 @@ import ReactFileReader from 'react-file-reader';
 import { saveTagsFromFile, saveQuestionsFromFile } from '../redux/action-creator/questionActions';
 
 class AllQuestionsGrid extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       selectedQuestionID: null,
@@ -15,17 +15,17 @@ class AllQuestionsGrid extends React.Component {
     this.handleFiles = this.handleFiles.bind(this);
   }
 
-  setSelectedQuestion (questionId, questionContent) {
+  setSelectedQuestion(questionId, questionContent) {
     console.log(questionContent);
     this.state.selectedQuestionID = questionId;
     this.setState({ selectedQuestionContent: questionContent });
   }
 
-  setModifiedQuestion (e) {
+  setModifiedQuestion(e) {
     this.setState({ selectedQuestionContent: e.target.value });
   }
 
-  handleFiles (files) {
+  handleFiles(files) {
     let quoteRemover = function (str) {
       let arr = str.slice(1, str.length - 1);
       return arr;
@@ -58,7 +58,7 @@ class AllQuestionsGrid extends React.Component {
     reader.readAsText(files[0]);
   }
 
-  render () {
+  render() {
     const { onClick, questions } = this.props;
 
     return (
@@ -109,8 +109,8 @@ class AllQuestionsGrid extends React.Component {
             </div>
           </div>
         </div>
-        <div className='tableDiv' style={{ margin: '3% 1%' }} >
-          <h2 className='titHome'>QUESTIONS MANAGEMENT</h2>
+        <h2 className='titHome'>QUESTIONS MANAGEMENT</h2>
+        <div className='newTableDiv' style={{ margin: '3% 1%' }} >
           <table className="table">
             <thead style={{ backgroundColor: '#DE411B' }}>
               <tr>
