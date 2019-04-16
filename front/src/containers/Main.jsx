@@ -17,6 +17,7 @@ import CreateInterview from './CreateInterview';
 import TagsHome from '../components/tagsHome';
 import AddTag from '../containers/AddTag';
 import PreSistInterview from '../containers/PreSistInterview';
+import ReportGeneration from '../containers/ReportGeneration';
 
 import SingleCandidate from '../containers/singleCandidate';
 import { fetchUser } from '../redux/action-creator/user-actions';
@@ -37,7 +38,7 @@ class Main extends React.Component {
   render () {
     return (
       !this.state.loading
-      ? <div>
+        ? <div>
           <Route render= {({ history }) => (<Header fetchUser={this.props.fetchUser} user={this.props.user} history={history} />)} />
           <Switch>
             <Route exact path='/' render={({ history }) => (<Home history={history} user={this.props.user}/>)} />
@@ -78,6 +79,7 @@ class Main extends React.Component {
             <Route exact path='/tags' render={({ history }) => (<AddTag history={history} user={this.props.user}/>)} />
             <Route exact path='/questions/loadFile' render={({ history }) => (<LoadFile history={history}/>)} />
             <Route exact path='/preinterview/sist/:candID' render={({ history, match }) => (<PreSistInterview history={history} user={this.props.user} candID={match.params.candID}/>)} />
+            <Route exact path='/generateReport/:candID' render={({ history, match }) => (<ReportGeneration history={history} user={this.props.user} candID={match.params.candID}/>)} />
           </Switch>
         </div>
         : <h2>Loading App</h2>
