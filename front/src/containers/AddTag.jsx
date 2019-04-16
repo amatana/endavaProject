@@ -12,22 +12,45 @@ class addTag extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  };
+
+  componentDidMount () {
+    axios.get('/api/tags/retrieve')
+      .then((allTags) => {
+        console.log('TAGS MOUNTED', allTags);
+        this.setState({ allTags });
+      });
   };
 
   handleChange (e) {
     let input = e.target.value;
-    if (input.length <= 10) {
+    if (input.length <= 15) {
       this.setState({ tagInput: input });
     }
   }
 
   handleSubmit (e) {
     e.preventDefault();
-    axios.post('api/tags/create', { tag: this.state.tagInput });
-    this.setState({ tagInput: '' });
-    axios.get('api/tags/retrieve')
-      .then((allTags) => {
-        this.setState({ allTags });
+    axios.post('api/tags/create', { tag: this.state.tagInput })
+      .then(() => {
+        console.log('olis');
+        this.setState({ tagInput: '' });
+        axios.get('api/tags/retrieve')
+          .then((allTags) => {
+            this.setState({ allTags });
+          });
+      });
+  }
+
+  handleDelete (e) {
+    let index = e.target.getAttribute('name');
+    axios.post('api/tags/delete', { deleted: index })
+      .then(() => {
+        axios.get('api/tags/retrieve')
+          .then((allTags) => {
+            this.setState({ allTags });
+          });
       });
   }
 
@@ -35,10 +58,11 @@ class addTag extends React.Component {
     return (
       <div>
         <TagInput
-          handleSubmit = {this.handleSubmit}
-          handleChange = {this.handleChange}
-          tagInput = {this.state.tagInput}
-          allTags = {this.state.allTags}/>
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          handleDelete={this.handleDelete}
+          tagInput={this.state.tagInput}
+          allTags={this.state.allTags} />
       </div>
     );
   }

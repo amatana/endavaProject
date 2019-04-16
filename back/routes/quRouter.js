@@ -1,7 +1,8 @@
 const express = require('express');
-const router = express.Router();
 const Questions = require('../models/questions');
 const Tags = require('../models/tags');
+
+const router = express.Router();
 
 router.get('/delete/:id', (req, res) => {
   Questions.findById(req.params.id)
@@ -18,6 +19,7 @@ router.get('/reqAllQuestions/:area', (req, res) => {
   }
   )
     .then(quest => {
+      // console.log("questions ============> ", quest)
       res.send(quest);
     });
 });
@@ -48,41 +50,43 @@ router.post('/create', (req, res, next) => {
           if (tagsArray[j].tag === req.body.tags[i]) tagIDsArray.push(tagsArray[j].id);
         }
       }
+      console.log('=======>', req.body);
       Questions.findOrCreate({ where: {
         content: req.body.content,
         area: req.body.area,
         required: req.body.required
       } }
       )
-        .then((question, created) => {
+        .then(([question, created]) => {
           // I need to send an array with the tags IDs not names
-          if (created) question.setTags(tagIDsArray);
+          if (created) {
+            question.setTags(tagIDsArray);
+          }
           res.send(200);
         })
         .catch(next);
     });
 });
 
-router.post('/saveFromFile', (req, res) => {
-  // console.log('--------------------', req.body.questions[1]);
-  let arregloPreguntas = req.body.questions;
-  let tagArray = [];
-  for (let index = 0; index < arregloPreguntas.length; index++) {
-    tagArray.push(arregloPreguntas[i].tags);
-  }
-  Questions.bulkCreate(req.body.questions)
-    .then((createdQuestions) => {
-      for (let i = 0; i < tagArray.length; i++) {
-        promiseArray.push(createdQuestions[i].setTags(array[i]));
-      }
-      res.send(200);
-    });
-});
+// router.post('/saveFromFile', (req, res) => {
+//   // console.log('--------------------', req.body.questions[1]);
+//   let arregloPreguntas = req.body.questions;
+//   let tagArray = [];
+//   for (let index = 0; index < arregloPreguntas.length; index++) {
+//     tagArray.push(arregloPreguntas[index].tags);
+//   }
+//   Questions.bulkCreate(req.body.questions)
+//     .then((createdQuestions) => {
+//       for (let i = 0; i < tagArray.length; i++) {
+//         promiseArray.push(createdQuestions[i].setTags(array[i]));
+//       }
+//       res.send(200);
+//     });
+// });
 
 router.post('/create/tags', (req, res) => {
   Tags.findOrCreate({ where: req.body })
     .then(([tag, created]) => {
-      console.log('DUPLICÓ EL TAG?????????????', created);
       res.send(200);
     });
 });
