@@ -20,7 +20,8 @@ class SingleCandidate extends React.Component {
     this.submitSIST2 = this.submitSIST2.bind(this);
     this.createInterview = this.createInterview.bind(this);
     this.changeCandStatus = this.changeCandStatus.bind(this);
-    this.goInterview = this.goInterview.bind(this)
+    this.interviewSis = this.interviewSis.bind(this);
+    this.goInterview = this.goInterview.bind(this);
   }
   componentDidMount () {
     this.props.getAllUsers();
@@ -71,6 +72,9 @@ class SingleCandidate extends React.Component {
     Axios.put('/api/candidate/changeStatus', { idCandi, status })
       .then(() => this.props.fetchCandidate(this.props.idCand));
   };
+  interviewSis (candidate) {
+    this.props.history.push(`/candidates/interviewSis/${candidate}`);
+  }
 
   render () {
     return (
@@ -87,6 +91,7 @@ class SingleCandidate extends React.Component {
       createInterview={this.createInterview}
       changeCandStatus={this.changeCandStatus}
       onClickInterview={this.createInterview}
+      onClickInterviewSis={this.interviewSis}
       history={this.props.history}
       onClickSist={this.goInterview}
     />

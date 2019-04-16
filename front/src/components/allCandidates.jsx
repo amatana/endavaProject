@@ -27,6 +27,8 @@ class allCandidates extends React.Component {
     }
   }
 
+
+
   onClickDelete (id) {
     axios.delete(`/api/candidate/delete/${id}`)
       .then(() => {
@@ -40,11 +42,13 @@ class allCandidates extends React.Component {
       });
   }
 
+
   render () {
     return (
       !this.props.user.isAdmin && this.props.user.area === 'Sistemas'
         ? <div>
           <div className='addcand'>
+
             <div><img style={{ textAlign: 'left', display: 'block' }} className='imgHome' src='/utils/logo.png' /></div>
             <form className="form" style={{ float: 'left', margin: 'auto' }}>
               <i className="fas fa-search" aria-hidden="true"></i>
@@ -77,6 +81,7 @@ class allCandidates extends React.Component {
             </form>
             <Link to="/candidates/addCandidate"><button type="button" className="btn btn-lg ActionsBotonesNaranja">Add Candidate</button></Link>
           </div>
+
 
           {this.props.user.area === 'RRHH'
             ? <div className='tableDiv' >
@@ -113,6 +118,7 @@ class allCandidates extends React.Component {
             input={this.props.input}
             onClickDelete = {this.onClickDelete}
           />
+
         </div>
     );
   }
