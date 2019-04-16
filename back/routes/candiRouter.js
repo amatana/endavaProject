@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const Sequelize = require('sequelize');
 const Candidate = require('../models/candidate');
 const User = require('../models/User');
-const Tags = require('../models/tags');
+const Tag = require('../models/tags');
 
 
 router.post('/create', (req, res) => {
@@ -21,13 +22,11 @@ router.post('/create', (req, res) => {
   let idArr = req.body.candidate.selectedTags;
 
   Candidate.create(candidateData)
-    // .then(data => res.status(201).send(data))
-    .then(()=>{
-      Candidate.setTags(idArr)
+    .then((candidate) => {
+      candidate.setTags(req.body.candidate.selectedTags);
     })
-    .catch(e => res.send({ error: e.errors[0].message }));
-
-  console.log('TAG ID ARRAY: ', req.body.candidate.selectedTags);
+    .then(data => res.status(201).send(data));
+  // .catch(e => res.send({ error: e.errors[0].message }));
 });
 
 router.get('/getAll', (req, res) => {
@@ -39,7 +38,8 @@ router.get('/getOne/:id', (req, res) => {
   Candidate.findByPk(req.params.id, {
     include: [{ model: User, as: 'interviewerHR' },
       { model: User, as: 'interSIST1' },
-      { model: User, as: 'interSIST2' }]
+      { model: User, as: 'interSIST2' },
+      { model: Tag }]
   })
     .then(candidate => {
       res.send(candidate)
@@ -47,7 +47,34 @@ router.get('/getOne/:id', (req, res) => {
     });
 });
 
+router.delete('/delete/:id', (req, res) => {
+  Candidate.destroy({ where: { id: req.params.id } })
+    .then(() => res.sendStatus(200));
+});
+
 // Trae los candidatos asignados al usuario loggeado
+router.get('/getMyCandidates/:userId', (req, res) => {
+  const { userId } = req.params;
+  if (!userId) {
+    res.sendStatus(200);
+  } else {
+    Candidate.findAll({
+      where: {
+        [Sequelize.Op.or]: [{
+          interviewerHRId: userId
+        }, {
+          interSIST1Id: userId
+        }, {
+          interSIST2Id: userId
+        }]
+      }
+    })
+      .then(candidates => {
+        res.send(candidates);
+      });
+  }
+});
+
 router.get('/getMyCandidates/:userId', (req, res) => {
   Candidate.findAll({
     where: {
@@ -83,6 +110,15 @@ router.post('/setUserSIST2', (req, res) => {
       candidate.setInterSIST2(req.body.idUser);
     })
     .then(candidate => res.send(candidate));
+});
+
+// Funciones que cambian el estado del Candidato
+router.put('/changeStatus', (req, res) => {
+  Candidate.findByPk(req.body.idCandi)
+    .then(candidato => {
+      candidato.update({ status: req.body.status });
+      res.sendStatus(200);
+    });
 });
 
 module.exports = router;

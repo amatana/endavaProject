@@ -19,10 +19,17 @@ class SingleCandidate extends React.Component {
     this.submitSIST1 = this.submitSIST1.bind(this);
     this.submitSIST2 = this.submitSIST2.bind(this);
     this.createInterview = this.createInterview.bind(this);
+    this.changeCandStatus = this.changeCandStatus.bind(this);
+    this.interviewSis = this.interviewSis.bind(this);
+    this.goInterview = this.goInterview.bind(this);
   }
   componentDidMount () {
     this.props.getAllUsers();
     this.props.fetchCandidate(this.props.idCand);
+  }
+
+  goInterview (candidate) {
+    this.props.history.push(`/preinterview/sist/${candidate}`);
   }
 
   createInterview (candidate) {
@@ -30,7 +37,7 @@ class SingleCandidate extends React.Component {
       candidateId: candidate
     })
       .then(interview => {
-        this.props.history.push(`/candidates/${candidate}/interview/${interview.data.id}`);
+        this.props.history.push(`/candidates/${candidate}/interview/hr/${interview.data.id}`);
       });
   }
 
@@ -56,23 +63,38 @@ class SingleCandidate extends React.Component {
   submitSIST2 (idCandi) {
     Axios.post('/api/candidate/setUserSIST2', {
       idUser: this.state.userSIST2 || this.props.usersSIST[0].id,
-      idCandi })
+      idCandi
+    })
       .then(() => this.props.fetchCandidate(this.props.idCand));
   }
+
+  changeCandStatus (idCandi, status) {
+    Axios.put('/api/candidate/changeStatus', { idCandi, status })
+      .then(() => this.props.fetchCandidate(this.props.idCand));
+  };
+  interviewSis (candidate) {
+    this.props.history.push(`/candidates/interviewSis/${candidate}`);
+  }
+
   render () {
     return (
       !!this.props.candidate && !!this.props.candidate.id &&
-      <ActionsCandidates
-        usersRH={this.props.usersRH}
-        user={this.props.user}
-        candidate={this.props.candidate}
-        submitHR={this.submitHR}
-        handleChangeID={this.handleChangeId}
-        handleSubSIS1={this.submitSIST1}
-        handleSubSIS2={this.submitSIST2}
-        usersSIST={this.props.usersSIST}
-        onClickInterview={this.createInterview}
-      />
+    <ActionsCandidates
+      usersRH={this.props.usersRH}
+      user={this.props.user}
+      candidate={this.props.candidate}
+      submitHR={this.submitHR}
+      handleChangeID={this.handleChangeId}
+      handleSubSIS1={this.submitSIST1}
+      handleSubSIS2={this.submitSIST2}
+      usersSIST={this.props.usersSIST}
+      createInterview={this.createInterview}
+      changeCandStatus={this.changeCandStatus}
+      onClickInterview={this.createInterview}
+      onClickInterviewSis={this.interviewSis}
+      history={this.props.history}
+      onClickSist={this.goInterview}
+    />
     );
   }
 }

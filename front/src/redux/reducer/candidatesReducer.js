@@ -1,7 +1,8 @@
-import { SET_CANDIDATE, SET_CANDIDATES } from '../constants';
+import { SET_CANDIDATE, SET_CANDIDATES, SET_MYCANDIDATES } from '../constants';
 const initialState = {
   candidate: {},
-  candidates: []
+  candidates: [],
+  myCandidates: []
 };
 
 export default (state = initialState, action) => {
@@ -10,6 +11,8 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { candidates: action.candidates });
     case SET_CANDIDATE:
       return Object.assign({}, state, { candidate: action.candidate });
+    case SET_MYCANDIDATES:
+      return Object.assign({}, state, { myCandidates: action.candidates });
     default:
       return state;
   }

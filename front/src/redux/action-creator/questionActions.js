@@ -1,10 +1,21 @@
-import { SET_QUESTIONS, DELETE_QUESTION } from '../constants';
+import { SET_QUESTIONS, SET_HRQUESTIONS, DELETE_QUESTION, SET_CANDIDATE_QUESTIONS } from '../constants';
 import axios from 'axios';
 
 const setQuestions = (questions) => ({
   type: SET_QUESTIONS,
   questions
 
+});
+
+const setHRQuestions = (questions) => ({
+  type: SET_HRQUESTIONS,
+  questions
+
+});
+
+const setCandidateQuestions = (candidateQuestions) => ({
+  type: SET_CANDIDATE_QUESTIONS,
+  candidateQuestions
 });
 
 // const setDeletedQuestion = (questId) => ({
@@ -17,6 +28,10 @@ export const searchAllQuestions = (area) => dispatch =>
   axios.get('/api/questions/reqAllQuestions/' + area)
     .then(res => dispatch(setQuestions(res.data)));
 
+export const searchHRQuestions = () => dispatch =>
+  axios.get('/api/questions/searchHRQuestions/')
+    .then(res => dispatch(setHRQuestions(res.data)));
+
 export const deleteQuestion = (questId, area) => dispatch =>
   axios.get('/api/questions/delete/' + questId)
     .then(() => dispatch(searchAllQuestions(area)));
@@ -27,13 +42,13 @@ export const editQuestion = (questId, modifiedQuestion, area) => dispatch =>
   })
     .then(() => dispatch(searchAllQuestions(area)));
 
-export const saveQuestionsFromFile = (questionsArray) => dispatch => {
+export const saveQuestionsFromFile = (questionsArray, area) => dispatch => {
   let arrayPromsises = [];
   for (let i = 0; i < questionsArray.length; i++) {
     arrayPromsises.push(axios.post('/api/questions/create', questionsArray[i]));
   }
   Promise.all(arrayPromsises)
-    .then(() => dispatch(searchAllQuestions('Sistemas')));
+    .then(() => { console.log('=========== MANDO A BUSCAR LAS PREGUNTAS A BD= ==========', area); dispatch(searchAllQuestions(area)); });
 };
 
 export const saveTagsFromFile = (questionsArray) => dispatch => {
@@ -49,6 +64,16 @@ export const saveTagsFromFile = (questionsArray) => dispatch => {
       tag: arrayNonDuplicatedTags[i]
     }));
     Promise.all(arrayPromsises)
-      .then(() => {});
+      .then(() => { });
   }
 };
+
+export const fetchCandidateQuestions = (tags) => dispatch => {
+  let arrayIdTags = [];
+  for (let i in tags) {
+    arrayIdTags.push(tags[i].id);
+  }
+  axios.post('/api/questions/candidateQuestions', { arrayIdTags })
+    .then(response => dispatch(setCandidateQuestions(response.data)));
+}
+;

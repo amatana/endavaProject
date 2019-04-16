@@ -11,66 +11,94 @@ import AllCandidates from './AllCandidates';
 import AddCandidate from './AddCandidate';
 import Header from '../components/Header';
 import AllQuestionsList from './AllQuestionsList';
+import InterviewSisCont from './InterviewSisCont';
+
 import UserHome from '../components/UserHome';
 import CandidatesHome from '../components/candidateHome';
 import CreateInterview from './CreateInterview';
 import TagsHome from '../components/tagsHome';
 import AddTag from '../containers/AddTag';
-import SistInterview from '../containers/SistInterview';
+import PreSistInterview from '../containers/PreSistInterview';
+
 import SingleCandidate from '../containers/singleCandidate';
 import { fetchUser } from '../redux/action-creator/user-actions';
 
 class Main extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      loading: true
+    };
+  }
+
   componentDidMount () {
-    this.props.fetchUser();
+    this.props.fetchUser()
+      .then(() => this.setState({ loading: false }));
   }
 
   render () {
     return (
-      <div>
-        <Route render= {({ history }) => (<Header fetchUser={this.props.fetchUser} user={this.props.user} history={history} />)} />
-        <Switch>
-          <Route exact path='/' render={({ history }) => (<Home history={history} user={this.props.user}/>)} />
-          <Route exact path="/login" render={({ history }) => (<Login history={history} />)} />
-          <Route exact path='/candidates' render={({ history }) => (<CandidatesHome history={history} user={this.props.user}/>)} />
-          <Route exact path='/candidates/addCandidate' render={({ history }) => (<AddCandidate user={this.props.user} history={history} />)} />
-          <Route exact path='/candidates/allCandidates' render={({ history }) => (<AllCandidates history={history} user={this.props.user} />)} />
+      !this.state.loading
+        ? <div>
+          <Route render= {({ history }) => (<Header fetchUser={this.props.fetchUser} user={this.props.user} history={history} />)} />
+          <Switch>
+            <Route exact path='/' render={({ history }) => (<Home history={history} user={this.props.user}/>)} />
+            <Route exact path="/login" render={({ history }) => (<Login history={history} />)} />
+            <Route exact path='/candidates' render={({ history }) => (<CandidatesHome history={history} user={this.props.user}/>)} />
+            <Route exact path='/candidates/addCandidate' render={({ history }) => (<AddCandidate user={this.props.user} history={history} />)} />
+            <Route path='/candidates/allCandidates' render={(props) => (<AllCandidates {...props} user={this.props.user} />)} />
 
-          <Route exact
-            path='/candidates/:idCand'
-            render={({ history, match }) => (
-              <SingleCandidate
-                history={history}
-                user={this.props.user}
-                idCand={match.params.idCand}
-              />
-            )}
-          />
-          <Route exact
-            path='/candidates/:idCand/interview/:idInterv'
-            render={({ history, match }) => {
-              console.log('PLSS');
-              return (
-                <CreateInterview
-                  idCand={match.params.idCand}
+            <Route exact
+              path='/candidates/:idCand'
+              render={({ history, match }) => (
+                <SingleCandidate
                   history={history}
-                  idInter={match.params.idInterv}
                   user={this.props.user}
+                  idCand={match.params.idCand}
                 />
-              );
-            }}
-          />
+              )
+              }
+            />
+            <Route exact
+              path='/candidates/interviewSis/:idCand'
+              render={({ history, match }) => {
+                return (
+                  <InterviewSisCont
+                    idCand={match.params.idCand}
+                    history={history}
+                    idInter={match.params.idInterv}
+                    user={this.props.user}
+                  />
+                );
+              }}
+            />
+              )}
+            />
+            <Route exact
+              path='/candidates/:idCand/interview/hr/:idInterv'
+              render={({ history, match }) => {
+                return (
+                  <CreateInterview
+                    idCand={match.params.idCand}
+                    history={history}
+                    idInter={match.params.idInterv}
+                    user={this.props.user}
+                  />
+                );
+              }}
+            />
 
-          <Route exact path='/users' render={({ history }) => (<UserHome history={history} user={this.props.user}/>)} />
-          <Route exact path='/users/addUser' render={({ history }) => (<AddUser history={history} />)} />
-          <Route exact path='/users/allUsers' render={({ history }) => (<AllUsers user={this.props.user} history={history} />)} />
-          <Route exact path='/questions' render={({ history }) => (<AllQuestionsList history={history} />)} />
-          <Route exact path='/questions/add' render={({ history }) => (<AddQuestion history={history} user={this.props.user}/>)} />
-          <Route exact path='/tags' render={({ history }) => (<AddTag history={history} user={this.props.user}/>)} />
-          <Route exact path='/questions/loadFile' render={({ history }) => (<LoadFile history={history}/>)} />
-          <Route exact path='/interview/sist' render={({ history }) => (<SistInterview history={history}/>)} />
-        </Switch>
-      </div>
+            <Route exact path='/users' render={({ history }) => (<UserHome history={history} user={this.props.user}/>)} />
+            <Route exact path='/users/addUser' render={({ history }) => (<AddUser history={history} />)} />
+            <Route exact path='/users/allUsers' render={({ history }) => (<AllUsers user={this.props.user} history={history} />)} />
+            <Route exact path='/questions' render={({ history }) => (<AllQuestionsList history={history} />)} />
+            <Route exact path='/questions/add' render={({ history }) => (<AddQuestion history={history} user={this.props.user}/>)} />
+            <Route exact path='/tags' render={({ history }) => (<AddTag history={history} user={this.props.user}/>)} />
+            <Route exact path='/questions/loadFile' render={({ history }) => (<LoadFile history={history}/>)} />
+            <Route exact path='/preinterview/sist/:candID' render={({ history, match }) => (<PreSistInterview history={history} user={this.props.user} candID={match.params.candID}/>)} />
+          </Switch>
+        </div>
+        : <h2>Loading App</h2>
     );
   }
 }

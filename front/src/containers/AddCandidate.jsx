@@ -21,6 +21,7 @@ class AddCandidate extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onClick = this.onClick.bind(this);
     this.handleTagSubmit = this.handleTagSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount () {
@@ -53,15 +54,16 @@ class AddCandidate extends React.Component {
   handleTagSubmit (e) {
     e.preventDefault();
     let index = e.target.tagDropdown.value;
+    console.log('INDEX', index);
     let arr = this.state.selectedTags;
     let found = arr.find((element) => {
-      if (element === this.state.allTags[index].tag) {
+      if (element === this.state.allTags[index].id) {
         return element;
       }
     });
 
     if (!found) {
-      arr.push(index);
+      arr.push(this.state.allTags[index].id);
       this.setState({ selectedTags: arr });
     } else {
       alert('The tag was aleady added');
@@ -72,6 +74,13 @@ class AddCandidate extends React.Component {
     this.props.history.push('/candidates/allCandidates');
   }
 
+  handleDelete (e) {
+    let toDelete = e.target.getAttribute('value');
+    let arr = this.state.selectedTags;
+    arr.splice(toDelete, 1);
+    this.setState({ selectedTags: arr });
+  };
+
   render () {
     console.log('tagArray', this.state.tags);
     return (
@@ -80,8 +89,10 @@ class AddCandidate extends React.Component {
         onSubmit={this.handleSubmit}
         messege={this.state.messege}
         onClick={this.onClick}
+        handleDelete={this.handleDelete}
         allTags={this.state.allTags}
         handleTagSubmit={this.handleTagSubmit}
+        selectedTags={this.state.selectedTags}
       />
     );
   }

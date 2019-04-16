@@ -1,3 +1,16 @@
+onEnter={() => this.props.fetchMyCandidates(this.props.user.id)}
+
+<RouteHook
+  onEnter={this.props.getAllCandidates}
+  path={`${this.props.match.path}/all`}
+  render={CandidateTable}
+/>
+<RouteHook
+  onEnter={() => this.props.fetchMyCandidates(this.props.user.id)}
+  path={`${this.props.match.path}/me`}
+  component={CandidateTable}
+/>
+
 handlePushId (e) {
     e.preventDefault();
     const ids = this.state.usersSIST.slice();
