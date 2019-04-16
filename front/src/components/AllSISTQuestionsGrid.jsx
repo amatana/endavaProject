@@ -113,10 +113,11 @@ class AllSISQuestions extends React.Component {
           <h2 className='titHome'>QUESTIONS MANAGEMENT</h2>
           <div className='newTableDiv' style={{ margin: '3% 1%' }} >
             <table className="table">
-              <thead style={{ backgroundColor: '#DE411B' }}>
+              <thead style={{ borderBottom: '5px solid #DE411B', borderTop: '5px solid #DE411B' }}>
                 <tr>
                   <th scope="col" className='tableHeading' style={{ textAlign: 'left' }}>Question</th>
                   <th scope="col" className='tableHeading' style={{ textAlign: 'left' }}>Category</th>
+                  <th></th>
                 </tr>
               </thead>
 
@@ -125,7 +126,8 @@ class AllSISQuestions extends React.Component {
                   <tbody key={question.content}>
                     <tr>
                       <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.content} </td>
-                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.tags.map(question => { return (question.tag + ' '); })}
+                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.tags.map(question => { return (question.tag + ' '); })}</td>
+                      <td>
                         <button onClick={() => this.setSelectedQuestion(question.id, question.content)} type="button" className="btn btn-link" style={{ float: 'right' }} data-toggle="modal" data-target="#confirmDeleteModal">
                           <img src="/utils/garbage.svg" width="40" />
                         </button>
