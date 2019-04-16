@@ -3,6 +3,7 @@ const router = express.Router();
 const Sequelize = require('sequelize');
 const Candidate = require('../models/candidate');
 const User = require('../models/User');
+const Tag = require('../models/tags')
 
 router.post('/create', (req, res) => {
   console.log('lo que me llego al servidor ', req.body.candidate);
@@ -35,12 +36,13 @@ router.get('/getAll', (req, res) => {
 router.get('/getOne/:id', (req, res) => {
   Candidate.findByPk(req.params.id, {
     include: [{ model: User, as: 'interviewerHR' },
-    { model: User, as: 'interSIST1' },
-    { model: User, as: 'interSIST2' }]
+      { model: User, as: 'interSIST1' },
+      { model: User, as: 'interSIST2' },
+      { model: Tag }]
   })
     .then(candidate => {
       res.send(candidate)
-        ;
+      ;
     });
 });
 
@@ -75,7 +77,7 @@ router.get('/getMyCandidates/:userId', (req, res) => {
   })
     .then(candidates => {
       res.send(candidates)
-        ;
+      ;
     });
 });
 
