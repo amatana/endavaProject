@@ -15,4 +15,15 @@ router.get('/retrieve', function (req, res) {
     });
 });
 
+router.post('/delete', function (req, res) {
+  Tags.destroy({
+    where: {
+      id: req.body.deleted
+    }
+  })
+    .then(() => {
+      res.send(202);
+    });
+});
+
 module.exports = router;

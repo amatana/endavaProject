@@ -31,7 +31,7 @@ class SingleCandidate extends React.Component {
       candidateId: candidate
     })
       .then(interview => {
-        this.props.history.push(`/candidates/${candidate}/interview/${interview.data.id}`);
+        this.props.history.push(`/candidates/${candidate}/interview/hr/${interview.data.id}`);
       });
   }
 
