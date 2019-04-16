@@ -7,9 +7,26 @@ const Tag = require('../models/tags');
 
 
 router.post('/create', (req, res) => {
-  Candidate.create(req.body.candidate)
-    .then(data => res.status(201).send(data))
-    .catch(e => res.send({ error: e.errors[0].message }));
+  console.log('lo que me llego al servidor ', req.body.candidate);
+
+  let candidateData = {
+    name: req.body.candidate.name,
+    surname: req.body.candidate.surname,
+    email: req.body.candidate.email,
+    telNumber: req.body.candidate.telNumber,
+    expertise: req.body.candidate.expertise,
+    url: req.body.candidate.url,
+    status: req.body.candidate.status
+  };
+
+  console.log(candidateData);
+
+  Candidate.create(candidateData)
+    .then((candidate) => {
+      candidate.setTags(req.body.candidate.selectedTags);
+    })
+    .then(data => res.status(201).send(data));
+  // .catch(e => res.send({ error: e.errors[0].message }));
 });
 
 router.get('/getAll', (req, res) => {
@@ -28,6 +45,11 @@ router.get('/getOne/:id', (req, res) => {
       res.send(candidate)
       ;
     });
+});
+
+router.delete('/delete/:id', (req, res) => {
+  Candidate.destroy({ where: { id: req.params.id } })
+    .then(() => res.sendStatus(200));
 });
 
 // Trae los candidatos asignados al usuario loggeado

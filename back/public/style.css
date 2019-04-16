@@ -65,6 +65,25 @@ tr.white{
     width: 50%;
 
 }
+.divito{
+    margin-top: 20px;
+    display: grid;
+}
+.mitadReport{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-right: 50px;
+}
+
+
+#trashUser:hover{
+    transform: scale(1.2)
+}
+
+.containerTrash{
+    float: right
+}
+
 .mainLogin{
     margin-top: 5%;
 }
@@ -174,11 +193,25 @@ table.table{
 td.New{
     color: yellow;
 }
-td.Approved{
-    color:green;
+button#appReport{
+    border: 2px solid #0EDD4D;
+    border-radius: 30px;
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
 }
-td.Rejected{
-    color: red;
+button#appReport:hover{
+    background-color: #0EDD4D;
+}
+#rejReport{
+    border: 2px solid #DD0E0E;
+    border-radius: 30px;
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+}
+#rejReport:hover{
+    background-color: #DD0E0E
 }
 .singleRow{
     width: 90%;
@@ -320,6 +353,10 @@ div.tableDiv{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-bottom: 30px;
+}
+div.tableDivi{
+    display: block;
+    margin: 0 auto;
 }
 .ActionsBotonesNaranja:hover{
     background-color: white;

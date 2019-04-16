@@ -9,6 +9,7 @@ const CreateInterviewComp = (props) => (
         <h2>Full name:</h2> {props.candidate.fullName}
         <h2>Phone:</h2> {props.candidate.telNumber}
         <h2>Email Adress:</h2> {props.candidate.email}
+        <h2>STATUS:</h2> {props.candidate.status}
       </div>
 
     </div>

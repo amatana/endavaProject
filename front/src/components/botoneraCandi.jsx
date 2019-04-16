@@ -26,45 +26,55 @@ class botonera extends React.Component {
         {(this.props.user && this.props.user.area === 'RRHH')
           ? (<div>
             <div id='botonesHR'>
-              <button 
-                className={'ActionsBotones '+ this.state.assign } 
+
+              <button className={'ActionsBotones '+ this.state.assign }
                 style={{ backgroundColor: '#0EB8DD' }}
                 onClick={() => {
                   this.setState({assign:'onAssign'})
-                }}  
-              >
-                Assign Interviewers             
+                }} 
+                >
+                Assign Interviewers
               </button>
-              <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }}
-                onClick={() => {
-                  this.props.onClickInterview(this.props.candidate.id);
-                }
-                }>Create Interview
-              </button>
+
+              {this.props.candidate && this.props.candidate.status === 'New'
+                ? <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }}
+                  onClick={() => {
+                    this.props.onClickInterview(this.props.candidate.id);
+                  }
+                  }>Create Interview</button>
+                : <button
+                  className='ActionsBotones'
+                  style={{ backgroundColor: '#20B2AA' }}
+                  onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/hr/${this.props.candidate.InterviewIDId}`)}
+                >
+                  View HR Report
+              </button>}
+
               <button
                 className='ActionsBotones'
                 style={{ backgroundColor: '#0EDD4D' }}
                 onClick={() => this.changeStatus('Approved HR')} >
                 Approve HR
               </button>
+
               <button
                 className='ActionsBotones'
                 style={{ backgroundColor: '#DD0E0E' }}
-                onClick={() => this.changeStatus('Rejected HR')}>Reject HR</button>
-                <button
-                  className='ActionsBotones'
-                  style={{ backgroundColor: '#808080' }}
-                  onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/${this.props.candidate.InterviewIDId}`)}
-                >
-                View HR Report</button>
+                onClick={() => this.changeStatus('Rejected HR')}>
+                Reject HR
+              </button>
+
+             
+
             </div>
           </div>)
           : (<div>
             <div id='botonesHR'>
               <button className='ActionsBotones' style={{ backgroundColor: '#0EB8DD' }}>Assign Interviewer SIST</button>
-              <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }} onClick={() => this.props.onClickInterview(this.props.candidate.id)}>Prepare Interview SIST</button>
+              <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }} onClick={() => this.props.onClickInterviewSis(this.props.candidate.id)}> Interview SIST </button>
+              <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }} onClick={() => this.props.onClickSist(this.props.candidate.id)}>Prepare Interview SIST</button>
               <button className='ActionsBotones' style={{ backgroundColor: '#0EDD4D' }} onClick={() => this.changeStatus('Tech Approved')}> APPROVE SIST</button>
-              <button className='ActionsBotones' style={{ backgroundColor: '#DD0E0E' }} onClick={() => this.changeStatus('Rejected Tech')}>Reject SIST</button>
+              {/* <button className='ActionsBotones' style={{ backgroundColor: '#DD0E0E' }} onClick={() => this.changeStatus('Rejected Tech')}>Reject SIST</button> */}
             </div>
           </div>)
         }
