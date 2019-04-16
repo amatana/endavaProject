@@ -6,7 +6,7 @@ import ReactFileReader from 'react-file-reader';
 import { saveTagsFromFile, saveQuestionsFromFile } from '../redux/action-creator/questionActions';
 
 class AllSISQuestions extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       selectedQuestionID: null,
@@ -15,17 +15,17 @@ class AllSISQuestions extends React.Component {
     this.handleFiles = this.handleFiles.bind(this);
   }
 
-  setSelectedQuestion (questionId, questionContent) {
+  setSelectedQuestion(questionId, questionContent) {
     console.log(questionContent);
     this.state.selectedQuestionID = questionId;
     this.setState({ selectedQuestionContent: questionContent });
   }
 
-  setModifiedQuestion (e) {
+  setModifiedQuestion(e) {
     this.setState({ selectedQuestionContent: e.target.value });
   }
 
-  handleFiles (files) {
+  handleFiles(files) {
     let quoteRemover = function (str) {
       let arr = str.slice(1, str.length - 1);
       return arr;
@@ -58,7 +58,7 @@ class AllSISQuestions extends React.Component {
     reader.readAsText(files[0]);
   }
 
-  render () {
+  render() {
     const { onClick, questions } = this.props;
     return (
       <div >
@@ -110,8 +110,8 @@ class AllSISQuestions extends React.Component {
               </div>
             </div>
           </div>
-          <div className='tableDiv' style={{ margin: '3% 1%' }} >
-            <h2 className='titHome'>QUESTIONS MANAGEMENT</h2>
+          <h2 className='titHome'>QUESTIONS MANAGEMENT</h2>
+          <div className='newTableDiv' style={{ margin: '3% 1%' }} >
             <table className="table">
               <thead style={{ backgroundColor: '#DE411B' }}>
                 <tr>
@@ -125,7 +125,7 @@ class AllSISQuestions extends React.Component {
                   <tbody key={question.content}>
                     <tr>
                       <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.content} </td>
-                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.tags.map(question => { return (question.tag + ' ') ;})}
+                      <td style={{ textAlign: 'left' }} className='tableHeading' scope="row">{question.tags.map(question => { return (question.tag + ' '); })}
                         <button onClick={() => this.setSelectedQuestion(question.id, question.content)} type="button" className="btn btn-link" style={{ float: 'right' }} data-toggle="modal" data-target="#confirmDeleteModal">
                           <img src="/utils/garbage.svg" width="40" />
                         </button>

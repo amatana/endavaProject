@@ -3,7 +3,8 @@ const router = express.Router();
 const Sequelize = require('sequelize');
 const Candidate = require('../models/candidate');
 const User = require('../models/User');
-const Tag = require('../models/Tags')
+const Tag = require('../models/tags');
+
 
 router.post('/create', (req, res) => {
   Candidate.create(req.body.candidate)

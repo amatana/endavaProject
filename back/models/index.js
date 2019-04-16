@@ -11,6 +11,7 @@ Candidate.belongsTo(User, { as: 'interSIST1' });
 Candidate.belongsTo(User, { as: 'interSIST2' });
 // Relación entre candidato y su entrevista
 Interview.belongsTo(Candidate, { as: 'candidateID' });
+Candidate.belongsTo(Interview, { as: 'InterviewID', constraints: false });
 
 // Relaciones entre Preguntas y Tags
 Questions.belongsToMany(Tags, { through: 'tags-questions' });
@@ -23,6 +24,7 @@ Tags.belongsToMany(Candidate, { through: 'candidate_tags' });
 // Relación entre Entrevistas y Preguntas que se harán/hicieron en la misma.
 Interview.belongsToMany(Questions, { through: Answers });
 Questions.belongsToMany(Interview, { through: Answers });
+Interview.hasMany(Answers);
 
 module.exports = {
   User,
