@@ -12,7 +12,7 @@ class SingleCandidate extends React.Component {
     this.state = {
       userHRId: null,
       userSIST1: null,
-      userSIST2: null,
+      userSIST2: null
     };
     this.handleChangeId = this.handleChangeId.bind(this);
     this.submitHR = this.submitHR.bind(this);
@@ -21,10 +21,15 @@ class SingleCandidate extends React.Component {
     this.createInterview = this.createInterview.bind(this);
     this.changeCandStatus = this.changeCandStatus.bind(this);
     this.interviewSis = this.interviewSis.bind(this);
+    this.goInterview = this.goInterview.bind(this);
   }
   componentDidMount () {
     this.props.getAllUsers();
     this.props.fetchCandidate(this.props.idCand);
+  }
+
+  goInterview (candidate) {
+    this.props.history.push(`/preinterview/sist/${candidate}`);
   }
 
   createInterview (candidate) {
@@ -32,7 +37,7 @@ class SingleCandidate extends React.Component {
       candidateId: candidate
     })
       .then(interview => {
-        this.props.history.push(`/candidates/${candidate}/interview/${interview.data.id}`);
+        this.props.history.push(`/candidates/${candidate}/interview/hr/${interview.data.id}`);
       });
   }
 
@@ -71,7 +76,6 @@ class SingleCandidate extends React.Component {
     this.props.history.push(`/candidates/interviewSis/${candidate}`);
   }
 
-
   render () {
     return (
       !!this.props.candidate && !!this.props.candidate.id &&
@@ -89,6 +93,7 @@ class SingleCandidate extends React.Component {
       onClickInterview={this.createInterview}
       onClickInterviewSis={this.interviewSis}
       history={this.props.history}
+      onClickSist={this.goInterview}
     />
     );
   }

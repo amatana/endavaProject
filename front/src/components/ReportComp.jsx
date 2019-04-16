@@ -4,6 +4,7 @@ import { fetchHrAnswers } from '../redux/action-creator/answersActions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Axios from 'axios';
+import { getAllCandidates } from '../redux/action-creator/candidate-actions';
 
 class ReportComp extends React.Component {
   constructor () {
@@ -17,7 +18,8 @@ class ReportComp extends React.Component {
   changeCandStatus (idCandi, status) {
     Axios.put('/api/candidate/changeStatus', { idCandi, status })
       .then(alert('Estado actualizado'))
-      .then(this.props.history.push("/candidates/allCandidates"))
+      .then(() => this.props.getAllCandidates())
+      .then(() => this.props.history.push('/candidates/allCandidates'));
   };
 
   render () {
@@ -34,10 +36,7 @@ class ReportComp extends React.Component {
               {
                 this.props.answersHR.map((elemento, key) => (
                   <div key={elemento.pregunta}>
-                    <h2>Pregunta:</h2>
-                    {elemento.pregunta}
-                    <h2>Respuesta:</h2>
-                    {elemento.respuesta}
+                    <h2>{elemento.pregunta} : {elemento.respuesta}</h2>
                   </div>
                 ))
               }
@@ -63,7 +62,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchHrAnswers: (interviewID) => dispatch(fetchHrAnswers(interviewID))
+  fetchHrAnswers: (interviewID) => dispatch(fetchHrAnswers(interviewID)),
+  getAllCandidates: () => dispatch(getAllCandidates())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReportComp);
