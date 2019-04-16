@@ -26,7 +26,7 @@ class AllUsers extends React.Component {
                 <th scope="col" className='tableHeading' >Delete</th>
               </tr>
             </thead>
-            {this.props.users && this.props.users.map((user, index = 0) => {
+            {this.props.users && this.props.users.sort((a, b) => a.id - b.id).map((user, index = 0) => {
               return (
                 <tbody key={index++}>
                   <tr>

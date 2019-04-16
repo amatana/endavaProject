@@ -2,7 +2,6 @@
 import React from 'react';
 import { fetchHrAnswers } from '../redux/action-creator/answersActions';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import Axios from 'axios';
 import { getAllCandidates } from '../redux/action-creator/candidate-actions';
 
@@ -32,6 +31,18 @@ class ReportComp extends React.Component {
               <h2>Phone:</h2> {this.props.candidate.telNumber}
               <h2>Email Adress:</h2> {this.props.candidate.email}
               <h2>STATUS:</h2> {this.props.candidate.status}
+              <div className='divito'>
+                <div className='mitadReport'>
+                  <button
+                    id='appReport'
+                    onClick={() => this.changeCandStatus(this.props.candidate.id, 'Approved HR')} >
+                    APPROVE HR</button>
+                  <button
+                    id='rejReport'
+                    onClick={() => this.changeCandStatus(this.props.candidate.id, 'Rejected HR')}>REJECT HR</button>
+                </div>
+                <div></div>
+              </div>
             </div>
             <div>
               {
@@ -44,15 +55,7 @@ class ReportComp extends React.Component {
             </div>
           </div>
         </div>
-        <button
-          className='ActionsBotones'
-          style={{ backgroundColor: '#0EDD4D' }}
-          onClick={() => this.changeCandStatus(this.props.candidate.id, 'Approved HR')} >
-          Approve HR</button>
-        <button
-          className='ActionsBotones'
-          style={{ backgroundColor: '#DD0E0E' }}
-          onClick={() => this.changeCandStatus(this.props.candidate.id, 'Rejected HR')}>Reject HR</button>
+
       </div>
     );
   }
