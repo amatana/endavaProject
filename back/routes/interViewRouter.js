@@ -17,10 +17,11 @@ router.post('/newInterview', (req, res) => {
 });
 
 router.get('/getInterview/:id', (req, res) => {
-  Interview.findByPk(1)
-    .then((data) => res.send(data));
-})
-;
+  Interview.findOne({ where: { candidateIDId: req.params.id } })
+    .then(data => {
+      res.send(data);
+    });
+});
 
 router.post('/candidateInt', (req, res) => {
   let { candidateID, questionsID } = req.body;

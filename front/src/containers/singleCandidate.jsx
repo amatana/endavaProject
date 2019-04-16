@@ -66,6 +66,9 @@ class SingleCandidate extends React.Component {
     Axios.put('/api/candidate/changeStatus', { idCandi, status })
       .then(() => this.props.fetchCandidate(this.props.idCand));
   };
+  interviewSis (candidate) {
+    this.props.history.push(`/candidates/${candidate}/interviewSis/`);// falta el dato de la entrevista 
+  }
 
 
   render () {
@@ -83,6 +86,7 @@ class SingleCandidate extends React.Component {
       createInterview={this.createInterview}
       changeCandStatus={this.changeCandStatus}
       onClickInterview={this.createInterview}
+      onClickInterviewSis={this.interviewSis}
     />
     );
   }

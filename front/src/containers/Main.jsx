@@ -60,6 +60,19 @@ class Main extends React.Component {
               );
             }}
           />
+          <Route exact
+            path='/candidates/:idCand/interviewSis/'
+            render={({ history, match }) => {
+              return (
+                <InterviewSisCont
+                  idCand={match.params.idCand}
+                  history={history}
+                  idInter={match.params.idInterv}
+                  user={this.props.user}
+                />
+              );
+            }}
+          />
 
           <Route exact path='/users' render={({ history }) => (<UserHome history={history} user={this.props.user}/>)} />
           <Route exact path='/users/addUser' render={({ history }) => (<AddUser history={history} />)} />
