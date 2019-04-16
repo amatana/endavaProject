@@ -11,6 +11,8 @@ import AllCandidates from './AllCandidates';
 import AddCandidate from './AddCandidate';
 import Header from '../components/Header';
 import AllQuestionsList from './AllQuestionsList';
+import InterviewSisCont from './InterviewSisCont';
+
 import UserHome from '../components/UserHome';
 import CandidatesHome from '../components/candidateHome';
 import CreateInterview from './CreateInterview';
@@ -58,7 +60,7 @@ class Main extends React.Component {
               }
             />
             <Route exact
-              path='/candidates/:idCand/interviewSis/'
+              path='/candidates/interviewSis/:idCand'
               render={({ history, match }) => {
                 return (
                   <InterviewSisCont

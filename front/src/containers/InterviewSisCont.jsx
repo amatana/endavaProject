@@ -20,8 +20,9 @@ class InterviewSisCont extends React.Component {
   }
   componentDidMount () {
     this.props.fetchCandidate(this.props.idCand);
-    this.props.fetchInterview(this.props.idCand);
+    //this.props.fetchInterview(this.props.idCand);
   }
+
 
   render () {
     console.log('las props que llegan a entrevista de sistemas', this.props);
@@ -31,7 +32,7 @@ class InterviewSisCont extends React.Component {
         // onChange={this.handleChange}
         // questions={this.props.questionsHR}
         candidate={this.props.candidate}
-        interview={this.props.interview}
+        //interview={this.props.interview}
 
       />
     );
@@ -39,13 +40,13 @@ class InterviewSisCont extends React.Component {
 }
 const mapStateToProps = (state) => ({
   candidate: state.candidate.candidate,
-  interview: state.interview.interview
+  //interview: state.interview.interview
 
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCandidate: (idCandi) => dispatch(fetchCandidate(idCandi)),
-  fetchInterview: (idCandi) => dispatch(fetchInterview(idCandi))
+  //fetchInterview: (idCandi) => dispatch(fetchInterview(idCandi))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterviewSisCont);
