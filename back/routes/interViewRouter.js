@@ -1,7 +1,6 @@
 const express = require('express');
-
 const Interview = require('../models/interview');
-const Answers = require('../models/answers');
+const Candidate = require('../models/candidate');
 
 const router = express.Router();
 
@@ -11,7 +10,15 @@ router.post('/newInterview', (req, res) => {
       candidateIDId: req.body.candidateId }
   })
     .then(([interview, created]) => {
-      if (created) interview.setCandidateID(req.body.candidateId);
+      if (created) {
+        interview.setCandidateID(req.body.candidateId);
+        Candidate.findByPk(req.body.candidateId)
+          .then((candidate) => {
+            console.log('&&&&&CANIDADTO&&&&&&', candidate);
+            console.log('&&&&&ENTREVITA&&&&&&', interview);
+            candidate.setInterviewID(interview.id);
+          });
+      }
       res.send(interview);
     });
 });

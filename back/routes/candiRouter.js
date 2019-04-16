@@ -5,6 +5,7 @@ const Candidate = require('../models/candidate');
 const User = require('../models/User');
 const Tag = require('../models/tags');
 
+
 router.post('/create', (req, res) => {
   Candidate.create(req.body.candidate)
     .then(data => res.status(201).send(data))

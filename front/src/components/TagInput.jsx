@@ -18,9 +18,9 @@ const addTag = (props) => {
         </form>
       </div>
       <div id = 'table'>
-        {allTags && allTags.map((tag) => {
+        {allTags && allTags.map((tag, index=0) => {
           return (
-            <div className = 'cell'>
+            <div className = 'cell' key={index++}>
               <h4><strong>{tag.tag}</strong></h4>
             </div>
           );
