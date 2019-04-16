@@ -1,4 +1,5 @@
-import { SET_CANDIDATE, SET_CANDIDATES } from '../constants';
+import { SET_CANDIDATE, SET_CANDIDATES,
+  SET_CANDIDATE_INTERVW_ID } from '../constants';
 import axios from 'axios';
 
 const setCandidate = (candidate) => ({
@@ -15,6 +16,11 @@ const setCandidates = (candidates) => ({
 const setMyCandidates = (candidates) => ({
   type: 'SET_MYCANDIDATES',
   candidates
+});
+
+const setInterviewID = (candidateInterviewID) => ({
+  type: SET_CANDIDATE_INTERVW_ID,
+  candidateInterviewID
 });
 
 export const createCandidate = (candidate) => dispatch =>
@@ -44,3 +50,6 @@ export const fetchMyCandidates = (userId) => dispatch =>
       return candidates.data;
     });
 
+export const fetchCandidateInterview = (candID) => dispatch =>
+  axios.get('/api/candidate/getCandidateInterview/' + candID)
+    .then(response => dispatch(setInterviewID(response.data)));
