@@ -12,14 +12,16 @@ class addTag extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   };
 
   componentDidMount () {
-    axios.get('api/tags/retrieve')
+    axios.get('/api/tags/retrieve')
       .then((allTags) => {
+        console.log('TAGS MOUNTED', allTags);
         this.setState({ allTags });
       });
-  }
+  };
 
   handleChange (e) {
     let input = e.target.value;
@@ -41,12 +43,24 @@ class addTag extends React.Component {
       });
   }
 
+  handleDelete (e) {
+    let index = e.target.getAttribute('name');
+    axios.post('api/tags/delete', { deleted: index })
+      .then(() => {
+        axios.get('api/tags/retrieve')
+          .then((allTags) => {
+            this.setState({ allTags });
+          });
+      });
+  }
+
   render () {
     return (
       <div>
         <TagInput
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
+          handleDelete={this.handleDelete}
           tagInput={this.state.tagInput}
           allTags={this.state.allTags} />
       </div>
