@@ -43,7 +43,7 @@ class botonera extends React.Component {
                 <button
                 className='ActionsBotones'
                 style={{ backgroundColor: '#808080' }}
-                onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/${this.props.candidate.InterviewIDId}`)}
+                onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/hr/${this.props.candidate.InterviewIDId}`)}
                 >
                 View HR Report</button>
             </div>
