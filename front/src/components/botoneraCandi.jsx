@@ -26,11 +26,18 @@ class botonera extends React.Component {
           ? (<div>
             <div id='botonesHR'>
               {/* <button className='ActionsBotones' style={{ backgroundColor: '#0EB8DD' }}>Assign Interviewers</button> */}
-              <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }}
-                onClick={() => {
-                  this.props.onClickInterview(this.props.candidate.id);
-                }
-                }>Create Interview</button>
+              {this.props.candidate && this.props.candidate.state === 'New'
+                ? <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }}
+                  onClick={() => {
+                    this.props.onClickInterview(this.props.candidate.id);
+                  }
+                  }>Create Interview</button>
+                : <button
+                  className='ActionsBotones'
+                  style={{ backgroundColor: '#808080' }}
+                  onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/${this.props.candidate.InterviewIDId}`)}
+                >
+                  View HR Report</button>}
               <button
                 className='ActionsBotones'
                 style={{ backgroundColor: '#0EDD4D' }}
