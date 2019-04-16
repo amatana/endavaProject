@@ -43,3 +43,4 @@ export const fetchMyCandidates = (userId) => dispatch =>
       dispatch(setMyCandidates(candidates.data));
       return candidates.data;
     });
+

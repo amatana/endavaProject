@@ -83,6 +83,7 @@ class SingleCandidate extends React.Component {
       createInterview={this.createInterview}
       changeCandStatus={this.changeCandStatus}
       onClickInterview={this.createInterview}
+      history={this.props.history}
     />
     );
   }

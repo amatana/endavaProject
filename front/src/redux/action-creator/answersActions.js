@@ -9,5 +9,10 @@ const setAnswersHR = (answersHR) => ({
 
 export const submitHRAnswers = (answersHR) => dispatch =>
   Axios.post('/api/answers/answersHR', answersHR)
-    .then((res) => dispatch(setAnswersHR(res.data)))
+  // .then((res) => console.log(res))
+    .then(() => 'guardado')
 ;
+export const fetchHrAnswers = (interviewID) => dispatch =>
+  Axios.get(`/api/answers/getHRAnswers/${interviewID}`)
+    // .then((answersHr) => dispatch(setAnswersHR(answersHr.data)));
+    .then(answers => dispatch(setAnswersHR(answers.data)));
