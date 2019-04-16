@@ -5,7 +5,7 @@ import ReportComp from '../components/ReportComp';
 import { connect } from 'react-redux';
 import { fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { searchHRQuestions } from '../redux/action-creator/questionActions';
-import { submitHRAnswers } from '../redux/action-creator/answersActions';
+import { submitHRAnswers, fetchHrAnswers } from '../redux/action-creator/answersActions';
 
 class CreateInterview extends React.Component {
   constructor (props) {
@@ -21,6 +21,8 @@ class CreateInterview extends React.Component {
   componentDidMount () {
     this.props.searchHRQuestions();
     this.props.fetchCandidate(this.props.idCand);
+    this.props.fetchHrAnswers(this.props.idInter);
+
     // this.state.submitted && this.setState({ submitted: false });
   }
 
@@ -41,9 +43,9 @@ class CreateInterview extends React.Component {
   }
 
   render () {
-    console.log(this.state)
+    console.log('las props', this.props);
     return (
-      !this.state.submitted
+      !this.state.submitted && !this.props.answersHR.length
         ? <CreateInterviewComp
           onSubmit={this.onSubmit}
           onChange={this.handleChange}
@@ -63,13 +65,15 @@ class CreateInterview extends React.Component {
 
 const mapStateToProps = (state) => ({
   candidate: state.candidate.candidate,
-  questionsHR: state.question.questions
+  questionsHR: state.question.questions,
+  answersHR: state.answers.answersHR
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCandidate: (idCandi) => dispatch(fetchCandidate(idCandi)),
   searchHRQuestions: () => dispatch(searchHRQuestions()),
-  submitHRAnswers: (state) => dispatch(submitHRAnswers(state))
+  submitHRAnswers: (state) => dispatch(submitHRAnswers(state)),
+  fetchHrAnswers: (interviewID) => dispatch(fetchHrAnswers(interviewID))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateInterview);
