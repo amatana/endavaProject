@@ -21,7 +21,7 @@ class CreateInterview extends React.Component {
   componentDidMount () {
     this.props.searchHRQuestions();
     this.props.fetchCandidate(this.props.idCand);
-    this.state.submitted && this.setState({ submitted: false });
+    // this.state.submitted && this.setState({ submitted: false });
   }
 
   handleChange (e) {
@@ -41,6 +41,7 @@ class CreateInterview extends React.Component {
   }
 
   render () {
+    console.log(this.state)
     return (
       !this.state.submitted
         ? <CreateInterviewComp
