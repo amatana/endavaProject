@@ -1,6 +1,5 @@
 import { SET_INTERVIEW } from '../constants';
 import axios from 'axios';
-import { bindActionCreators } from '../../../../../Library/Caches/typescript/3.4.3/node_modules/@types/redux-logger/node_modules/redux';
 
 const setInterview = (interview) => ({
   type: SET_INTERVIEW,
