@@ -112,7 +112,7 @@ class AllQuestionsGrid extends React.Component {
         <h2 className='titHome'>QUESTIONS MANAGEMENT</h2>
         <div className='newTableDiv' style={{ margin: '3% 1%' }} >
           <table className="table">
-            <thead style={{ backgroundColor: '#DE411B' }}>
+            <thead style={{ borderBottom: '5px solid #DE411B', borderTop: '5px solid #DE411B'}}>
               <tr>
                 <th scope="col" className='tableHeading' style={{ textAlign: 'left' }}>Questions Content</th>
               </tr>

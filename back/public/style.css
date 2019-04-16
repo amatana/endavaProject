@@ -321,6 +321,10 @@ div.tableDiv{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-bottom: 30px;
 }
+div.tableDivi{
+    display: block;
+    margin: 0 auto;
+}
 .ActionsBotonesNaranja:hover{
     background-color: white;
 }

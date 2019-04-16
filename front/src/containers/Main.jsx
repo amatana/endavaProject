@@ -11,6 +11,8 @@ import AllCandidates from './AllCandidates';
 import AddCandidate from './AddCandidate';
 import Header from '../components/Header';
 import AllQuestionsList from './AllQuestionsList';
+import InterviewSisCont from './InterviewSisCont';
+
 import UserHome from '../components/UserHome';
 import CandidatesHome from '../components/candidateHome';
 import CreateInterview from './CreateInterview';
@@ -55,6 +57,22 @@ class Main extends React.Component {
                   user={this.props.user}
                   idCand={match.params.idCand}
                 />
+              )
+              }
+            />
+            <Route exact
+              path='/candidates/interviewSis/:idCand'
+              render={({ history, match }) => {
+                return (
+                  <InterviewSisCont
+                    idCand={match.params.idCand}
+                    history={history}
+                    idInter={match.params.idInterv}
+                    user={this.props.user}
+                  />
+                );
+              }}
+            />
               )}
             />
             <Route exact
