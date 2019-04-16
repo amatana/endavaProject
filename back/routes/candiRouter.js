@@ -47,6 +47,11 @@ router.get('/getOne/:id', (req, res) => {
     });
 });
 
+router.delete('/delete/:id', (req, res) => {
+  Candidate.destroy({ where: { id: req.params.id } })
+    .then(() => res.sendStatus(200));
+});
+
 // Trae los candidatos asignados al usuario loggeado
 router.get('/getMyCandidates/:userId', (req, res) => {
   const { userId } = req.params;

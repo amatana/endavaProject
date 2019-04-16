@@ -26,7 +26,7 @@ class botonera extends React.Component {
           ? (<div>
             <div id='botonesHR'>
               {/* <button className='ActionsBotones' style={{ backgroundColor: '#0EB8DD' }}>Assign Interviewers</button> */}
-              {this.props.candidate && this.props.candidate.state === 'New'
+              {this.props.candidate && this.props.candidate.status === 'New'
                 ? <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }}
                   onClick={() => {
                     this.props.onClickInterview(this.props.candidate.id);
@@ -35,7 +35,7 @@ class botonera extends React.Component {
                 : <button
                   className='ActionsBotones'
                   style={{ backgroundColor: '#808080' }}
-                  onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/${this.props.candidate.InterviewIDId}`)}
+                  onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/hr/${this.props.candidate.InterviewIDId}`)}
                 >
                   View HR Report</button>}
               <button
@@ -47,12 +47,14 @@ class botonera extends React.Component {
                 className='ActionsBotones'
                 style={{ backgroundColor: '#DD0E0E' }}
                 onClick={() => this.changeStatus('Rejected HR')}>Reject HR</button>
+
               <button
                 className='ActionsBotones'
                 style={{ backgroundColor: '#808080' }}
                 onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/hr/${this.props.candidate.InterviewIDId}`)}
                 >
                 View HR Report</button>
+
             </div>
           </div>)
           : (<div>
