@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 const Candidate = require('../models/candidate');
 const User = require('../models/User');
 const Tag = require('../models/tags');
-
+const Interview = require('../models/interview');
 
 router.post('/create', (req, res) => {
   console.log('lo que me llego al servidor ', req.body.candidate);
@@ -117,6 +117,12 @@ router.put('/changeStatus', (req, res) => {
       candidato.update({ status: req.body.status });
       res.sendStatus(200);
     });
+});
+
+router.get('/getCandidateInterview/:candID', (req, res) => {
+  console.log('===============> REQ.BODY', req.params);
+  Interview.findOne({ where: { candidateIDId: req.params.candID } })
+    .then(interVW => res.send({interviewID: interVW.id}));
 });
 
 module.exports = router;
