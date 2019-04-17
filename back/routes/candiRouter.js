@@ -19,8 +19,6 @@ router.post('/create', (req, res) => {
     status: req.body.candidate.status
   };
 
-  console.log(candidateData);
-
   Candidate.create(candidateData)
     .then((candidate) => {
       candidate.setTags(req.body.candidate.selectedTags);

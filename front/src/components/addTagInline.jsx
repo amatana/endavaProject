@@ -20,7 +20,7 @@ const addTagInline = (props) => {
 
       <div style={{ float: 'left', padding: '1%' }}>
         {props.selectedTags.map((id, i) => {
-          return <p style={{ float: 'left', marginLeft: '20px', color: 'red' }} onClick={props.handleDelete} value={i} >{props.allTags[id - 1].tag}</p>;
+          return <p style={{ float: 'left', marginLeft: '20px', color: 'red' }} onClick={props.handleDelete} value={i} >{props.allTags[i].tag}</p>;
         })
         }
       </div>
