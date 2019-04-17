@@ -10,6 +10,7 @@ class CandidTable extends React.Component {
     };
   }
   render () {
+    console.log("OY LAS PUTAS PROPS", this.props)
     return (
       <table className="table">
         <thead >
@@ -23,7 +24,7 @@ class CandidTable extends React.Component {
         </thead>
 
         <tbody >
-          {this.props.candidates.map((candidate, index = 0) => {
+          { this.props.candidates && this.props.candidates.map((candidate, index = 0) => {
             if (candidate.status.toLowerCase().includes(this.props.input)) {
               return (
                 <tr key={index++} className={index % 2 ? 'grey' : 'white'}>

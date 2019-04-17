@@ -12,7 +12,7 @@ const ActionsCandidates = (props) => {
       <div id='infoCandi'>
         <div >
           <h1><span style={{ borderBottom: '1px solid black', fontSize: '1em' }}> Candidate Info</span></h1>
-          <h3>Nombre Completo :  <strong style={{ fontSize: '1em' }}>{ ' ' + candidate.name + ' ' + candidate.surname + ' '}</strong></h3>
+          <h3>Nombre Completo :  <strong style={{ fontSize: '1em' }}>{' ' + candidate.name + ' ' + candidate.surname + ' '}</strong></h3>
           <h3>Email : <strong style={{ fontSize: '1em' }}>{' ' + candidate.email}</strong></h3>
           <h3>Status HR: <strong style={{ fontSize: '1em' }}>{candidate.status}</strong></h3>
           <a href={candidate.url} target='_blank'>Link a Perfil en Linked-in</a>
@@ -37,44 +37,19 @@ const ActionsCandidates = (props) => {
                 user={props.user}
                 changeCandStatus={props.changeCandStatus}
                 history={props.history}
+                submitHR={props.submitHR}
+                handleChangeID={props.handleChangeId}
+                handleSubSIS1={props.handleSubSIS1}
+                handleSubSIS2={props.handleSubSIS2}
+                usersSIST={props.usersSIST}
+                usersRH={props.usersRH}
               />
             </div>
           </div>
 
-          <div>
-            <div className='assignUser'>
-              <h3>Assign RRHH :</h3>
-              <select name='userHRId' onChange={props.handleChangeID} className='selectTag' >
-                {props.usersRH.map(user => (
-                  <option value={user.id} key={user.id}>{user.nombre}</option>
-                ))
-                }
-              </select >
-              <input type='submit' className='subBtn' value='ASSIGN RRHH' onClick={() => props.submitHR(candidate.id)} />
-            </div>
-            <div className='assignUser'>
-              <h3>Assign Interviewer Sistemas 1:</h3>
-              <select name='userSIST1' onChange={props.handleChangeID} className='selectTag' >
-                {props.usersSIST.map(user => (
-                  <option value={user.id} key={user.id}>{user.nombre}</option>
-                ))
-                }
-              </select >
-              <input type='submit' className='subBtn' value='ASSIGN Sisemas' onClick={() => props.handleSubSIS1(candidate.id)} />
-            </div>
 
-            <div className='assignUser'>
-              <h3>Assign Interviewer Sistemas 2: </h3>
-              <select name='userSIST2' onChange={props.handleChangeID} className='selectTag' >
-                {props.usersSIST.map(user => (
-                  <option value={user.id} key={user.id}>{user.nombre}</option>
-                ))
-                }
-              </select >
-              <input type='submit' value='ASSIGN Sisemas' className='subBtn' onClick={() => props.handleSubSIS2(candidate.id)} />
-            </div>
-          </div>
         </div>
+
         : <div>
           <h1 style={{ marginLeft: '25px', marginBottom: '30px', marginTop: '40px' }}><span style={{ borderBottom: '1px solid black', fontSize: '1em' }}> SISTEMAS ACTIONS</span></h1>
           <div style={{ margin: '30px' }}>
@@ -87,29 +62,15 @@ const ActionsCandidates = (props) => {
               user={props.user}
               changeCandStatus={props.changeCandStatus}
               onClickInterviewSis={props.onClickInterviewSis}
+              submitHR={props.submitHR}
+              handleChangeID={props.handleChangeId}
+              handleSubSIS1={props.submitSIST1}
+              handleSubSIS2={props.submitSIST2}
+              usersSIST={props.usersSIST}
+              usersRH={props.usersRH}
             />
           </div>
-          <div className='assignUser'>
-            <h3>Assign Interviewer Sistemas 1:</h3>
-            <select name='userSIST1' onChange={props.handleChangeID} className='selectTag' >
-              {props.usersSIST.map(user => (
-                <option value={user.id} key={user.id}>{user.nombre}</option>
-              ))
-              }
-            </select >
-            <input type='submit' className='subBtn' value='ASSIGN Sisemas' onClick={() => props.handleSubSIS1(candidate.id)} />
-          </div>
 
-          <div className='assignUser'>
-            <h3>Assign Interviewer Sistemas 2: </h3>
-            <select name='userSIST2' onChange={props.handleChangeID} className='selectTag' >
-              {props.usersSIST.map(user => (
-                <option value={user.id} key={user.id}>{user.nombre}</option>
-              ))
-              }
-            </select >
-            <input type='submit' value='ASSIGN Sisemas' className='subBtn' onClick={() => props.handleSubSIS2(candidate.id)} />
-          </div>
         </div>
       }
     </div>

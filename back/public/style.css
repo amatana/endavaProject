@@ -304,6 +304,9 @@ form h5 {
     font-size: 1.5em;
     margin: 30px 30px; 
 }
+.assignOff{
+    display: none;
+}
 .subBtn{
     padding: 10px;
     background-color:white;
@@ -316,7 +319,7 @@ form h5 {
 .assignUser{
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    width: 50%;
+    width: 60%;
     margin: 40px auto;
 }
 #infoCandi{
@@ -329,7 +332,7 @@ form h5 {
 }
 #botonesHR{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%;
 }
 .ActionsBotonesNaranja{
