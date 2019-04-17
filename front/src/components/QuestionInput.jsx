@@ -13,6 +13,7 @@ const QuestionInput = (props) => {
           <h6 className='subTitles'>Select question tags: </h6>
           <div id='tagsDisplay'>
             <form onSubmit={props.submiTag} className='addTag'>
+              { props.user ?}
               <select name='dropdown' className='selectTag'>
                 {
                   props.tags.map(function (tag) {
