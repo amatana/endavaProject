@@ -9,7 +9,7 @@ const addTagInline = (props) => {
           <p style={{ fontSize: '15px', fontStyle: 'italic' }}>Click to delete</p>
           <select name='tagDropdown' style={{ float: 'left', margin: '5px', width: '120px', height: '30px' }}>
             {props.allTags && props.allTags.map((tag, i) => {
-              return (<option value={i}>{tag.tag}</option>);
+              return (<option key={tag.id++} value={i}>{tag.tag}</option>);
             })}
           </select>
           <input type="submit" value="Add Tag" style={{ float: 'left', margin: '5px' }} />

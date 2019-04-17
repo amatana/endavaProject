@@ -54,7 +54,6 @@ class AddCandidate extends React.Component {
   handleTagSubmit (e) {
     e.preventDefault();
     let index = e.target.tagDropdown.value;
-    console.log('INDEX', index);
     let arr = this.state.selectedTags;
     let found = arr.find((element) => {
       if (element === this.state.allTags[index].id) {

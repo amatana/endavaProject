@@ -34,16 +34,13 @@ class CreateInterview extends React.Component {
   onSubmit (e) {
     e.preventDefault();
     let a = this.state;
-    console.log('ddddddddddddddddddddddddddddddddddd');
     this.props.submitHRAnswers(a)
       .then(() => {
-        console.log('(((((((((((((((((((((((((((((((((((((((((((((((((((((((');
         this.setState({ submitted: true });
       });
   }
 
   render () {
-    console.log('las props', this.props);
     return (
       !this.state.submitted && !this.props.answersHR.length
         ? <CreateInterviewComp
