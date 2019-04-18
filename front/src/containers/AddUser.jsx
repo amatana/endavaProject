@@ -27,7 +27,7 @@ class addUser extends React.Component {
       alert('El email debe pertenecer al dominio @endava.com');
     } else {
       this.props.createUSer(this.state);
-      return this.props.history.push('/login');
+      return this.props.history.push('/');
     }
   }
 

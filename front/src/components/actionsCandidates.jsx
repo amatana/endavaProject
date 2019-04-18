@@ -32,15 +32,14 @@ const ActionsCandidates = (props) => {
               <CandidateButtons
                 onClickInterview={props.createInterview}
                 candidate={props.candidate}
-                handleChangeID={props.handleChangeID}
                 submitHR={props.submitHR}
                 user={props.user}
                 changeCandStatus={props.changeCandStatus}
                 history={props.history}
                 submitHR={props.submitHR}
-                handleChangeID={props.handleChangeId}
-                handleSubSIS1={props.handleSubSIS1}
-                handleSubSIS2={props.handleSubSIS2}
+                handleChangeId={props.handleChangeId}
+                submitSIST1={props.handleSubSIST1}
+                submitSIST2={props.handleSubSIST2}
                 usersSIST={props.usersSIST}
                 usersRH={props.usersRH}
               />
@@ -57,15 +56,14 @@ const ActionsCandidates = (props) => {
               onClickSist={props.onClickSist}
               onClickInterview={props.onClickInterview}
               candidate={props.candidate}
-              handleChangeID={props.handleChangeID}
+              handleChangeId={props.handleChangeId}
               submitHR={props.submitHR}
               user={props.user}
               changeCandStatus={props.changeCandStatus}
               onClickInterviewSis={props.onClickInterviewSis}
               submitHR={props.submitHR}
-              handleChangeID={props.handleChangeId}
-              handleSubSIS1={props.submitSIST1}
-              handleSubSIS2={props.submitSIST2}
+              submitSIST1={props.submitSIST1}
+              submitSIST2={props.submitSIST2}
               usersSIST={props.usersSIST}
               usersRH={props.usersRH}
             />
