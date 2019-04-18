@@ -31,7 +31,13 @@ class CandidTable extends React.Component {
                   <th className='tableHeading ' scope="row">{candidate.name + ' ' + candidate.surname}</th>
                   <td className='tableHeading '>Acá van los perfiles</td>
                   <td className='tableHeading '><div className={candidate.status + ' gridDot'}></div><div id='candStatus'>{candidate.status}</div></td>
-                  <td className='tableHeading '><Link to={`/candidates/${candidate.id}`}><button className='ActionsBotonesBlanco'>Actions Managment</button></Link></td>
+                  <td className='tableHeading '>
+                  { candidate.status !== 'Rejected HR' &&
+                    <Link to={`/candidates/${candidate.id}`}>
+                      <button className='ActionsBotonesBlanco'>Actions Managment</button>
+                    </Link>
+                  }
+                  </td>
                   <td className='tableHeading '>
                     <a><img onClick={() => this.setState({ selected: candidate.id })} data-toggle="modal" data-target="#exampleModal" id='trashUser' src="/utils/garbage.svg">
                     </img></a>

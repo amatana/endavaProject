@@ -4,7 +4,7 @@ class botonera extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: 'New',
+      // status: 'New',
       assign: 'assignOff'
     };
     this.changeStatus = this.changeStatus.bind(this);
@@ -14,13 +14,14 @@ class botonera extends React.Component {
     this.setState({ status });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState !== this.state) {
-      this.props.changeCandStatus(this.props.candidate.id, this.state.status);
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState !== this.state) {
+  //     this.props.changeCandStatus(this.props.candidate.id, this.state.status);
+  //   }
+  // }
 
   render() {
+    console.log('SOY LAS PROPPPPSSS DEL LA BOTONERA', this.props)
     return (
       <div>
         {(this.props.user && this.props.user.area === 'RRHH')
@@ -51,7 +52,7 @@ class botonera extends React.Component {
                   View HR Report
               </button>}
 
-              <button
+              {/* <button
                 className='ActionsBotones'
                 style={{ backgroundColor: '#0EDD4D' }}
                 onClick={() => this.changeStatus('Approved HR')} >
@@ -63,7 +64,7 @@ class botonera extends React.Component {
                 style={{ backgroundColor: '#DD0E0E' }}
                 onClick={() => this.changeStatus('Rejected HR')}>
                 Reject HR
-              </button>
+              </button> */}
 
 
 
@@ -72,7 +73,7 @@ class botonera extends React.Component {
             <div className={'display ' + this.state.assign}>
               <div className='assignUser'>
                 <h3>Assign RRHH :</h3>
-                <select name='userHRId' onChange={this.props.handleChangeID} className='selectTag' >
+                <select name='userHRId' onChange={this.props.handleChangeId} className='selectTag' >
                   {this.props.usersRH.map(user => (
                     <option value={user.id} key={user.id}>{user.nombre}</option>
                   ))
@@ -82,7 +83,7 @@ class botonera extends React.Component {
               </div>
               <div className='assignUser'>
                 <h3>Assign Interviewer Sistemas 1:</h3>
-                <select name='userSIST1' onChange={this.props.handleChangeID} className='selectTag' >
+                <select name='userSIST1' onChange={this.props.handleChangeId} className='selectTag' >
                   {this.props.usersSIST.map(user => (
                     <option value={user.id} key={user.id}>{user.nombre}</option>
                   ))
@@ -93,7 +94,7 @@ class botonera extends React.Component {
 
               <div className='assignUser'>
                 <h3>Assign Interviewer Sistemas 2: </h3>
-                <select name='userSIST2' onChange={this.props.handleChangeID} className='selectTag' >
+                <select name='userSIST2' onChange={this.props.handleChangeId} className='selectTag' >
                   {this.props.usersSIST.map(user => (
                     <option value={user.id} key={user.id}>{user.nombre}</option>
                   ))
@@ -103,6 +104,8 @@ class botonera extends React.Component {
               </div>
             </div>
           </div>)
+
+
           : (<div>
             <div id='botonesHR'>
               <button 
@@ -116,32 +119,36 @@ class botonera extends React.Component {
                 Assign Interviewer SIST
               </button>
 
-              <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }} onClick={() => this.props.onClickInterviewSis(this.props.candidate.id)}> Interview SIST </button>
               <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }} onClick={() => this.props.onClickSist(this.props.candidate.id)}>Prepare Interview SIST</button>
+              <button className='ActionsBotones' style={{ backgroundColor: '#395fdd' }} onClick={() => this.props.onClickInterviewSis(this.props.candidate.id)}> Interview SIST </button>
               <button className='ActionsBotones' style={{ backgroundColor: '#0EDD4D' }} onClick={() => this.changeStatus('Tech Approved')}> APPROVE SIST</button>
               {/* <button className='ActionsBotones' style={{ backgroundColor: '#DD0E0E' }} onClick={() => this.changeStatus('Rejected Tech')}>Reject SIST</button> */}
             </div>
             <div className={this.state.assign}>
               <div className='assignUser ' >
                 <h3>Assign Interviewer Sistemas 1:</h3>
-                <select name='userSIST1' onChange={this.props.handleChangeID} className='selectTag' >
+                <select name='userSIST1' onChange={this.props.handleChangeId} className='selectTag' >
                   {this.props.usersSIST.map(user => (
                     <option value={user.id} key={user.id}>{user.nombre}</option>
                   ))
                   }
                 </select >
-                <input type='submit' className='subBtn' value='ASSIGN Sisemas' onClick={() => this.props.handleSubSIS1(candidate.id)} />
+                <input type='submit' className='subBtn' value='ASSIGN Sisemas' 
+                  onClick={() => {
+                    this.props.submitSIST1(this.props.candidate.id)
+                    }} />
               </div>
 
               <div className='assignUser'>
                 <h3>Assign Interviewer Sistemas 2: </h3>
-                <select name='userSIST2' onChange={this.props.handleChangeID} className='selectTag' >
+                <select name='userSIST2' onChange={this.props.handleChangeId} className='selectTag' >
                   {this.props.usersSIST.map(user => (
                     <option value={user.id} key={user.id}>{user.nombre}</option>
                   ))
                   }
                 </select >
-                <input type='submit' value='ASSIGN Sisemas' className='subBtn' onClick={() => this.props.handleSubSIS2(candidate.id)} />
+                <input type='submit' value='ASSIGN Sisemas' className='subBtn' 
+                    onClick={() => this.props.submitSIST2(this.props.candidate.id)} />
               </div>
             </div>
           </div>)
