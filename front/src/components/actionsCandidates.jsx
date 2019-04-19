@@ -38,8 +38,8 @@ const ActionsCandidates = (props) => {
                 history={props.history}
                 submitHR={props.submitHR}
                 handleChangeId={props.handleChangeId}
-                submitSIST1={props.handleSubSIST1}
-                submitSIST2={props.handleSubSIST2}
+                submitSIST1={props.submitSIST1}
+                submitSIST2={props.submitSIST2}
                 usersSIST={props.usersSIST}
                 usersRH={props.usersRH}
               />
