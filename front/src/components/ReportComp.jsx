@@ -32,7 +32,7 @@ class ReportComp extends React.Component {
               <h2 style={{ marginTop: '20px' }}>Full name: <strong>{this.props.candidate.fullName} </strong></h2>
               <h2>Phone: <strong>{this.props.candidate.telNumber}</strong> </h2>
               <h2>Email Adress: <strong>{this.props.candidate.email}</strong></h2>
-              <h2>Candidate ID: <strong>{props.candidate.id}</strong></h2>
+              <h2>Candidate ID: <strong>{this.props.candidate.id}</strong></h2>
             </div>
 
             <div id='leftSideReport'>

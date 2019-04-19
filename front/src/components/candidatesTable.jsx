@@ -34,7 +34,7 @@ class CandidTable extends React.Component {
                   <td className='tableHeading '>
                   { candidate.status !== 'Rejected HR' &&
                     <Link to={`/candidates/${candidate.id}`}>
-                      <button className='ActionsBotonesBlanco' style={{padding:'10px'}}><span className='btnFont'> Actions Managment</span></button>
+                      <button className='ActionsBotonesBlanco' style={{padding:'10px', width:'100%'}}><span className='btnFont'> Actions Managment</span></button>
                     </Link>
                   }
                   </td>
