@@ -53,32 +53,6 @@ class PreSistInterview extends React.Component {
   render () {
     return (<div>
       <img src="/utils/Frame.png"></img>
-      <button style={{ position: 'absolute',
-        width: '268px',
-        height: '60px',
-        left: '1000px',
-        top: '40px',
-
-        background: '#DE411C',
-        border: '1px solid #DE411C',
-        boxSizing: 'border-box',
-        borderRadius: '30px'
-      }}>
-      </button>
-      <div style={{ position: 'absolute',
-        width: '268px',
-        height: '60px',
-        left: '979px',
-        top: '40px',
-
-        fontFamily: 'Roboto Condensed',
-        fontStyle: 'normal',
-        fontWeight: 'bold',
-        fontSize: '20px',
-        lineHeight: 'normal',
-        textAlign: 'center',
-        color: '#FFFFFF' }}>
-        CREATE CANDIDATE  + </div>
       <div>
         <h2 style={{ position: 'absolute',
           width: '325px',

@@ -150,6 +150,9 @@ tr.white{
     margin-right: 20px;
     margin-left: 30px;
 }
+.botonHome:hover{
+    text-decoration-line: none;
+}
 .homeDIV{
     display: grid;
     margin: 20px;
@@ -304,6 +307,9 @@ form h5 {
     font-size: 1.5em;
     margin: 30px 30px; 
 }
+.assignOff{
+    display: none;
+}
 .subBtn{
     padding: 10px;
     background-color:white;
@@ -316,7 +322,7 @@ form h5 {
 .assignUser{
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    width: 50%;
+    width: 60%;
     margin: 40px auto;
 }
 #infoCandi{
@@ -324,12 +330,15 @@ form h5 {
     grid-template-columns: 1fr 1fr;
     margin: 25px 20px;
 }
+.radioScale{
+    transform: scale(1.5);
+}
 #actions{
     margin: 20px 20px;
 }
 #botonesHR{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%;
 }
 .ActionsBotonesNaranja{

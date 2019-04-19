@@ -26,7 +26,7 @@ const AddUser = (props) => {
             </div>
 
             <div className='form-group formSpace'>
-              <h5 id='belongsTo'>Belongs to :</h5>
+              <h4 id='belongsTo'>Belongs to :</h4>
               <div className="form-check form-check-inline formSpace">
                 <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio1" value="Sistemas" />
                 <label className="form-check-label labelSpacing" htmlFor="inlineRadio1">    Sistemas  </label>

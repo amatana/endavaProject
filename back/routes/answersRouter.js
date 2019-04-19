@@ -4,7 +4,6 @@ const Answers = require('../models/answers');
 const Questions = require('../models/questions');
 const Interview = require('../models/interview');
 router.post('/answersHR', (req, res) => {
-  // console.log(req.body);
 
   let arrayProm = [];
 
@@ -57,13 +56,11 @@ router.get('/getHRAnswers/:id', (req, res) => {
 });
 
 router.get('/getSistAnswers/:id', (req, res) => {
-  console.log('====================================> LLEGASTE AL GET');
   Interview.findAll(
     { where: { id: req.params.id },
       include: [{ model: Questions }] }
   )
     .then(data => {
-      // console.log("------------------------ DATA", data)
       var question;
       var answer;
       var arrayPares = [];
@@ -80,10 +77,8 @@ router.get('/getSistAnswers/:id', (req, res) => {
           }
         }
       }
-      console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ARREGLO: ', arrayPares);
       res.send(arrayPares);
     });
-  // .then(data => res.send(data));
 });
 module.exports = router
 ;

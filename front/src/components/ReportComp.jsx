@@ -16,7 +16,6 @@ class ReportComp extends React.Component {
 
   changeCandStatus (idCandi, status) {
     Axios.put('/api/candidate/changeStatus', { idCandi, status })
-      .then(alert('Estado actualizado'))
       .then(() => this.props.getAllCandidates())
       .then(() => this.props.history.push('/candidates/allCandidates'));
   };

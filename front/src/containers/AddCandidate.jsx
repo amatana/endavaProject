@@ -36,11 +36,11 @@ class AddCandidate extends React.Component {
     this.props.createCandidate(this.state)
       .then(error => {
         if (error) {
-          console.log('el error es:', error);
+          console.log('The Error is:', error);
           this.setState({ messege: error });
         } else {
           console.log('successfully saved candidate');
-          this.setState({ messege: 'successfully saved candidate' });
+          this.setState({ messege: 'Successfully saved Candidate' });
         }
       });
   }

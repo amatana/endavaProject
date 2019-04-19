@@ -84,9 +84,9 @@ class SingleCandidate extends React.Component {
       user={this.props.user}
       candidate={this.props.candidate}
       submitHR={this.submitHR}
-      handleChangeID={this.handleChangeId}
-      handleSubSIS1={this.submitSIST1}
-      handleSubSIS2={this.submitSIST2}
+      handleChangeId={this.handleChangeId}
+      submitSIST1={this.submitSIST1}
+      submitSIST2={this.submitSIST2}
       usersSIST={this.props.usersSIST}
       createInterview={this.createInterview}
       changeCandStatus={this.changeCandStatus}
