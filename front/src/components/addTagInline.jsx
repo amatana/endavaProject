@@ -6,8 +6,6 @@ const addTagInline = (props) => {
       < form onSubmit={props.handleTagSubmit} >
         <div className="form-group">
           <br />
-          <p style={{ fontSize: '15px', fontStyle: 'italic' }}>Click to delete</p>
-
           <div className="dropdown">
             <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Select Tags
@@ -20,6 +18,8 @@ const addTagInline = (props) => {
           </div>
         </div>
       </form >
+      
+      <p style={{ fontSize: '15px', fontStyle: 'italic' }}>Click to delete</p>
 
       <h3 style={{ float: 'left', marginLeft: '20px', color: '#EC6861' }}> | </h3>
 
