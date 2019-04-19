@@ -18,14 +18,6 @@ const addTag = (props) => {
             </div>
           </form>
         </div>
-        <div id='searchBar'>
-          <form onSubmit={props.handleSearch}>
-            <div>
-              <h3>Search</h3>
-              <input onChange={props.handleChange} name='tagInput' type='text' value={props.tagInput} />
-            </div>
-          </form>
-        </div>
         <div style={{ width: '300px', textAlign: 'center' }}>
           <table style={{ display: 'inline-block'}}>
             <tr>
