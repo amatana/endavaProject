@@ -41,7 +41,6 @@ class CreateInterview extends React.Component {
   }
 
   render () {
-    console.log(this.props)
     return (
       !this.state.submitted && !this.props.answersHR.length && this.props.candidate.status === 'New'
         ? <CreateInterviewComp
