@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
 const express = require('express');
 const router = express.Router();
 const Answers = require('../models/answers');
 const Questions = require('../models/questions');
 const Interview = require('../models/interview');
+
 router.post('/answersHR', (req, res) => {
   // console.log(req.body);
 
@@ -62,5 +64,82 @@ router.get('/getHRAnswers/:id', (req, res) => {
   // .then(data => res.send(data));
 });
 
+router.get('/getSisAnswers/:id', (req, res) => {
+  // console.log('+++++++++++++++++++++++++lo q me llega al getSisAnswers', req.params.id);
+  Answers.findAll({
+    where: {
+      interviewId: req.params.id,
+      observations: null
+    }
+  })
+    .then(preguntas => {
+      let arrayprom = [];
+      let arrayPromesas = [];
+
+      preguntas.map(pregunta => {
+        arrayPromesas.push(Questions.findByPk(pregunta.questionId));
+      });
+      Promise.all(arrayPromesas)
+        .then(response => {
+          response.map(respon => {
+            arrayprom.push({
+              id: respon.id,
+              value: respon.content
+            });
+          });
+          // console.log('++++++++++++++++++++++++++++++++++', arrayprom);
+          res.send(arrayprom);
+        });
+    });
+});
+
+function transformToArray (obj) {
+  let array = [];
+  let value;
+  for (i in obj) {
+    let key = i.split('-');
+    key[1] === 'score' ? value = [Number(key[0]), key[1], Number(obj[i])]
+      : value = [Number(key[0]), key[1], (obj[i])];
+    array.push(value);
+  }
+  return array;
+}
+
+router.post('/postAnswersSIS', (req, res) => {
+  console.log('mellegaaaaaaaaaaaaaaaaaaa al ', req.body);
+  let interId = req.body.InterviewSis;
+  // console.log(interId);
+  delete req.body.InterviewSis;
+  // console.log('================================= ', req.body)
+  let answerSis = transformToArray(req.body);
+  console.log(answer);
+  answerSis.map(answer => {
+    Answers.findOne({ where: { interviewId: req.body.interviewID } });
+  });
+
+  // Answers.findAll({
+  //   where: {
+  //     interviewId: interId,
+  //     observations: null
+  //   }
+  // }).then(res => console.log(res))
+});
+
 module.exports = router
 ;
+
+// function transformToArray (obj) {
+//   let array = [];
+//   for (i in obj) {
+//     let key = i.split('-');
+
+//     if (key[1] === 'score') {
+//       let value = [Number(key[0]), key[1], Number(obj[i])];
+//       array.push(value);
+//     } else {
+//       let value = [Number(key[0]), key[1], (obj[i])];
+//       array.push(value);
+//     }
+//   }
+//   return array;
+// }

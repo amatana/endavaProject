@@ -1,11 +1,13 @@
 import { SET_QUESTIONS, SET_HRQUESTIONS, DELETE_QUESTION,
-  EDIT_QUESTION, SET_CANDIDATE_QUESTIONS } from '../constants';
+  EDIT_QUESTION, SET_CANDIDATE_QUESTIONS, SET_QUESTIONSIS } from '../constants';
 
 const initialState = {
   allQuestions: [],
   questId: null,
   questions: [],
-  candidateQuestions: []
+  candidateQuestions: [],
+  questionSIS: []
+
 };
 
 export default (state = initialState, action) => {
@@ -20,6 +22,8 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { allQuestions: action.questions });
     case SET_CANDIDATE_QUESTIONS:
       return Object.assign({}, state, { candidateQuestions: action.candidateQuestions });
+    case SET_QUESTIONSIS:
+      return Object.assign({}, state, { questionSIS: action.questionSIS });
     default:
       return state;
   }

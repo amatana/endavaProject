@@ -47,8 +47,7 @@ class PreSistInterview extends React.Component {
   }
 
   onClickFunc () {
-    console.log('LEONARDOOOOOOOOOOO!!!!!!!!!!!!!!!!!!');
-    this.props.history.push('/PAGINA_DE_LEO');
+    this.props.history.push(`/candidates/interviewSis/${this.props.candidate.id}`);
   }
   render () {
     return (<div>

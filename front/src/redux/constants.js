@@ -14,9 +14,11 @@ export const DELETE_QUESTION = 'DELETE_QUESTION';
 export const EDIT_QUESTION = 'EDIT_QUESTION';
 export const SET_HRQUESTIONS = 'SET_HRQUESTIONS';
 export const SET_CANDIDATE_QUESTIONS = 'SET_CANDIDATE_QUESTIONS';
+export const SET_QUESTIONSIS = 'SET_QUESTIONSIS';
 
 // Interviews constants
 export const SET_INTERVIEW = 'SET_INTERVIEW';
 
 // Answers constants
 export const SET_ANSWERSHR = 'SET_ANSWERSHR';
+

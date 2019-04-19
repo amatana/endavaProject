@@ -2,6 +2,7 @@ import { SET_ANSWERSHR } from '../constants';
 
 const initialState = {
   answersHR: []
+
 };
 
 export default (state = initialState, action) => {

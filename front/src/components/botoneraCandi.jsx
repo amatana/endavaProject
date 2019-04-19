@@ -48,13 +48,6 @@ class botonera extends React.Component {
                 style={{ backgroundColor: '#DD0E0E' }}
                 onClick={() => this.changeStatus('Rejected HR')}>Reject HR</button>
 
-              <button
-                className='ActionsBotones'
-                style={{ backgroundColor: '#808080' }}
-                onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/hr/${this.props.candidate.InterviewIDId}`)}
-                >
-                View HR Report</button>
-
             </div>
           </div>)
           : (<div>
