@@ -41,6 +41,7 @@ class CreateInterview extends React.Component {
   }
 
   render () {
+    console.log('ESTOY SANO ????????', this.props)
     return (
       !this.state.submitted && !this.props.answersHR.length
         ? <CreateInterviewComp
