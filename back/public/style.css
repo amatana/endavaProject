@@ -18,6 +18,10 @@
 span.btnFont{
     font-size: 0.6em;
 }
+#alineandoBtn{
+    display: block;
+    margin: 0 auto;
+}
 .centrado {
     position: absolute;
     top:50%;
