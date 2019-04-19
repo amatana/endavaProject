@@ -1,4 +1,4 @@
-import { SET_QUESTIONS, SET_HRQUESTIONS, DELETE_QUESTION, SET_CANDIDATE_QUESTIONS } from '../constants';
+import { SET_QUESTIONS, SET_HRQUESTIONS, SET_CANDIDATE_QUESTIONS, SET_QUESTIONSIS } from '../constants';
 import axios from 'axios';
 
 const setQuestions = (questions) => ({
@@ -18,11 +18,10 @@ const setCandidateQuestions = (candidateQuestions) => ({
   candidateQuestions
 });
 
-// const setDeletedQuestion = (questId) => ({
-//   type: DELETE_QUESTION,
-//   questId
-
-// });
+const setQuestionsSis = (questionSIS) => ({
+  type: SET_QUESTIONSIS,
+  questionSIS
+});
 
 export const searchAllQuestions = (area) => dispatch =>
   axios.get('/api/questions/reqAllQuestions/' + area)
@@ -77,3 +76,9 @@ export const fetchCandidateQuestions = (tags) => dispatch => {
     .then(response => dispatch(setCandidateQuestions(response.data)));
 }
 ;
+
+export const fetchSisQuestions = (interviewID) => dispatch =>
+  // console.log('lo que me llega al action', interviewID);
+  axios.get(`/api/answers/getSisAnswers/${interviewID}`)
+  // .then(questions => console.log(questions.data))
+    .then(questions => dispatch(setQuestionsSis(questions.data)));

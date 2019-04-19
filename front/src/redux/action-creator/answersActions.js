@@ -23,6 +23,12 @@ export const fetchHrAnswers = (interviewID) => dispatch =>
     // .then((answersHr) => dispatch(setAnswersHR(answersHr.data)));
     .then(answers => dispatch(setAnswersHR(answers.data)));
 
+export const answerSystems = (answersSis) => dispatch =>
+
+  // console.log(answersSis);
+  Axios.post('/api/answers/postAnswersSIS', answersSis);
+// .then((res) => console.log(res));
+// .then(() => 'guardado');
 export const fetchSistAnswers = (interviewID) => dispatch =>
   Axios.get(`/api/answers/getSistAnswers/${interviewID}`)
     .then(answers => dispatch(setAnswersSIST(answers.data)));
