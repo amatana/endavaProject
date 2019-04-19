@@ -6,7 +6,6 @@ const Questions = require('../models/questions');
 const Interview = require('../models/interview');
 
 router.post('/answersHR', (req, res) => {
-  // console.log(req.body);
 
   let arrayProm = [];
 
@@ -33,35 +32,29 @@ router.post('/answersHR', (req, res) => {
 });
 
 router.get('/getHRAnswers/:id', (req, res) => {
-  console.log('====================================> LLEGASTE AL GET');
   Interview.findAll(
     { where: { id: req.params.id },
       include: [{ model: Questions }] }
   )
     .then(data => {
-      // console.log("------------------------ DATA", data)
       var question;
       var answer;
       var arrayPares = [];
 
       for (let i = 0; i < data.length; i += 1) {
-        // question = data[i].questions.content;
-        // answer = (data[i].questions.answers)
         for (let j = 0; j < data[i].questions.length; j += 1) {
-          answer = data[i].questions[j].answers.observations;
-          question = data[i].questions[j].content;
-          // console.log('&&&&&&&&&&&&&&&&&&&&&&&&PREGUNTA: ', data[i].questions[j].content);
-          // console.log('RESPUESTA: ', answer);
-          arrayPares.push({
-            pregunta: question,
-            respuesta: answer
-          });
+          if (!data[i].questions[j].answers.score) {
+            answer = data[i].questions[j].answers.observations;
+            question = data[i].questions[j].content;
+            arrayPares.push({
+              pregunta: question,
+              respuesta: answer
+            });
+          }
         }
       }
-      console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ARREGLO: ', arrayPares);
       res.send(arrayPares);
     });
-  // .then(data => res.send(data));
 });
 
 router.get('/getSisAnswers/:id', (req, res) => {
@@ -125,6 +118,31 @@ router.post('/postAnswersSIS', (req, res) => {
   // }).then(res => console.log(res))
 });
 
+router.get('/getSistAnswers/:id', (req, res) => {
+  Interview.findAll(
+    { where: { id: req.params.id },
+      include: [{ model: Questions }] }
+  )
+    .then(data => {
+      var question;
+      var answer;
+      var arrayPares = [];
+
+      for (let i = 0; i < data.length; i += 1) {
+        for (let j = 0; j < data[i].questions.length; j += 1) {
+          if (data[i].questions[j].answers.score) {
+            answer = data[i].questions[j].answers.score;
+            question = data[i].questions[j].content;
+            arrayPares.push({
+              pregunta: question,
+              score: answer
+            });
+          }
+        }
+      }
+      res.send(arrayPares);
+    });
+});
 module.exports = router
 ;
 

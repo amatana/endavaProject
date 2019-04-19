@@ -7,28 +7,52 @@ const addTag = (props) => {
   let allTags = props.allTags.data;
   // Solicita lista de Tags al servidor y los convierte en un dropdown element
   return (
-    <div style = { { width: '100%' } }>
-      <div id = 'searchBar'>
-        <h1 className='titHome'>TAG MANAGEMENT</h1>
-        <form onSubmit = {props.handleSubmit}>
-          <div>
-            <input onChange = {props.handleChange} name = 'tagInput' type = 'text' value = {props.tagInput} />
-            <input type='submit' value = 'Add Tag'/>
-          </div>
-        </form>
-      </div>
-      <div id = 'table'>
-        <h1>TAGS</h1>
-        {allTags && allTags.map((tag, i) => {
-          return (
-            <div className = 'cell'>
-              <h4 key = {i} name = {tag.id}><strong>{tag.tag}</strong></h4>
-              <h6 name = {tag.id}onClick = {props.handleDelete}> Delete </h6>
+    <div>
+      <div>
+      <h1 className='titHome'>TAG MANAGEMENT</h1>
+        <div id='searchBar'>
+          <form onSubmit={props.handleSubmit}>
+            <div>
+              <input onChange={props.handleChange} name='tagInput' type='text' value={props.tagInput} />
+              <input type='submit' value='Add Tag' />
             </div>
-          );
-        })}
+          </form>
+        </div>
+        <div id='searchBar'>
+          <form onSubmit={props.handleSearch}>
+            <div>
+              <h3>Search</h3>
+              <input onChange={props.handleChange} name='tagInput' type='text' value={props.tagInput} />
+            </div>
+          </form>
+        </div>
+        <div style={{ width: '300px', textAlign: 'center' }}>
+          <table style={{ display: 'inline-block'}}>
+            <tr>
+              <th ><h1>TAGS</h1></th>
+            </tr>
+            <td>
+              {allTags && allTags.map((tag, i) => {
+                return (
+                  <div>
+                    <tr>
+                      <div style={{ clear: 'both' }} className='cell'>
+                        <td>
+                          <p style={{ fontSize: '30px'}} key={i} name={tag.id}>{tag.tag}</p>
+                        </td>
+                        <td>
+                          <img style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} name={tag.id} onClick={props.handleDelete} src='/utils/garbage.svg' />
+                        </td>
+                      </div>
+                    </tr>
+                  </div>
+                );
+              })}
+            </td>
+          </table>
+        </div>
       </div>
-    </div>
+    </div >
   );
 };
 

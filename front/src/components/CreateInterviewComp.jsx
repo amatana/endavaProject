@@ -1,30 +1,43 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import { Preguntas } from '../containers/seed';
 
 const CreateInterviewComp = (props) => (
   <div>
-    <div className='probando'>
-      <div style={{ marginLeft: '30px' }}>
-        <h2>Full name:</h2> {props.candidate.fullName}
-        <h2>Phone:</h2> {props.candidate.telNumber}
-        <h2>Email Adress:</h2> {props.candidate.email}
-        <h2>STATUS:</h2> {props.candidate.status}
-      </div>
 
+    <div id='infoCandHR' className='masGrid' style={{ marginLeft: '30px' }}>
+      <div>
+        <h2>Full name: <strong>{props.candidate.fullName} </strong></h2>
+        <h2>Candidate ID: <strong>{props.candidate.id}</strong></h2>
+        <h2>Email Adress: <strong>{props.candidate.email}</strong></h2>
+        <h2>Phone: <strong>{props.candidate.telNumber}</strong> </h2>
+        {props.candidate.url && <a href={props.candidate.url} target='_blank'>Link a Perfil en Linked-in</a>}
+        <h2>Candidate Tags : <strong>{props.candidate.tags}</strong></h2>
+      </div>
+      <div>
+        <Link to={'/candidates/' + props.candidate.id} ><button style={{ width: '80%' }} className='ActionsBotonesBlanco'> Go Back </button></Link>
+        <div style={{marginTop:'30px'}}>
+          <h3><strong style={{ borderBottom: '1px solid black' }}> Candidate's Expertise</strong></h3>
+          <h3>{props.candidate.expertise}</h3>
+        </div>
+      </div>
     </div>
+    <div style={{width:'90%', margin:'20px auto', marginTop:'50px', borderBottom:'2px solid #DE411B'}}></div>
     <form id='formCand'>
       {props.questions.map((pregunta) => (
         <div key={pregunta.id} className="form-row">
-          <div className="form-group col-md-6">
-            <label htmlFor="inputEmail4" style={{ margin: '10px' }}>{pregunta.content}</label>
-            <textarea onChange={props.onChange} name={pregunta.id} style={{ margin: '5px' }} type="email" className="form-control" id="inputEmail4" placeholder="Respuesta" />
+          <div className="form-group" style={{ marginLeft: '20px' }}>
+            <label htmlFor="inputEmail4" style={{ margin: '10px' }}>
+              <strong className='questionHR' style={{ borderBottom: '1px solid black' }}>{pregunta.content}</strong>
+            </label>
+            <textarea onChange={props.onChange} name={pregunta.id} id='HRtextarea' type="email" className="form-control" placeholder="Respuesta" />
           </div>
         </div>
       ))}
-      <button type='button' className='ActionsBotonesNaranja btn-lg' onClick={props.onSubmit}>Submit</button>
+      <button style={{ display: 'block', width: '30%', margin: '20px auto' }} type='button' className='ActionsBotonesNaranja btn-lg' onClick={props.onSubmit}>Submit</button>
     </form>
-  </div>
+  </div >
 );
 
 export default CreateInterviewComp;

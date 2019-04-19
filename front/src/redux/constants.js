@@ -7,6 +7,7 @@ export const SET_USERS = 'SET_USERS';
 export const SET_CANDIDATE = 'SET_CANDIDATE';
 export const SET_CANDIDATES = 'SET_CANDIDATES';
 export const SET_MYCANDIDATES = 'SET_MYCANDIDATES';
+export const SET_CANDIDATE_INTERVW_ID = 'SET_CANDIDATE_INTERVW_ID';
 
 // Questions constants
 export const SET_QUESTIONS = 'SET_QUESTIONS';
@@ -21,4 +22,4 @@ export const SET_INTERVIEW = 'SET_INTERVIEW';
 
 // Answers constants
 export const SET_ANSWERSHR = 'SET_ANSWERSHR';
-
+export const SET_ANSWERS_SIST = 'export const';

@@ -10,6 +10,7 @@ class CandidTable extends React.Component {
     };
   }
   render () {
+    console.log("OY LAS PUTAS PROPS", this.props)
     return (
       <table className="table">
         <thead >
@@ -23,14 +24,20 @@ class CandidTable extends React.Component {
         </thead>
 
         <tbody >
-          {this.props.candidates.map((candidate, index = 0) => {
+          { this.props.candidates && this.props.candidates.map((candidate, index = 0) => {
             if (candidate.status.toLowerCase().includes(this.props.input)) {
               return (
                 <tr key={index++} className={index % 2 ? 'grey' : 'white'}>
                   <th className='tableHeading ' scope="row">{candidate.name + ' ' + candidate.surname}</th>
                   <td className='tableHeading '>Acá van los perfiles</td>
                   <td className='tableHeading '><div className={candidate.status + ' gridDot'}></div><div id='candStatus'>{candidate.status}</div></td>
-                  <td className='tableHeading '><Link to={`/candidates/${candidate.id}`}><button className='ActionsBotonesBlanco'>Actions Managment</button></Link></td>
+                  <td className='tableHeading '>
+                  { candidate.status !== 'Rejected HR' &&
+                    <Link to={`/candidates/${candidate.id}`}>
+                      <button className='ActionsBotonesBlanco' style={{padding:'10px'}}><span className='btnFont'> Actions Managment</span></button>
+                    </Link>
+                  }
+                  </td>
                   <td className='tableHeading '>
                     <a><img onClick={() => this.setState({ selected: candidate.id })} data-toggle="modal" data-target="#exampleModal" id='trashUser' src="/utils/garbage.svg">
                     </img></a>

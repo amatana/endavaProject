@@ -49,7 +49,6 @@ router.post('/create', (req, res, next) => {
           if (tagsArray[j].tag === req.body.tags[i]) tagIDsArray.push(tagsArray[j].id);
         }
       }
-      console.log('=======>', req.body);
       Questions.findOrCreate({ where: {
         content: req.body.content,
         area: req.body.area,
@@ -59,6 +58,7 @@ router.post('/create', (req, res, next) => {
         .then(([question, created]) => {
           // I need to send an array with the tags IDs not names
           if (created) {
+            console.log('TAGSidArray', tagIDsArray);
             question.setTags(tagIDsArray);
           }
           res.send(200);
@@ -80,7 +80,6 @@ router.post('/create/tags', (req, res) => {
 });
 
 router.post('/candidateQuestions', (req, res) => {
-  console.log('=====================>>>>>>>>>>>>', req.body);
   let questionArray = req.body.arrayIdTags;
   let promisesArray = [];
   let questionToSend = [];

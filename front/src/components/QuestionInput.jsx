@@ -13,10 +13,11 @@ const QuestionInput = (props) => {
           <h6 className='subTitles'>Select question tags: </h6>
           <div id='tagsDisplay'>
             <form onSubmit={props.submiTag} className='addTag'>
+              { props.user }
               <select name='dropdown' className='selectTag'>
                 {
                   props.tags.map(function (tag) {
-                    return <option value={tag.id} key={tag.id}>{tag.tag}</option>;
+                    return <option value={tag.tag} key={tag.id}>{tag.tag}</option>;
                   })
                 }
               </select>
@@ -32,8 +33,8 @@ const QuestionInput = (props) => {
               }
               <div>
                 {
-                  props.selectedTags.map(function (tagId, i) {
-                    return <h6 style={{ float: 'left', marginLeft: '15px', border: '1px solid black', padding: '7px', borderRadius: '8px', marginBottom: '10px' }} onClick={props.delete} name={i} key={tagId}>{props.tags[tagId - 1].tag}</h6>;
+                  props.selectedTags.map(function (tagName, i) {
+                    return <h6 style={{ float: 'left', marginLeft: '15px', border: '1px solid black', padding: '7px', borderRadius: '8px', marginBottom: '10px' }} onClick={props.delete} name={i} key={i}>{tagName}</h6>;
                   })
                 }
               </div>
