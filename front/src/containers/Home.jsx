@@ -3,7 +3,6 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 const Home = (props) => {
-  console.log('SOY LAS PROPS DEL HOME', props)
   return (
     !!props.user && !!props.user.isAdmin
       ? <div>
