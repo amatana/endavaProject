@@ -7,7 +7,7 @@ const Tag = require('../models/tags');
 const Interview = require('../models/interview');
 
 router.post('/create', (req, res) => {
-  console.log('lo que me llego al servidor ', req.body.candidate);
+  console.log('SELECTEDAGS', req.body.candidate.selectedTags);
 
   let candidateData = {
     name: req.body.candidate.name,
@@ -19,12 +19,19 @@ router.post('/create', (req, res) => {
     status: req.body.candidate.status
   };
 
+  let selectedTags = req.body.candidate.selectedTags;
+  let arrId = []
+
+  selectedTags.map((obj) => {
+    arrId.push(obj.id);
+  })
+
   Candidate.create(candidateData)
     .then((candidate) => {
-      candidate.setTags(req.body.candidate.selectedTags);
+      candidate.setTags(arrId);
     })
-    .then(data => res.status(201).send(data));
-  // .catch(e => res.send({ error: e.errors[0].message }));
+    .then(data => res.status(201).send(data))
+    .catch(e => res.send({ error: e.errors[0].message }));
 });
 
 router.get('/getAll', (req, res) => {

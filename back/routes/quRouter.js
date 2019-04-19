@@ -59,6 +59,7 @@ router.post('/create', (req, res, next) => {
         .then(([question, created]) => {
           // I need to send an array with the tags IDs not names
           if (created) {
+            console.log('TAGSidArray', tagIDsArray);
             question.setTags(tagIDsArray);
           }
           res.send(200);

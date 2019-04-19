@@ -8,7 +8,7 @@ import { createCandidate } from '../redux/action-creator/candidate-actions';
 import Axios from 'axios';
 
 class AddCandidate extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       status: 'New',
@@ -24,16 +24,15 @@ class AddCandidate extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     Axios.get('/api/tags/retrieve')
       .then((allTags) => {
         this.setState({ allTags: allTags.data });
       });
   }
 
-  handleSubmit (e) {
+  handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
     this.props.createCandidate(this.state)
       .then(error => {
         if (error) {
@@ -46,14 +45,15 @@ class AddCandidate extends React.Component {
       });
   }
 
-  handleChange (e) {
+  handleChange(e) {
     this.setState(
       { [e.target.name]: e.target.value });
   }
 
-  handleTagSubmit (e) {
+  handleTagSubmit(e) {
     e.preventDefault();
-    let index = e.target.tagDropdown.value;
+    console.log("ALLTAGS", this.state.allTags);
+    let index = e.target.value;
     console.log('INDEX', index);
     let arr = this.state.selectedTags;
     let found = arr.find((element) => {
@@ -63,25 +63,27 @@ class AddCandidate extends React.Component {
     });
 
     if (!found) {
-      arr.push(this.state.allTags[index].id);
+      arr.push(this.state.allTags[index]);
       this.setState({ selectedTags: arr });
+      console.log("STATE", this.state.selectedTags);
     } else {
       alert('The tag was aleady added');
     }
   }
 
-  onClick () {
+  onClick() {
     this.props.history.push('/candidates/allCandidates');
   }
 
-  handleDelete (e) {
+  handleDelete(e) {
     let toDelete = e.target.getAttribute('value');
+    console.log("TODELETE", toDelete);
     let arr = this.state.selectedTags;
     arr.splice(toDelete, 1);
     this.setState({ selectedTags: arr });
   };
 
-  render () {
+  render() {
     console.log('tagArray', this.state.tags);
     return (
       <AddCandidateComp
