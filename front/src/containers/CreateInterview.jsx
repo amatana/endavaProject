@@ -41,9 +41,8 @@ class CreateInterview extends React.Component {
   }
 
   render () {
-    console.log('ESTOY SANO ????????', this.props)
     return (
-      !this.state.submitted && !this.props.answersHR.length
+      !this.state.submitted && !this.props.answersHR.length && this.props.candidate.status === 'New'
         ? <CreateInterviewComp
           onSubmit={this.onSubmit}
           onChange={this.handleChange}
@@ -63,7 +62,7 @@ class CreateInterview extends React.Component {
 
 const mapStateToProps = (state) => ({
   candidate: state.candidate.candidate,
-  questionsHR: state.question.questions,
+  questionsHR: state.question.questionsHR,
   answersHR: state.answers.answersHR
 });
 

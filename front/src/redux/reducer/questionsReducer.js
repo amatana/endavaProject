@@ -6,14 +6,15 @@ const initialState = {
   questId: null,
   questions: [],
   candidateQuestions: [],
-  questionSIS: []
+  questionSIS: [],
+  questionsHR: []
 
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_HRQUESTIONS:
-      return Object.assign({}, state, { questions: action.questions });
+      return Object.assign({}, state, { questionsHR: action.questionsHR });
     case DELETE_QUESTION:
       return Object.assign({}, state, { questId: action.questId });
     case EDIT_QUESTION:

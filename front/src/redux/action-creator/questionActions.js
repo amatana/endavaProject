@@ -7,9 +7,9 @@ const setQuestions = (questions) => ({
 
 });
 
-const setHRQuestions = (questions) => ({
+const setHRQuestions = (questionsHR) => ({
   type: SET_HRQUESTIONS,
-  questions
+  questionsHR
 
 });
 
