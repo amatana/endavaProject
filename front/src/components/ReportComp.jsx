@@ -3,36 +3,38 @@ import React from 'react';
 import { fetchHrAnswers } from '../redux/action-creator/answersActions';
 import { connect } from 'react-redux';
 import Axios from 'axios';
-import { getAllCandidates } from '../redux/action-creator/candidate-actions';
+import { getAllCandidates, fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { Link } from 'react-router-dom';
 
 class ReportComp extends React.Component {
-  constructor() {
+  constructor () {
     super();
     this.changeCandStatus = this.changeCandStatus.bind(this);
   }
-  componentDidMount() {
+  componentDidMount () {
     this.props.fetchHrAnswers(this.props.idInter);
+    this.props.fetchCandidate(this.props.candidate.id);
+    console.log(this.props);
   }
 
-  changeCandStatus(idCandi, status) {
+  changeCandStatus (idCandi, status) {
     Axios.put('/api/candidate/changeStatus', { idCandi, status })
       .then(() => this.props.getAllCandidates())
       .then(() => this.props.history.push('/candidates/allCandidates'));
   };
 
-  render() {
+  render () {
     return (
 
       <div >
         <div id='infoCandHR'>
-        <Link to={'/candidates/' + this.props.candidate.id} ><button className='ActionsBotonesBlanco'>Go Back</button></Link>
+          <Link to={'/candidates/' + this.props.candidate.id} ><button className='ActionsBotonesBlanco'>Go Back</button></Link>
           <div style={{ marginLeft: '30px' }} className='halfGrid'>
             <div>
               <h2 style={{ marginTop: '20px' }}>Full name: <strong>{this.props.candidate.fullName} </strong></h2>
               <h2>Phone: <strong>{this.props.candidate.telNumber}</strong> </h2>
               <h2>Email Adress: <strong>{this.props.candidate.email}</strong></h2>
-              <h2>Candidate ID: <strong>{props.candidate.id}</strong></h2>
+              <h2>Candidate ID: <strong>{this.props.candidate.id}</strong></h2>
             </div>
 
             <div id='leftSideReport'>
@@ -44,7 +46,7 @@ class ReportComp extends React.Component {
                 <strong>HR Interviewer: </strong>
                 {' ' + this.props.candidate.interviewerHR.nombre}
               </h2>
-              <div className='halfGrid'  >
+              <div className='halfGrid' >
                 <a style={{ textAlign: 'center' }} href="#candidateExpertise"> Read Candidate Expertise</a>
                 {this.props.candidate.url && <a style={{ textAlign: 'center' }} href={this.props.candidate.url} target='_blank'>Link a Perfil en Linked-in</a>}
               </div>
@@ -89,12 +91,14 @@ class ReportComp extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+  candidate: state.candidate.candidate,
   answersHR: state.answers.answersHR
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchHrAnswers: (interviewID) => dispatch(fetchHrAnswers(interviewID)),
-  getAllCandidates: () => dispatch(getAllCandidates())
+  getAllCandidates: () => dispatch(getAllCandidates()),
+  fetchCandidate: (idCandi) => dispatch(fetchCandidate(idCandi))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReportComp);

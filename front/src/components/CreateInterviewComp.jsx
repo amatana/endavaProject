@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 const CreateInterviewComp = (props) => (
   <div>
-
     <div id='infoCandHR' className='masGrid' style={{ marginLeft: '30px' }}>
       <div>
         <h2>Full name: <strong>{props.candidate.fullName} </strong></h2>
