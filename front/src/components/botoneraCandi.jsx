@@ -21,7 +21,6 @@ class botonera extends React.Component {
   // }
 
   render() {
-    console.log('SOY LAS PROPPPPSSS DEL LA BOTONERA', this.props)
     return (
       <div>
         {(this.props.user && this.props.user.area === 'RRHH')
@@ -89,7 +88,7 @@ class botonera extends React.Component {
                   ))
                   }
                 </select >
-                <input type='submit' className='subBtn' value='ASSIGN Sisemas' onClick={() => this.props.handleSubSIS1(this.props.candidate.id)} />
+                <input type='submit' className='subBtn' value='ASSIGN Sisemas' onClick={() => this.props.submitSIST1(this.props.candidate.id)} />
               </div>
 
               <div className='assignUser'>
@@ -100,7 +99,7 @@ class botonera extends React.Component {
                   ))
                   }
                 </select >
-                <input type='submit' value='ASSIGN Sisemas' className='subBtn' onClick={() => this.props.handleSubSIS2(this.props.candidate.id)} />
+                <input type='submit' value='ASSIGN Sisemas' className='subBtn' onClick={() => this.props.submitSIST2(this.props.candidate.id)} />
               </div>
             </div>
           </div>)
