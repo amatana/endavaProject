@@ -43,7 +43,7 @@ class Main extends React.Component {
         ? <div>
           <Route render= {({ history }) => (<Header fetchUser={this.props.fetchUser} user={this.props.user} history={history} />)} />
           <Switch>
-            <Route exact path='/' render={({ history }) => (<Home history={history} user={this.props.user}/>)} />
+            <Route exact path='/' render={({ history }) => (this.props.user ? <Home history={history} user={this.props.user}/> : <Redirect to='/login' />)} />
             <Route exact path="/login" render={({ history }) => (<Login history={history} />)} />
             <Route exact path='/candidates' render={({ history }) => (<CandidatesHome history={history} user={this.props.user}/>)} />
             <Route exact path='/candidates/addCandidate' render={({ history }) => (<AddCandidate user={this.props.user} history={history} />)} />
