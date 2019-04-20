@@ -8,11 +8,13 @@ class addTag extends React.Component {
     super(props);
     this.state = {
       tagInput: '',
-      allTags: []
+      allTags: [],
+      searchTagInput: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleChangeSearchTags = this.handleChangeSearchTags.bind(this)
   };
 
   componentDidMount () {
@@ -28,6 +30,10 @@ class addTag extends React.Component {
     if (input.length <= 15) {
       this.setState({ tagInput: input });
     }
+  }
+
+  handleChangeSearchTags (e) {
+    this.setState({ searchTagInput: e.target.value });
   }
 
   handleSubmit (e) {
@@ -58,10 +64,13 @@ class addTag extends React.Component {
     return (
       <div>
         <TagInput
+          handleSearch={this.handleChangeSearchTags}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           handleDelete={this.handleDelete}
           tagInput={this.state.tagInput}
+          searchTagInput={this.searchTagInput}
+          stateSearchTag={this.state.searchTagInput}
           allTags={this.state.allTags} />
       </div>
     );

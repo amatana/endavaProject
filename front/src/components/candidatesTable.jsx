@@ -11,7 +11,6 @@ class CandidTable extends React.Component {
     };
   }
   render () {
-    console.log('OY LAS PUTAS PROPS', this.props);
     return (
       <table className="table">
         <thead >
