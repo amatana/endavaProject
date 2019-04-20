@@ -27,18 +27,18 @@ class CandidTable extends React.Component {
           { this.props.candidates && this.props.candidates.filter(elem => elem.status.toLowerCase().includes(this.props.input)).map((candidate, index = 0) => {
             return (
               <tr key={index++} className={index % 2 ? 'grey' : 'white'}>
-                <th className='tableHeading ' scope="row">{candidate.name + ' ' + candidate.surname}</th>
-                <td className='tableHeading '>Acá van los perfiles</td>
-                <td className='tableHeading '><div className={candidate.status + ' gridDot'}></div><div id='candStatus'>{candidate.status}</div></td>
-                <td className='tableHeading '>
+                <th style={{ verticalAlign: 'middle' }} className='tableHeading ' scope="row">{candidate.name + ' ' + candidate.surname}</th>
+                <td style={{ verticalAlign: 'middle' }} className='tableHeading '>{candidate.tags.map(tag => <p key={tag.id} style={ { fontSize: '23px' } }>{tag.tag}</p>)}</td>
+                <td style={{ verticalAlign: 'middle' }} className='tableHeading '><div className={candidate.status + ' gridDot'}></div><div id='candStatus'>{candidate.status}</div></td>
+                <td style={{ verticalAlign: 'middle' }} className='tableHeading '>
                   { candidate.status !== 'Rejected HR' &&
                     <Link to={`/candidates/${candidate.id}`}>
-                      <button className='ActionsBotonesBlanco' style={{ padding: '10px', width: '100%' }}><span className='btnFont'> Actions Managment</span></button>
+                      <button className='ActionsBotonesBlanco' style={{ padding: '10px', width: '100%' }}><span className='btnFont' > Actions Managment</span></button>
                     </Link>
                   }
                 </td>
-                <td className='tableHeading '>
-                  <a><img onClick={() => this.setState({ selected: candidate.id })} data-toggle="modal" data-target="#exampleModal" id='trashUser' src="/utils/garbage.svg">
+                <td style={{ verticalAlign: 'middle' }} className='tableHeading '>
+                  <a><img onClick={() => this.setState({ selected: candidate.id })} data-toggle="modal" data-target="#exampleModal" id='trashUser' src="/utils/garbage.svg" >
                   </img></a>
                   <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">

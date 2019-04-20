@@ -20,11 +20,11 @@ router.post('/create', (req, res) => {
   };
 
   let selectedTags = req.body.candidate.selectedTags;
-  let arrId = []
+  let arrId = [];
 
   selectedTags.map((obj) => {
     arrId.push(obj.id);
-  })
+  });
 
   Candidate.create(candidateData)
     .then((candidate) => {
@@ -35,7 +35,7 @@ router.post('/create', (req, res) => {
 });
 
 router.get('/getAll', (req, res) => {
-  Candidate.findAll()
+  Candidate.findAll({ include: [{ model: Tag }] })
     .then(candidates => res.send(candidates));
 });
 
@@ -64,6 +64,7 @@ router.get('/getMyCandidates/:userId', (req, res) => {
     res.sendStatus(200);
   } else {
     Candidate.findAll({
+      include: [{ model: Tag }],
       where: {
         [Sequelize.Op.or]: [{
           interviewerHRId: userId
@@ -129,7 +130,7 @@ router.put('/changeStatus', (req, res) => {
 router.get('/getCandidateInterview/:candID', (req, res) => {
   console.log('===============> REQ.BODY', req.params);
   Interview.findOne({ where: { candidateIDId: req.params.candID } })
-    .then(interVW => res.send({interviewID: interVW.id}));
+    .then(interVW => res.send({ interviewID: interVW.id }));
 });
 
 module.exports = router;

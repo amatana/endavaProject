@@ -29,7 +29,7 @@ class addUser extends React.Component {
   handleSubmit (e) {
     e.preventDefault();
     if (this.state.email.split('@')[1] !== 'endava.com') {
-      alert('Email must belongs to ' + '@endava.com' + ' Dom');
+      alert('email must belong to ' + '@endava.com');
     } else if (this.state.password !== this.state.secondPassword) {
       alert('The Passwords you entered do not match');
     } else if (!this.state.nombre || !this.state.email || !this.state.password || !this.state.secondPassword || !this.state.area) {
