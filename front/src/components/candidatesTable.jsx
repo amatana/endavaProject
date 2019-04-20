@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -10,7 +11,7 @@ class CandidTable extends React.Component {
     };
   }
   render () {
-    console.log("OY LAS PUTAS PROPS", this.props)
+    console.log('OY LAS PUTAS PROPS', this.props);
     return (
       <table className="table">
         <thead >
@@ -24,50 +25,49 @@ class CandidTable extends React.Component {
         </thead>
 
         <tbody >
-          { this.props.candidates && this.props.candidates.map((candidate, index = 0) => {
-            if (candidate.status.toLowerCase().includes(this.props.input)) {
-              return (
-                <tr key={index++} className={index % 2 ? 'grey' : 'white'}>
-                  <th className='tableHeading ' scope="row">{candidate.name + ' ' + candidate.surname}</th>
-                  <td className='tableHeading '>Acá van los perfiles</td>
-                  <td className='tableHeading '><div className={candidate.status + ' gridDot'}></div><div id='candStatus'>{candidate.status}</div></td>
-                  <td className='tableHeading '>
+          { this.props.candidates && this.props.candidates.filter(elem => elem.status.toLowerCase().includes(this.props.input)).map((candidate, index = 0) => {
+            return (
+              <tr key={index++} className={index % 2 ? 'grey' : 'white'}>
+                <th className='tableHeading ' scope="row">{candidate.name + ' ' + candidate.surname}</th>
+                <td className='tableHeading '>Acá van los perfiles</td>
+                <td className='tableHeading '><div className={candidate.status + ' gridDot'}></div><div id='candStatus'>{candidate.status}</div></td>
+                <td className='tableHeading '>
                   { candidate.status !== 'Rejected HR' &&
                     <Link to={`/candidates/${candidate.id}`}>
-                      <button className='ActionsBotonesBlanco' style={{padding:'10px', width:'100%'}}><span className='btnFont'> Actions Managment</span></button>
+                      <button className='ActionsBotonesBlanco' style={{ padding: '10px', width: '100%' }}><span className='btnFont'> Actions Managment</span></button>
                     </Link>
                   }
-                  </td>
-                  <td className='tableHeading '>
-                    <a><img onClick={() => this.setState({ selected: candidate.id })} data-toggle="modal" data-target="#exampleModal" id='trashUser' src="/utils/garbage.svg">
-                    </img></a>
-                    <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                          <div className="modal-header">
-                            <h5 className="modal-title textModal" id="exampleModalLabel">Reconfirm</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div className="modal-body textModal">
+                </td>
+                <td className='tableHeading '>
+                  <a><img onClick={() => this.setState({ selected: candidate.id })} data-toggle="modal" data-target="#exampleModal" id='trashUser' src="/utils/garbage.svg">
+                  </img></a>
+                  <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title textModal" id="exampleModalLabel">Reconfirm</h5>
+                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div className="modal-body textModal">
                             Are you sure you want to delete this candidate?
-                          </div>
-                          <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary textModal" data-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-primary textModal" data-dismiss="modal"
-                              onClick={() => {
-                                this.props.onClickDelete(candidate.id)
-                              }}>Yes</button>
-                          </div>
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary textModal" data-dismiss="modal">Cancel</button>
+                          <button type="button" className="btn btn-primary textModal" data-dismiss="modal"
+                            onClick={() => {
+                              this.props.onClickDelete(candidate.id);
+                            }}>Yes</button>
                         </div>
                       </div>
                     </div>
-                  </td>
-                </tr>
-              )
-              ;
-            };
+                  </div>
+                </td>
+              </tr>
+            )
+            ;
+            // };
           })}
         </tbody>
       </table>
@@ -78,8 +78,4 @@ const mapStateToProps = (state) => ({
   user: state.user.user
   // candidates: state.candidate.candidates
 });
-const mapDispatchToProps = (dispatch) => ({
-  fetchMyCandidates: (userId) => dispatch(fetchMyCandidates(userId)),
-  getAllCandidates: () => dispatch(getAllCandidates())
-});
-export default connect(mapStateToProps, mapDispatchToProps)(CandidTable);
+export default connect(mapStateToProps)(CandidTable);

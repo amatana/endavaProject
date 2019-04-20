@@ -52,6 +52,7 @@ class CreateInterview extends React.Component {
         />
         : <ReportComp
           questions={this.props.questionsHR}
+          idCand={this.props.idCand}
           candidate={this.props.candidate}
           idInter={this.props.idInter}
           history={this.props.history}

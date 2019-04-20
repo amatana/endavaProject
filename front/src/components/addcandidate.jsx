@@ -18,7 +18,7 @@ const candidate = (props) => {
                 <p>{props.messege}</p>
               </div>
               <div className="modal-footer">
-                <button type="button" onClick={() => props.onClick()} className="btn btn-lg" style={{backgroundColor:'#DE411B'}} data-dismiss="modal" > Go to Candidates </button>
+                <button type="button" onClick={() => props.onClick()} className="btn btn-lg" style={{ backgroundColor: '#DE411B' }} data-dismiss="modal" > Go to Candidates </button>
               </div>
             </div>
           </div>

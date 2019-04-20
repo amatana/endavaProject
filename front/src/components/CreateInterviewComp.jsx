@@ -14,7 +14,7 @@ const CreateInterviewComp = (props) => {
           <h2>Email Adress: <strong>{props.candidate.email}</strong></h2>
           <h2>Phone: <strong>{props.candidate.telNumber}</strong> </h2>
           {props.candidate.url && <a href={props.candidate.url} target='_blank'>Link a Perfil en Linked-in</a>}
-          <h2>Candidate Tags :  {props.candidate.tags.map(tag => <strong> {tag + ' - '} </strong>)}</h2>
+          <h2>Candidate Tags :  {props.candidate.tags.map(tag => <strong> {tag.tag + ' - '} </strong>)}</h2>
         </div>
         <div>
           <Link to={'/candidates/' + props.candidate.id} ><button style={{ width: '80%' }} className='ActionsBotonesBlanco'> Go Back </button></Link>
@@ -41,7 +41,7 @@ const CreateInterviewComp = (props) => {
         <button style={{ display: 'block', width: '30%', margin: '20px auto' }} type='button' className='ActionsBotonesNaranja btn-lg' onClick={props.onSubmit}>Submit</button>
       </form>
     </div>
-  )
+  );
 };
 
 export default CreateInterviewComp;

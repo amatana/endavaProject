@@ -12,8 +12,8 @@ class ReportComp extends React.Component {
     this.changeCandStatus = this.changeCandStatus.bind(this);
   }
   componentDidMount () {
+    this.props.fetchCandidate(this.props.idCand);
     this.props.fetchHrAnswers(this.props.idInter);
-    this.props.fetchCandidate(this.props.candidate.id);
     console.log(this.props);
   }
 
@@ -42,10 +42,10 @@ class ReportComp extends React.Component {
                 <strong className={this.props.candidate.status}>STATUS :  </strong>
                 <span className={'statusReport '}>{' ' + this.props.candidate.status} </span>
               </h2>
-              <h2 style={{ textAlign: 'center', marginTop: '20px' }}>
+              {this.props.candidate.interviewerHR && <h2 style={{ textAlign: 'center', marginTop: '20px' }}>
                 <strong>HR Interviewer: </strong>
                 {' ' + this.props.candidate.interviewerHR.nombre}
-              </h2>
+              </h2>}
               <div className='halfGrid' >
                 <a style={{ textAlign: 'center' }} href="#candidateExpertise"> Read Candidate Expertise</a>
                 {this.props.candidate.url && <a style={{ textAlign: 'center' }} href={this.props.candidate.url} target='_blank'>Link a Perfil en Linked-in</a>}
@@ -96,9 +96,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchCandidate: (idCandi) => dispatch(fetchCandidate(idCandi)),
   fetchHrAnswers: (interviewID) => dispatch(fetchHrAnswers(interviewID)),
-  getAllCandidates: () => dispatch(getAllCandidates()),
-  fetchCandidate: (idCandi) => dispatch(fetchCandidate(idCandi))
+  getAllCandidates: () => dispatch(getAllCandidates())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReportComp);

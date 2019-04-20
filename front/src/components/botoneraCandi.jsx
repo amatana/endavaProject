@@ -40,7 +40,9 @@ class botonera extends React.Component {
               {this.props.candidate && this.props.candidate.status === 'New'
                 ? <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }}
                   onClick={() => {
-                    this.props.onClickInterview(this.props.candidate.id);
+                    !this.props.candidate.interviewerHR
+                      ? alert('Hr User must be assigned to the candidate')
+                      : this.props.onClickInterview(this.props.candidate.id);
                   }
                   }>Create Interview</button>
                 : <button
