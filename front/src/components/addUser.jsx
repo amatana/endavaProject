@@ -25,6 +25,11 @@ const AddUser = (props) => {
               <input onChange={props.onChange} type="password" className="inputLogin form-control" name="password" id="password" />
             </div>
 
+            <div className="formSpace form-group">
+              <label htmlFor="password">Confirm your password</label>
+              <input onChange={props.onChange} type="password" className="inputLogin form-control" name="secondPassword" id="confPassword" />
+            </div>
+
             <div className='form-group formSpace'>
               <h4 id='belongsTo'>Belongs to :</h4>
               <div className="form-check form-check-inline formSpace">
