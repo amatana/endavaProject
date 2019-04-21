@@ -57,7 +57,6 @@ router.get('/getHRAnswers/:id', (req, res) => {
 });
 
 router.get('/getSisAnswers/:id', (req, res) => {
-  // console.log('+++++++++++++++++++++++++lo q me llega al getSisAnswers', req.params.id);
   Answers.findAll({
     where: {
       interviewId: req.params.id,
@@ -79,7 +78,6 @@ router.get('/getSisAnswers/:id', (req, res) => {
               value: respon.content
             });
           });
-          // console.log('++++++++++++++++++++++++++++++++++', arrayprom);
           res.send(arrayprom);
         });
     });

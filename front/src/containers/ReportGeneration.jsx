@@ -1,9 +1,11 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { fetchCandidate, fetchCandidateInterview } from '../redux/action-creator/candidate-actions';
 import { fetchHrAnswers, fetchSistAnswers } from '../redux/action-creator/answersActions';
+import StarsCalification from '../components/StarsCalification'
 
 class ReportGeneration extends React.Component {
   constructor (props) {
@@ -29,32 +31,36 @@ class ReportGeneration extends React.Component {
 
   render () {
     return (
-      <div>
-        <h1>GENERATE REPORT</h1>
-        <h2>{this.props.candID}</h2>
-        <h4>Name: {this.props.candidate.fullName}</h4>
-        <h4>e-mail: {this.props.candidate.email}</h4>
-        <h4>telephone: {this.props.candidate.telNumber}</h4>
-        <h4>expertise: {this.props.candidate.expertise}</h4>
-        <hr></hr><hr></hr><hr></hr>
-        <div><h3>RRHH</h3><hr></hr>
-          {
-            this.props.answersHR.map(element => (
-              <div key={element.pregunta}>
-                <h4>{element.pregunta} : {element.respuesta}</h4>
-              </div>
-            ))
-          }
-        </div>
-        <hr></hr><hr></hr>
-        <div><h3>IT</h3><hr></hr>
-          {
-            this.props.answersSIST.map(element => (
-              <div key={element.pregunta}>
-                <h4>{element.pregunta} : {element.score}</h4>
-              </div>
-            ))
-          }
+      <div id='infoCandHR'>
+        <Link to={'/candidates/' + this.props.candidate.id} ><button className='ActionsBotonesBlanco'>Back</button></Link>
+        <div style={{ marginLeft: '30px' }} className='halfGrid'>
+          <div>
+            <h1 style={{ marginTop: '20px' }}><b style={{ fontSize: '40px', color: '#DE411C' }}>Final Report</b></h1>
+            <h4><b style={{ fontSize: '32px' }}>Name:</b> {this.props.candidate.fullName}</h4>
+            <h4><b style={{ fontSize: '32px' }}>e-mail:</b> {this.props.candidate.email}</h4>
+            <h4><b style={{ fontSize: '32px' }}>Telephone:</b> {this.props.candidate.telNumber}</h4>
+            <h4><b style={{ fontSize: '32px' }}>Expertise:</b> {this.props.candidate.expertise}</h4>
+          </div>
+          <hr></hr><hr></hr><hr></hr>
+          <div id='infoCandHR'><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>RRHH Interview</b></h3><hr></hr>
+            {
+              this.props.answersHR.map(element => (
+                <div key={element.pregunta}>
+                  <h4><b style={{ fontSize: '32px' }}>{element.pregunta}:</b> {element.respuesta}</h4>
+                </div>
+              ))
+            }
+            <hr></hr><hr></hr>
+            <div id='infoCandHR'><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>IT Interview</b></h3><hr></hr>
+              {
+                this.props.answersSIST.map(element => (
+                  <div key={element.pregunta}>
+                    <StarsCalification pregunta={element.pregunta} score={element.score}/>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
         </div>
       </div>
     );
