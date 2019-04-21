@@ -24,11 +24,14 @@ export const fetchHrAnswers = (interviewID) => dispatch =>
     .then(answers => dispatch(setAnswersHR(answers.data)));
 
 export const answerSystems = (answersSis) => dispatch =>
+  Axios.post('/api/answers/postAnswersSIS', answersSis)
+    // .then((res) => console.log('===========================================', res));
+    .then(res => res.data)
+    .then(respuesta => {
+      if (respuesta.error) return respuesta.error;
+      else return '200';
+    });
 
-  // console.log(answersSis);
-  Axios.post('/api/answers/postAnswersSIS', answersSis);
-// .then((res) => console.log(res));
-// .then(() => 'guardado');
 export const fetchSistAnswers = (interviewID) => dispatch =>
   Axios.get(`/api/answers/getSistAnswers/${interviewID}`)
     .then(answers => dispatch(setAnswersSIST(answers.data)));
