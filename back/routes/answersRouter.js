@@ -6,7 +6,6 @@ const Questions = require('../models/questions');
 const Interview = require('../models/interview');
 
 router.post('/answersHR', (req, res) => {
-
   let arrayProm = [];
 
   Answers.findOne({ where: { interviewId: req.body.interviewID } })
@@ -58,7 +57,6 @@ router.get('/getHRAnswers/:id', (req, res) => {
 });
 
 router.get('/getSisAnswers/:id', (req, res) => {
-  // console.log('+++++++++++++++++++++++++lo q me llega al getSisAnswers', req.params.id);
   Answers.findAll({
     where: {
       interviewId: req.params.id,
@@ -80,7 +78,6 @@ router.get('/getSisAnswers/:id', (req, res) => {
               value: respon.content
             });
           });
-          // console.log('++++++++++++++++++++++++++++++++++', arrayprom);
           res.send(arrayprom);
         });
     });
@@ -99,23 +96,12 @@ function transformToArray (obj) {
 }
 
 router.post('/postAnswersSIS', (req, res) => {
-  console.log('mellegaaaaaaaaaaaaaaaaaaa al ', req.body);
   let interId = req.body.InterviewSis;
-  // console.log(interId);
   delete req.body.InterviewSis;
-  // console.log('================================= ', req.body)
   let answerSis = transformToArray(req.body);
-  console.log(answer);
   answerSis.map(answer => {
     Answers.findOne({ where: { interviewId: req.body.interviewID } });
   });
-
-  // Answers.findAll({
-  //   where: {
-  //     interviewId: interId,
-  //     observations: null
-  //   }
-  // }).then(res => console.log(res))
 });
 
 router.get('/getSistAnswers/:id', (req, res) => {
@@ -143,21 +129,4 @@ router.get('/getSistAnswers/:id', (req, res) => {
       res.send(arrayPares);
     });
 });
-module.exports = router
-;
-
-// function transformToArray (obj) {
-//   let array = [];
-//   for (i in obj) {
-//     let key = i.split('-');
-
-//     if (key[1] === 'score') {
-//       let value = [Number(key[0]), key[1], Number(obj[i])];
-//       array.push(value);
-//     } else {
-//       let value = [Number(key[0]), key[1], (obj[i])];
-//       array.push(value);
-//     }
-//   }
-//   return array;
-// }
+module.exports = router;
