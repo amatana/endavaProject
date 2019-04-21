@@ -13,7 +13,7 @@ class InterviewSisCont extends React.Component {
     super(props);
 
     this.state = {
-      messege: ''
+      // messege: ''
 
     };
 
