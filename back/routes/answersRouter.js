@@ -96,16 +96,11 @@ function transformToArray (obj) {
 }
 
 router.post('/postAnswersSIS', (req, res) => {
-<<<<<<< HEAD
-  let interId = req.body.InterviewSis;
-  delete req.body.InterviewSis;
-=======
   let arrayPromis = [];
   let interId = req.body.InterviewSis;
 
   delete req.body.InterviewSis;
 
->>>>>>> b69d0a4f646ee3033bee99323cf246bb54ccf635
   let answerSis = transformToArray(req.body);
   answerSis.map(answer => {
     arrayPromis.push(Answers.findOne({
@@ -118,12 +113,9 @@ router.post('/postAnswersSIS', (req, res) => {
     })
     );
   });
-<<<<<<< HEAD
-=======
   Promise.all(arrayPromis)
     .then(() => res.sendStatus(200))
     .catch(e => res.sendStatus({ error: e.errors[0].message }));
->>>>>>> b69d0a4f646ee3033bee99323cf246bb54ccf635
 });
 
 router.get('/getSistAnswers/:id', (req, res) => {
@@ -151,9 +143,5 @@ router.get('/getSistAnswers/:id', (req, res) => {
       res.send(arrayPares);
     });
 });
-<<<<<<< HEAD
-module.exports = router;
-=======
 module.exports = router
 ;
->>>>>>> b69d0a4f646ee3033bee99323cf246bb54ccf635
