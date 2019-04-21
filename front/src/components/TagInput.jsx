@@ -9,14 +9,14 @@ const addTag = (props) => {
   return (
     <div>
       <div>
-        <h1 className='titHome'>TAG MANAGEMENT</h1>
+        <h1 className='titHome'>TAGS MANAGEMENT</h1>
         <div id='searchBar'>
           <form onSubmit={props.handleSubmit}>
-            <div><input onChange={props.handleSearch} placeholder='Filtrar tags'name='tagSearch' type='text' value={props.searchTagInput} />
+            <div><input onChange={props.handleSearch} placeholder='Filter tags 🔎'name='tagSearch' type='text' value={props.searchTagInput} />
             </div>
             <br/>
             <div>
-              <input onChange={props.handleChange} name='tagInput' type='text' value={props.tagInput} />
+              <input placeholder= 'New tags' onChange={props.handleChange} name='tagInput' type='text' value={props.tagInput} />
               <input type='submit' value='Add Tag' />
             </div>
           </form>
@@ -35,8 +35,8 @@ const addTag = (props) => {
                         <td>
                           <p style={{ fontSize: '30px' }} key={i} name={tag.id}>{tag.tag}</p>
                         </td>
-                        <td>
-                          <img style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} name={tag.id} onClick={props.handleDelete} src='/utils/garbage.svg' />
+                        <td style={{ verticalAlign: 'middle' }}>
+                          <a><img style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} id='trashUser' name={tag.id} onClick={props.handleDelete} src='/utils/garbage.svg' /></a>
                         </td>
                       </div>
                     </tr>
