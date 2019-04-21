@@ -48,7 +48,7 @@ class ReportComp extends React.Component {
               </h2>}
               <div className='halfGrid' >
                 <a style={{ textAlign: 'center' }} href="#candidateExpertise"> Read Candidate Expertise</a>
-                {this.props.candidate.url && <a style={{ textAlign: 'center' }} href={this.props.candidate.url} target='_blank'>Link a Perfil en Linked-in</a>}
+                {this.props.candidate.url && <a style={{ textAlign: 'center' }} href={this.props.candidate.url} target='_blank'>Linked-in Profile</a>}
               </div>
             </div>
 

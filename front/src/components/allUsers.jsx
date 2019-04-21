@@ -33,7 +33,9 @@ class AllUsers extends React.Component {
                     <th className='tableHeading' scope="row">{user.nombre}</th>
                     <td className='tableHeading'>{user.email}</td>
                     <td className='tableHeading'>{user.area}</td>
-                    <td className='tableHeading'>{user.isAdmin ? <h3 style={{ color: '#3da547' }}>TRUE</h3> : <h3>FALSE</h3>}</td>
+                    <td className='tableHeading'>{user.isAdmin ? <img style={{ width: '25%',
+                      height: 'auto' }} src='/utils/checked2.svg'/> : <img style={{ width: '25%',
+                      height: 'auto' }} src='/utils/unchecked.svg'/> }</td>
                     <td>
                       <a><img onClick={() => this.setState({ selected: user.id })} data-toggle="modal" data-target="#exampleModal" id='trashUser' src="/utils/garbage.svg"></img></a>
                       <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
