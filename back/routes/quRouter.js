@@ -83,7 +83,6 @@ router.post('/candidateQuestions', (req, res) => {
   let questionArray = req.body.arrayIdTags;
   let promisesArray = [];
   let questionToSend = [];
-
   for (let i in questionArray) {
     promisesArray.push(
       Tags.findByPk(questionArray[i], { include: [{
@@ -94,10 +93,12 @@ router.post('/candidateQuestions', (req, res) => {
     .then(questionsArray => {
       for (let i in questionsArray) {
         for (let j in questionsArray[i].questions) {
-          questionToSend.push({
-            id: questionsArray[i].questions[j].id,
-            content: questionsArray[i].questions[j].content
-          });
+          if (questionsArray[i].questions[j].area === 'Sistemas') {
+            questionToSend.push({
+              id: questionsArray[i].questions[j].id,
+              content: questionsArray[i].questions[j].content
+            });
+          }
         }
       }
       res.send(questionToSend);

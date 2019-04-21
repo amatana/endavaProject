@@ -7,7 +7,6 @@ import { fetchCandidate, fetchCandidateInterview } from '../redux/action-creator
 import { fetchHrAnswers, fetchSistAnswers } from '../redux/action-creator/answersActions';
 import StarsCalification from '../components/StarsCalification'
 
-
 class ReportGeneration extends React.Component {
   constructor (props) {
     super(props);
@@ -36,7 +35,7 @@ class ReportGeneration extends React.Component {
         <Link to={'/candidates/' + this.props.candidate.id} ><button className='ActionsBotonesBlanco'>Back</button></Link>
         <div style={{ marginLeft: '30px' }} className='halfGrid'>
           <div>
-            <h1 style={{ marginTop: '20px' }}><b style={{ fontSize: '40px' }}>Final Report</b></h1>
+            <h1 style={{ marginTop: '20px' }}><b style={{ fontSize: '40px', color: '#DE411C' }}>Final Report</b></h1>
             <h4><b style={{ fontSize: '32px' }}>Name:</b> {this.props.candidate.fullName}</h4>
             <h4><b style={{ fontSize: '32px' }}>e-mail:</b> {this.props.candidate.email}</h4>
             <h4><b style={{ fontSize: '32px' }}>Telephone:</b> {this.props.candidate.telNumber}</h4>

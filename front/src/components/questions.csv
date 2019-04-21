@@ -83,7 +83,7 @@
 "What are the differences between variables created using let, var or const?";true;["Junior","Frontend", "JS"]
 "What are the differences between ES6 class and ES5 function constructors?";false;["Semi-Senior","Frontend", "JS"]
 "Can you offer a use case for the new arrow => function syntax? How does this new syntax differ from other functions?;false;["Semi-Senior","Frontend", "JS"]
-"What advantage is there for using the arrow syntax for a method in a constructor?";false;["","Frontend", "JS"]
+"What advantage is there for using the arrow syntax for a method in a constructor?";false;"Frontend", "JS"]
 "What is the definition of a higher-order function?";false;["Semi-Senior","Frontend", "JS"]
 "Can you give an example for destructuring an object or an array?";false;["Semi-Senior","Frontend", "JS"]
 "Can you give an example of generating a string with ES6 Template Literals?";false;["Semi-Senior","Frontend", "JS"]

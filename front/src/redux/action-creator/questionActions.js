@@ -73,7 +73,10 @@ export const fetchCandidateQuestions = (tags) => dispatch => {
     arrayIdTags.push(tags[i].id);
   }
   axios.post('/api/questions/candidateQuestions', { arrayIdTags })
-    .then(response => dispatch(setCandidateQuestions(response.data)));
+    .then(response => {
+      dispatch(setCandidateQuestions(response.data))
+      ;
+    });
 }
 ;
 
