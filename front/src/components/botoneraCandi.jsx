@@ -70,7 +70,7 @@ class botonera extends React.Component {
             </div>
 
             <div className={'display ' + this.state.assign}>
-              <div className='assignUser'>
+              {this.props.candidate.status === 'New' && <div className='assignUser'>
                 <h3>Assign RRHH :</h3>
                 <select name='userHRId' onChange={this.props.handleChangeId} className='selectTag' >
                   {this.props.usersRH.map(user => (
@@ -79,7 +79,7 @@ class botonera extends React.Component {
                   }
                 </select >
                 <input type='submit' className='subBtn' value='ASSIGN RRHH' onClick={() => this.props.submitHR(this.props.candidate.id)} />
-              </div>
+              </div>}
               <div className='assignUser'>
                 <h3>Assign Interviewer Sistemas 1:</h3>
                 <select name='userSIST1' onChange={this.props.handleChangeId} className='selectTag' >
