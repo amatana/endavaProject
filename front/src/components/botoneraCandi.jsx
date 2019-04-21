@@ -37,7 +37,7 @@ class botonera extends React.Component {
                 Assign Interviewers
               </button>
 
-              {this.props.candidate && this.props.candidate.status === 'New'
+              {(this.props.candidate && this.props.candidate.status === 'New') && (this.props.candidate.interviewerHR && this.props.candidate.interviewerHR.nombre.includes(this.props.user.nombre))
                 ? <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }}
                   onClick={() => {
                     !this.props.candidate.interviewerHR
@@ -45,7 +45,7 @@ class botonera extends React.Component {
                       : this.props.onClickInterview(this.props.candidate.id);
                   }
                   }>Create Interview</button>
-                : <button
+                : (this.props.candidate.interviewerHR && this.props.candidate.status !== 'New') && <button
                   className='ActionsBotones'
                   style={{ backgroundColor: '#FFD029' }}
                   onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/hr/${this.props.candidate.InterviewIDId}`)}
@@ -70,7 +70,7 @@ class botonera extends React.Component {
             </div>
 
             <div className={'display ' + this.state.assign}>
-              <div className='assignUser'>
+              {this.props.candidate.status === 'New' && <div className='assignUser'>
                 <h3>Assign RRHH :</h3>
                 <select name='userHRId' onChange={this.props.handleChangeId} className='selectTag' >
                   {this.props.usersRH.map(user => (
@@ -79,7 +79,7 @@ class botonera extends React.Component {
                   }
                 </select >
                 <input type='submit' className='subBtn' value='ASSIGN RRHH' onClick={() => this.props.submitHR(this.props.candidate.id)} />
-              </div>
+              </div>}
               <div className='assignUser'>
                 <h3>Assign Interviewer Sistemas 1:</h3>
                 <select name='userSIST1' onChange={this.props.handleChangeId} className='selectTag' >

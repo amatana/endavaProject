@@ -9,8 +9,9 @@ const Header = (props) => {
       {props.user && props.user.id
         ? <div className='headerDisplay'>
           <div className='leftHeader'>
-            <img id='imgHeader' src="/utils/user1.svg">
-            </img><h5 id='headerName'>{props.user.nombre}</h5>
+            <img id='imgHeader' style={{ width: '15%',
+              height: 'auto' }} src="/utils/17004.png">
+            </img><h5 id='headerName'>{props.user.nombre + '(' + (props.user.area) + ')'}</h5>
           </div>
           <div className='iconHeader'>
             <Link to='/'><img src="/utils/home.png" className='homeBtn'/></Link>

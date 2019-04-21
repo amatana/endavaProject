@@ -96,12 +96,34 @@ function transformToArray (obj) {
 }
 
 router.post('/postAnswersSIS', (req, res) => {
+<<<<<<< HEAD
   let interId = req.body.InterviewSis;
   delete req.body.InterviewSis;
+=======
+  let arrayPromis = [];
+  let interId = req.body.InterviewSis;
+
+  delete req.body.InterviewSis;
+
+>>>>>>> b69d0a4f646ee3033bee99323cf246bb54ccf635
   let answerSis = transformToArray(req.body);
   answerSis.map(answer => {
-    Answers.findOne({ where: { interviewId: req.body.interviewID } });
+    arrayPromis.push(Answers.findOne({
+      where: { interviewId: interId,
+        questionId: answer[0]
+      }
+    }).then(data => {
+      answer[1] === 'score' ? arrayPromis.push(data.update({ score: answer[2] }))
+        : arrayPromis.push(data.update({ observations: answer[2] }));
+    })
+    );
   });
+<<<<<<< HEAD
+=======
+  Promise.all(arrayPromis)
+    .then(() => res.sendStatus(200))
+    .catch(e => res.sendStatus({ error: e.errors[0].message }));
+>>>>>>> b69d0a4f646ee3033bee99323cf246bb54ccf635
 });
 
 router.get('/getSistAnswers/:id', (req, res) => {
@@ -129,4 +151,9 @@ router.get('/getSistAnswers/:id', (req, res) => {
       res.send(arrayPares);
     });
 });
+<<<<<<< HEAD
 module.exports = router;
+=======
+module.exports = router
+;
+>>>>>>> b69d0a4f646ee3033bee99323cf246bb54ccf635

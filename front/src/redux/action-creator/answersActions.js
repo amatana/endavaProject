@@ -25,7 +25,17 @@ export const fetchHrAnswers = (interviewID) => dispatch =>
     });
 
 export const answerSystems = (answersSis) => dispatch =>
+<<<<<<< HEAD
   Axios.post('/api/answers/postAnswersSIS', answersSis);
+=======
+  Axios.post('/api/answers/postAnswersSIS', answersSis)
+    // .then((res) => console.log('===========================================', res));
+    .then(res => res.data)
+    .then(respuesta => {
+      if (respuesta.error) return respuesta.error;
+      else return '200';
+    });
+>>>>>>> b69d0a4f646ee3033bee99323cf246bb54ccf635
 
 export const fetchSistAnswers = (interviewID) => dispatch =>
   Axios.get(`/api/answers/getSistAnswers/${interviewID}`)

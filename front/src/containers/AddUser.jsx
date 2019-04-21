@@ -29,9 +29,11 @@ class addUser extends React.Component {
   handleSubmit (e) {
     e.preventDefault();
     if (this.state.email.split('@')[1] !== 'endava.com') {
-      alert('Email must belongs to ' + '@endava.com' + ' Dom');
+      alert('email must belong to ' + '@endava.com');
     } else if (this.state.password !== this.state.secondPassword) {
       alert('The Passwords you entered do not match');
+    } else if (this.state.secondPassword.length < 6) {
+      alert('As minimum your password must contain 6 characters');
     } else if (!this.state.nombre || !this.state.email || !this.state.password || !this.state.secondPassword || !this.state.area) {
       alert('You must complete all fields in order to continue');
     } else {
@@ -51,6 +53,7 @@ class addUser extends React.Component {
   }
 
   render () {
+    console.log(this.state.password.length)
     return (
       < AddUserForm onChange={this.handleChange} onSubmit={this.handleSubmit} />
     )
