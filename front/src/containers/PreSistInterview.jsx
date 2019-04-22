@@ -8,7 +8,7 @@ import { fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { fetchCandidateQuestions } from '../redux/action-creator/questionActions';
 
 class PreSistInterview extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       candidato: {
@@ -19,18 +19,18 @@ class PreSistInterview extends React.Component {
     this.onClickFunc = this.onClickFunc.bind(this);
   };
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.fetchCandidate(this.props.candID);
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate (prevState) {
     if (prevState.candidate !== this.props.candidate) {
       this.props.fetchCandidateQuestions(this.props.candidate.tags);
       this.setState({ candidato: this.props.candidate });
     }
   }
 
-  onChangeCheckbox(e) {
+  onChangeCheckbox (e) {
     e.preventDefault();
     let arrayQuestionsID = [];
     console.dir(e.target);
@@ -48,10 +48,10 @@ class PreSistInterview extends React.Component {
     this.props.history.push(`/candidates/${this.props.candidate.id}`);
   }
 
-  onClickFunc() {
+  onClickFunc () {
     this.props.history.push(`/candidates/interviewSis/${this.props.candidate.id}`);
   }
-  render() {
+  render () {
     return (<div>
       <img src="/utils/Frame.png"></img>
       {/* <div>
@@ -159,7 +159,7 @@ class PreSistInterview extends React.Component {
           </div>
         ))}
         {/* <div className='halfGrid'> */}
-        <button 
+        <button
           className='ActionsBotonesNaranja'
           style={{
             display: 'block',
