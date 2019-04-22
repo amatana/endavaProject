@@ -24,9 +24,9 @@ class ReportGeneration extends React.Component {
 
   componentDidUpdate (prevState) {
     if (prevState.candidate.id !== this.props.candidate.id) {
-      this.props.fetchHrAnswers(this.props.candidate.id);
-      this.props.fetchSistAnswers(this.props.candidate.id);
-      this.props.fetchGeneralObs(this.props.candidate.id);
+      this.props.fetchHrAnswers(this.props.candidate.InterviewIDId);
+      this.props.fetchSistAnswers(this.props.candidate.InterviewIDId);
+      this.props.fetchGeneralObs(this.props.candidate.InterviewIDId);
     }
   }
 
@@ -98,7 +98,10 @@ class ReportGeneration extends React.Component {
             {
               this.props.answersSIST.map(element => (
                 <div key={element.pregunta} className='answerBox' style={{ display: 'grid', gridTemplateColumns: '1fr 0.5fr' }}>
-                  <h5><strong style={{ borderBottom: '1px solid black' }}>{element.pregunta} :</strong> </h5>
+                  <h5>
+                    <strong style={{ borderBottom: '1px solid black' }}>{element.pregunta} :</strong> 
+                    <h6>{element.observation}</h6>
+                  </h5>
                   <StarsCalification score={element.score} />
                 </div>
               ))

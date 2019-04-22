@@ -120,7 +120,6 @@ router.post('/postAnswersSIS', (req, res) => {
 });
 
 router.get('/getSistAnswers/:id', (req, res) => {
-  console.log("===========================> PREGUNTAS: ", req.params.id )
   Interview.findAll(
     { where: { id: req.params.id },
       include: [{ model: Questions }] }
@@ -137,7 +136,8 @@ router.get('/getSistAnswers/:id', (req, res) => {
             question = data[i].questions[j].content;
             arrayPares.push({
               pregunta: question,
-              score: answer
+              score: answer,
+              observation: data[i].questions[j].answers.observations
             });
           }
         }

@@ -80,7 +80,7 @@ class ReportComp extends React.Component {
               <div key={elemento.pregunta} className='answerBox'>
                 <h5><strong style={{ borderBottom: '1px solid black' }}>{elemento.pregunta} :</strong> </h5>
                 <div key={elemento.pregunta}>
-                  <StarsCalification score={elemento.score}/>
+                  <StarsCalification score={elemento.score} observation={elemento.observation} />
                 </div>
               </div>
             ))
