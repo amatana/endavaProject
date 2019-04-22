@@ -302,7 +302,7 @@ div.gridDot.Approved{
 div.gridDot.Rejected{
     background-color: #DD0E0E;
 }
-div.gridDot.Tech{
+div.gridDot.Tech.Approved{
     background-color: #0EB8DD;
 }
 #tagsDisplay{

@@ -12,7 +12,7 @@ import AddCandidate from './AddCandidate';
 import Header from '../components/Header';
 import AllQuestionsList from './AllQuestionsList';
 import InterviewSisCont from './InterviewSisCont';
-
+import SistReport from '../components/SistReport';
 import UserHome from '../components/UserHome';
 import CandidatesHome from '../components/candidateHome';
 import CreateInterview from './CreateInterview';
@@ -75,6 +75,22 @@ class Main extends React.Component {
             />
               )}
             />
+            <Route exact
+              path='/candidates/interviewSis/sistReport/:idCand'
+              render={({ history, match }) => {
+                return (
+                  <SistReport
+                    history={history}
+                    idCand={match.params.idCand}
+                    questions={this.props.questionsHR}
+                    candidate={this.props.candidate}
+                    idInter={this.props.idInter}
+                  />
+                );
+              }}
+            />
+        )}
+        />
             <Route exact
               path='/candidates/:idCand/interview/hr/:idInterv'
               render={({ history, match }) => {
