@@ -76,7 +76,7 @@ class ReportComp extends React.Component {
               <div key={elemento.pregunta} className='answerBox'>
                 <h3><strong style={{ borderBottom: '1px solid black' }}>{elemento.pregunta} :</strong> </h3>
                 <div key={elemento.pregunta}>
-                  <StarsCalification score={elemento.score}/>
+                  <StarsCalification score={elemento.score} observation={elemento.observation} />
                 </div>
               </div>
             ))
