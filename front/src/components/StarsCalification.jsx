@@ -20,7 +20,7 @@ const pepe = (props) => {
       <span className={array[8]}></span>
       <span className={array[9]}></span>
     </h4><br/>
-    Observation: {props.observation}
+    {/* Observation: {props.observation} */}
   </div>);
 }
 ;
