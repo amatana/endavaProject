@@ -8,7 +8,7 @@ import { fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { fetchCandidateQuestions } from '../redux/action-creator/questionActions';
 
 class PreSistInterview extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       candidato: {
@@ -19,18 +19,18 @@ class PreSistInterview extends React.Component {
     this.onClickFunc = this.onClickFunc.bind(this);
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.fetchCandidate(this.props.candID);
   }
 
-  componentDidUpdate (prevState) {
+  componentDidUpdate(prevState) {
     if (prevState.candidate !== this.props.candidate) {
       this.props.fetchCandidateQuestions(this.props.candidate.tags);
       this.setState({ candidato: this.props.candidate });
     }
   }
 
-  onChangeCheckbox (e) {
+  onChangeCheckbox(e) {
     e.preventDefault();
     let arrayQuestionsID = [];
     console.dir(e.target);
@@ -48,10 +48,10 @@ class PreSistInterview extends React.Component {
     this.props.history.push(`/candidates/${this.props.candidate.id}`);
   }
 
-  onClickFunc () {
+  onClickFunc() {
     this.props.history.push(`/candidates/interviewSis/${this.props.candidate.id}`);
   }
-  render () {
+  render() {
     return (<div>
       <img src="/utils/Frame.png"></img>
       {/* <div>
@@ -96,6 +96,7 @@ class PreSistInterview extends React.Component {
           </div>
         </div>
       </div>
+
       <div id='centeredCandTags'><h4>Candidate Tags :  {this.state.candidato.tags.map((tag, i = 0) => <strong key={i++}> {tag.tag + ' - '} </strong>)}</h4></div>
 
       {/* <div style={{
@@ -103,18 +104,15 @@ class PreSistInterview extends React.Component {
         left: '70.67%',
         right: '22.22%',
         top: '20.21%',
-        bottom: '76.66%'
-      }}>
+        bottom: '76.66%' }}>
         {this.state.candidato.tags.map(tag => (
           <button key={tag.tag}
             style={{
               background: '#FFFFFF',
               border: '1px solid #9BB4BE',
               boxSizing: 'border-box',
-              borderRadius: '24px'
-            }}>
-            <h4 style={{
-              fontFamily: 'Avenir',
+              borderRadius: '24px' }}>
+            <h4 style={{ fontFamily: 'Avenir',
               fontSize: '14px',
               lineHeight: '24px',
               textAlign: 'center',
@@ -124,9 +122,8 @@ class PreSistInterview extends React.Component {
               <strong key={tag.tag}>{tag.tag}</strong></h4>
           </button>
         ))}
-      </div> */}
-      {/* < div style={{
-        position: 'absolute',
+      </div>
+      < div style= {{ position: 'absolute',
         width: '325px',
         height: '22px',
         left: '40px',
@@ -139,13 +136,12 @@ class PreSistInterview extends React.Component {
         lineHeight: 'normal',
         letterSpacing: '-0.01em',
 
-        color: '#000000'
-      }}>
+        color: '#000000' }}> */}
 
-      </div> */}
+      {/* </div>  */}
       <div style={{ width: '90%', margin: '20px auto', marginTop: '50px', borderBottom: '2px solid #DE411B' }}></div>
-      <div>
-        {/* <div style={{
+      {/* <div> */}
+      {/* <div style={{
         position: 'absolute',
         width: '1284px',
         height: '72px',
@@ -154,24 +150,26 @@ class PreSistInterview extends React.Component {
 
         background: 'rgba(155, 180, 190, 0.1)'
       }}> */}
-        <form onSubmit={this.onChangeCheckbox}>
-          <legend style={{ fontSize: '1.5em', color: '#DE411C', textAlign: 'center' }}>Select questions</legend>
-          {this.props.candidateQuestions.map(preg => (
-            <div key={preg.id} style={{ width: '90%', margin: '30px auto' }} >
-              <input type="checkbox" name={preg.id} value={preg.id} style={{ transform: 'scale(2)', marginRight: '1%' }}></input>
-              <label style={{ fontSize: '1.3em', display: 'inline' }}>{preg.content}</label>
-            </div>
-          ))}
-          {/* <div className='halfGrid'> */}
-          <button className='ActionsBotonesNaranja'
-            style={{
-              display: 'block',
-              width: '60%',
-              margin: '30px auto'
-            }}
-          >Create interview</button>
-          <div>
-            {/* <button onClick={this.onClickFunc}
+      <form onSubmit={this.onChangeCheckbox}>
+        <legend style={{ fontSize: '1.5em', color: '#DE411C', textAlign: 'center' }}>Select questions</legend>
+        {this.props.candidateQuestions.map(preg => (
+          <div key={preg.id} style={{ width: '90%', margin: '30px auto' }} >
+            <input type="checkbox" name={preg.id} value={preg.id} style={{ transform: 'scale(2)', marginRight: '1%' }}></input>
+            <label style={{ fontSize: '1.3em', display: 'inline' }}>{preg.content}</label>
+          </div>
+        ))}
+        {/* <div className='halfGrid'> */}
+        <button 
+          className='ActionsBotonesNaranja'
+          style={{
+            display: 'block',
+            width: '60%',
+            margin: '30px auto'
+          }}
+          type='Submit'
+        >Create interview</button>
+        <div>
+          {/* <button onClick={this.onClickFunc}
                 className='ActionsBotonesNaranja'
                 // style={{
                 //   position: 'absolute',
@@ -185,10 +183,10 @@ class PreSistInterview extends React.Component {
                 //   borderRadius: '30px'
                 // }}
                 >Go to interview</button> */}
-          </div>
-          {/* </div> */}
-        </form>
-      </div>
+        </div>
+        {/* </div> */}
+      </form>
+      {/* </div> */}
     </div>);
   }
 }
@@ -201,5 +199,4 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCandidateQuestions: (tags) => dispatch(fetchCandidateQuestions(tags)),
   setInterviewCandidate: (obj) => dispatch(setInterviewCandidate(obj))
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(PreSistInterview);

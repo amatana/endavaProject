@@ -50,7 +50,7 @@ const ActionsCandidates = (props) => {
         </div>
 
         : <div>
-          <h1 style={{ marginLeft: '25px', marginBottom: '30px', marginTop: '40px' }}><span style={{ borderBottom: '1px solid black', fontSize: '1em' }}> SISTEMAS ACTIONS</span></h1>
+          <h1 style={{ marginLeft: '25px', marginBottom: '30px', marginTop: '40px' }}><span style={{ borderBottom: '1px solid black', fontSize: '1em' }}> SYST ACTIONS</span></h1>
           <div style={{ margin: '30px' }}>
             <CandidateButtons
               onClickSist={props.onClickSist}
