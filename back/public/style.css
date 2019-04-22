@@ -40,6 +40,10 @@ tr.white{
     background-color: white;
 }
 
+.checked {
+    color:  #DE411B;
+  }
+
 .header{
     /* border-bottom: 1px solid #DE411B; */
     /* background-color: #DE411B; */

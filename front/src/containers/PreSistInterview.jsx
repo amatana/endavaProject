@@ -70,7 +70,7 @@ class PreSistInterview extends React.Component {
         </h2>
       </div>
       <div>
-        <textarea className= 'testNew' type="text" value={
+        <textarea className= 'testNew' readOnly type="text" value={
           this.state.candidato.fullName + '\n' +
               this.state.candidato.email + '\n' +
               this.state.candidato.telNumber + '\n' +
@@ -116,7 +116,7 @@ class PreSistInterview extends React.Component {
         letterSpacing: '-0.01em',
 
         color: '#000000' }}>
-Select questions
+
       </div>
       <div style={{
         position: 'absolute',
@@ -128,7 +128,7 @@ Select questions
         background: 'rgba(155, 180, 190, 0.1)'
       }}>
         <form onSubmit={this.onChangeCheckbox}>
-          <legend>Select questions</legend>
+          <legend style={{ textAlign: 'center' }} style={{ fontSize: '32px', color: '#DE411C' }}>Select questions</legend>
           {this.props.candidateQuestions.map(preg => (
             <div key={preg.id}>
               <input type="checkbox" name={preg.id} value={preg.id}></input>
