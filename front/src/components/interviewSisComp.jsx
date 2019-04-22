@@ -64,11 +64,11 @@ class InterviewSisComp extends React.Component {
                 <option>3</option>
                 <option>4</option>
                 <option>5</option>
-                {/* <option>6</option>
+                <option>6</option>
                 <option>7</option>
                 <option>8</option>
                 <option>9</option>
-                <option>10</option> */}
+                <option>10</option>
               </select>
             </div>
             <div className="form-group">
@@ -91,7 +91,7 @@ class InterviewSisComp extends React.Component {
         </div> */}
         <div className='col-lg-3'></div>
         <div style={{ marginLeft: '30px' }}>
-          <button type='button' className="btn btn-primary" onClick={this.props.onSubmit} data-toggle="modal" data-target="#exampleModal">Sign in</button>
+          <button type='button' className="btn btn-primary" onClick={this.props.onSubmit} data-toggle="modal" data-target="#exampleModal">Submit</button>
         </div>
 
       </div>

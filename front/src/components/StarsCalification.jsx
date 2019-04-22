@@ -2,7 +2,8 @@
 import React from 'react';
 
 const pepe = (props) => {
-  let array = ['fa fa-star', 'fa fa-star', 'fa fa-star', 'fa fa-star', 'fa fa-star'];
+  let array = ['fa fa-star', 'fa fa-star', 'fa fa-star', 'fa fa-star', 'fa fa-star',
+    'fa fa-star', 'fa fa-star', 'fa fa-star', 'fa fa-star', 'fa fa-star'];
   for (let i = 0; i < props.score; i++) {
     array[i] = 'fa fa-star checked';
   }
@@ -13,10 +14,14 @@ const pepe = (props) => {
       <span className={array[2]}></span>
       <span className={array[3]}></span>
       <span className={array[4]}></span>
+      <span className={array[5]}></span>
+      <span className={array[6]}></span>
+      <span className={array[7]}></span>
+      <span className={array[8]}></span>
+      <span className={array[9]}></span>
     </h4>
   </div>);
 }
 ;
 
 export default pepe;
-
