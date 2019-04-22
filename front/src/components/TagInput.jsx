@@ -12,38 +12,42 @@ const addTag = (props) => {
         <h1 className='titHome'>TAGS MANAGEMENT</h1>
         <div id='searchBar'>
           <form onSubmit={props.handleSubmit}>
-            <div><input onChange={props.handleSearch} placeholder='Filter tags 🔎'name='tagSearch' type='text' value={props.searchTagInput} />
-            </div>
-            <br/>
-            <div>
-              <input placeholder= 'New tags' onChange={props.handleChange} name='tagInput' type='text' value={props.tagInput} />
-              <input type='submit' value='Add Tag' />
+            <div className='halfGrid'>
+              <div className='halfGrid'>
+                <input id='addTagInput' placeholder='    New tags' onChange={props.handleChange} name='tagInput' type='text' value={props.tagInput} />
+                <input className='ActionsBotonesNaranja' id='addTagBton' type='submit' value='Add Tag' />
+              </div>
+              <input id='filterTag' onChange={props.handleSearch} placeholder='   Filter tags 🔎' name='tagSearch' type='text' value={props.searchTagInput} />
             </div>
           </form>
         </div>
-        <div style={{ width: '300px', textAlign: 'center' }}>
-          <table style={{ display: 'inline-block' }}>
-            <tr>
-              <th ><h1>TAGS</h1></th>
-            </tr>
-            <td>
+        <div style={{ width: '300px', marginLeft: '2%' }}>
+          <table >
+            <thead>
+              <tr>
+                <th ><h1 style={{ borderBottom: '2px solid black' }}>TAGS</h1></th>
+              </tr>
+            </thead>
+            {/* <td> */}
+            <tbody>
               {allTags && allTags.filter(word => word.tag.toLowerCase().includes(props.stateSearchTag)).map((tag, i) => {
                 return (
-                  <div>
-                    <tr>
-                      <div style={{ clear: 'both' }} className='cell'>
-                        <td>
-                          <p style={{ fontSize: '30px' }} key={i} name={tag.id}>{tag.tag}</p>
-                        </td>
-                        <td style={{ verticalAlign: 'middle' }}>
-                          <a><img style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} id='trashUser' name={tag.id} onClick={props.handleDelete} src='/utils/garbage.svg' /></a>
-                        </td>
-                      </div>
-                    </tr>
-                  </div>
+                  // <div>
+                  <tr key={i++} >
+                    {/* <div style={{ clear: 'both' }} className='cell'> */}
+                    <td>
+                      <p style={{ fontSize: '30px' }} key={i} name={tag.id}>{tag.tag}</p>
+                    </td>
+                    <td style={{ verticalAlign: 'middle' }}>
+                      <a><img style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} id='trashUser' name={tag.id} onClick={props.handleDelete} src='/utils/garbage.svg' /></a>
+                    </td>
+                    {/* </div> */}
+                  </tr>
+                  // </div>
                 );
               })}
-            </td>
+            </tbody>
+            {/* </td> */}
           </table>
         </div>
       </div>

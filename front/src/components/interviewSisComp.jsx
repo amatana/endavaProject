@@ -86,7 +86,7 @@ class InterviewSisComp extends React.Component {
         </div> */}
         <div className='col-lg-3'></div>
         <div style={{ marginLeft: '30px' }}>
-          <button type='button' className="btn btn-primary" onClick={this.props.onSubmit} data-toggle="modal" data-target="#exampleModal">Sign in</button>
+          <button type='button' className="btn btn-primary" onClick={this.props.onSubmit} data-toggle="modal" data-target="#exampleModal">Submit</button>
         </div>
 
       </div>

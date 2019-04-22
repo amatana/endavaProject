@@ -13,7 +13,7 @@ const CreateInterviewComp = (props) => {
           <h2>Candidate ID: <strong>{props.candidate.id}</strong></h2>
           <h2>Email Adress: <strong>{props.candidate.email}</strong></h2>
           <h2>Phone: <strong>{props.candidate.telNumber}</strong> </h2>
-          {props.candidate.url && <a href={props.candidate.url} target='_blank'>Link a Perfil en Linked-in</a>}
+          {props.candidate.url && <a href={props.candidate.url} target='_blank'>Link to Linked-in Profile</a>}
           <h2>Candidate Tags :  {props.candidate.tags.map(tag => <strong> {tag.tag + ' - '} </strong>)}</h2>
         </div>
         <div>
