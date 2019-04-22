@@ -18,7 +18,9 @@ class ReportGeneration extends React.Component {
   }
 
   componentDidMount () {
+    console.log('===================> MANDO A BUSCAR EL CANDIDATE');
     this.props.fetchCandidate(this.props.candID);
+    console.log('===================> MANDO A BUSCAR EL CANDIDATE INTERVIEW ID');
     this.props.fetchCandidateInterview(this.props.candID);
   }
 
@@ -54,8 +56,7 @@ class ReportGeneration extends React.Component {
             <h4><b style={{ fontSize: '32px' }}>Observations:</b> {this.props.HRObs}</h4>
             <hr></hr><hr></hr>
             <div ><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>IT Interview</b></h3><hr></hr>
-            {console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ", this.props.answersSIST)}
-              { 
+              {
                 this.props.answersSIST.map(element => (
                   <div key={element.pregunta}>
                     <StarsCalification pregunta={element.pregunta} score={element.score} observation={element.observation}/>

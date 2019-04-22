@@ -148,10 +148,17 @@ router.get('/getSistAnswers/:id', (req, res) => {
 
 router.get('/generalObs/:candID', (req, res) => {
   Interview.findOne({ where: { candidateIDId: req.params.candID } })
-    .then(entrevistaCand => res.send({
-      SistObs: entrevistaCand.SistObs,
-      HRObs: entrevistaCand.HRObs
-    })
+    .then(entrevistaCand => {
+      if (entrevistaCand) {
+        return res.send({
+          SistObs: entrevistaCand.SistObs,
+          HRObs: entrevistaCand.HRObs
+        });
+      } else {
+        return res.send(200);
+      }
+    }
+
     );
 });
 
