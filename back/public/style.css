@@ -90,7 +90,7 @@ h2.borde.New{
     border: 2px solid #EC6861;
     border-radius: 20px;
 }
-h2.borde.Pending{
+h2.borde.Pending.Tech{
     border: 2px solid #FFD029;
     border-radius: 20px;
 }
@@ -513,7 +513,28 @@ strong.Approved{
 strong.Rejected{
     color: #DD0E0E;
 }
-strong.Tech.Approved{
+strong.Tech{
+    color: #0EB8DD;
+}
+span.New{
+    color: #EC6861;
+}
+span.Pending.Tech{
+    color: #FFD029;
+}
+span.Pending.HR{
+    color: #FFD029;
+}
+span.Approved{
+    color: #0EDD4D;
+}
+span.Rejected.Tech{
+    color: #DD0E0E;
+}
+span.Rejected.HR{
+    color: #DD0E0E;
+}
+span.Tech.Approved{
     color: #0EB8DD;
 }
 .answersHR{
