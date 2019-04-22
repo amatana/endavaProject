@@ -8,7 +8,7 @@ import { fetchHrAnswers, fetchSistAnswers, fetchGeneralObs } from '../redux/acti
 import StarsCalification from '../components/StarsCalification';
 
 class ReportGeneration extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       candidato: {
@@ -18,13 +18,13 @@ class ReportGeneration extends React.Component {
   }
 
   componentDidMount () {
-    console.log('===================> MANDO A BUSCAR EL CANDIDATE');
+    // console.log('===================> MANDO A BUSCAR EL CANDIDATE');
     this.props.fetchCandidate(this.props.candID);
-    console.log('===================> MANDO A BUSCAR EL CANDIDATE INTERVIEW ID');
+    // console.log('===================> MANDO A BUSCAR EL CANDIDATE INTERVIEW ID');
     this.props.fetchCandidateInterview(this.props.candID);
   }
 
-  componentDidUpdate (prevState) {
+  componentDidUpdate(prevState) {
     if (prevState.candidate.id !== this.props.candidate.id) {
       this.props.fetchHrAnswers(this.props.candidate.InterviewIDId);
       this.props.fetchSistAnswers(this.props.candidate.InterviewIDId);
@@ -32,7 +32,7 @@ class ReportGeneration extends React.Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <div>
         <div className='halfGrid'>
@@ -41,7 +41,7 @@ class ReportGeneration extends React.Component {
             <button className='ActionsBotonesBlanco' style={{ width: '60%', marginBottom: '30px', marginRight: '30px' }}>Back</button>
           </Link>
         </div>
-        <div style={{ marginLeft: '30px' }} style={{ display: 'grid', gridTemplateColumns: '1fr 0.6fr' }}>
+        <div style={{ marginLeft: '30px' }} style={{ display: 'grid', gridTemplateColumns: '1fr 0.7fr' }}>
           <div style={{ paddingLeft: '4%' }}>
             <h4 style={{ marginTop: '20px' }}>Candidate's Full-Name: <strong>{this.props.candidate.fullName} </strong></h4>
             <h4>Phone: <strong>{this.props.candidate.telNumber}</strong> </h4>
@@ -49,17 +49,32 @@ class ReportGeneration extends React.Component {
             <h4>Candidate ID: <strong>{this.props.candidate.id}</strong></h4>
             {this.props.candidate.tags && this.props.candidate.tags.length > 0 &&
               <h4>Candidate Tags:
-                {this.props.candidate.tags.map(tag => <strong>{tag.tag}</strong>)}
+                {this.props.candidate.tags.map(tag => <strong key={tag.id}>{tag.tag}</strong>)}
               </h4>}
+            {this.props.candidate.url && <a style={{ textAlign: 'center' }} href={this.props.candidate.url} target='_blank'>Linked-in Profile</a>}
           </div>
 
           <div >
             <h2 style={{ textAlign: 'center', padding: '10px', margin: '1% 7%' }} className={'borde ' + this.props.candidate.status}>
-              <h3><strong>STATUS :  </strong></h3>
+              <p style={{ fontSize: '1em' }}><strong>STATUS :  </strong></p>
               <span className={'statusReport ' + this.props.candidate.status}>{' ' + this.props.candidate.status} </span>
             </h2>
-            {/* <a style={{ textAlign: 'center' }} href="#candidateExpertise"> Read Candidate Expertise</a> */}
-            {this.props.candidate.url && <a style={{ textAlign: 'center' }} href={this.props.candidate.url} target='_blank'>Linked-in Profile</a>}
+            {this.props.candidate.interviewerHR &&
+              <h2 style={{ textAlign: 'left', marginTop: '20px' }}>
+                <strong>HR Interviewer: </strong>
+                {' ' + this.props.candidate.interviewerHR.nombre}
+              </h2>}
+
+            {this.props.candidate.interSIST1 &&
+              <h2 style={{ textAlign: 'left', marginTop: '20px' }}>
+                <strong>SYST Interviewer: </strong>
+                {' ' + this.props.candidate.interviewerHR.nombre}
+              </h2>}
+
+            {this.props.candidate.interSIST2 && <h2 style={{ textAlign: 'center', marginTop: '20px' }}>
+              <strong>SYST Interviewer: </strong>
+              {' ' + this.props.candidate.interviewerHR.nombre}
+            </h2>}
           </div>
 
         </div>
@@ -73,8 +88,8 @@ class ReportGeneration extends React.Component {
             <h4><b style={{ fontSize: '32px' }}>e-mail:</b> {this.props.candidate.email}</h4>
             <h4><b style={{ fontSize: '32px' }}>Telephone:</b> {this.props.candidate.telNumber}</h4>
             <h4><b style={{ fontSize: '32px' }}>Expertise:</b> {this.props.candidate.expertise}</h4>
-          </div>
-          <hr></hr><hr></hr><hr></hr> */}
+          </div> */}
+        <hr></hr><hr></hr><hr></hr>
         <div id='infoCandHR'><h2 style={{ textAlign: 'center' }}><b style={{ fontSize: '1.3em', color: '#DE411C' }}>HR Interview</b></h2><hr></hr>
           {/* {
               this.props.answersHR.map(element => (
@@ -101,15 +116,15 @@ class ReportGeneration extends React.Component {
               this.props.answersSIST.map(element => (
                 <div key={element.pregunta} className='answerBox' style={{ display: 'grid', gridTemplateColumns: '1fr 0.5fr' }}>
                   <h5>
-                    <strong style={{ borderBottom: '1px solid black' }}>{element.pregunta} :</strong> 
-                    <h6>{element.observation}</h6>
+                    <strong style={{ borderBottom: '1px solid black' }}>{element.pregunta} :</strong>
+                    <p style={{ margin: '2% 3%' }}>{element.observation}</p>
                   </h5>
                   <StarsCalification score={element.score} />
                 </div>
               ))
             }
           </div>
-          <h4><b style={{ fontSize: '32px' }}>Observations:</b> {this.props.SistObs}</h4>
+          {/* <h4><b style={{ fontSize: '32px' }}>Observations:</b> {this.props.SistObs}</h4> */}
         </div>
       </div>
     );
