@@ -34,31 +34,38 @@ class InterviewSisComp extends React.Component {
 
         <div id='infoCandHR' className='masGrid' style={{ marginLeft: '30px' }}>
           <div>
-            <h2>Full name: <strong>{this.props.candidate.fullName} </strong></h2>
-            <h2>Candidate ID: <strong>{this.props.candidate.id}</strong></h2>
-            <h2>Email Adress: <strong>{this.props.candidate.email}</strong></h2>
-            <h2>Phone: <strong>{this.props.candidate.telNumber}</strong> </h2>
+            <h4>Full name: <strong>{this.props.candidate.fullName} </strong></h4>
+            <h4>Candidate ID: <strong>{this.props.candidate.id}</strong></h4>
+            <h4>Email Adress: <strong>{this.props.candidate.email}</strong></h4>
+            <h4>Phone: <strong>{this.props.candidate.telNumber}</strong> </h4>
             {this.props.candidate.url && <a href={this.props.candidate.url} target='_blank'>Link a Perfil en Linked-in</a>}
-            {/* <h2>Candidate Tags :  {this.props.candidate.tags.map(tag => <strong> {tag.tag + ' - '} </strong>)}</h2> */}
+            {/* <h4>Candidate Tags :  {this.props.candidate.tags.map(tag => <strong> {tag.tag + ' - '} </strong>)}</h4> */}
           </div>
           <div>
             <Link to={'/candidates/' + this.props.candidate.id} ><button style={{ width: '80%' }} className='ActionsBotonesBlanco'> Go Back </button></Link>
             <div style={{ marginTop: '30px' }}>
-              <h3><strong style={{ borderBottom: '1px solid black' }}> Candidate's Expertise</strong></h3>
-              <h3>{this.props.candidate.expertise}</h3>
+              <h4><strong style={{ borderBottom: '1px solid black' }}> Candidate's Expertise</strong></h4>
+              <h4>{this.props.candidate.expertise}</h4>
             </div>
           </div>
         </div>
+        <div style={{ width: '90%', margin: '20px auto', marginTop: '50px', borderBottom: '2px solid #DE411B' }}></div>
         <div className='col-lg-3'></div>
         {this.props.questions.map((pregunta) => (
-          <div key={pregunta.id} className="form-row" style={{ marginLeft: '30px' }}>
+          <div key={pregunta.id} className="form" style={{ display: 'block', width:'90%', margin:'20px auto' }}>
 
-            <h5>{pregunta.value}</h5>
-            <div className="form-group">
+            <h6 style={{display:'grid', gridTemplateColumns: '1fr 0.3fr'}}> 
+              <strong className='questionHR' >{pregunta.value}</strong>
               <select className="form-control"
                 id={pregunta.id}
                 onChange={this.props.onChange}
-                name='score'>
+                name='score'
+                style={{
+                  borderRadius: '30px',
+                  width: '35%',
+                  border: '2px solid #DE411B'
+                }}
+                >
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -70,12 +77,23 @@ class InterviewSisComp extends React.Component {
                 <option>9</option>
                 <option>10</option>
               </select>
+            </h6>
+            <div>
+              
             </div>
             <div className="form-group">
               {/* <label htmlFor="exampleFormControlTextarea1">observations</label> */}
               <textarea className="form-control" id={pregunta.id}
                 name='observations'
-                onChange={this.props.onChange}>
+                onChange={this.props.onChange}
+                style={{
+                  marginBottom:'40px',
+                  display: 'block',
+                  width: '90%',
+                  border: '1px solid black',
+                  height:'120px'
+                }}
+                >
               </textarea>
             </div>
 
@@ -90,8 +108,16 @@ class InterviewSisComp extends React.Component {
           </textarea>
         </div> */}
         <div className='col-lg-3'></div>
-        <div style={{ marginLeft: '30px' }}>
-          <button type='button' className="btn btn-primary" onClick={this.props.onSubmit} data-toggle="modal" data-target="#exampleModal">Submit</button>
+        <div style={{ display: 'block', width:'40%', margin:'10px auto' }}>
+          <button 
+            type='button' 
+            className="btn ActionsBotonesNaranja" 
+            onClick={this.props.onSubmit} 
+            style={{
+              width:'100%',
+              padding: '20px',
+              marginBottom: '50px'
+            }}> Submit Interview</button>
         </div>
 
       </div>

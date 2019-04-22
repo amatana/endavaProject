@@ -1,7 +1,7 @@
 import React from 'react';
 
 class botonera extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       // status: 'New',
@@ -10,7 +10,7 @@ class botonera extends React.Component {
     this.changeStatus = this.changeStatus.bind(this);
   }
 
-  changeStatus (status) {
+  changeStatus(status) {
     this.setState({ status });
   }
 
@@ -20,15 +20,16 @@ class botonera extends React.Component {
   //   }
   // }
 
-  render () {
+  render() {
     return (
       <div>
         {(this.props.user && this.props.user.area === 'RRHH')
           ? (<div>
             <div id='botonesHR'>
 
-              {(this.props.candidate.status !== 'Tech Approved' && this.props.candidate.status !== 'Rejected Tech') && <button className='ActionsBotones '
-                style={{ backgroundColor: '#0EB8DD' }}
+              {(this.props.candidate.status !== 'Tech Approved' && this.props.candidate.status !== 'Rejected Tech') && 
+                <button className='ActionsBotones ActionsBotonesBlanco'
+                style={{ border: '2px solid #DE411B' }}
                 onClick={() => {
                   if (this.state.assign === 'assignOff') this.setState({ assign: 'onAssign' });
                   if (this.state.assign === 'onAssign') this.setState({ assign: 'assignOff' });
@@ -38,7 +39,7 @@ class botonera extends React.Component {
               </button>}
 
               {(this.props.candidate && this.props.candidate.status === 'New') && (this.props.candidate.interviewerHR && this.props.candidate.interviewerHR.nombre.includes(this.props.user.nombre))
-                ? <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }}
+                ? <button className='ActionsBotones ActionsBotonesBlanco'
                   onClick={() => {
                     !this.props.candidate.interviewerHR
                       ? alert('Hr User must be assigned to the candidate')
@@ -46,8 +47,8 @@ class botonera extends React.Component {
                   }
                   }>Create Interview</button>
                 : (this.props.candidate.interviewerHR && this.props.candidate.status !== 'New') && <button
-                  className='ActionsBotones'
-                  style={{ backgroundColor: '#FFD029' }}
+                  className='ActionsBotones ActionsBotonesBlanco'
+                  style={{ border: '2px solid #DE411B' }}
                   onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/hr/${this.props.candidate.InterviewIDId}`)}
                 >
                   View HR Report
@@ -115,8 +116,8 @@ class botonera extends React.Component {
           : (<div>
             <div id='botonesHR'>
               <button
-                className='ActionsBotones'
-                style={{ backgroundColor: '#0EB8DD' }}
+                className='ActionsBotones ActionsBotonesBlanco'
+                style={{ border: '2px solid #DE411B' }}
                 onClick={() => {
                   if (this.state.assign === 'assignOff') this.setState({ assign: 'onAssign' });
                   if (this.state.assign === 'onAssign') this.setState({ assign: 'assignOff' });
@@ -125,9 +126,19 @@ class botonera extends React.Component {
                 Assign Syst Interviewer
               </button>
 
-              <button className='ActionsBotones' style={{ backgroundColor: '#FFD029' }} onClick={() => this.props.onClickSist(this.props.candidate.id)}>Prepare Syst Interview</button>
-              <button className='ActionsBotones' style={{ backgroundColor: '#395fdd' }} onClick={() => this.props.onClickInterviewSis(this.props.candidate.id)}> Syst Interview </button>
-              {/* <button className='ActionsBotones' style={{ backgroundColor: '#DD0E0E' }} onClick={() => this.changeStatus('Rejected Tech')}>Reject SIST</button> */}
+              <button className='ActionsBotones ActionsBotonesBlanco'
+                style={{ border: '2px solid #DE411B' }}
+                onClick={() => this.props.onClickSist(this.props.candidate.id)}
+              >Prepare Syst Interview</button>
+              <button
+                className='ActionsBotones ActionsBotonesBlanco'
+                style={{ border: '2px solid #DE411B' }}
+                onClick={() => this.props.onClickInterviewSis(this.props.candidate.id)}
+              > Syst Interview </button>
+              <button
+                className='ActionsBotones ActionsBotonesBlanco'
+                style={{ border: '2px solid #DE411B' }}
+                onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/sist/${this.props.candidate.InterviewIDId}`)}>View Interview</button>
             </div>
             <div className={this.state.assign}>
               <div className='assignUser ' >
@@ -160,7 +171,7 @@ class botonera extends React.Component {
         }
       </div>
     )
-    ;
+      ;
   };
 };
 
