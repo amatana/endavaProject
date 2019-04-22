@@ -34,6 +34,7 @@ const ActionsCandidates = (props) => {
                 candidate={props.candidate}
                 submitHR={props.submitHR}
                 user={props.user}
+                questionSIS={props.questionSIS}
                 changeCandStatus={props.changeCandStatus}
                 history={props.history}
                 submitHR={props.submitHR}
