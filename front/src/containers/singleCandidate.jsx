@@ -2,6 +2,7 @@ import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import ActionsCandidates from '../components/actionsCandidates';
 import { fetchCandidate } from '../redux/action-creator/candidate-actions';
+import { fetchSistAnswers } from '../redux/action-creator/answersActions';
 import { fetchSisQuestions } from '../redux/action-creator/questionActions';
 import { connect } from 'react-redux';
 import { getAllUsers } from '../redux/action-creator/user-actions';
@@ -27,7 +28,8 @@ class SingleCandidate extends React.Component {
   componentDidMount () {
     this.props.getAllUsers();
     this.props.fetchCandidate(this.props.idCand)
-      .then(() => this.props.fetchSisQuestions(this.props.candidate.InterviewIDId));
+      .then(() => this.props.fetchSisQuestions(this.props.candidate.InterviewIDId))
+      .then(() => this.props.fetchSistAnswers(this.props.candidate.InterviewIDId))
   }
 
   goInterview (candidate) {
@@ -87,6 +89,7 @@ class SingleCandidate extends React.Component {
       candidate={this.props.candidate}
       submitHR={this.submitHR}
       handleChangeId={this.handleChangeId}
+      answersSIST={this.props.answersSIST}
       submitSIST1={this.submitSIST1}
       submitSIST2={this.submitSIST2}
       questionSIS={this.props.questionSIS}
@@ -107,12 +110,14 @@ const mapStateToProps = (state) => ({
   candidate: state.candidate.candidate,
   usersRH: state.user.users.filter(user => user.area === 'RRHH'),
   usersSIST: state.user.users.filter(user => user.area === 'Sistemas'),
-  questionSIS: state.question.questionSIS
+  questionSIS: state.question.questionSIS,
+  answersSIST: state.answers.answersSIST
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchCandidate: (idUser, idCandi) => dispatch(fetchCandidate(idUser, idCandi)),
   getAllUsers: () => dispatch(getAllUsers()),
-  fetchSisQuestions: (idInter) => dispatch(fetchSisQuestions(idInter))
+  fetchSisQuestions: (idInter) => dispatch(fetchSisQuestions(idInter)),
+  fetchSistAnswers: (interviewID) => dispatch(fetchSistAnswers(interviewID))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleCandidate);

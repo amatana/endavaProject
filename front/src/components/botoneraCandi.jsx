@@ -135,15 +135,15 @@ class botonera extends React.Component {
                   onClick={() => this.props.onClickSist(this.props.candidate.id)}
                 >Add questions to interview</button>
               }
-              <button
+              {(this.props.answersSIST && this.props.answersSIST.length < 1) ? <button
                 className='ActionsBotones ActionsBotonesBlanco'
                 style={{ border: '2px solid #DE411B' }}
                 onClick={() => this.props.onClickInterviewSis(this.props.candidate.id)}
               > Syst Interview </button>
-              <button
-                className='ActionsBotones ActionsBotonesBlanco'
-                style={{ border: '2px solid #DE411B' }}
-                onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/sist/${this.props.candidate.InterviewIDId}`)}>View Interview</button>
+                : <button
+                  className='ActionsBotones ActionsBotonesBlanco'
+                  style={{ border: '2px solid #DE411B' }}
+                  onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/sist/${this.props.candidate.InterviewIDId}`)}>View Interview</button>}
             </div>
             <div className={this.state.assign}>
               <div className='assignUser ' >

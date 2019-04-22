@@ -61,6 +61,7 @@ const ActionsCandidates = (props) => {
               submitHR={props.submitHR}
               user={props.user}
               changeCandStatus={props.changeCandStatus}
+              answersSIST={props.answersSIST}
               onClickInterviewSis={props.onClickInterviewSis}
               submitHR={props.submitHR}
               history={props.history}
