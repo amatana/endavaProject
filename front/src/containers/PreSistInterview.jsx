@@ -8,29 +8,30 @@ import { fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { fetchCandidateQuestions } from '../redux/action-creator/questionActions';
 
 class PreSistInterview extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       candidato: {
         tags: []
-      }
+      },
+      submited: false
     };
     this.onChangeCheckbox = this.onChangeCheckbox.bind(this);
     this.onClickFunc = this.onClickFunc.bind(this);
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.fetchCandidate(this.props.candID);
   }
 
-  componentDidUpdate (prevState) {
+  componentDidUpdate(prevState) {
     if (prevState.candidate !== this.props.candidate) {
       this.props.fetchCandidateQuestions(this.props.candidate.tags);
       this.setState({ candidato: this.props.candidate });
     }
   }
 
-  onChangeCheckbox (e) {
+  onChangeCheckbox(e) {
     e.preventDefault();
     let arrayQuestionsID = [];
     // console.dir(e.target);
@@ -47,10 +48,10 @@ class PreSistInterview extends React.Component {
     alert('Interview has been created! ');
   }
 
-  onClickFunc () {
+  onClickFunc() {
     this.props.history.push(`/candidates/interviewSis/${this.props.candidate.id}`);
   }
-  render () {
+  render() {
     return (<div>
       <img src="/utils/Frame.png"></img>
       {/* <div>
@@ -67,22 +68,22 @@ class PreSistInterview extends React.Component {
       </div> */}
       <div id='infoCandHR' className='masGrid' style={{ marginLeft: '30px' }}>
         <div>
-          <h2>Full name: <strong>{this.state.candidato.fullName} </strong></h2>
-          <h2>Candidate ID: <strong>{this.state.candidato.id}</strong></h2>
-          <h2>Email Adress: <strong>{this.state.candidato.email}</strong></h2>
-          <h2>Phone: <strong>{this.state.candidato.telNumber}</strong> </h2>
+          <h4>Full name: <strong>{this.state.candidato.fullName} </strong></h4>
+          <h4>Candidate ID: <strong>{this.state.candidato.id}</strong></h4>
+          <h4>Email Adress: <strong>{this.state.candidato.email}</strong></h4>
+          <h4>Phone: <strong>{this.state.candidato.telNumber}</strong> </h4>
           {this.state.candidato.url && <a href={this.state.candidato.url} target='_blank'>Link to Linked-in Profile</a>}
-          
+
         </div>
         <div>
           <Link to={'/candidates/' + this.state.candidato.id} ><button style={{ width: '80%' }} className='ActionsBotonesBlanco'> Go Back </button></Link>
           <div style={{ marginTop: '30px' }}>
-            <h3><strong style={{ borderBottom: '1px solid black' }}> Candidate's Expertise</strong></h3>
-            <h3>{this.state.candidato.expertise}</h3>
+            <h4><strong style={{ borderBottom: '1px solid black' }}> Candidate's Expertise</strong></h4>
+            <h4>{this.state.candidato.expertise}</h4>
           </div>
         </div>
       </div>
-      <div id='centeredCandTags'><h2>Candidate Tags :  {this.state.candidato.tags.map((tag, i = 0) => <strong key={i++}> {tag.tag + ' - '} </strong>)}</h2></div>
+      <div id='centeredCandTags'><h4>Candidate Tags :  {this.state.candidato.tags.map((tag, i = 0) => <strong key={i++}> {tag.tag + ' - '} </strong>)}</h4></div>
 
       {/* <div style={{
         position: 'absolute',
@@ -131,27 +132,30 @@ class PreSistInterview extends React.Component {
       </div> */}
       <div style={{ width: '90%', margin: '20px auto', marginTop: '50px', borderBottom: '2px solid #DE411B' }}></div>
       <div
-        // style={{
-        // position: 'absolute',
-        // width: '1284px',
-        // height: '72px',
-        // left: '40px',
-        // top: '545px',
+      // style={{
+      // position: 'absolute',
+      // width: '1284px',
+      // height: '72px',
+      // left: '40px',
+      // top: '545px',
 
-        // background: 'rgba(155, 180, 190, 0.1)'}}
+      // background: 'rgba(155, 180, 190, 0.1)'}}
       >
         <form onSubmit={this.onChangeCheckbox}>
           <legend style={{ fontSize: '1.5em', color: '#DE411C', textAlign: 'center' }}>Select questions</legend>
           {this.props.candidateQuestions.map((preg, i = 0) => (
-            <div key={i++} style={{width:'90%', margin:'20px auto'}}>
-              <input type="checkbox" name={preg.id} value={preg.id} style={{transform:'scale(2)', marginRight:'1%'}}></input>
-              <label style={{fontSize:'1.3em'}}>{preg.content}</label>
+            <div key={i++} style={{ width: '90%', margin: '30px auto' }}>
+              <input type="checkbox" name={preg.id} value={preg.id} style={{ transform: 'scale(2)', marginRight: '1%' }}></input>
+              <label style={{ fontSize: '1.3em', display: 'inline' }}>{preg.content}</label>
             </div>
           ))}
-          <div className='halfGrid'>
-            <button className='ActionsBotonesNaranja' style={{ width: '80%', margin:'0 auto' }}>Create interview</button>
-            <button onClick={this.onClickFunc} style={{ width: '80%',  margin:'0 auto' }} className='ActionsBotonesNaranja'>Go to interview</button>
-          </div>
+          {!this.state.submited && this.props.candidate.status
+            ? <div style={{ width: '50%', margin: '30px auto' }}> <button style={{ width: '100%' }} className='ActionsBotonesNaranja' onClick={() => this.setState({ submited: true })} >Create Interview</button></div>
+            : <div className='halfGrid' >
+              <Link to={'/candidates/' + this.state.candidato.id} style={{ width: '60%', margin: '30px auto' }} ><button style={{ width: '100%' }} className='ActionsBotonesBlanco'> Go Back </button></Link>
+              <div style={{ width: '100%' }}><button onClick={this.onClickFunc} style={{ width: '60%', padding:'25px', margin:'35px auto' }} className='ActionsBotonesNaranja'>Go to interview</button></div>
+            </div>
+          }
         </form>
       </div>
     </div >);
