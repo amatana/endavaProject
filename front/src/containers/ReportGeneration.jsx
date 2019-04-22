@@ -18,7 +18,9 @@ class ReportGeneration extends React.Component {
   }
 
   componentDidMount () {
+    console.log('===================> MANDO A BUSCAR EL CANDIDATE');
     this.props.fetchCandidate(this.props.candID);
+    console.log('===================> MANDO A BUSCAR EL CANDIDATE INTERVIEW ID');
     this.props.fetchCandidateInterview(this.props.candID);
   }
 
