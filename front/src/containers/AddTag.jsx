@@ -40,7 +40,6 @@ class addTag extends React.Component {
     e.preventDefault();
     axios.post('api/tags/create', { tag: this.state.tagInput })
       .then(() => {
-        console.log('olis');
         this.setState({ tagInput: '' });
         axios.get('api/tags/retrieve')
           .then((allTags) => {

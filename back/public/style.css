@@ -86,7 +86,7 @@ tr.white{
     margin: 20px auto;
 }
 h2.borde.New{
-    border: 2px solid #FFD099;
+    border: 2px solid #EC6861;
     border-radius: 20px;
 }
 h2.borde.Pending{
@@ -456,11 +456,35 @@ button.ActionsBotones{
 .list-group-item-action{
     cursor: pointer
 }
-
-
+#filterTag{
+    width: 90%;
+    padding: 15px;
+    font-size: 1em;
+    border-radius: 30px;
+    margin: 5% auto;
+    border: 1px solid black;
+}
+#filterTag:focus{
+    outline-width: 0;
+    border: 2px solid #DE411C;
+}
+#addTagBton{
+    margin: 10%;
+}
 #formCand{
     margin-left: 5px;
     margin-top: 60px
+}
+#addTagInput{
+    width: 90%;
+    display: block;
+    margin: 30px auto;
+    border: none;
+    border-bottom: 1px solid black;
+}
+#addTagInput:focus {
+    outline-width: 0;
+    border-bottom: 3px solid #DE411B; 
 }
 strong{
     font-size: 1.2em;
@@ -469,7 +493,7 @@ strong{
     font-size: 1.5em;
 }
 strong.New{
-    color: #FFD099;
+    color: #EC6861;
 }
 strong.Pending{
     color: #FFD029;
@@ -588,6 +612,10 @@ strong.questionHR{
     #tagBox{
         font-size: 2em;
     }
+    .loginLabel{
+        font-size: 2.5em;
+        margin-top: 25px;
+    }
     .subTitles{
         font-size: 3em; 
         margin-left: 15px; 
@@ -650,9 +678,8 @@ strong.questionHR{
         padding: 8px 
     }
     #imgHeader{
-        width: 95px; 
-        height: 95px; 
-        margin: 30px;
+        width: 20%; 
+        height: 20%; 
     }
     #headerName{
         font-size: 3em;
