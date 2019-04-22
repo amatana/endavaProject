@@ -9,18 +9,18 @@ const CreateInterviewComp = (props) => {
 
       <div id='infoCandHR' className='masGrid' style={{ marginLeft: '30px' }}>
         <div>
-          <h2>Full name: <strong>{props.candidate.fullName} </strong></h2>
-          <h2>Candidate ID: <strong>{props.candidate.id}</strong></h2>
-          <h2>Email Adress: <strong>{props.candidate.email}</strong></h2>
-          <h2>Phone: <strong>{props.candidate.telNumber}</strong> </h2>
-          {props.candidate.url && <a href={props.candidate.url} target='_blank'>Link a Perfil en Linked-in</a>}
-          <h2>Candidate Tags :  {props.candidate.tags.map(tag => <strong> {tag.tag + ' - '} </strong>)}</h2>
+          <h4>Full name: <strong>{props.candidate.fullName} </strong></h4>
+          <h4>Candidate ID: <strong>{props.candidate.id}</strong></h4>
+          <h4>Email Adress: <strong>{props.candidate.email}</strong></h4>
+          <h4>Phone: <strong>{props.candidate.telNumber}</strong> </h4>
+          {props.candidate.url && <a href={props.candidate.url} target='_blank'>Link to Linked-in Profile</a>}
+          <h4>Candidate Tags :  {props.candidate.tags.map(tag => <strong> {tag.tag + ' - '} </strong>)}</h4>
         </div>
         <div>
           <Link to={'/candidates/' + props.candidate.id} ><button style={{ width: '80%' }} className='ActionsBotonesBlanco'> Go Back </button></Link>
           <div style={{ marginTop: '30px' }}>
-            <h3><strong style={{ borderBottom: '1px solid black' }}> Candidate's Expertise</strong></h3>
-            <h3>{props.candidate.expertise}</h3>
+            <h4><strong style={{ borderBottom: '1px solid black' }}> Candidate's Expertise</strong></h4>
+            <h4>{props.candidate.expertise}</h4>
           </div>
         </div>
       </div>

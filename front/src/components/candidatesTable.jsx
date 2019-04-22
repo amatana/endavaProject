@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class CandidTable extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       selected: null
     };
   }
-  render () {
+  render() {
+    
     return (
       <table className="table">
         <thead >
@@ -24,17 +25,25 @@ class CandidTable extends React.Component {
         </thead>
 
         <tbody >
-          { this.props.candidates && this.props.candidates.filter(elem => elem.status.toLowerCase().includes(this.props.input)).map((candidate, index = 0) => {
+          {this.props.candidates && this.props.candidates.filter(elem => elem.status.toLowerCase().includes(this.props.input)).map((candidate, index = 0) => {
+            console.log('soy de la tablaaaa', candidate.status.slice(0, 8))
             return (
               <tr key={index++} className={index % 2 ? 'grey' : 'white'}>
                 <th style={{ verticalAlign: 'middle' }} className='tableHeading ' scope="row">{candidate.name + ' ' + candidate.surname}</th>
-                <td style={{ verticalAlign: 'middle' }} className='tableHeading '>{candidate.tags.map(tag => <p key={tag.id} style={ { fontSize: '23px' } }>{tag.tag}</p>)}</td>
+                <td style={{ verticalAlign: 'middle' }} className='tableHeading '>{candidate.tags.map(tag => <p key={tag.id} style={{ fontSize: '23px' }}>{tag.tag}</p>)}</td>
                 <td style={{ verticalAlign: 'middle' }} className='tableHeading '><div className={candidate.status + ' gridDot'}></div><div id='candStatus'>{candidate.status}</div></td>
                 <td style={{ verticalAlign: 'middle' }} className='tableHeading '>
-                  { candidate.status !== 'Rejected HR' &&
-                    <Link to={`/candidates/${candidate.id}`}>
+                  {candidate.status.slice(0, 8) !== 'Rejected'
+                    ? <Link to={`/candidates/${candidate.id}`}>
                       <button className='ActionsBotonesBlanco' style={{ padding: '10px', width: '100%' }}><span className='btnFont' > Actions Managment</span></button>
                     </Link>
+                    : this.props.user.area === 'Sistemas'
+                      ? <Link to={`/candidates/${candidate.id}/interview/sist/${candidate.InterviewIDId}`}>
+                        <button className='ActionsBotonesBlanco' style={{ padding: '10px', width: '100%' }}><span className='btnFont' > View Report</span></button>
+                      </Link>
+                      : <Link to={`/candidates/${candidate.id}/interview/hr/${candidate.InterviewIDId}`}>
+                        <button className='ActionsBotonesBlanco' style={{ padding: '10px', width: '100%' }}><span className='btnFont' > View Report</span></button>
+                      </Link>
                   }
                 </td>
                 <td style={{ verticalAlign: 'middle' }} className='tableHeading '>
@@ -50,7 +59,7 @@ class CandidTable extends React.Component {
                           </button>
                         </div>
                         <div className="modal-body textModal">
-                            Are you sure you want to delete this candidate?
+                          Are you sure you want to delete this candidate?
                         </div>
                         <div className="modal-footer">
                           <button type="button" className="btn btn-secondary textModal" data-dismiss="modal">Cancel</button>
@@ -65,7 +74,7 @@ class CandidTable extends React.Component {
                 </td>
               </tr>
             )
-            ;
+              ;
             // };
           })}
         </tbody>

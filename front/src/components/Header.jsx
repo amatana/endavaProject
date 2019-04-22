@@ -11,7 +11,7 @@ const Header = (props) => {
           <div className='leftHeader'>
 
             <img id='imgHeader' src="/utils/user1.svg">
-            </img><h5 id='headerName'>{props.user.nombre + '(' + (props.user.area) + ')'}</h5>
+            </img><h5 id='headerName'>{props.user.nombre + '(' + (props.user.area === 'RRHH' ? 'HR' : 'SYST') + ')'}</h5>
           </div>
           <div className='iconHeader'>
             <Link to='/'><img src="/utils/home.png" className='homeBtn'/></Link>

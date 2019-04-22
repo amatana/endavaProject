@@ -8,7 +8,7 @@ const pepe = (props) => {
     array[i] = 'fa fa-star checked';
   }
   return (<div>
-    <h4><b style={{ fontSize: '32px' }}>{props.pregunta}:</b> {props.score}
+    <h4><b style={{ fontSize: '32px' }}>{props.pregunta}</b> <br/><br/>{props.score + ' '}
       <span className={array[0]}></span>
       <span className={array[1]}></span>
       <span className={array[2]}></span>
@@ -19,7 +19,7 @@ const pepe = (props) => {
       <span className={array[7]}></span>
       <span className={array[8]}></span>
       <span className={array[9]}></span>
-    </h4>
+    </h4><br/>
   </div>);
 }
 ;

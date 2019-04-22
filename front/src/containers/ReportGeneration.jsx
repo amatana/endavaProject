@@ -32,9 +32,9 @@ class ReportGeneration extends React.Component {
 
   render () {
     return (
-      <div id='infoCandHR'>
+      <div >
         <Link to={'/candidates/' + this.props.candidate.id} ><button className='ActionsBotonesBlanco'>Back</button></Link>
-        <div style={{ marginLeft: '30px' }} className='halfGrid'>
+        <div style={{ marginLeft: '30px' }} >
           <div>
             <h1 style={{ marginTop: '20px' }}><b style={{ fontSize: '40px', color: '#DE411C' }}>Final Report</b></h1>
             <h4><b style={{ fontSize: '32px' }}>Name:</b> {this.props.candidate.fullName}</h4>
@@ -43,7 +43,7 @@ class ReportGeneration extends React.Component {
             <h4><b style={{ fontSize: '32px' }}>Expertise:</b> {this.props.candidate.expertise}</h4>
           </div>
           <hr></hr><hr></hr><hr></hr>
-          <div id='infoCandHR'><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>RRHH Interview</b></h3><hr></hr>
+          <div id='infoCandHR'><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>HR Interview</b></h3><hr></hr>
             {
               this.props.answersHR.map(element => (
                 <div key={element.pregunta}>
@@ -53,7 +53,7 @@ class ReportGeneration extends React.Component {
             }
             <h4><b style={{ fontSize: '32px' }}>Observations:</b> {this.props.HRObs}</h4>
             <hr></hr><hr></hr>
-            <div id='infoCandHR'><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>IT Interview</b></h3><hr></hr>
+            <div ><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>IT Interview</b></h3><hr></hr>
               {
                 this.props.answersSIST.map(element => (
                   <div key={element.pregunta}>

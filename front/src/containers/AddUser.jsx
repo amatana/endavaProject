@@ -53,7 +53,6 @@ class addUser extends React.Component {
   }
 
   render () {
-    console.log(this.state.password.length)
     return (
       < AddUserForm onChange={this.handleChange} onSubmit={this.handleSubmit} />
     )
