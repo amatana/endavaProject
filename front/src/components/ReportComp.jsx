@@ -51,7 +51,7 @@ class ReportComp extends React.Component {
                 <p style={{ fontSize: '1em' }}><strong>STATUS :  </strong></p>
                 <span className={'statusReport ' + this.props.candidate.status}>{' ' + this.props.candidate.status} </span>
               </h2>
-              {this.props.candidate.interviewerHR && <h2 style={{ textAlign: 'center', marginTop: '20px' }}>
+              {this.props.candidate.interviewerHR && <h2 style={{ textAlign: 'left', marginTop: '20px', fontSize: '1.5em' }}>
                 <strong>HR Interviewer: </strong>
                 {' ' + this.props.candidate.interviewerHR.nombre}
               </h2>}
