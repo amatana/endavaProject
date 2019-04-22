@@ -1,4 +1,4 @@
-import { SET_ANSWERSHR, SET_ANSWERS_SIST } from '../constants';
+import { SET_ANSWERSHR, SET_ANSWERS_SIST, SET_OBS } from '../constants';
 
 const initialState = {
   answersHR: [],
@@ -11,6 +11,8 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, { answersHR: action.answersHR });
     case SET_ANSWERS_SIST:
       return Object.assign({}, state, { answersSIST: action.answersSIST });
+    case SET_OBS:
+      return Object.assign({}, state, action.observations);
     default:
       return state;
   }

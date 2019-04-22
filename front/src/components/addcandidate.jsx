@@ -15,10 +15,12 @@ const candidate = (props) => {
                 </button>
               </div>
               <div className="modal-body">
-                <p>{props.messege}</p>
+                <p>{props.message && props.message}</p>
               </div>
               <div className="modal-footer">
-                <button type="button" onClick={() => props.onClick()} className="btn btn-lg" style={{backgroundColor:'#DE411B'}} data-dismiss="modal" > Go to Candidates </button>
+                {/* { */}
+                 <button type="button" onClick={() => props.onClick()} className="btn btn-lg" style={{ backgroundColor: '#DE411B' }} data-dismiss="modal" > { props.message === 'Successfully saved Candidate' ? 'Go to Candidates' : 'Go back' } </button>
+                  {/* // : <button type="button" onClick={() => props.onClick()} className="btn btn-lg" style={{ backgroundColor: '#DE411B' }} data-dismiss="modal" > Go back </button>} */}
               </div>
             </div>
           </div>
@@ -30,29 +32,31 @@ const candidate = (props) => {
         <div className='col-lg-6 addUser'>
           <form onSubmit={props.onSubmit} className='formUser' >
             <h1 className='titHomeForms'>ADD NEW CANDIDATE</h1>
+            <small>(<b>*</b>) Required fields</small>
+            <p/>
             <div className="form-group " >
-              <label htmlFor="lastName">First Name</label>
+              <label htmlFor="lastName">* First Name</label>
               <input onChange={props.onChange} type="text" className="form-control inputLogin" id="LastName" placeholder="Name" name='name' />
             </div>
             <div className="form-group">
-              <label htmlFor="firsstName">Last Name</label>
+              <label htmlFor="firsstName">* Last Name</label>
               <input onChange={props.onChange} type="text" className="form-control inputLogin" id="First Name" placeholder="Last Name" name='surname' />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input onChange={props.onChange} type="email" className="form-control inputLogin" id="Email" placeholder="Email" name='email' />
+              <label htmlFor="email">* Email</label>
+              <input onChange={props.onChange} type="text" className="form-control inputLogin" id="Email" placeholder="Email" name='email' />
             </div>
             <div className="form-group">
-              <label htmlFor="number">Cell phone number</label>
-              <input onChange={props.onChange} type="tel" className="form-control inputLogin" id="phone" placeholder="Cell phone number" name='telNumber' />
+              <label htmlFor="number">* Mobile Number</label>
+              <input onChange={props.onChange} type="tel" className="form-control inputLogin" id="phone" placeholder="Mobile Number" name='telNumber' />
             </div>
             <div className="form-group">
               <label htmlFor="workExperince">Work Experience</label>
               <textarea onChange={props.onChange} className="form-control inputLogin" id="WorkExperience" rows="3" name="expertise"></textarea>
             </div>
             <div className="form-group">
-              <label htmlFor="url">URL Linkedin</label>
-              <input onChange={props.onChange} type="url" className="form-control inputLogin" id="URLLinkedin" placeholder="URL Linkedin" name="url" />
+              <label htmlFor="url">URL Linkedin <small>(Default: None)</small></label>
+              <input onChange={props.onChange} type="url" className="form-control inputLogin" id="URLLinkedin" placeholder="URL Linkedin" defaultValue='https://www.linkedin.com/in/' name="url" />
             </div>
             <div className="form-group">
               <label htmlFor="url">Profile Tags</label>

@@ -48,10 +48,12 @@ class allCandidates extends React.Component {
 
             <div><img style={{ textAlign: 'left', display: 'block' }} className='imgHome' src='/utils/logo.png' /></div>
             <form className="form" style={{ float: 'left', margin: 'auto' }}>
-              <i className="fas fa-search" aria-hidden="true"></i>
+
+              {/* <i className="fas fa-search" aria-hidden="true"></i> */}
               <input onChange={this.props.handleChange} className="form-control form-control-sm ml-3 w-75 inputSearch" type="text" placeholder="Filter by State" aria-label="Search" />
+
             </form>
-            <Link to="/candidates/addCandidate"><button id='alineandoBtn' type="button" className="btn btn-lg ActionsBotonesNaranja">Add Candidate + </button></Link>
+            <Link to="/candidates/addCandidate" style={{ textDecorationLine: 'none' }}><button id='alineandoBtn' type="button" className="btn btn-lg ActionsBotonesNaranja">Add Candidate + </button></Link>
           </div>
           <div className='tableDivi' style={{ margin: '3% 1%' }} >
             <h5 className='titHome'>
@@ -73,10 +75,12 @@ class allCandidates extends React.Component {
           <div className='addcand'>
             <div><img style={{ textAlign: 'left', display: 'block', margin: '10px' }} className='imgHome' src='/utils/logo.png' /></div>
             <form className="form" >
-              <i className="fas fa-search" aria-hidden="true"></i>
+
+              {/* <i className="fas fa-search" aria-hidden="true"></i> */}
               <input onChange={this.props.handleChange} className="form-control inputSearch" type="text" placeholder="Filter by State" aria-label="Search" />
+
             </form>
-            <Link to="/candidates/addCandidate"><button id='alineandoBtn' type="button" className="btn btn-lg ActionsBotonesNaranja">Add Candidate + </button></Link>
+            <Link to="/candidates/addCandidate" style={{ textDecorationLine: 'none' }}><button id='alineandoBtn' type="button" className="btn btn-lg ActionsBotonesNaranja">Add Candidate + </button></Link>
           </div>
 
           {this.props.user.area === 'RRHH'

@@ -12,10 +12,10 @@ const ActionsCandidates = (props) => {
       <div id='infoCandi'>
         <div >
           <h1><span style={{ borderBottom: '1px solid black', fontSize: '1em' }}> Candidate Info</span></h1>
-          <h3>Nombre Completo :  <strong style={{ fontSize: '1em' }}>{' ' + candidate.name + ' ' + candidate.surname + ' '}</strong></h3>
+          <h3>Full Name :  <strong style={{ fontSize: '1em' }}>{' ' + candidate.name + ' ' + candidate.surname + ' '}</strong></h3>
           <h3>Email : <strong style={{ fontSize: '1em' }}>{' ' + candidate.email}</strong></h3>
           <h3>Status HR: <strong style={{ fontSize: '1em' }}>{candidate.status}</strong></h3>
-          <a href={candidate.url} target='_blank'>Link a Perfil en Linked-in</a>
+          <a href={candidate.url} target='_blank'>Linked-in Profile</a>
         </div>
         <div>
           <h1 ><span style={{ borderBottom: '1px solid black', fontSize: '1em' }}>Users Assignment</span></h1>
@@ -50,7 +50,7 @@ const ActionsCandidates = (props) => {
         </div>
 
         : <div>
-          <h1 style={{ marginLeft: '25px', marginBottom: '30px', marginTop: '40px' }}><span style={{ borderBottom: '1px solid black', fontSize: '1em' }}> SISTEMAS ACTIONS</span></h1>
+          <h1 style={{ marginLeft: '25px', marginBottom: '30px', marginTop: '40px' }}><span style={{ borderBottom: '1px solid black', fontSize: '1em' }}> SYST ACTIONS</span></h1>
           <div style={{ margin: '30px' }}>
             <CandidateButtons
               onClickSist={props.onClickSist}
@@ -62,6 +62,7 @@ const ActionsCandidates = (props) => {
               changeCandStatus={props.changeCandStatus}
               onClickInterviewSis={props.onClickInterviewSis}
               submitHR={props.submitHR}
+              history={props.history}
               submitSIST1={props.submitSIST1}
               submitSIST2={props.submitSIST2}
               usersSIST={props.usersSIST}

@@ -6,7 +6,6 @@ const Questions = require('../models/questions');
 const Interview = require('../models/interview');
 
 router.post('/answersHR', (req, res) => {
-
   let arrayProm = [];
 
   Answers.findOne({ where: { interviewId: req.body.interviewID } })
@@ -34,7 +33,8 @@ router.post('/answersHR', (req, res) => {
 router.get('/getHRAnswers/:id', (req, res) => {
   Interview.findAll(
     { where: { id: req.params.id },
-      include: [{ model: Questions }] }
+      include: [{ model: Questions, where: { area: 'RRHH' } }]
+    }
   )
     .then(data => {
       var question;
@@ -58,7 +58,6 @@ router.get('/getHRAnswers/:id', (req, res) => {
 });
 
 router.get('/getSisAnswers/:id', (req, res) => {
-  // console.log('+++++++++++++++++++++++++lo q me llega al getSisAnswers', req.params.id);
   Answers.findAll({
     where: {
       interviewId: req.params.id,
@@ -80,7 +79,6 @@ router.get('/getSisAnswers/:id', (req, res) => {
               value: respon.content
             });
           });
-          // console.log('++++++++++++++++++++++++++++++++++', arrayprom);
           res.send(arrayprom);
         });
     });
@@ -99,26 +97,30 @@ function transformToArray (obj) {
 }
 
 router.post('/postAnswersSIS', (req, res) => {
-  console.log('mellegaaaaaaaaaaaaaaaaaaa al ', req.body);
+  let arrayPromis = [];
   let interId = req.body.InterviewSis;
-  // console.log(interId);
-  delete req.body.InterviewSis;
-  // console.log('================================= ', req.body)
-  let answerSis = transformToArray(req.body);
-  console.log(answer);
-  answerSis.map(answer => {
-    Answers.findOne({ where: { interviewId: req.body.interviewID } });
-  });
 
-  // Answers.findAll({
-  //   where: {
-  //     interviewId: interId,
-  //     observations: null
-  //   }
-  // }).then(res => console.log(res))
+  delete req.body.InterviewSis;
+
+  let answerSis = transformToArray(req.body);
+  answerSis.map(answer => {
+    arrayPromis.push(Answers.findOne({
+      where: { interviewId: interId,
+        questionId: answer[0]
+      }
+    }).then(data => {
+      answer[1] === 'score' ? arrayPromis.push(data.update({ score: answer[2] }))
+        : arrayPromis.push(data.update({ observations: answer[2] }));
+    })
+    );
+  });
+  Promise.all(arrayPromis)
+    .then(() => res.sendStatus(200))
+    .catch(e => res.sendStatus({ error: e.errors[0].message }));
 });
 
 router.get('/getSistAnswers/:id', (req, res) => {
+  console.log("===========================> PREGUNTAS: ", req.params.id )
   Interview.findAll(
     { where: { id: req.params.id },
       include: [{ model: Questions }] }
@@ -143,21 +145,15 @@ router.get('/getSistAnswers/:id', (req, res) => {
       res.send(arrayPares);
     });
 });
+
+router.get('/generalObs/:candID', (req, res) => {
+  Interview.findOne({ where: { candidateIDId: req.params.candID } })
+    .then(entrevistaCand => res.send({
+      SistObs: entrevistaCand.SistObs,
+      HRObs: entrevistaCand.HRObs
+    })
+    );
+});
+
 module.exports = router
 ;
-
-// function transformToArray (obj) {
-//   let array = [];
-//   for (i in obj) {
-//     let key = i.split('-');
-
-//     if (key[1] === 'score') {
-//       let value = [Number(key[0]), key[1], Number(obj[i])];
-//       array.push(value);
-//     } else {
-//       let value = [Number(key[0]), key[1], (obj[i])];
-//       array.push(value);
-//     }
-//   }
-//   return array;
-// }

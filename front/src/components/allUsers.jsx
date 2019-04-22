@@ -14,7 +14,7 @@ class AllUsers extends React.Component {
           <div className='addcand'>
             <img className='imgHome' src='/utils/logo.png' />
             <h2 className='newtitHome' style={{ textAlign: 'center', alignSelf: 'end' }}>ALL USERS</h2>
-            <div style={{ alignSelf: 'end' }}><Link to="/users/addUser" ><button style={{ width: '70%', margin: '0 auto' }} type="button" className="btn btn-lg ActionsBotonesBlanco">Add User</button></Link></div>
+            <div style={{ alignSelf: 'end' }}><Link to="/users/addUser" ><button style={{ width: '70%', margin: '0 auto' }} type="button" className="btn btn-lg ActionsBotonesBlanco">Add User +</button></Link></div>
           </div>
           <table className="table">
             <thead style={{ borderBottom: '5px solid #DE411B', borderTop: '5px solid #DE411B', marginTop: '20px' }}>
@@ -33,9 +33,11 @@ class AllUsers extends React.Component {
                     <th className='tableHeading' scope="row">{user.nombre}</th>
                     <td className='tableHeading'>{user.email}</td>
                     <td className='tableHeading'>{user.area}</td>
-                    <td className='tableHeading'>{user.isAdmin ? <h3 style={{ color: '#3da547' }}>TRUE</h3> : <h3>FALSE</h3>}</td>
+                    <td className='tableHeading'>{user.isAdmin ? <img style={{ width: '25%',
+                      height: 'auto' }} src='/utils/checked2.svg'/> : <img style={{ width: '25%',
+                      height: 'auto' }} src='/utils/unchecked.svg'/> }</td>
                     <td>
-                      <a><img onClick={()=> this.setState({selected:user.id})} data-toggle="modal" data-target="#exampleModal" id='trashUser' src="/utils/garbage.svg"></img></a>
+                      <a><img onClick={() => this.setState({ selected: user.id })} data-toggle="modal" data-target="#exampleModal" id='trashUser' src="/utils/garbage.svg"></img></a>
                       <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog" role="document">
                           <div className="modal-content">
@@ -51,7 +53,7 @@ class AllUsers extends React.Component {
                             <div className="modal-footer">
                               <button type="button" className="btn btn-secondary textModal" data-dismiss="modal">Cancel</button>
                               <button type="button" className="btn btn-primary textModal" data-dismiss="modal" onClick={() => {
-                                this.props.onClick(user.id)
+                                this.props.onClick(user.id);
                               }}>Yes</button>
                             </div>
                           </div>

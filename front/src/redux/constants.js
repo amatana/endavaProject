@@ -23,3 +23,4 @@ export const SET_INTERVIEW = 'SET_INTERVIEW';
 // Answers constants
 export const SET_ANSWERSHR = 'SET_ANSWERSHR';
 export const SET_ANSWERS_SIST = 'export const';
+export const SET_OBS = 'SET_OBS';

@@ -25,16 +25,21 @@ const AddUser = (props) => {
               <input onChange={props.onChange} type="password" className="inputLogin form-control" name="password" id="password" />
             </div>
 
+            <div className="formSpace form-group">
+              <label htmlFor="password">Confirm your password</label>
+              <input onChange={props.onChange} type="password" className="inputLogin form-control" name="secondPassword" id="confPassword" />
+            </div>
+
             <div className='form-group formSpace'>
               <h4 id='belongsTo'>Belongs to :</h4>
               <div className="form-check form-check-inline formSpace">
                 <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio1" value="Sistemas" />
-                <label className="form-check-label labelSpacing" htmlFor="inlineRadio1">    Sistemas  </label>
+                <label className="form-check-label labelSpacing" htmlFor="inlineRadio1">    Syst  </label>
               </div>
 
               <div className="form-check form-check-inline formSpace">
                 <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio2" value="RRHH" />
-                <label className="form-check-label labelSpacing" htmlFor="inlineRadio2">    RRHH  </label>
+                <label className="form-check-label labelSpacing" htmlFor="inlineRadio2">    HR  </label>
               </div>
             </div>
 

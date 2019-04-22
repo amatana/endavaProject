@@ -42,7 +42,7 @@ class CreateInterview extends React.Component {
 
   render () {
     return (
-      !this.state.submitted && !this.props.answersHR.length
+      !this.state.submitted && !this.props.answersHR.length && this.props.candidate.status === 'New'
         ? <CreateInterviewComp
           onSubmit={this.onSubmit}
           onChange={this.handleChange}
@@ -52,6 +52,7 @@ class CreateInterview extends React.Component {
         />
         : <ReportComp
           questions={this.props.questionsHR}
+          idCand={this.props.idCand}
           candidate={this.props.candidate}
           idInter={this.props.idInter}
           history={this.props.history}
@@ -62,7 +63,7 @@ class CreateInterview extends React.Component {
 
 const mapStateToProps = (state) => ({
   candidate: state.candidate.candidate,
-  questionsHR: state.question.questions,
+  questionsHR: state.question.questionsHR,
   answersHR: state.answers.answersHR
 });
 

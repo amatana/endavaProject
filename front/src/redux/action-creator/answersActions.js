@@ -1,5 +1,6 @@
-import { SET_ANSWERSHR, SET_ANSWERS_SIST } from '../constants';
+
 import Axios from 'axios';
+import { SET_ANSWERSHR, SET_ANSWERS_SIST, SET_OBS } from '../constants';
 
 const setAnswersHR = (answersHR) => ({
   type: SET_ANSWERSHR,
@@ -13,22 +14,37 @@ const setAnswersSIST = (answersSIST) => ({
 
 });
 
+const setObservations = (observations) => ({
+  type: SET_OBS,
+  observations
+});
+
 export const submitHRAnswers = (answersHR) => dispatch =>
   Axios.post('/api/answers/answersHR', answersHR)
-  // .then((res) => console.log(res))
     .then(() => 'guardado')
 ;
 export const fetchHrAnswers = (interviewID) => dispatch =>
   Axios.get(`/api/answers/getHRAnswers/${interviewID}`)
-    // .then((answersHr) => dispatch(setAnswersHR(answersHr.data)));
-    .then(answers => dispatch(setAnswersHR(answers.data)));
+    .then(answers => {
+      dispatch(setAnswersHR(answers.data));
+    });
 
 export const answerSystems = (answersSis) => dispatch =>
+  Axios.post('/api/answers/postAnswersSIS', answersSis)
+    .then(res => res.data)
+    .then(respuesta => {
+      console.log("+++++++++++++++++++======================== ", respuesta)
+      if (respuesta.error) return respuesta.error;
+      else return '200';
+    });
 
-  // console.log(answersSis);
-  Axios.post('/api/answers/postAnswersSIS', answersSis);
-// .then((res) => console.log(res));
-// .then(() => 'guardado');
 export const fetchSistAnswers = (interviewID) => dispatch =>
   Axios.get(`/api/answers/getSistAnswers/${interviewID}`)
     .then(answers => dispatch(setAnswersSIST(answers.data)));
+
+export const fetchGeneralObs = (interviewID) => dispatch => {
+  console.log('++++++++++++++++++++++++++++++ LELGSTE AL ACTION');
+  Axios.get(`/api/answers/generalObs/${interviewID}`)
+    .then(obs => dispatch(setObservations(obs.data)));
+}
+    ;

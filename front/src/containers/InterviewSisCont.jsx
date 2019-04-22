@@ -7,18 +7,20 @@ import { fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { fetchSisQuestions } from '../redux/action-creator/questionActions';
 import { answerSystems } from '../redux/action-creator/answersActions';
 import InterviewSisComp from '../components/interviewSisComp';
+import Axios from 'axios'
 
 class InterviewSisCont extends React.Component {
   constructor (props) {
     super(props);
-    // this.textInput = React.createRef();
+
     this.state = {
+      // messege: ''
 
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.onChangeScore = this.onChangeScore.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
   componentDidMount () {
     this.props.fetchCandidate(this.props.idCand)
@@ -28,59 +30,40 @@ class InterviewSisCont extends React.Component {
           InterviewSis: data.candidate.InterviewIDId
         });
       });
-    // this.textInput.current.focusTextInput();
   }
   handleSubmit (e) {
     e.preventDefault();
     console.log(this.state);
-    this.props.answerSystems(this.state);
+    this.props.answerSystems(this.state)
 
-    //   .then(error => {
-    //     if (error) {
-    //       console.log('el error es:', error);
-    //       this.setState({ messege: error });
-    //     } else {
-    //       console.log('successfully saved candidate');
-    //       this.setState({ messege: 'successfully saved candidate' });
-    //     }
-    //   });
+      .then(error => {
+        if (error) {
+          console.log('el error es:', error);
+          this.setState({ messege: error });
+        } else {
+          console.log('successfully saved candidate');
+          this.setState({ messege: 'successfully saved candidate' });
+        }
+      });
   }
-  // onClick () {
-  //   console.log(this.state);
-  //   // this.props.history.push('/candidates/allCandidates');
-  // }
+
   handleChange (e) {
-    console.log({ [e.target.id + '-' + e.target.name]: e.target.value });
-    this.setState(
-      { [e.target.id + '-' + e.target.name]: e.target.value }
+    //    PARA TRABAJAR CON OBS DE ENTREVITA GENERAL
 
-      //   // { obj: [e.target.id, e.target.name, e.target.value] }
-      //   // this.state.array = [e.target.id]=  {[e.target.id, e.target.name, e.target.value]}
-
-    //   // {[e.target.id]:}
-    //   //  e.target.data-id = {
-    //   //   id: e.target.id,
-    //   //   value: e.target.value
-    //   // }
-    );
+    //    e.target.name === 'observationsInterviewSis'
+    //   ? this.setState({ [e.target.name]: e.target.value })
+    //   : this.setState({ [e.target.id + '-' + e.target.name]: e.target.value });
     // console.log(this.state);
+
+    this.setState({ [e.target.id + '-' + e.target.name]: e.target.value });
+    console.log(this.state);
   }
-
-  // onChangeScore () {
-  //   console.log(this.textInput.current);
-
-  //   // this.setState(
-  //   //   // { obj: [e.target.id, e.target.name, e.target.value] }
-  //   //   // this.state.array = [e.target.id]=  {[e.target.id, e.target.name, e.target.value]}
-  //   //   // { [e.target.id + '-' + e.target.name]: e.target.value }
-  //   //   // {[e.target.id]:}
-  //   //   e.target.name = {
-  //   //     id: e.target.id,
-  //   //     value: e.target.value
-  //   //   }
-  //   // );
-  //   // console.log(this.state);
-  // }
+  onClick () {
+    Axios.put('/api/candidate/changeStatus', { 
+      idCandi: this.props.candidate.id,
+      status: 'Pending Tech' })
+      .then(() => this.props.history.push(`/candidates/${this.props.idCand}/interview/sist/${this.props.candidate.InterviewIDId}`));
+  }
 
   render () {
     // console.log('las props que llegan a entrevista de sistemas', this.props);
@@ -91,9 +74,9 @@ class InterviewSisCont extends React.Component {
         onSubmit={this.handleSubmit}
         questions={this.props.questionSIS}
         candidate={this.props.candidate}
-        // interview={this.props.interview}
-        ref={this.textInput}
-
+        onClick={this.onClick}
+        messege={this.state.messege}
+        history={this.props.history}
         onChangeScore={this.onChangeScore}
 
       />
@@ -113,11 +96,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterviewSisCont);
-
-// handleChange (e) {
-//   console.log(e.target.id, ':', e.target.name, '=>', e.target.value);
-//   this.setState(
-//     [e.target.id] = [
-//       { [e.target.name]: e.target.value }
-//     ]);
-// }

@@ -1,9 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { fetchHrAnswers } from '../redux/action-creator/answersActions';
+import { fetchSistAnswers } from '../redux/action-creator/answersActions';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import { getAllCandidates, fetchCandidate } from '../redux/action-creator/candidate-actions';
+import StarsCalification from './StarsCalification'
 import { Link } from 'react-router-dom';
 
 class ReportComp extends React.Component {
@@ -12,9 +13,8 @@ class ReportComp extends React.Component {
     this.changeCandStatus = this.changeCandStatus.bind(this);
   }
   componentDidMount () {
-    this.props.fetchCandidate(this.props.idCand);
-    this.props.fetchHrAnswers(this.props.idInter);
-    console.log(this.props);
+    this.props.fetchCandidate(this.props.idCand)
+      .then(() => this.props.fetchSistAnswers(this.props.candidate.InterviewIDId));
   }
 
   changeCandStatus (idCandi, status) {
@@ -24,8 +24,10 @@ class ReportComp extends React.Component {
   };
 
   render () {
-    return (
+    var SistInterv1 = !this.props.candidate.interSIST1 ? '' : this.props.candidate.interSIST1.nombre;
+    var SistInterv2 = !this.props.candidate.interSIST2 ? '' : this.props.candidate.interSIST2.nombre;
 
+    return (
       <div >
         <div id='infoCandHR'>
           <Link to={'/candidates/' + this.props.candidate.id} ><button className='ActionsBotonesBlanco'>Go Back</button></Link>
@@ -42,9 +44,9 @@ class ReportComp extends React.Component {
                 <strong className={this.props.candidate.status}>STATUS :  </strong>
                 <span className={'statusReport '}>{' ' + this.props.candidate.status} </span>
               </h2>
-              {this.props.candidate.interviewerHR && <h2 style={{ textAlign: 'center', marginTop: '20px' }}>
-                <strong>HR Interviewer: </strong>
-                {' ' + this.props.candidate.interviewerHR.nombre}
+              {<h2 style={{ textAlign: 'center', marginTop: '20px' }}>
+                <strong>SIST Interviewer/s: </strong>
+                <p><h2 style={{ textAlign: 'center', marginTop: '20px' }}>{' ' + SistInterv1} { SistInterv2 ? ', ' + SistInterv2 : ''}</h2></p>
               </h2>}
               <div className='halfGrid' >
                 <a style={{ textAlign: 'center' }} href="#candidateExpertise"> Read Candidate Expertise</a>
@@ -57,24 +59,25 @@ class ReportComp extends React.Component {
             <div className='mitadReport'>
               <button
                 id='appReport'
-                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Approved HR')} >
-                APPROVE HR</button>
+                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Tech Approved')} >APPROVE TECH</button>
               <button
                 id='pendReport'
-                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Pending HR')}>PENDING</button>
+                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Pending Tech')}>PENDING</button>
               <button
                 id='rejReport'
-                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Rejected HR')}>REJECT HR</button>
+                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Rejected Tech')}>REJECT TECH</button>
             </div>
           </div>
         </div>
 
         <div className='answersHR'>
           {
-            this.props.answersHR.map((elemento, key) => (
+            this.props.answersSIST.map((elemento, key) => (
               <div key={elemento.pregunta} className='answerBox'>
                 <h3><strong style={{ borderBottom: '1px solid black' }}>{elemento.pregunta} :</strong> </h3>
-                <h3>{elemento.respuesta}</h3>
+                <div key={elemento.pregunta}>
+                  <StarsCalification score={elemento.score}/>
+                </div>
               </div>
             ))
           }
@@ -92,12 +95,12 @@ class ReportComp extends React.Component {
 
 const mapStateToProps = (state) => ({
   candidate: state.candidate.candidate,
-  answersHR: state.answers.answersHR
+  answersSIST: state.answers.answersSIST
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCandidate: (idCandi) => dispatch(fetchCandidate(idCandi)),
-  fetchHrAnswers: (interviewID) => dispatch(fetchHrAnswers(interviewID)),
+  fetchSistAnswers: (interviewID) => dispatch(fetchSistAnswers(interviewID)),
   getAllCandidates: () => dispatch(getAllCandidates())
 });
 

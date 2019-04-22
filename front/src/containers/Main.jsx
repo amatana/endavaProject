@@ -12,7 +12,7 @@ import AddCandidate from './AddCandidate';
 import Header from '../components/Header';
 import AllQuestionsList from './AllQuestionsList';
 import InterviewSisCont from './InterviewSisCont';
-
+import SistReport from '../components/SistReport';
 import UserHome from '../components/UserHome';
 import CandidatesHome from '../components/candidateHome';
 import CreateInterview from './CreateInterview';
@@ -43,7 +43,7 @@ class Main extends React.Component {
         ? <div>
           <Route render= {({ history }) => (<Header fetchUser={this.props.fetchUser} user={this.props.user} history={history} />)} />
           <Switch>
-            <Route exact path='/' render={({ history }) => (<Home history={history} user={this.props.user}/>)} />
+            <Route exact path='/' render={({ history }) => (this.props.user ? <Home history={history} user={this.props.user}/> : <Redirect to='/login' />)} />
             <Route exact path="/login" render={({ history }) => (<Login history={history} />)} />
             <Route exact path='/candidates' render={({ history }) => (<CandidatesHome history={history} user={this.props.user}/>)} />
             <Route exact path='/candidates/addCandidate' render={({ history }) => (<AddCandidate user={this.props.user} history={history} />)} />
@@ -75,6 +75,22 @@ class Main extends React.Component {
             />
               )}
             />
+            <Route exact
+              path='/candidates/:idCand/interview/sist/:idInterv'
+              render={({ history, match }) => {
+                return (
+                  <SistReport
+                    history={history}
+                    idCand={match.params.idCand}
+                    questions={this.props.questionsHR}
+                    candidate={this.props.candidate}
+                    idInter={this.props.idInter}
+                  />
+                );
+              }}
+            />
+        )}
+        />
             <Route exact
               path='/candidates/:idCand/interview/hr/:idInterv'
               render={({ history, match }) => {

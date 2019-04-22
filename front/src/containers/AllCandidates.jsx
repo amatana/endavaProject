@@ -11,7 +11,7 @@ class AllCandidates extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      input: '',
+      input: ''
       // candidatos: []
     };
     this.handleChange = this.handleChange.bind(this);
@@ -26,8 +26,8 @@ class AllCandidates extends React.Component {
   }
 
   render () {
-    console.log('EL ESTADO LOCAL', this.state)
-    console.log('LAS PRROPSSSSS', this.props)
+    console.log('EL ESTADO LOCAL', this.state);
+    console.log('LAS PRROPSSSSS', this.props);
     return (
       this.state.candidatos && this.state.candidatos.length < 1 ? <div><h2>No candidates to show</h2> <div style={{ padding: '30px 50px' }}><Link to="/candidates/addCandidate"><button className="btn btn-lg botonHome">Add Candidate</button></Link></div></div>
         : <AllCandidatesComp
