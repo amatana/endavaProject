@@ -1,9 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { fetchHrAnswers } from '../redux/action-creator/answersActions';
+import { fetchSistAnswers } from '../redux/action-creator/answersActions';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import { getAllCandidates, fetchCandidate } from '../redux/action-creator/candidate-actions';
+import StarsCalification from './StarsCalification'
 import { Link } from 'react-router-dom';
 
 class ReportComp extends React.Component {
@@ -12,7 +13,8 @@ class ReportComp extends React.Component {
     this.changeCandStatus = this.changeCandStatus.bind(this);
   }
   componentDidMount () {
-    this.props.fetchCandidate(this.props.idCand);
+    this.props.fetchCandidate(this.props.idCand)
+      .then(() => this.props.fetchSistAnswers(this.props.candidate.InterviewIDId));
   }
 
   changeCandStatus (idCandi, status) {
@@ -70,10 +72,12 @@ class ReportComp extends React.Component {
 
         <div className='answersHR'>
           {
-            this.props.answersHR.map((elemento, key) => (
+            this.props.answersSIST.map((elemento, key) => (
               <div key={elemento.pregunta} className='answerBox'>
                 <h3><strong style={{ borderBottom: '1px solid black' }}>{elemento.pregunta} :</strong> </h3>
-                <h3>{elemento.respuesta}</h3>
+                <div key={elemento.pregunta}>
+                  <StarsCalification score={elemento.score}/>
+                </div>
               </div>
             ))
           }
@@ -91,12 +95,12 @@ class ReportComp extends React.Component {
 
 const mapStateToProps = (state) => ({
   candidate: state.candidate.candidate,
-  answersHR: state.answers.answersHR
+  answersSIST: state.answers.answersSIST
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchCandidate: (idCandi) => dispatch(fetchCandidate(idCandi)),
-  fetchHrAnswers: (interviewID) => dispatch(fetchHrAnswers(interviewID)),
+  fetchSistAnswers: (interviewID) => dispatch(fetchSistAnswers(interviewID)),
   getAllCandidates: () => dispatch(getAllCandidates())
 });
 
