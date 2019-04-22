@@ -143,5 +143,15 @@ router.get('/getSistAnswers/:id', (req, res) => {
       res.send(arrayPares);
     });
 });
+
+router.get('/generalObs/:candID', (req, res) => {
+  Interview.findOne({ where: { candidateIDId: req.params.candID } })
+    .then(entrevistaCand => res.send({
+      SistObs: entrevistaCand.SistObs,
+      HRObs: entrevistaCand.HRObs
+    })
+    );
+});
+
 module.exports = router
 ;

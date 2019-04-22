@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchCandidate, fetchCandidateInterview } from '../redux/action-creator/candidate-actions';
-import { fetchHrAnswers, fetchSistAnswers } from '../redux/action-creator/answersActions';
+import { fetchHrAnswers, fetchSistAnswers, fetchGeneralObs } from '../redux/action-creator/answersActions';
 import StarsCalification from '../components/StarsCalification'
 
 class ReportGeneration extends React.Component {
@@ -26,6 +26,7 @@ class ReportGeneration extends React.Component {
     if (prevState.candidate.id !== this.props.candidate.id) {
       this.props.fetchHrAnswers(this.props.candidate.id);
       this.props.fetchSistAnswers(this.props.candidate.id);
+      this.props.fetchGeneralObs(this.props.candidate.id);
     }
   }
 
@@ -50,6 +51,7 @@ class ReportGeneration extends React.Component {
                 </div>
               ))
             }
+            <h4><b style={{ fontSize: '32px' }}>Observations:</b> {this.props.HRObs}</h4>
             <hr></hr><hr></hr>
             <div id='infoCandHR'><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>IT Interview</b></h3><hr></hr>
               {
@@ -60,6 +62,7 @@ class ReportGeneration extends React.Component {
                 ))
               }
             </div>
+            <h4><b style={{ fontSize: '32px' }}>Observations:</b> {this.props.SistObs}</h4>
           </div>
         </div>
       </div>
@@ -70,13 +73,16 @@ const mapStateToProps = (state) => ({
   candidate: state.candidate.candidate,
   interviewID: state.candidate.interviewID.interviewID,
   answersHR: state.answers.answersHR,
-  answersSIST: state.answers.answersSIST
+  answersSIST: state.answers.answersSIST,
+  HRObs: state.answers.HRObs,
+  SistObs: state.answers.SistObs
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchCandidate: (candID) => dispatch(fetchCandidate(candID)),
   fetchHrAnswers: (interviewID) => dispatch(fetchHrAnswers(interviewID)),
   fetchSistAnswers: (interviewID) => dispatch(fetchSistAnswers(interviewID)),
-  fetchCandidateInterview: (candID) => dispatch(fetchCandidateInterview(candID))
+  fetchCandidateInterview: (candID) => dispatch(fetchCandidateInterview(candID)),
+  fetchGeneralObs: (candID) => dispatch(fetchGeneralObs(candID))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReportGeneration);
