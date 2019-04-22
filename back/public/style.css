@@ -516,6 +516,9 @@ strong.Rejected{
 strong.Tech.Approved{
     color: #0EB8DD;
 }
+.selectedQuestions{
+    display: none;
+}
 .answersHR{
     display: block;
     width: 95%;

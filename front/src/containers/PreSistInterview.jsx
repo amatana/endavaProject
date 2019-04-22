@@ -6,9 +6,10 @@ import { Link } from 'react-router-dom';
 import { setInterviewCandidate } from '../redux/action-creator/interviewActions';
 import { fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { fetchCandidateQuestions } from '../redux/action-creator/questionActions';
+import { fetchSistAnswers } from '../redux/action-creator/answersActions';
 
 class PreSistInterview extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       candidato: {
@@ -19,18 +20,19 @@ class PreSistInterview extends React.Component {
     this.onClickFunc = this.onClickFunc.bind(this);
   };
 
-  componentDidMount() {
-    this.props.fetchCandidate(this.props.candID);
+  componentDidMount () {
+    this.props.fetchCandidate(this.props.candID)
+      .then(() => this.props.fetchSistAnswers(this.props.candidate.InterviewIDId));
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate (prevState) {
     if (prevState.candidate !== this.props.candidate) {
       this.props.fetchCandidateQuestions(this.props.candidate.tags);
       this.setState({ candidato: this.props.candidate });
     }
   }
 
-  onChangeCheckbox(e) {
+  onChangeCheckbox (e) {
     e.preventDefault();
     let arrayQuestionsID = [];
     console.dir(e.target);
@@ -48,10 +50,10 @@ class PreSistInterview extends React.Component {
     this.props.history.push(`/candidates/${this.props.candidate.id}`);
   }
 
-  onClickFunc() {
+  onClickFunc () {
     this.props.history.push(`/candidates/interviewSis/${this.props.candidate.id}`);
   }
-  render() {
+  render () {
     return (<div>
       <img src="/utils/Frame.png"></img>
       {/* <div>
@@ -152,14 +154,14 @@ class PreSistInterview extends React.Component {
       }}> */}
       <form onSubmit={this.onChangeCheckbox}>
         <legend style={{ fontSize: '1.5em', color: '#DE411C', textAlign: 'center' }}>Select questions</legend>
-        {this.props.candidateQuestions.map(preg => (
-          <div key={preg.id} style={{ width: '90%', margin: '30px auto' }} >
+        {this.props.candidateQuestions.filter(elem => this.props.answersSIST.every(question => question.pregunta !== elem.content)).map(preg => (
+          <div className='selectedQuestions' key={preg.id} style={{ width: '90%', margin: '30px auto' }} >
             <input type="checkbox" name={preg.id} value={preg.id} style={{ transform: 'scale(2)', marginRight: '1%' }}></input>
             <label style={{ fontSize: '1.3em', display: 'inline' }}>{preg.content}</label>
           </div>
         ))}
         {/* <div className='halfGrid'> */}
-        <button 
+        <button
           className='ActionsBotonesNaranja'
           style={{
             display: 'block',
@@ -192,11 +194,13 @@ class PreSistInterview extends React.Component {
 }
 const mapStateToProps = (state) => ({
   candidate: state.candidate.candidate,
-  candidateQuestions: state.question.candidateQuestions
+  candidateQuestions: state.question.candidateQuestions,
+  answersSIST: state.answers.answersSIST
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchCandidate: (candID) => dispatch(fetchCandidate(candID)),
   fetchCandidateQuestions: (tags) => dispatch(fetchCandidateQuestions(tags)),
-  setInterviewCandidate: (obj) => dispatch(setInterviewCandidate(obj))
+  setInterviewCandidate: (obj) => dispatch(setInterviewCandidate(obj)),
+  fetchSistAnswers: (interviewID) => dispatch(fetchSistAnswers(interviewID))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(PreSistInterview);
