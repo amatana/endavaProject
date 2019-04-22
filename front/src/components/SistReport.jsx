@@ -33,10 +33,14 @@ class ReportComp extends React.Component {
           <Link to={'/candidates/' + this.props.candidate.id} ><button className='ActionsBotonesBlanco'>Go Back</button></Link>
           <div style={{ marginLeft: '30px' }} className='halfGrid'>
             <div>
-              <h2 style={{ marginTop: '20px' }}>Full name: <strong>{this.props.candidate.fullName} </strong></h2>
-              <h2>Phone: <strong>{this.props.candidate.telNumber}</strong> </h2>
-              <h2>Email Adress: <strong>{this.props.candidate.email}</strong></h2>
-              <h2>Candidate ID: <strong>{this.props.candidate.id}</strong></h2>
+              <h4 style={{ marginTop: '20px' }}>Full name: <strong>{this.props.candidate.fullName} </strong></h4>
+              <h4>Phone: <strong>{this.props.candidate.telNumber}</strong> </h4>
+              <h4>Email Adress: <strong>{this.props.candidate.email}</strong></h4>
+              <h4>Candidate ID: <strong>{this.props.candidate.id}</strong></h4>
+              {this.props.candidate.tags && this.props.candidate.tags.length > 0 &&
+              <h4>Candidate Tags:
+                {this.props.candidate.tags.map(tag => <strong>{tag.tag}</strong>)}
+              </h4>}
             </div>
 
             <div id='leftSideReport'>
@@ -74,7 +78,7 @@ class ReportComp extends React.Component {
           {
             this.props.answersSIST.map((elemento, key) => (
               <div key={elemento.pregunta} className='answerBox'>
-                <h3><strong style={{ borderBottom: '1px solid black' }}>{elemento.pregunta} :</strong> </h3>
+                <h5><strong style={{ borderBottom: '1px solid black' }}>{elemento.pregunta} :</strong> </h5>
                 <div key={elemento.pregunta}>
                   <StarsCalification score={elemento.score}/>
                 </div>
@@ -83,8 +87,8 @@ class ReportComp extends React.Component {
           }
         </div>
         <div id='candidateExpertise' className='answersHR answerBox'>
-          <h3><strong style={{ borderBottom: '1px solid #0EB8DD', color: '#0EB8DD' }}> Candidate's Expertise</strong></h3>
-          <h3>{this.props.candidate.expertise}</h3>
+          <h5><strong style={{ borderBottom: '1px solid #0EB8DD', color: '#0EB8DD' }}> Candidate's Expertise</strong></h5>
+          <h5>{this.props.candidate.expertise}</h5>
         </div>
 
       </div>
