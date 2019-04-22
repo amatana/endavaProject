@@ -19,7 +19,6 @@ span.btnFont{
     font-size: 0.6em;
     vertical-align: middle;
 }
-
 #alineandoBtn{
     display: block;
     margin: 0 auto;
@@ -87,7 +86,6 @@ tr.white{
     width: 75%;
     margin: 20px auto;
 }
-
 h2.borde.New{
     border: 2px solid #EC6861;
     border-radius: 20px;
@@ -104,7 +102,7 @@ h2.borde.Rejected{
     border: 2px solid #DD0E0E;
     border-radius: 20px;
 }
-h2.borde.Tech{
+h2.borde.Tech.Approved{
     border: 2px solid #0EB8DD;
     border-radius: 20px;
 }
@@ -515,26 +513,8 @@ strong.Approved{
 strong.Rejected{
     color: #DD0E0E;
 }
-strong.Tech{
+strong.Tech.Approved{
     color: #0EB8DD;
-}
-span.New{
-    color: #EC6861;
-}
-span.Pending{
-    color: #FFD029;
-}
-span.Approved{
-    color: #0EDD4D;
-}
-span.Rejected{
-    color: #DD0E0E;
-}
-span.Tech{
-    color: #0EB8DD;
-}
-.selectedQuestions{
-    display: none;
 }
 .answersHR{
     display: block;

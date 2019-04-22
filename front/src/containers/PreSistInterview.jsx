@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { setInterviewCandidate } from '../redux/action-creator/interviewActions';
 import { fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { fetchCandidateQuestions } from '../redux/action-creator/questionActions';
-import { fetchSistAnswers } from '../redux/action-creator/answersActions';
 
 class PreSistInterview extends React.Component {
   constructor (props) {
@@ -21,8 +20,7 @@ class PreSistInterview extends React.Component {
   };
 
   componentDidMount () {
-    this.props.fetchCandidate(this.props.candID)
-      .then(() => this.props.fetchSistAnswers(this.props.candidate.InterviewIDId));
+    this.props.fetchCandidate(this.props.candID);
   }
 
   componentDidUpdate (prevState) {
@@ -154,8 +152,8 @@ class PreSistInterview extends React.Component {
       }}> */}
       <form onSubmit={this.onChangeCheckbox}>
         <legend style={{ fontSize: '1.5em', color: '#DE411C', textAlign: 'center' }}>Select questions</legend>
-        {this.props.candidateQuestions.filter(elem => this.props.answersSIST.every(question => question.pregunta !== elem.content)).map(preg => (
-          <div className='selectedQuestions' key={preg.id} style={{ width: '90%', margin: '30px auto' }} >
+        {this.props.candidateQuestions.map(preg => (
+          <div key={preg.id} style={{ width: '90%', margin: '30px auto' }} >
             <input type="checkbox" name={preg.id} value={preg.id} style={{ transform: 'scale(2)', marginRight: '1%' }}></input>
             <label style={{ fontSize: '1.3em', display: 'inline' }}>{preg.content}</label>
           </div>
@@ -194,13 +192,11 @@ class PreSistInterview extends React.Component {
 }
 const mapStateToProps = (state) => ({
   candidate: state.candidate.candidate,
-  candidateQuestions: state.question.candidateQuestions,
-  answersSIST: state.answers.answersSIST
+  candidateQuestions: state.question.candidateQuestions
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchCandidate: (candID) => dispatch(fetchCandidate(candID)),
   fetchCandidateQuestions: (tags) => dispatch(fetchCandidateQuestions(tags)),
-  setInterviewCandidate: (obj) => dispatch(setInterviewCandidate(obj)),
-  fetchSistAnswers: (interviewID) => dispatch(fetchSistAnswers(interviewID))
+  setInterviewCandidate: (obj) => dispatch(setInterviewCandidate(obj))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(PreSistInterview);
