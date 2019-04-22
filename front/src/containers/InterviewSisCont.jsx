@@ -62,7 +62,7 @@ class InterviewSisCont extends React.Component {
     Axios.put('/api/candidate/changeStatus', { 
       idCandi: this.props.candidate.id,
       status: 'Pending Sist' })
-      .then(() => this.props.history.push(`/candidates/interviewSis/sistReport/${this.props.idCand}`));
+      .then(() => this.props.history.push(`candidates/${this.props.idCand}/interview/sist/${this.props.idInter}`));
   }
 
   render () {

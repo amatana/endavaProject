@@ -76,7 +76,7 @@ class Main extends React.Component {
               )}
             />
             <Route exact
-              path='/candidates/interviewSis/sistReport/:idCand'
+              path='/candidates/:idCand/interview/sist/:idInterv'
               render={({ history, match }) => {
                 return (
                   <SistReport
