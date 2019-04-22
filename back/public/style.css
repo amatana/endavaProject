@@ -92,7 +92,7 @@ h2.borde.New{
     border: 2px solid #EC6861;
     border-radius: 20px;
 }
-h2.borde.Pending{
+h2.borde.Pending.Tech{
     border: 2px solid #FFD029;
     border-radius: 20px;
 }
@@ -104,7 +104,7 @@ h2.borde.Rejected{
     border: 2px solid #DD0E0E;
     border-radius: 20px;
 }
-h2.borde.Tech{
+h2.borde.Tech.Approved{
     border: 2px solid #0EB8DD;
     border-radius: 20px;
 }
@@ -521,13 +521,19 @@ strong.Tech{
 span.New{
     color: #EC6861;
 }
-span.Pending{
+span.Pending.Tech{
+    color: #FFD029;
+}
+span.Pending.HR{
     color: #FFD029;
 }
 span.Approved{
     color: #0EDD4D;
 }
-span.Rejected{
+span.Rejected.Tech{
+    color: #DD0E0E;
+}
+span.Rejected.HR{
     color: #DD0E0E;
 }
 span.Tech{

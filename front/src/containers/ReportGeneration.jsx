@@ -33,6 +33,8 @@ class ReportGeneration extends React.Component {
   }
 
   render() {
+    const SistInterv1 = !this.props.candidate.interSIST1 ? '' : this.props.candidate.interSIST1.nombre;
+    const SistInterv2 = !this.props.candidate.interSIST2 ? '' : this.props.candidate.interSIST2.nombre;
     return (
       <div>
         <div className='halfGrid'>
@@ -65,7 +67,12 @@ class ReportGeneration extends React.Component {
                 {' ' + this.props.candidate.interviewerHR.nombre}
               </h2>}
 
-            {this.props.candidate.interSIST1 &&
+              {(this.props.candidate.interSIST1 || this.props.candidate.interSIST2) &&
+                <h2 style={{ textAlign: 'left', marginTop: '20px' }}>
+                  <strong>SYST Interviewer/s: </strong>
+                  {' ' + SistInterv1} {SistInterv2 ? ', ' + SistInterv2 : ''}
+                </h2>}
+            {/* {this.props.candidate.interSIST1 &&
               <h2 style={{ textAlign: 'left', marginTop: '20px' }}>
                 <strong>SYST Interviewer: </strong>
                 {' ' + this.props.candidate.interviewerHR.nombre}
@@ -74,7 +81,7 @@ class ReportGeneration extends React.Component {
             {this.props.candidate.interSIST2 && <h2 style={{ textAlign: 'center', marginTop: '20px' }}>
               <strong>SYST Interviewer: </strong>
               {' ' + this.props.candidate.interviewerHR.nombre}
-            </h2>}
+            </h2>} */}
           </div>
 
         </div>
