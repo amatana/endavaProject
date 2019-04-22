@@ -94,6 +94,10 @@ h2.borde.Pending.Tech{
     border: 2px solid #FFD029;
     border-radius: 20px;
 }
+h2.borde.Pending.HR{
+    border: 2px solid #FFD029;
+    border-radius: 20px;
+}
 h2.borde.Approved{
     border: 2px solid #0EDD4D;
     border-radius: 20px;
@@ -504,7 +508,10 @@ strong{
 strong.New{
     color: #EC6861;
 }
-strong.Pending{
+strong.Pending.HR{
+    color: #FFD029;
+}
+strong.Pending.Tech{
     color: #FFD029;
 }
 strong.Approved{
