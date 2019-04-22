@@ -40,7 +40,7 @@ class ReportGeneration extends React.Component {
         <div className='halfGrid'>
           <h2 style={{ marginLeft: '4%', marginTop: '3%', color: '#DE411C' }}><strong style={{ fontSize: '1.3em' }} >Final Report</strong></h2>
           <Link to={'/candidates/' + this.props.candidate.id} style={{ textAlign: 'right' }}>
-            <button className='ActionsBotonesBlanco' style={{ width: '60%', marginBottom: '30px', marginRight: '30px' }}>Back</button>
+            <button className='ActionsBotonesNaranja' style={{ width: '60%', marginBottom: '30px', marginRight: '30px' }}>Back</button>
           </Link>
         </div>
         <div style={{ marginLeft: '30px' }} style={{ display: 'grid', gridTemplateColumns: '1fr 0.7fr' }}>
