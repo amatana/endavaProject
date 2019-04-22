@@ -120,6 +120,7 @@ router.post('/postAnswersSIS', (req, res) => {
 });
 
 router.get('/getSistAnswers/:id', (req, res) => {
+  console.log("===========================> PREGUNTAS: ", req.params.id )
   Interview.findAll(
     { where: { id: req.params.id },
       include: [{ model: Questions }] }

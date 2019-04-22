@@ -1,7 +1,7 @@
 import React from 'react';
 
 class botonera extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       // status: 'New',
@@ -10,7 +10,7 @@ class botonera extends React.Component {
     this.changeStatus = this.changeStatus.bind(this);
   }
 
-  changeStatus(status) {
+  changeStatus (status) {
     this.setState({ status });
   }
 
@@ -20,23 +20,23 @@ class botonera extends React.Component {
   //   }
   // }
 
-  render() {
+  render () {
     return (
       <div>
         {(this.props.user && this.props.user.area === 'RRHH')
           ? (<div>
             <div id='botonesHR'>
 
-              {(this.props.candidate.status !== 'Tech Approved' && this.props.candidate.status !== 'Rejected Tech') && 
+              {(this.props.candidate.status !== 'Tech Approved' && this.props.candidate.status !== 'Rejected Tech') &&
                 <button className='ActionsBotones ActionsBotonesBlanco'
-                style={{ border: '2px solid #DE411B' }}
-                onClick={() => {
-                  if (this.state.assign === 'assignOff') this.setState({ assign: 'onAssign' });
-                  if (this.state.assign === 'onAssign') this.setState({ assign: 'assignOff' });
-                }}
-              >
+                  style={{ border: '2px solid #DE411B' }}
+                  onClick={() => {
+                    if (this.state.assign === 'assignOff') this.setState({ assign: 'onAssign' });
+                    if (this.state.assign === 'onAssign') this.setState({ assign: 'assignOff' });
+                  }}
+                >
                 Assign Interviewers
-              </button>}
+                </button>}
 
               {(this.props.candidate && this.props.candidate.status === 'New') && (this.props.candidate.interviewerHR && this.props.candidate.interviewerHR.nombre.includes(this.props.user.nombre))
                 ? <button className='ActionsBotones ActionsBotonesBlanco'
@@ -97,7 +97,7 @@ class botonera extends React.Component {
                   ))
                   }
                 </select >
-                <input type='submit' className='subBtn' value='ASSIGN Sisemas' onClick={() => this.props.submitSIST1(this.props.candidate.id)} />
+                <input type='submit' className='subBtn' value='ASSIGN SYSTEM' onClick={() => this.props.submitSIST1(this.props.candidate.id)} />
               </div>
 
               <div className='assignUser'>
@@ -108,7 +108,7 @@ class botonera extends React.Component {
                   ))
                   }
                 </select >
-                <input type='submit' value='ASSIGN Sisemas' className='subBtn' onClick={() => this.props.submitSIST2(this.props.candidate.id)} />
+                <input type='submit' value='ASSIGN SYSTEM' className='subBtn' onClick={() => this.props.submitSIST2(this.props.candidate.id)} />
               </div>
             </div>
           </div>)
@@ -171,7 +171,7 @@ class botonera extends React.Component {
         }
       </div>
     )
-      ;
+    ;
   };
 };
 
