@@ -33,7 +33,8 @@ router.post('/answersHR', (req, res) => {
 router.get('/getHRAnswers/:id', (req, res) => {
   Interview.findAll(
     { where: { id: req.params.id },
-      include: [{ model: Questions }] }
+      include: [{ model: Questions, where: { area: 'RRHH' } }]
+    }
   )
     .then(data => {
       var question;

@@ -7,6 +7,7 @@ import { fetchCandidate } from '../redux/action-creator/candidate-actions';
 import { fetchSisQuestions } from '../redux/action-creator/questionActions';
 import { answerSystems } from '../redux/action-creator/answersActions';
 import InterviewSisComp from '../components/interviewSisComp';
+import Axios from 'axios'
 
 class InterviewSisCont extends React.Component {
   constructor (props) {
@@ -48,7 +49,7 @@ class InterviewSisCont extends React.Component {
 
   handleChange (e) {
     //    PARA TRABAJAR CON OBS DE ENTREVITA GENERAL
-    
+
     //    e.target.name === 'observationsInterviewSis'
     //   ? this.setState({ [e.target.name]: e.target.value })
     //   : this.setState({ [e.target.id + '-' + e.target.name]: e.target.value });
@@ -58,7 +59,10 @@ class InterviewSisCont extends React.Component {
     console.log(this.state);
   }
   onClick () {
-    this.props.history.push(`/candidates/${this.props.idCand}`);
+    Axios.put('/api/candidate/changeStatus', { 
+      idCandi: this.props.candidate.id,
+      status: 'Pending Sist' })
+      .then(() => this.props.history.push(`/candidates/${this.props.idCand}/interview/sist/${this.props.candidate.InterviewIDId}`));
   }
 
   render () {
@@ -72,7 +76,7 @@ class InterviewSisCont extends React.Component {
         candidate={this.props.candidate}
         onClick={this.onClick}
         messege={this.state.messege}
-
+        history={this.props.history}
         onChangeScore={this.onChangeScore}
 
       />
@@ -92,4 +96,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InterviewSisCont);
-
