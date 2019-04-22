@@ -31,9 +31,9 @@ export const fetchHrAnswers = (interviewID) => dispatch =>
 
 export const answerSystems = (answersSis) => dispatch =>
   Axios.post('/api/answers/postAnswersSIS', answersSis)
-    // .then((res) => console.log('===========================================', res));
     .then(res => res.data)
     .then(respuesta => {
+      console.log("+++++++++++++++++++======================== ", respuesta)
       if (respuesta.error) return respuesta.error;
       else return '200';
     });
