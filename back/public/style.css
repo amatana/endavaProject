@@ -102,7 +102,7 @@ h2.borde.Rejected{
     border: 2px solid #DD0E0E;
     border-radius: 20px;
 }
-h2.borde.Tech{
+h2.borde.Tech.Approved{
     border: 2px solid #0EB8DD;
     border-radius: 20px;
 }
@@ -513,7 +513,7 @@ strong.Approved{
 strong.Rejected{
     color: #DD0E0E;
 }
-strong.Tech{
+strong.Tech.Approved{
     color: #0EB8DD;
 }
 .answersHR{

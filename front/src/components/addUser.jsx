@@ -34,12 +34,12 @@ const AddUser = (props) => {
               <h4 id='belongsTo'>Belongs to :</h4>
               <div className="form-check form-check-inline formSpace">
                 <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio1" value="Sistemas" />
-                <label className="form-check-label labelSpacing" htmlFor="inlineRadio1">    Sistemas  </label>
+                <label className="form-check-label labelSpacing" htmlFor="inlineRadio1">    Syst  </label>
               </div>
 
               <div className="form-check form-check-inline formSpace">
                 <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio2" value="RRHH" />
-                <label className="form-check-label labelSpacing" htmlFor="inlineRadio2">    RRHH  </label>
+                <label className="form-check-label labelSpacing" htmlFor="inlineRadio2">    HR  </label>
               </div>
             </div>
 
