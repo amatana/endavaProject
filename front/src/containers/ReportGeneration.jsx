@@ -8,7 +8,7 @@ import { fetchHrAnswers, fetchSistAnswers, fetchGeneralObs } from '../redux/acti
 import StarsCalification from '../components/StarsCalification';
 
 class ReportGeneration extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       candidato: {
@@ -24,7 +24,7 @@ class ReportGeneration extends React.Component {
     this.props.fetchCandidateInterview(this.props.candID);
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate (prevState) {
     if (prevState.candidate.id !== this.props.candidate.id) {
       this.props.fetchHrAnswers(this.props.candidate.InterviewIDId);
       this.props.fetchSistAnswers(this.props.candidate.InterviewIDId);
@@ -32,7 +32,7 @@ class ReportGeneration extends React.Component {
     }
   }
 
-  render() {
+  render () {
     const SistInterv1 = !this.props.candidate.interSIST1 ? '' : this.props.candidate.interSIST1.nombre;
     const SistInterv2 = !this.props.candidate.interSIST2 ? '' : this.props.candidate.interSIST2.nombre;
     return (
@@ -62,14 +62,14 @@ class ReportGeneration extends React.Component {
               <span className={'statusReport ' + this.props.candidate.status}>{' ' + this.props.candidate.status} </span>
             </h2>
             {this.props.candidate.interviewerHR &&
-              <h2 style={{ textAlign: 'left', marginTop: '20px' }}>
+              <h2 style={{ textAlign: 'left', marginTop: '20px', fontSize: '1.5em' }}>
                 <strong>HR Interviewer: </strong>
                 {' ' + this.props.candidate.interviewerHR.nombre}
               </h2>}
 
-              {(this.props.candidate.interSIST1 || this.props.candidate.interSIST2) &&
-                <h2 style={{ textAlign: 'left', marginTop: '20px' }}>
-                  <strong>SYST Interviewer/s: </strong>
+            {(this.props.candidate.interSIST1 || this.props.candidate.interSIST2) &&
+                <h2 style={{ textAlign: 'left', marginTop: '20px', fontSize: '1.5em' }}>
+                  <strong >SYST Interviewer/s: </strong>
                   {' ' + SistInterv1} {SistInterv2 ? ', ' + SistInterv2 : ''}
                 </h2>}
             {/* {this.props.candidate.interSIST1 &&
