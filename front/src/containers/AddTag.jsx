@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class addTag extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       tagInput: '',
@@ -15,7 +15,7 @@ class addTag extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   };
 
-  componentDidMount () {
+  componentDidMount() {
     axios.get('/api/tags/retrieve')
       .then((allTags) => {
         console.log('TAGS MOUNTED', allTags);
@@ -23,27 +23,32 @@ class addTag extends React.Component {
       });
   };
 
-  handleChange (e) {
+  handleChange(e) {
     let input = e.target.value;
     if (input.length <= 15) {
       this.setState({ tagInput: input });
     }
   }
 
-  handleSubmit (e) {
+  handleSubmit(e) {
     e.preventDefault();
-    axios.post('api/tags/create', { tag: this.state.tagInput })
-      .then(() => {
-        console.log('olis');
-        this.setState({ tagInput: '' });
-        axios.get('api/tags/retrieve')
-          .then((allTags) => {
-            this.setState({ allTags });
-          });
-      });
+    if (this.state.tagInput === '') {
+      alert('The tag field cannot be empty');
+    } else {
+      axios.post('api/tags/create', { tag: this.state.tagInput })
+        .then(() => {
+          console.log('olis');
+          this.setState({ tagInput: '' });
+          axios.get('api/tags/retrieve')
+            .then((allTags) => {
+              this.setState({ allTags });
+            });
+        });
+
+    }
   }
 
-  handleDelete (e) {
+  handleDelete(e) {
     let index = e.target.getAttribute('name');
     axios.post('api/tags/delete', { deleted: index })
       .then(() => {
@@ -54,7 +59,7 @@ class addTag extends React.Component {
       });
   }
 
-  render () {
+  render() {
     return (
       <div>
         <TagInput
