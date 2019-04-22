@@ -27,7 +27,8 @@ class botonera extends React.Component {
           ? (<div>
             <div id='botonesHR'>
 
-              <button className='ActionsBotones ActionsBotonesBlanco'
+              {(this.props.candidate.status !== 'Tech Approved' && this.props.candidate.status !== 'Rejected Tech') && 
+                <button className='ActionsBotones ActionsBotonesBlanco'
                 style={{ border: '2px solid #DE411B' }}
                 onClick={() => {
                   if (this.state.assign === 'assignOff') this.setState({ assign: 'onAssign' });
@@ -35,7 +36,7 @@ class botonera extends React.Component {
                 }}
               >
                 Assign Interviewers
-              </button>
+              </button>}
 
               {(this.props.candidate && this.props.candidate.status === 'New') && (this.props.candidate.interviewerHR && this.props.candidate.interviewerHR.nombre.includes(this.props.user.nombre))
                 ? <button className='ActionsBotones ActionsBotonesBlanco'
@@ -53,6 +54,14 @@ class botonera extends React.Component {
                   View HR Report
                 </button>}
 
+              {(this.props.candidate.status === 'Rejected Tech' || this.props.candidate.status === 'Tech Approved') &&
+              <button
+                className='ActionsBotones'
+                style={{ backgroundColor: '#0B867E' }}
+                onClick={() => this.props.history.push(`/generateReport/${this.props.candidate.id}`)}
+              >
+                  View Full Report
+              </button>}
               {/* <button
                 className='ActionsBotones'
                 style={{ backgroundColor: '#0EDD4D' }}

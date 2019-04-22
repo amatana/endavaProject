@@ -42,7 +42,7 @@ class ReportGeneration extends React.Component {
             <h4><b style={{ fontSize: '32px' }}>Expertise:</b> {this.props.candidate.expertise}</h4>
           </div>
           <hr></hr><hr></hr><hr></hr>
-          <div ><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>RRHH Interview</b></h3><hr></hr>
+          <div id='infoCandHR'><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>HR Interview</b></h3><hr></hr>
             {
               this.props.answersHR.map(element => (
                 <div key={element.pregunta}>

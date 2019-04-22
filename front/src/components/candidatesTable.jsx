@@ -38,7 +38,7 @@ class CandidTable extends React.Component {
                       <button className='ActionsBotonesBlanco' style={{ padding: '10px', width: '100%' }}><span className='btnFont' > Actions Managment</span></button>
                     </Link>
                     : this.props.user.area === 'Sistemas'
-                      ? <Link to={`/candidates/interviewSis/${candidate.id}`}>
+                      ? <Link to={`/candidates/${candidate.id}/interview/sist/${candidate.InterviewIDId}`}>
                         <button className='ActionsBotonesBlanco' style={{ padding: '10px', width: '100%' }}><span className='btnFont' > View Report</span></button>
                       </Link>
                       : <Link to={`/candidates/${candidate.id}/interview/hr/${candidate.InterviewIDId}`}>
