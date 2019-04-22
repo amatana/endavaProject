@@ -33,7 +33,6 @@ export const answerSystems = (answersSis) => dispatch =>
   Axios.post('/api/answers/postAnswersSIS', answersSis)
     .then(res => res.data)
     .then(respuesta => {
-      console.log("+++++++++++++++++++======================== ", respuesta)
       if (respuesta.error) return respuesta.error;
       else return '200';
     });
@@ -43,7 +42,6 @@ export const fetchSistAnswers = (interviewID) => dispatch =>
     .then(answers => dispatch(setAnswersSIST(answers.data)));
 
 export const fetchGeneralObs = (interviewID) => dispatch => {
-  console.log('++++++++++++++++++++++++++++++ LELGSTE AL ACTION');
   Axios.get(`/api/answers/generalObs/${interviewID}`)
     .then(obs => dispatch(setObservations(obs.data)));
 }

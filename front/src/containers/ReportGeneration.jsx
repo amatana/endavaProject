@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { fetchCandidate, fetchCandidateInterview } from '../redux/action-creator/candidate-actions';
 import { fetchHrAnswers, fetchSistAnswers, fetchGeneralObs } from '../redux/action-creator/answersActions';
-import StarsCalification from '../components/StarsCalification'
+import StarsCalification from '../components/StarsCalification';
 
 class ReportGeneration extends React.Component {
   constructor (props) {
@@ -24,9 +24,9 @@ class ReportGeneration extends React.Component {
 
   componentDidUpdate (prevState) {
     if (prevState.candidate.id !== this.props.candidate.id) {
-      this.props.fetchHrAnswers(this.props.candidate.id);
-      this.props.fetchSistAnswers(this.props.candidate.id);
-      this.props.fetchGeneralObs(this.props.candidate.id);
+      this.props.fetchHrAnswers(this.props.candidate.InterviewIDId);
+      this.props.fetchSistAnswers(this.props.candidate.InterviewIDId);
+      this.props.fetchGeneralObs(this.props.candidate.InterviewIDId);
     }
   }
 
@@ -54,10 +54,11 @@ class ReportGeneration extends React.Component {
             <h4><b style={{ fontSize: '32px' }}>Observations:</b> {this.props.HRObs}</h4>
             <hr></hr><hr></hr>
             <div ><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>IT Interview</b></h3><hr></hr>
-              {
+            {console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ", this.props.answersSIST)}
+              { 
                 this.props.answersSIST.map(element => (
                   <div key={element.pregunta}>
-                    <StarsCalification pregunta={element.pregunta} score={element.score}/>
+                    <StarsCalification pregunta={element.pregunta} score={element.score} observation={element.observation}/>
                   </div>
                 ))
               }
