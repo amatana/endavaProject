@@ -59,13 +59,13 @@ class ReportComp extends React.Component {
             <div className='mitadReport'>
               <button
                 id='appReport'
-                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Tech Approved')} >APPROVE SIST</button>
+                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Tech Approved')} >APPROVE TECH</button>
               <button
                 id='pendReport'
-                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Pending Tech')}>PENDING SIST</button>
+                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Pending Tech')}>PENDING</button>
               <button
                 id='rejReport'
-                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Rejected Tech')}>REJECT SIST</button>
+                onClick={() => this.changeCandStatus(this.props.candidate.id, 'Rejected Tech')}>REJECT TECH</button>
             </div>
           </div>
         </div>

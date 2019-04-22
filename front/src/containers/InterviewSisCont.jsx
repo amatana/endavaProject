@@ -61,7 +61,7 @@ class InterviewSisCont extends React.Component {
   onClick () {
     Axios.put('/api/candidate/changeStatus', { 
       idCandi: this.props.candidate.id,
-      status: 'Pending Sist' })
+      status: 'Pending Tech' })
       .then(() => this.props.history.push(`/candidates/${this.props.idCand}/interview/sist/${this.props.candidate.InterviewIDId}`));
   }
 
