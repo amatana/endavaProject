@@ -19,7 +19,6 @@ span.btnFont{
     font-size: 0.6em;
     vertical-align: middle;
 }
-
 #alineandoBtn{
     display: block;
     margin: 0 auto;
@@ -87,7 +86,6 @@ tr.white{
     width: 75%;
     margin: 20px auto;
 }
-
 h2.borde.New{
     border: 2px solid #EC6861;
     border-radius: 20px;
@@ -536,7 +534,7 @@ span.Rejected.Tech{
 span.Rejected.HR{
     color: #DD0E0E;
 }
-span.Tech{
+span.Tech.Approved{
     color: #0EB8DD;
 }
 .answersHR{
