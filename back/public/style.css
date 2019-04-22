@@ -486,6 +486,14 @@ button.ActionsBotones{
     outline-width: 0;
     border-bottom: 3px solid #DE411B; 
 }
+#centeredCandTags{
+    margin: 30px auto;
+    display: block;
+    width: 95%;
+    padding: 25px;
+    border: 2px solid #DE411B;
+    border-radius: 30px;
+}
 strong{
     font-size: 1.2em;
 }
@@ -654,13 +662,13 @@ strong.questionHR{
     .botonHome{
         display: flex;
         align-items: flex-end;
-        margin-bottom: 10%;
+        margin-top: 10%;
         border-radius: 20px;
         font-size: 50px;
         justify-content: center;
         padding: 55px 0px;
         background: #FFFFFF;
-        border: 2px solid #DE411B;
+        border: 3px solid #DE411B;
         box-sizing: border-box;
         border-radius: 50px;
     }
