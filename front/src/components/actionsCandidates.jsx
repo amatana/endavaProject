@@ -34,6 +34,7 @@ const ActionsCandidates = (props) => {
                 candidate={props.candidate}
                 submitHR={props.submitHR}
                 user={props.user}
+                questionSIS={props.questionSIS}
                 changeCandStatus={props.changeCandStatus}
                 history={props.history}
                 submitHR={props.submitHR}
@@ -60,6 +61,7 @@ const ActionsCandidates = (props) => {
               submitHR={props.submitHR}
               user={props.user}
               changeCandStatus={props.changeCandStatus}
+              answersSIST={props.answersSIST}
               onClickInterviewSis={props.onClickInterviewSis}
               submitHR={props.submitHR}
               history={props.history}
