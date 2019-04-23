@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,29 +11,41 @@
 </head>
 
 <body>
-    <div style="background-color:#f9f9f9; text-align: center; display: inline-block; ">
-        <img src="https://i.ibb.co/XLJnHKs/logo.png" alt="Endava_Logo" ,border="0">
-        <h1>Candidate:</h1>
-        <h2>Information:</h2>
-        <%for (const prop in candidate){%>
-            <p><%=prop%>: <%=candidate[prop]%></p>
-        <% } %>
+    <div style="background-color:#f9f9f9; display: inline-block; color: black; padding: 50px;  font-family:  'Roboto Condensed';">
+        <img src="https://i.ibb.co/XLJnHKs/logo.png" alt="Logo">
+        <h1>Candidate</h1>
 
-        <h2>HHRR Interview:</h2>
+        <h2>Information:</h2>
+
+        <h2>Fullname: </h2> 
+        <p><%=candidate.name%> <%=candidate.surname%></p>
+
+        <h2>Email: </h2>
+        <p><%=candidate.email%></p>
+
+        <h2>Telephone Number: </h2>
+        <p><%=candidate.telephone%></p>
+
+        <h2>Expertise: </h2>
+        <p><%=candidate.expertise%></p>
+
+        <h1>HHRR Interview:</h1>
         <%HHRR.forEach((field)=> {%>
             <%for (const prop in field){%>
-                <p><%=prop%>: <%=field[prop]%></p>
+                <h2><%=field[prop]%></h2>
             <% } %>
             <p>-----------------------------------</p>
         <%})%>
-        
-        <h2>System Interview:</h2>
+
+        <h1>System Interview:</h1>
         <%SYS.forEach((field)=> {%>
             <%for (const prop in field){%>
-                <p><%=prop%>: <%=field[prop]%></p>
+                <h2><%=field[prop]%></h2>
             <% } %>
             <p>-----------------------------------</p>
         <%})%>
+        <div>
+    </div>
 </body>
 
-</html> 
+</html>

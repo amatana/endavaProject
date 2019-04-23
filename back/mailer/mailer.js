@@ -16,6 +16,7 @@ let template;
 
 // Form Data Handling
 function mailer (type, props) {
+  console.log('PROPS', props.content);
   switch (type) {
     case 'candidate':
       template = fs.readFileSync(path.join(__dirname, '../public/Templates/mailExport.ejs'), ('utf-8'));

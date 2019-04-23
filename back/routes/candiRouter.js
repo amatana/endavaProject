@@ -140,7 +140,7 @@ router.post('/export', (req, res) => {
         name: req.body.content.candidate.name,
         surname: req.body.content.candidate.surname,
         email: req.body.content.candidate.email,
-        telNumber: req.body.content.candidate.telNumber,
+        telephone: req.body.content.candidate.telNumber,
         expertise: req.body.content.candidate.expertise
       },
       HHRR: req.body.content.HHRR,
