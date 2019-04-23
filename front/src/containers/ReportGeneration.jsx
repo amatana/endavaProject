@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import React from 'react';
 import { connect } from 'react-redux';
@@ -9,7 +10,7 @@ import StarsCalification from '../components/StarsCalification';
 import Axios from 'axios';
 
 class ReportGeneration extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       candidato: {
@@ -21,13 +22,13 @@ class ReportGeneration extends React.Component {
     this.exportMail = this.exportMail.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-  handleChange(e) {
+  handleChange (e) {
     let value = e.target.value;
     console.log('VALUE', value);
     this.setState({ mail: value });
   }
 
-  exportMail() {
+  exportMail () {
     console.log('done');
     Axios.post('/api/candidate/export', {
       data: {
@@ -42,13 +43,13 @@ class ReportGeneration extends React.Component {
     });
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.fetchCandidate(this.props.candID)
       .then(() => this.props.fetchCandidateInterview(this.props.candID))
-      .then(() => this.props.answersHR.length === 0 && window.location.reload());
+      .then(() => this.props.answersHR.length === 0 && this.props.fetchHrAnswers(this.props.candidate.InterviewIDId));
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate (prevState) {
     if (prevState.candidate.id !== this.props.candidate.id) {
       this.props.fetchHrAnswers(this.props.candidate.InterviewIDId);
       this.props.fetchSistAnswers(this.props.candidate.InterviewIDId);
@@ -56,7 +57,7 @@ class ReportGeneration extends React.Component {
     }
   }
 
-  render() {
+  render () {
     const SistInterv1 = !this.props.candidate.interSIST1 ? '' : this.props.candidate.interSIST1.nombre;
     const SistInterv2 = !this.props.candidate.interSIST2 ? '' : this.props.candidate.interSIST2.nombre;
     return (
@@ -74,15 +75,15 @@ class ReportGeneration extends React.Component {
             <Link to={'/candidates/' + this.props.candidate.id} style={{ textAlign: 'right' }}>
               <button className='ActionsBotonesNaranja' style={{ width: '80%', marginBottom: '30px', marginRight: '30px', display: 'block', margin: '20px auto' }}>Back</button>
             </Link>
-            <p style={{ textAlign: 'center', border:'1px solid black', borderRadius:'25px', padding:'15px', margin:'35px 10px' }}>
-                <strong style={{borderBottom:'1px solid black'}}>  Send Report</strong>
-            <form style={{
+            <p style={{ textAlign: 'center', border: '1px solid black', borderRadius: '25px', padding: '15px', margin: '35px 10px' }}>
+              <strong style={{ borderBottom: '1px solid black' }}>  Send Report</strong>
+              <form style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 0.3fr',
                 borderRadius: '25px',
                 marginLeft: '20px'
               }}>
-                <input placeholder='  Email you want to send this report' id='addTagInput' type='textbox' onChange={this.handleChange}></input>
+                <input placeholder=' Type email you want to send this report' id='addTagInput' type='textbox' onChange={this.handleChange}></input>
                 <input type='submit' className='ActionsBotonesBlanco' value='Send' onClick={this.exportMail}></input>
               </form>
             </p>
