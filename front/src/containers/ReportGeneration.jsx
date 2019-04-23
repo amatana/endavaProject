@@ -9,7 +9,7 @@ import StarsCalification from '../components/StarsCalification';
 import Axios from 'axios';
 
 class ReportGeneration extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       candidato: {
@@ -21,13 +21,13 @@ class ReportGeneration extends React.Component {
     this.exportMail = this.exportMail.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-  handleChange (e) {
+  handleChange(e) {
     let value = e.target.value;
     console.log('VALUE', value);
     this.setState({ mail: value });
   }
 
-  exportMail () {
+  exportMail() {
     console.log('done');
     Axios.post('/api/candidate/export', {
       data: {
@@ -42,13 +42,13 @@ class ReportGeneration extends React.Component {
     });
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.fetchCandidate(this.props.candID)
       .then(() => this.props.fetchCandidateInterview(this.props.candID))
       .then(() => this.props.answersHR.length === 0 && window.location.reload());
   }
 
-  componentDidUpdate (prevState) {
+  componentDidUpdate(prevState) {
     if (prevState.candidate.id !== this.props.candidate.id) {
       this.props.fetchHrAnswers(this.props.candidate.InterviewIDId);
       this.props.fetchSistAnswers(this.props.candidate.InterviewIDId);
@@ -56,16 +56,37 @@ class ReportGeneration extends React.Component {
     }
   }
 
-  render () {
+  render() {
     const SistInterv1 = !this.props.candidate.interSIST1 ? '' : this.props.candidate.interSIST1.nombre;
     const SistInterv2 = !this.props.candidate.interSIST2 ? '' : this.props.candidate.interSIST2.nombre;
     return (
       <div>
         <div className='halfGrid'>
-          <h2 style={{ marginLeft: '4%', marginTop: '3%', color: '#DE411C' }}><strong style={{ fontSize: '1.3em' }} >Final Report</strong></h2>
-          <Link to={'/candidates/' + this.props.candidate.id} style={{ textAlign: 'right' }}>
-            <button className='ActionsBotonesNaranja' style={{ width: '60%', marginBottom: '30px', marginRight: '30px' }}>Back</button>
-          </Link>
+          <div>
+            <h2 style={{ marginLeft: '4%', marginTop: '3%', textAlign: 'center', marginBottom: '25px' }}><strong style={{ fontSize: '1.3em', borderBottom: '1px solid black' }} >Final Report</strong></h2>
+            <h2 style={{ textAlign: 'center', padding: '10px', margin: '1% 7%' }} className={'borde ' + this.props.candidate.status}>
+              <p style={{ fontSize: '1em' }}><strong>STATUS :  </strong></p>
+              <span className={'statusReport ' + this.props.candidate.status}>{' ' + this.props.candidate.status} </span>
+            </h2>
+
+          </div>
+          <div>
+            <Link to={'/candidates/' + this.props.candidate.id} style={{ textAlign: 'right' }}>
+              <button className='ActionsBotonesNaranja' style={{ width: '80%', marginBottom: '30px', marginRight: '30px', display: 'block', margin: '20px auto' }}>Back</button>
+            </Link>
+            <p style={{ textAlign: 'center', border:'1px solid black', borderRadius:'25px', padding:'15px', margin:'35px 10px' }}>
+                <strong style={{borderBottom:'1px solid black'}}>  Send Report</strong>
+            <form style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 0.3fr',
+                borderRadius: '25px',
+                marginLeft: '20px'
+              }}>
+                <input placeholder='  Email you want to send this report' id='addTagInput' type='textbox' onChange={this.handleChange}></input>
+                <input type='submit' className='ActionsBotonesBlanco' value='Send' onClick={this.exportMail}></input>
+              </form>
+            </p>
+          </div>
         </div>
         <div style={{ marginLeft: '30px' }} style={{ display: 'grid', gridTemplateColumns: '1fr 0.7fr' }}>
           <div style={{ paddingLeft: '4%' }}>
@@ -81,10 +102,7 @@ class ReportGeneration extends React.Component {
           </div>
 
           <div >
-            <h2 style={{ textAlign: 'center', padding: '10px', margin: '1% 7%' }} className={'borde ' + this.props.candidate.status}>
-              <p style={{ fontSize: '1em' }}><strong>STATUS :  </strong></p>
-              <span className={'statusReport ' + this.props.candidate.status}>{' ' + this.props.candidate.status} </span>
-            </h2>
+
             {this.props.candidate.interviewerHR &&
               <h2 style={{ textAlign: 'left', marginTop: '20px', fontSize: '1.5em' }}>
                 <strong>HR Interviewer: </strong>
@@ -156,12 +174,6 @@ class ReportGeneration extends React.Component {
             }
           </div>
           {/* <h4><b style={{ fontSize: '32px' }}>Observations:</b> {this.props.SistObs}</h4> */}
-        </div>
-        <div>
-          <form>
-            <input type='textbox' onChange = {this.handleChange}></input>
-            <input type='submit' onClick = {this.exportMail}></input>
-          </form>
         </div>
 
       </div>
