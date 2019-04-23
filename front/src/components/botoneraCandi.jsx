@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchSisQuestions } from '../redux/action-creator/questionActions';
+
+import { fetchSistAnswers } from '../redux/action-creator/answersActions';
 
 class botonera extends React.Component {
   constructor (props) {
@@ -12,6 +16,11 @@ class botonera extends React.Component {
 
   changeStatus (status) {
     this.setState({ status });
+  }
+
+  componentDidMount () {
+    this.props.fetchSistAnswers(this.props.candidate.InterviewIDId)
+      .then(this.props.fetchSisQuestions(this.props.candidate.InterviewIDId))
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -126,20 +135,21 @@ class botonera extends React.Component {
                 Assign Syst Interviewer
               </button>
 
-              {this.props.questionSIS && this.props.questionSIS.length < 1 && <button className='ActionsBotones ActionsBotonesBlanco'
+              {(this.props.questionSIS && this.props.questionSIS.length === 0) && (this.props.answersSIST && this.props.answersSIST.length === 0) ? <button className='ActionsBotones ActionsBotonesBlanco'
                 style={{ border: '2px solid #DE411B' }}
                 onClick={() => this.props.onClickSist(this.props.candidate.id)}
-              >Prepare Syst Interview</button>
+              >Prepare Syst Interview</button> : null
               }
-              {(this.props.answersSIST && this.props.answersSIST.length < 1) ? <button
+              {(this.props.questionSIS && this.props.questionSIS.length > 0) && <button
                 className='ActionsBotones ActionsBotonesBlanco'
                 style={{ border: '2px solid #DE411B' }}
                 onClick={() => this.props.onClickInterviewSis(this.props.candidate.id)}
-              > Syst Interview </button>
-                : <button
-                  className='ActionsBotones ActionsBotonesBlanco'
-                  style={{ border: '2px solid #DE411B' }}
-                  onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/sist/${this.props.candidate.InterviewIDId}`)}>View Syst Interview</button>}
+              > Go to Syst Interview </button>}
+
+              {(this.props.answersSIST && this.props.answersSIST.length > 0) && <button
+                className='ActionsBotones ActionsBotonesBlanco'
+                style={{ border: '2px solid #DE411B' }}
+                onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/sist/${this.props.candidate.InterviewIDId}`)}>View Syst Interview</button>}
             </div>
             <div className={this.state.assign}>
               <div className='assignUser ' >
@@ -176,4 +186,14 @@ class botonera extends React.Component {
   };
 };
 
-export default botonera;
+const mapStateToProps = (state) => ({
+  questionSIS: state.question.questionSIS,
+  answersSIST: state.answers.answersSIST
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchSisQuestions: (idInter) => dispatch(fetchSisQuestions(idInter)),
+  fetchSistAnswers: (interviewID) => dispatch(fetchSistAnswers(interviewID))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(botonera);

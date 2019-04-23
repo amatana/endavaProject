@@ -19,11 +19,11 @@ class AllUsers extends React.Component {
           <table className="table">
             <thead style={{ borderBottom: '5px solid #DE411B', borderTop: '5px solid #DE411B', marginTop: '20px' }}>
               <tr>
-                <th scope="col" className='tableHeading'>NOMBRE</th>
+                <th scope="col" className='tableHeading'>NAME</th>
                 <th scope="col" className='tableHeading' >EMAIL</th>
-                <th scope="col" className='tableHeading' >ÁREA</th>
-                <th scope="col" className='tableHeading' >isAdmin</th>
-                <th scope="col" className='tableHeading' >Delete</th>
+                <th scope="col" className='tableHeading' >AREA</th>
+                <th scope="col" className='tableHeading' >ISADMIN</th>
+                <th scope="col" className='tableHeading' >DELETE</th>
               </tr>
             </thead>
             {this.props.users && this.props.users.sort((a, b) => a.id - b.id).map((user, index = 0) => {
@@ -32,7 +32,7 @@ class AllUsers extends React.Component {
                   <tr>
                     <th className='tableHeading' scope="row">{user.nombre}</th>
                     <td className='tableHeading'>{user.email}</td>
-                    <td className='tableHeading'>{user.area}</td>
+                    <td className='tableHeading'>{user.area === 'RRHH' ? 'HR' : 'Syst'}</td>
                     <td className='tableHeading'>{user.isAdmin ? <img style={{ width: '25%',
                       height: 'auto' }} src='/utils/checked2.svg'/> : <img style={{ width: '25%',
                       height: 'auto' }} src='/utils/unchecked.svg'/> }</td>

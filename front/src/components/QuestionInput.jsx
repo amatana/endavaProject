@@ -34,7 +34,7 @@ const QuestionInput = (props) => {
               <div>
                 {
                   props.selectedTags.map(function (tagName, i) {
-                    return <h6 style={{ float: 'left', marginLeft: '15px', border: '1px solid black', padding: '7px', borderRadius: '8px', marginBottom: '10px' }} onClick={props.delete} name={i} key={i}>{tagName}</h6>;
+                    return <h6 style={{ cursor: 'pointer', float: 'left', marginLeft: '15px', border: '1px solid black', padding: '7px', borderRadius: '8px', marginBottom: '10px' }} onClick={props.delete} name={i} key={i}>{tagName}</h6>;
                   })
                 }
               </div>

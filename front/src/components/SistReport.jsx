@@ -8,22 +8,22 @@ import StarsCalification from './StarsCalification';
 import { Link } from 'react-router-dom';
 
 class ReportComp extends React.Component {
-  constructor() {
+  constructor () {
     super();
     this.changeCandStatus = this.changeCandStatus.bind(this);
   }
-  componentDidMount() {
+  componentDidMount () {
     this.props.fetchCandidate(this.props.idCand)
       .then(() => this.props.fetchSistAnswers(this.props.candidate.InterviewIDId));
   }
 
-  changeCandStatus(idCandi, status) {
+  changeCandStatus (idCandi, status) {
     Axios.put('/api/candidate/changeStatus', { idCandi, status })
       .then(() => this.props.getAllCandidates())
       .then(() => this.props.history.push('/candidates/allCandidates'));
   };
 
-  render() {
+  render () {
     var SistInterv1 = !this.props.candidate.interSIST1 ? '' : this.props.candidate.interSIST1.nombre;
     var SistInterv2 = !this.props.candidate.interSIST2 ? '' : this.props.candidate.interSIST2.nombre;
 

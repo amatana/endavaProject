@@ -18,10 +18,14 @@ const setCandidateQuestions = (candidateQuestions) => ({
   candidateQuestions
 });
 
-const setQuestionsSis = (questionSIS) => ({
+const setQuestionsSis = (questionSIS) => {
+
+console.log('SET QUESTIONS', questionSIS) 
+return {
   type: SET_QUESTIONSIS,
   questionSIS
-});
+}
+}
 
 export const searchAllQuestions = (area) => dispatch =>
   axios.get('/api/questions/reqAllQuestions/' + area)
@@ -83,5 +87,5 @@ export const fetchCandidateQuestions = (tags) => dispatch => {
 export const fetchSisQuestions = (interviewID) => dispatch =>
   // console.log('lo que me llega al action', interviewID);
   axios.get(`/api/answers/getSisAnswers/${interviewID}`)
-  // .then(questions => console.log(questions.data))
+  // .then(questions => console.log('Lo que viene del back', questions.data))
     .then(questions => dispatch(setQuestionsSis(questions.data)));

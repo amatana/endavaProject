@@ -22,11 +22,11 @@ class InterviewSisComp extends React.Component {
                 </button>
               </div>
               <div className="modal-body">
-                <p>successfully saved candidate</p>
+                <p>Succesfully submitted Interview</p>
                 {/* <p>{this.props.messege}</p> */}
               </div>
               <div className="modal-footer">
-                <button type="button" onClick={() => this.props.onClick()} className="btn btn-lg" style={{ backgroundColor: '#DE411B' }} data-dismiss="modal" > Go to Candidates </button>
+                <button type="button" onClick={() => this.props.onClick()} className="btn btn-lg" style={{ backgroundColor: '#DE411B' }} data-dismiss="modal" > View Report </button>
               </div>
             </div>
           </div>
