@@ -44,7 +44,8 @@ class ReportGeneration extends React.Component {
 
   componentDidMount () {
     this.props.fetchCandidate(this.props.candID)
-      .then(() => this.props.fetchCandidateInterview(this.props.candID));
+      .then(() => this.props.fetchCandidateInterview(this.props.candID))
+      .then(() => this.props.answersHR.length === 0 && window.location.reload());
   }
 
   componentDidUpdate (prevState) {
