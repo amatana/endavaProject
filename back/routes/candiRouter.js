@@ -5,6 +5,7 @@ const Candidate = require('../models/candidate');
 const User = require('../models/User');
 const Tag = require('../models/tags');
 const Interview = require('../models/interview');
+const mailer = require('../mailer/mailer');
 
 router.post('/create', (req, res) => {
   console.log('SELECTEDAGS', req.body.candidate.selectedTags);
@@ -42,13 +43,13 @@ router.get('/getAll', (req, res) => {
 router.get('/getOne/:id', (req, res) => {
   Candidate.findByPk(req.params.id, {
     include: [{ model: User, as: 'interviewerHR' },
-      { model: User, as: 'interSIST1' },
-      { model: User, as: 'interSIST2' },
-      { model: Tag }]
+    { model: User, as: 'interSIST1' },
+    { model: User, as: 'interSIST2' },
+    { model: Tag }]
   })
     .then(candidate => {
       res.send(candidate)
-      ;
+        ;
     });
 });
 
@@ -88,8 +89,7 @@ router.get('/getMyCandidates/:userId', (req, res) => {
     }
   })
     .then(candidates => {
-      res.send(candidates)
-      ;
+      res.send(candidates);
     });
 });
 
@@ -131,6 +131,23 @@ router.get('/getCandidateInterview/:candID', (req, res) => {
   console.log('===============> REQ.BODY', req.params);
   Interview.findOne({ where: { candidateIDId: req.params.candID } })
     .then(interVW => res.send({ interviewID: interVW.id }));
+});
+
+router.post('/export', (req, res) => {
+  mailer('candidate', {
+    data: req.body.data,
+    content: {
+      candidate: {
+        name: req.body.content.candidate.name,
+        surname: req.body.content.candidate.surname,
+        email: req.body.content.candidate.email,
+        telNumber: req.body.content.candidate.telNumber,
+        expertise: req.body.content.candidate.expertise
+      },
+      HHRR: req.body.content.HHRR,
+      SYS: req.body.content.SYS
+    }
+  });
 });
 
 module.exports = router;

@@ -4,20 +4,21 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class addTag extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       tagInput: '',
       allTags: [],
       searchTagInput: ''
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleChangeSearchTags = this.handleChangeSearchTags.bind(this)
   };
 
-  componentDidMount() {
+  componentDidMount () {
     axios.get('/api/tags/retrieve')
       .then((allTags) => {
         console.log('TAGS MOUNTED', allTags);
@@ -25,14 +26,14 @@ class addTag extends React.Component {
       });
   };
 
-  handleChange(e) {
+  handleChange (e) {
     let input = e.target.value;
     if (input.length <= 15) {
       this.setState({ tagInput: input });
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit (e) {
     e.preventDefault();
     if (this.state.tagInput === '') {
       alert('The tag field cannot be empty');
@@ -45,14 +46,14 @@ class addTag extends React.Component {
               this.setState({ allTags });
             });
         });
-
     }
+  }
 
-  handleChangeSearchTags (e){
+  handleChangeSearchTags (e) {
     this.setState({ searchTagInput: e.target.value });
   }
 
-  handleDelete(e) {
+  handleDelete (e) {
     let index = e.target.getAttribute('name');
     axios.post('api/tags/delete', { deleted: index })
       .then(() => {
@@ -61,9 +62,9 @@ class addTag extends React.Component {
             this.setState({ allTags });
           });
       });
-  }
+  };
 
-  render() {
+  render () {
     return (
       <div>
         <TagInput

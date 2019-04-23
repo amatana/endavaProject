@@ -5,16 +5,33 @@ import { Link } from 'react-router-dom';
 
 import { fetchCandidate, fetchCandidateInterview } from '../redux/action-creator/candidate-actions';
 import { fetchHrAnswers, fetchSistAnswers, fetchGeneralObs } from '../redux/action-creator/answersActions';
-import StarsCalification from '../components/StarsCalification'
+import StarsCalification from '../components/StarsCalification';
+import Axios from 'axios';
 
 class ReportGeneration extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       candidato: {
-        tags: []
+        tags: [],
+        mail: ''
       }
     };
+  }
+
+  exportMail () {
+    console.log('asbd ajsbdjasbdjabjdba', this.props.candidate);
+    Axios.post('/api/candidate/export', {
+      data: {
+        mail: 'aenoriss@gmail.com',
+        subject: 'Endava - HHRR Interview - Candidate: ' + this.props.candidate.name + ' ' + this.props.candidate.surname
+      },
+      content: {
+        candidate: this.props.candidate,
+        HHRR: this.props.answersHR,
+        SYS: this.props.answersSIST
+      }
+    });
   }
 
   componentDidMount () {
@@ -31,6 +48,7 @@ class ReportGeneration extends React.Component {
   }
 
   render () {
+    this.exportMail();
     return (
       <div >
         <Link to={'/candidates/' + this.props.candidate.id} ><button className='ActionsBotonesBlanco'>Back</button></Link>
@@ -57,7 +75,7 @@ class ReportGeneration extends React.Component {
               {
                 this.props.answersSIST.map(element => (
                   <div key={element.pregunta}>
-                    <StarsCalification pregunta={element.pregunta} score={element.score}/>
+                    <StarsCalification pregunta={element.pregunta} score={element.score} />
                   </div>
                 ))
               }

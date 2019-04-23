@@ -19,7 +19,7 @@ function mailer (type, props) {
   switch (type) {
     case 'candidate':
       template = fs.readFileSync(path.join(__dirname, '../public/Templates/mailExport.ejs'), ('utf-8'));
-      render = ejs.render(template, props);
+      render = ejs.render(template, props.content);
       break;
     default:
   }
@@ -30,16 +30,16 @@ function mailer (type, props) {
     port: 465,
     secure: true,
     auth: {
-      user: 'titans.bookstore.noreply@gmail.com',
-      pass: 'ramirojuan5'
+      user: 'endavaproject@gmail.com',
+      pass: 'endavajuan'
     }
   });
 
   // The email data will be taken from the body sent from the front and parsed.
   const mailOptions = {
-    from: '"Bookstore" <xx@titans.com>', // sender address (what the receiver sees)
-    to: props.mail, // list of receivers
-    subject: props.subject, // Subject line
+    from: '"Interviews - Endava" <RRHH@endava.com>', // sender address (what the receiver sees)
+    to: props.data.mail, // list of receivers
+    subject: props.data.subject, // Subject line
     html: render
   };
 

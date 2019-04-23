@@ -12,12 +12,27 @@
 <body>
     <div style="background-color:#f9f9f9; text-align: center; display: inline-block; ">
         <img src="https://i.ibb.co/XLJnHKs/logo.png" alt="Endava_Logo" ,border="0">
-        <h1>Candidate Information:</h1>
-        <h3> Name: <%= name %></h3>
-        <% items.forEach(function(item){ %>
-        <p><%= item %></p>
-        <% }) %>
-    </div>
+        <h1>Candidate:</h1>
+        <h2>Information:</h2>
+        <%for (const prop in candidate){%>
+            <p><%=prop%>: <%=candidate[prop]%></p>
+        <% } %>
+
+        <h2>HHRR Interview:</h2>
+        <%HHRR.forEach((field)=> {%>
+            <%for (const prop in field){%>
+                <p><%=prop%>: <%=field[prop]%></p>
+            <% } %>
+            <p>-----------------------------------</p>
+        <%})%>
+        
+        <h2>System Interview:</h2>
+        <%SYS.forEach((field)=> {%>
+            <%for (const prop in field){%>
+                <p><%=prop%>: <%=field[prop]%></p>
+            <% } %>
+            <p>-----------------------------------</p>
+        <%})%>
 </body>
 
 </html> 

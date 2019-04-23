@@ -15,7 +15,6 @@ const sessionStore = new SequelizeStore({ db });
 const PORT = 3001;
 const User = require('./models/User');
 const Index = require('./routes/index');
-const mail = require('./mailer/mailer');
 
 app.use(cookieParser());
 app.use(
@@ -27,12 +26,6 @@ app.use(
   })
 );
 
-mail('candidate', {
-  name: 'AS EXPECTED',
-  mail: 'aenoriss@gmail.com',
-  subject: 'Candidate Information',
-  items: ['LORD AEORIS', 'THE WAR MACHINES ARE READY']
- });
 // ESTRATEGIAS DE LOGIN
 
 const LocalStrategy = require('passport-local').Strategy;
