@@ -50,7 +50,7 @@ class allCandidates extends React.Component {
             <form className="form" style={{ float: 'left', margin: 'auto' }}>
 
               {/* <i className="fas fa-search" aria-hidden="true"></i> */}
-              <input onChange={this.props.handleChange} className="form-control form-control-sm ml-3 w-75 inputSearch" type="text" placeholder="Filter by State" aria-label="Search" />
+              <input onChange={this.props.handleChange} className="form-control form-control-sm ml-3 w-75 inputSearch" type="text" placeholder="Filter by Status" aria-label="Search" />
 
             </form>
             <Link to="/candidates/addCandidate" style={{ textDecorationLine: 'none' }}><button id='alineandoBtn' type="button" className="btn btn-lg ActionsBotonesNaranja">Add Candidate + </button></Link>
@@ -77,7 +77,7 @@ class allCandidates extends React.Component {
             <form className="form" >
 
               {/* <i className="fas fa-search" aria-hidden="true"></i> */}
-              <input onChange={this.props.handleChange} className="form-control inputSearch" type="text" placeholder="Filter by State" aria-label="Search" />
+              <input onChange={this.props.handleChange} className="form-control inputSearch" type="text" placeholder="Filter by Status" aria-label="Search" />
 
             </form>
             <Link to="/candidates/addCandidate" style={{ textDecorationLine: 'none' }}><button id='alineandoBtn' type="button" className="btn btn-lg ActionsBotonesNaranja">Add Candidate + </button></Link>

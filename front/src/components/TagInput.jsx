@@ -38,9 +38,6 @@ const addTag = (props) => {
                     <td>
                       <p style={{ fontSize: '30px' }} key={i} name={tag.id}>{tag.tag}</p>
                     </td>
-                    <td style={{ verticalAlign: 'middle' }}>
-                      <a><img style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} id='trashUser' name={tag.id} onClick={props.handleDelete} src='/utils/garbage.svg' /></a>
-                    </td>
                     {/* </div> */}
                   </tr>
                   // </div>

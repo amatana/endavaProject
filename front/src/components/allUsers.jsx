@@ -33,7 +33,7 @@ class AllUsers extends React.Component {
                     <tr>
                       <th className='tableHeading' scope="row">{user.nombre}</th>
                       <td className='tableHeading'>{user.email}</td>
-                      <td className='tableHeading'>{user.area}</td>
+                      <td className='tableHeading'>{user.area === 'RRHH' ? 'HR' : 'Syst'}</td>
                       <td className='tableHeading'>{user.isAdmin ? <img style={{
                         width: '25%',
                         height: 'auto'
@@ -75,7 +75,7 @@ class AllUsers extends React.Component {
                     <tr>
                       <th className='tableHeading' scope="row">{user.nombre}</th>
                       <td className='tableHeading'>{user.email}</td>
-                      <td className='tableHeading'>{user.area}</td>
+                      <td className='tableHeading'>{user.area === 'RRHH' ? 'HR' : 'Syst'}</td>
                       <td className='tableHeading'>{user.isAdmin ? <img style={{
                         width: '25%',
                         height: 'auto'
