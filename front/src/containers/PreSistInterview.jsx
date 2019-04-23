@@ -44,7 +44,7 @@ class PreSistInterview extends React.Component {
       candidateID: this.props.candidate.id,
       questionsID: arrayQuestionsID
     });
-    alert('Interview has been created! ');
+    alert('Interview has been succesfully created! ');
     this.props.history.push(`/candidates/${this.props.candidate.id}`);
   }
 

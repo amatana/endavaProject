@@ -28,8 +28,8 @@ class SingleCandidate extends React.Component {
   componentDidMount () {
     this.props.getAllUsers();
     this.props.fetchCandidate(this.props.idCand)
-      .then(() => this.props.fetchSisQuestions(this.props.candidate.InterviewIDId))
-      .then(() => this.props.fetchSistAnswers(this.props.candidate.InterviewIDId))
+      // .then(() => this.props.fetchSisQuestions(this.props.candidate.InterviewIDId))
+      // .then(() => this.props.fetchSistAnswers(this.props.candidate.InterviewIDId))
   }
 
   goInterview (candidate) {
@@ -89,10 +89,10 @@ class SingleCandidate extends React.Component {
       candidate={this.props.candidate}
       submitHR={this.submitHR}
       handleChangeId={this.handleChangeId}
-      answersSIST={this.props.answersSIST}
+      // answersSIST={this.props.answersSIST}
       submitSIST1={this.submitSIST1}
       submitSIST2={this.submitSIST2}
-      questionSIS={this.props.questionSIS}
+      // questionSIS={this.props.questionSIS}
       usersSIST={this.props.usersSIST}
       createInterview={this.createInterview}
       changeCandStatus={this.changeCandStatus}
@@ -110,8 +110,8 @@ const mapStateToProps = (state) => ({
   candidate: state.candidate.candidate,
   usersRH: state.user.users.filter(user => user.area === 'RRHH'),
   usersSIST: state.user.users.filter(user => user.area === 'Sistemas'),
-  questionSIS: state.question.questionSIS,
-  answersSIST: state.answers.answersSIST
+  // questionSIS: state.question.questionSIS,
+  // answersSIST: state.answers.answersSIST
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchCandidate: (idUser, idCandi) => dispatch(fetchCandidate(idUser, idCandi)),
