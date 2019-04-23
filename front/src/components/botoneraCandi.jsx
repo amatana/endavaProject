@@ -20,7 +20,7 @@ class botonera extends React.Component {
 
   componentDidMount () {
     this.props.fetchSistAnswers(this.props.candidate.InterviewIDId)
-      .then(this.props.fetchSisQuestions(this.props.candidate.InterviewIDId))
+      .then(this.props.fetchSisQuestions(this.props.candidate.InterviewIDId));
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -124,7 +124,7 @@ class botonera extends React.Component {
 
           : (<div>
             <div id='botonesHR'>
-              <button
+              {this.props.candidate && this.props.candidate.status !== 'Tech Approved' && <button
                 className='ActionsBotones ActionsBotonesBlanco'
                 style={{ border: '2px solid #DE411B' }}
                 onClick={() => {
@@ -133,7 +133,7 @@ class botonera extends React.Component {
                 }}
               >
                 Assign Syst Interviewer
-              </button>
+              </button>}
 
               {(this.props.questionSIS && this.props.questionSIS.length === 0) && (this.props.answersSIST && this.props.answersSIST.length === 0) ? <button className='ActionsBotones ActionsBotonesBlanco'
                 style={{ border: '2px solid #DE411B' }}
