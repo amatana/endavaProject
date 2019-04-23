@@ -18,10 +18,8 @@ class ReportGeneration extends React.Component {
   }
 
   componentDidMount () {
-    // console.log('===================> MANDO A BUSCAR EL CANDIDATE');
-    this.props.fetchCandidate(this.props.candID);
-    // console.log('===================> MANDO A BUSCAR EL CANDIDATE INTERVIEW ID');
-    this.props.fetchCandidateInterview(this.props.candID);
+    this.props.fetchCandidate(this.props.candID)
+      .then(() => this.props.fetchCandidateInterview(this.props.candID));
   }
 
   componentDidUpdate (prevState) {
@@ -117,7 +115,7 @@ class ReportGeneration extends React.Component {
             }
           </div>
           <hr></hr><hr></hr>
-          <div ><h3 style={{ textAlign: 'center' }}><b style={{ fontSize: '32px', color: '#DE411C' }}>IT Interview</b></h3><hr></hr></div>
+          <div ><h2 style={{ textAlign: 'center' }}><b style={{ fontSize: '1.5em', color: '#DE411C' }}>IT Interview</b></h2><hr></hr></div>
           <div className='answersHR' style={{ padding: '15px' }}>
             {
               this.props.answersSIST.map(element => (

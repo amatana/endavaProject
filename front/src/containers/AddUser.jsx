@@ -54,7 +54,7 @@ class addUser extends React.Component {
 
   render () {
     return (
-      < AddUserForm onChange={this.handleChange} onSubmit={this.handleSubmit} />
+      < AddUserForm onChange={this.handleChange} user={this.props.user} onSubmit={this.handleSubmit} />
     )
     ;
   }
