@@ -14,7 +14,7 @@ const ActionsCandidates = (props) => {
           <h1><span style={{ borderBottom: '1px solid black', fontSize: '1em' }}> Candidate Info</span></h1>
           <h3>Full Name :  <strong style={{ fontSize: '1em' }}>{' ' + candidate.name + ' ' + candidate.surname + ' '}</strong></h3>
           <h3>Email : <strong style={{ fontSize: '1em' }}>{' ' + candidate.email}</strong></h3>
-          <h3>Status HR: <strong style={{ fontSize: '1em' }}>{candidate.status}</strong></h3>
+          <h3>Status HR: <strong className={candidate.status} style={{ fontSize: '1em' }}>{candidate.status}</strong></h3>
           <a href={candidate.url} target='_blank'>Linked-in Profile</a>
         </div>
         <div>
@@ -34,6 +34,7 @@ const ActionsCandidates = (props) => {
                 candidate={props.candidate}
                 submitHR={props.submitHR}
                 user={props.user}
+                questionSIS={props.questionSIS}
                 changeCandStatus={props.changeCandStatus}
                 history={props.history}
                 submitHR={props.submitHR}
@@ -60,6 +61,7 @@ const ActionsCandidates = (props) => {
               submitHR={props.submitHR}
               user={props.user}
               changeCandStatus={props.changeCandStatus}
+              answersSIST={props.answersSIST}
               onClickInterviewSis={props.onClickInterviewSis}
               submitHR={props.submitHR}
               history={props.history}

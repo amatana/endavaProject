@@ -120,7 +120,6 @@ router.post('/postAnswersSIS', (req, res) => {
 });
 
 router.get('/getSistAnswers/:id', (req, res) => {
-  console.log("===========================> PREGUNTAS: ", req.params.id )
   Interview.findAll(
     { where: { id: req.params.id },
       include: [{ model: Questions }] }
@@ -137,7 +136,8 @@ router.get('/getSistAnswers/:id', (req, res) => {
             question = data[i].questions[j].content;
             arrayPares.push({
               pregunta: question,
-              score: answer
+              score: answer,
+              observation: data[i].questions[j].answers.observations
             });
           }
         }
@@ -148,10 +148,17 @@ router.get('/getSistAnswers/:id', (req, res) => {
 
 router.get('/generalObs/:candID', (req, res) => {
   Interview.findOne({ where: { candidateIDId: req.params.candID } })
-    .then(entrevistaCand => res.send({
-      SistObs: entrevistaCand.SistObs,
-      HRObs: entrevistaCand.HRObs
-    })
+    .then(entrevistaCand => {
+      if (entrevistaCand) {
+        return res.send({
+          SistObs: entrevistaCand.SistObs,
+          HRObs: entrevistaCand.HRObs
+        });
+      } else {
+        return res.send(200);
+      }
+    }
+
     );
 });
 

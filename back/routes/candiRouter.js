@@ -128,7 +128,6 @@ router.put('/changeStatus', (req, res) => {
 });
 
 router.get('/getCandidateInterview/:candID', (req, res) => {
-  console.log('===============> REQ.BODY', req.params);
   Interview.findOne({ where: { candidateIDId: req.params.candID } })
     .then(interVW => res.send({ interviewID: interVW.id }));
 });

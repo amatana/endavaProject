@@ -39,7 +39,7 @@ class botonera extends React.Component {
                 </button>}
 
               {(this.props.candidate && this.props.candidate.status === 'New') && (this.props.candidate.interviewerHR && this.props.candidate.interviewerHR.nombre.includes(this.props.user.nombre))
-                ? <button className='ActionsBotones ActionsBotonesBlanco'
+                ? <button className='ActionsBotones ActionsBotonesBlanco' style={{ border: '2px solid #DE411B' }}
                   onClick={() => {
                     !this.props.candidate.interviewerHR
                       ? alert('Hr User must be assigned to the candidate')
@@ -56,8 +56,8 @@ class botonera extends React.Component {
 
               {(this.props.candidate.status === 'Rejected Tech' || this.props.candidate.status === 'Tech Approved') &&
               <button
-                className='ActionsBotones'
-                style={{ backgroundColor: '#0B867E' }}
+                className='ActionsBotonesNaranja'
+                // style={{ backgroundColor: '' }}
                 onClick={() => this.props.history.push(`/generateReport/${this.props.candidate.id}`)}
               >
                   View Full Report
@@ -126,19 +126,20 @@ class botonera extends React.Component {
                 Assign Syst Interviewer
               </button>
 
-              <button className='ActionsBotones ActionsBotonesBlanco'
+              {this.props.questionSIS && this.props.questionSIS.length < 1 && <button className='ActionsBotones ActionsBotonesBlanco'
                 style={{ border: '2px solid #DE411B' }}
                 onClick={() => this.props.onClickSist(this.props.candidate.id)}
               >Prepare Syst Interview</button>
-              <button
+              }
+              {(this.props.answersSIST && this.props.answersSIST.length < 1) ? <button
                 className='ActionsBotones ActionsBotonesBlanco'
                 style={{ border: '2px solid #DE411B' }}
                 onClick={() => this.props.onClickInterviewSis(this.props.candidate.id)}
               > Syst Interview </button>
-              <button
-                className='ActionsBotones ActionsBotonesBlanco'
-                style={{ border: '2px solid #DE411B' }}
-                onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/sist/${this.props.candidate.InterviewIDId}`)}>View Interview</button>
+                : <button
+                  className='ActionsBotones ActionsBotonesBlanco'
+                  style={{ border: '2px solid #DE411B' }}
+                  onClick={() => this.props.history.push(`/candidates/${this.props.candidate.id}/interview/sist/${this.props.candidate.InterviewIDId}`)}>View Syst Interview</button>}
             </div>
             <div className={this.state.assign}>
               <div className='assignUser ' >
