@@ -27,9 +27,9 @@ class SingleCandidate extends React.Component {
   }
   componentDidMount () {
     this.props.getAllUsers();
-    this.props.fetchCandidate(this.props.idCand)
-      // .then(() => this.props.fetchSisQuestions(this.props.candidate.InterviewIDId))
-      // .then(() => this.props.fetchSistAnswers(this.props.candidate.InterviewIDId))
+    this.props.fetchCandidate(this.props.idCand);
+    // .then(() => this.props.fetchSisQuestions(this.props.candidate.InterviewIDId))
+    // .then(() => this.props.fetchSistAnswers(this.props.candidate.InterviewIDId))
   }
 
   goInterview (candidate) {
@@ -109,7 +109,7 @@ const mapStateToProps = (state) => ({
   user: state.user.user,
   candidate: state.candidate.candidate,
   usersRH: state.user.users.filter(user => user.area === 'RRHH'),
-  usersSIST: state.user.users.filter(user => user.area === 'Sistemas'),
+  usersSIST: state.user.users.filter(user => user.area === 'Sistemas')
   // questionSIS: state.question.questionSIS,
   // answersSIST: state.answers.answersSIST
 });
