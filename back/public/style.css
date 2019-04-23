@@ -468,6 +468,7 @@ button.ActionsBotones{
     border-radius: 30px;
     margin: 5% auto;
     border: 1px solid black;
+    float: left;
 }
 #filterTag:focus{
     outline-width: 0;

@@ -21,31 +21,22 @@ const addTag = (props) => {
             </div>
           </form>
         </div>
-        <div style={{ width: '300px', marginLeft: '2%' }}>
-          <table >
-            <thead>
-              <tr>
-                <th ><h1 style={{ borderBottom: '2px solid black' }}>TAGS</h1></th>
-              </tr>
-            </thead>
-            {/* <td> */}
-            <tbody>
-              {allTags && allTags.filter(word => word.tag.toLowerCase().includes(props.stateSearchTag)).map((tag, i) => {
-                return (
-                  // <div>
-                  <tr key={i++} >
-                    {/* <div style={{ clear: 'both' }} className='cell'> */}
-                    <td>
-                      <p style={{ fontSize: '30px' }} key={i} name={tag.id}>{tag.tag}</p>
-                    </td>
-                    {/* </div> */}
-                  </tr>
-                  // </div>
-                );
-              })}
-            </tbody>
-            {/* </td> */}
-          </table>
+        <div style={{ width: '90%', margin: '20px auto' }}>
+          {/* <table > */}
+          {/* <thead> */}
+          {/* <tr> */}
+          <h1><strong style={{ borderBottom: '2px solid black' }}>TAGS</strong></h1>
+          {/* </tr> */}
+          {/* </thead> */}
+          {/* <td> */}
+          {allTags && allTags.filter(word => word.tag.toLowerCase().includes(props.stateSearchTag)).map((tag, i) => {
+            return (
+              
+              <span style={{ fontSize: '30px', margin: '2px' }} key={i} name={tag.id}>{tag.tag + (tag.id === allTags.length ? '' : '     -')} </span>
+            );
+          })}
+          {/* </td> */}
+          {/* </table> */}
         </div>
       </div>
     </div >
