@@ -11,6 +11,7 @@ class addTag extends React.Component {
       allTags: [],
       searchTagInput: ''
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -32,20 +33,24 @@ class addTag extends React.Component {
     }
   }
 
-  handleChangeSearchTags (e) {
-    this.setState({ searchTagInput: e.target.value });
-  }
-
   handleSubmit (e) {
     e.preventDefault();
-    axios.post('api/tags/create', { tag: this.state.tagInput })
-      .then(() => {
-        this.setState({ tagInput: '' });
-        axios.get('api/tags/retrieve')
-          .then((allTags) => {
-            this.setState({ allTags });
-          });
-      });
+    if (this.state.tagInput === '') {
+      alert('The tag field cannot be empty');
+    } else {
+      axios.post('api/tags/create', { tag: this.state.tagInput })
+        .then(() => {
+          this.setState({ tagInput: '' });
+          axios.get('api/tags/retrieve')
+            .then((allTags) => {
+              this.setState({ allTags });
+            });
+        });
+    }
+  }
+
+  handleChangeSearchTags (e) {
+    this.setState({ searchTagInput: e.target.value });
   }
 
   handleDelete (e) {
@@ -57,7 +62,7 @@ class addTag extends React.Component {
             this.setState({ allTags });
           });
       });
-  }
+  };
 
   render () {
     return (

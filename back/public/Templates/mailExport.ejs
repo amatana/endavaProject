@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>User Purchase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div style="background-color:#f9f9f9; display: inline-block; color: black; padding: 50px;  font-family:  'Roboto Condensed';">
+        <img src="https://i.ibb.co/XLJnHKs/logo.png" alt="Logo">
+        <h1>Candidate</h1>
+
+        <h2>Information:</h2>
+
+        <h2>Fullname: </h2> 
+        <p><%=candidate.name%> <%=candidate.surname%></p>
+
+        <h2>Email: </h2>
+        <p><%=candidate.email%></p>
+
+        <h2>Telephone Number: </h2>
+        <p><%=candidate.telephone%></p>
+
+        <h2>Expertise: </h2>
+        <p><%=candidate.expertise%></p>
+
+        <h1>HHRR Interview:</h1>
+        <%HHRR.forEach((field)=> {%>
+            <%for (const prop in field){%>
+                <h2><%=field[prop]%></h2>
+            <% } %>
+            <p>-----------------------------------</p>
+        <%})%>
+
+        <h1>System Interview:</h1>
+        <%SYS.forEach((field)=> {%>
+            <%for (const prop in field){%>
+                <h2><%=field[prop]%></h2>
+            <% } %>
+            <p>-----------------------------------</p>
+        <%})%>
+        <div>
+    </div>
+</body>
+
+</html>

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { fetchCandidate, fetchCandidateInterview } from '../redux/action-creator/candidate-actions';
 import { fetchHrAnswers, fetchSistAnswers, fetchGeneralObs } from '../redux/action-creator/answersActions';
 import StarsCalification from '../components/StarsCalification';
+import Axios from 'axios';
 
 class ReportGeneration extends React.Component {
   constructor (props) {
@@ -13,8 +14,32 @@ class ReportGeneration extends React.Component {
     this.state = {
       candidato: {
         tags: []
-      }
+      },
+      mail: ''
     };
+
+    this.exportMail = this.exportMail.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange (e) {
+    let value = e.target.value;
+    console.log('VALUE', value);
+    this.setState({ mail: value });
+  }
+
+  exportMail () {
+    console.log('done');
+    Axios.post('/api/candidate/export', {
+      data: {
+        mail: this.state.mail,
+        subject: 'Endava - HHRR Interview - Candidate: ' + this.props.candidate.name + ' ' + this.props.candidate.surname + ' (ID: ' + this.props.candidate.id + ')'
+      },
+      content: {
+        candidate: this.props.candidate,
+        HHRR: this.props.answersHR,
+        SYS: this.props.answersSIST
+      }
+    });
   }
 
   componentDidMount () {
@@ -68,10 +93,10 @@ class ReportGeneration extends React.Component {
               </h2>}
 
             {(this.props.candidate.interSIST1 || this.props.candidate.interSIST2) &&
-                <h2 style={{ textAlign: 'left', marginTop: '20px', fontSize: '1.5em' }}>
-                  <strong >SYST Interviewer/s: </strong>
-                  {' ' + SistInterv1} {SistInterv2 ? ', ' + SistInterv2 : ''}
-                </h2>}
+              <h2 style={{ textAlign: 'left', marginTop: '20px', fontSize: '1.5em' }}>
+                <strong >SYST Interviewer/s: </strong>
+                {' ' + SistInterv1} {SistInterv2 ? ', ' + SistInterv2 : ''}
+              </h2>}
             {/* {this.props.candidate.interSIST1 &&
               <h2 style={{ textAlign: 'left', marginTop: '20px' }}>
                 <strong>SYST Interviewer: </strong>
@@ -133,6 +158,13 @@ class ReportGeneration extends React.Component {
           </div>
           {/* <h4><b style={{ fontSize: '32px' }}>Observations:</b> {this.props.SistObs}</h4> */}
         </div>
+        <div>
+          <form>
+            <input type='textbox' onChange = {this.handleChange}></input>
+            <input type='submit' onClick = {this.exportMail}></input>
+          </form>
+        </div>
+
       </div>
     );
   }
