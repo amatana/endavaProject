@@ -7,32 +7,38 @@ import AllUsersGrid from '../components/allUsers';
 import { getAllUsers } from '../redux/action-creator/user-actions';
 
 class AllUsers extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.onClick = this.onClick.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.getAllUsers();
   }
 
-  onClick (id) {
+  onClick(id) {
     axios.delete(`/api/users/delete/${id}`)
       .then(() => this.props.getAllUsers());
   }
 
-  render () {
+  render() {
     return (
       this.props.users && this.props.users.length < 1 ? <h2>Cargando...</h2>
-        : <AllUsersGrid onClick={this.onClick} users={this.props.users} user={this.props.user}/>
+        : <AllUsersGrid
+          onClick={this.onClick}
+          users={this.props.users}
+          user={this.props.user}
+          usersSIST={this.props.usersSIST}
+        />
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   user: state.user.user,
-  users: state.user.users
+  users: state.user.users,
+  usersSIST: state.user.users.filter(user => user.area === 'Sistemas')
 });
 const mapDispatchToProps = (dispatch) => ({
   getAllUsers: () => dispatch(getAllUsers())

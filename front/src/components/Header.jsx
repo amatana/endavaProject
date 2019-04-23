@@ -19,7 +19,7 @@ const Header = (props) => {
               e.preventDefault();
               props.logOut();
               return props.history.push('/login');
-            }} className='btn btn-lg btnLogOut iconsHeader'>LOG OUT</button></div>
+            }} >LOG OUT</button></div>
         </div>
         : <h2></h2>}
     </div>

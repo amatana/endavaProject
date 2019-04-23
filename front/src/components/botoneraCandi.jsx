@@ -48,7 +48,7 @@ class botonera extends React.Component {
                 </button>}
 
               {(this.props.candidate && this.props.candidate.status === 'New') && (this.props.candidate.interviewerHR && this.props.candidate.interviewerHR.nombre.includes(this.props.user.nombre))
-                ? <button className='ActionsBotones ActionsBotonesBlanco'
+                ? <button className='ActionsBotones ActionsBotonesBlanco' style={{ border: '2px solid #DE411B' }}
                   onClick={() => {
                     !this.props.candidate.interviewerHR
                       ? alert('Hr User must be assigned to the candidate')

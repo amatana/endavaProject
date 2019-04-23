@@ -14,7 +14,7 @@ const ActionsCandidates = (props) => {
           <h1><span style={{ borderBottom: '1px solid black', fontSize: '1em' }}> Candidate Info</span></h1>
           <h3>Full Name :  <strong style={{ fontSize: '1em' }}>{' ' + candidate.name + ' ' + candidate.surname + ' '}</strong></h3>
           <h3>Email : <strong style={{ fontSize: '1em' }}>{' ' + candidate.email}</strong></h3>
-          <h3>Status: <strong style={{ fontSize: '1em' }}>{candidate.status}</strong></h3>
+          <h3>Status: <strong className={candidate.status} style={{ fontSize: '1em' }}>{candidate.status}</strong></h3>
           <a href={candidate.url} target='_blank'>Linked-in Profile</a>
         </div>
         <div>
