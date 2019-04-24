@@ -42,7 +42,7 @@ const AddUser = (props) => {
                   <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio2" value="RRHH" />
                   <label className="form-check-label labelSpacing" htmlFor="inlineRadio2">    HR  </label>
                 </div>
-              }
+              {/* } */}
             </div>
 
             <div className=" form-check form-check-inline formSpace checkBox" >
