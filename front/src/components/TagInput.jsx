@@ -32,7 +32,7 @@ const addTag = (props) => {
           {allTags && allTags.filter(word => word.tag.toLowerCase().includes(props.stateSearchTag)).map((tag, i) => {
             return (
 
-              <span style={{ fontSize: '30px', margin: '2px' }} key={i} name={tag.id}>{tag.tag + (i === allTags.length - 1 ? '' : '     -')}  </span>
+              <span style={{ fontSize: '30px', margin: '2px' }} key={i} name={tag.id}>{tag.tag}  </span>
             );
           })}
           {/* </td> */}
