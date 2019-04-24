@@ -14,10 +14,10 @@ const addTag = (props) => {
           <form onSubmit={props.handleSubmit}>
             <div className='halfGrid'>
               <div className='halfGrid'>
-                <input id='addTagInput' placeholder='    New tags' onChange={props.handleChange} name='tagInput' type='text' value={props.tagInput} />
+                <input id='addTagInput' style={{ paddingLeft: '0.9em' }} placeholder='New tags' onChange={props.handleChange} name='tagInput' type='text' value={props.tagInput} />
                 <input className='ActionsBotonesNaranja' id='addTagBton' type='submit' value='Add Tag' />
               </div>
-              <input id='filterTag' onChange={props.handleSearch} placeholder='   Filter tags 🔎' name='tagSearch' type='text' value={props.searchTagInput} />
+              <input style= {{ paddingLeft: '1.5em' }} id='filterTag' onChange={props.handleSearch} placeholder='Filter tags 🔎' name='tagSearch' type='text' value= {props.searchTagInput} />
             </div>
           </form>
         </div>
@@ -31,8 +31,8 @@ const addTag = (props) => {
           {/* <td> */}
           {allTags && allTags.filter(word => word.tag.toLowerCase().includes(props.stateSearchTag)).map((tag, i) => {
             return (
-              
-              <span style={{ fontSize: '30px', margin: '2px' }} key={i} name={tag.id}>{tag.tag + (tag.id === allTags.length ? '' : '     -')} </span>
+
+              <span style={{ fontSize: '30px', margin: '2px' }} key={i} name={tag.id}>{tag.tag + (i === allTags.length - 1 ? '' : '     -')}  </span>
             );
           })}
           {/* </td> */}
