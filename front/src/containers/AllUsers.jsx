@@ -7,22 +7,22 @@ import AllUsersGrid from '../components/allUsers';
 import { getAllUsers } from '../redux/action-creator/user-actions';
 
 class AllUsers extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
 
     this.onClick = this.onClick.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.getAllUsers();
   }
 
-  onClick(id) {
+  onClick (id) {
     axios.delete(`/api/users/delete/${id}`)
       .then(() => this.props.getAllUsers());
   }
 
-  render() {
+  render () {
     return (
       this.props.users && this.props.users.length < 1 ? <h2>Cargando...</h2>
         : <AllUsersGrid

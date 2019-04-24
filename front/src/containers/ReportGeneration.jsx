@@ -139,8 +139,8 @@ class ReportGeneration extends React.Component {
             <h4><b style={{ fontSize: '32px' }}>Telephone:</b> {this.props.candidate.telNumber}</h4>
             <h4><b style={{ fontSize: '32px' }}>Expertise:</b> {this.props.candidate.expertise}</h4>
           </div> */}
-        <hr></hr><hr></hr><hr></hr>
-        <div id='infoCandHR'><h2 style={{ textAlign: 'center' }}><b style={{ fontSize: '1.3em', color: '#DE411C' }}>HR Interview</b></h2><hr></hr>
+        <hr></hr><hr></hr>
+        <div id='infoCandHR'><h2 style={{ textAlign: 'center' }}><b style={{ fontSize: '1.3em', color: '#DE411C' }}>HR Interview</b></h2><hr></hr><hr></hr>
           {/* {
               this.props.answersHR.map(element => (
                 <div key={element.pregunta}>
@@ -160,7 +160,7 @@ class ReportGeneration extends React.Component {
             }
           </div>
           <hr></hr><hr></hr>
-          <div ><h2 style={{ textAlign: 'center' }}><b style={{ fontSize: '1.5em', color: '#DE411C' }}>IT Interview</b></h2><hr></hr></div>
+          <div ><h2 style={{ textAlign: 'center' }}><b style={{ fontSize: '1.5em', color: '#DE411C' }}>IT Interview</b></h2><hr></hr><hr></hr></div>
           <div className='answersHR' style={{ padding: '15px' }}>
             {
               this.props.answersSIST.map(element => (
