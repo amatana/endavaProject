@@ -37,7 +37,7 @@ const AddUser = (props) => {
                 <label className="form-check-label labelSpacing" htmlFor="inlineRadio1">    Syst  </label>
               </div>
 
-              {props.user && (props.user.area === 'RRHH') &&
+              {/* {props.user && (props.user.area === 'RRHH') && */}
                 <div className="form-check form-check-inline formSpace">
                   <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio2" value="RRHH" />
                   <label className="form-check-label labelSpacing" htmlFor="inlineRadio2">    HR  </label>

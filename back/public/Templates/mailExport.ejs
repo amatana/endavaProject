@@ -31,9 +31,11 @@
 
         <h1 style="color:#DE411B;"><strong style="border-bottom: 1px solid #DE411B ">HHRR Interview:</strong></h1> 
         <%HHRR.forEach((field)=> {%>
-            <%for (const prop in field){%>
+            <h2>field.pregunta</h2>
+            <p>field.respuesta</p>
+            <!-- <%for (const prop in field){%>
                 <h2><%=field[prop]%></h2>
-            <% } %>
+            <% } %> -->
             <!-- <p>-----------------------------------</p> -->
         <%})%>
 
