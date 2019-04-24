@@ -65,8 +65,8 @@ class botonera extends React.Component {
 
               {(this.props.candidate.status === 'Rejected Tech' || this.props.candidate.status === 'Tech Approved') &&
               <button
-                className='ActionsBotonesNaranja'
-                // style={{ backgroundColor: '' }}
+                className='ActionsBotones ActionsBotonesBlanco'
+                style={{ border: '2px solid #DE411B' }}
                 onClick={() => this.props.history.push(`/generateReport/${this.props.candidate.id}`)}
               >
                   View Full Report
