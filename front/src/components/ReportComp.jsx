@@ -41,8 +41,8 @@ class ReportComp extends React.Component {
               <h4>Email Adress: <strong>{this.props.candidate.email}</strong></h4>
               <h4>Candidate ID: <strong>{this.props.candidate.id}</strong></h4>
               {this.props.candidate.tags && this.props.candidate.tags.length > 0 &&
-                <h4>Candidate Tags:
-                  {this.props.candidate.tags.map(tag => <strong key={tag.id}>{tag.tag}</strong>)}
+                <h4>Candidate Tags :  
+                  {this.props.candidate.tags.map(tag => <strong key={tag.id}>{' ' + tag.tag + '  '}</strong>)}
                 </h4>}
             </div>
 
