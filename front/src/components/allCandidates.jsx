@@ -41,6 +41,7 @@ class allCandidates extends React.Component {
   }
 
   render () {
+    console.log(this.state);
     return (
       !this.props.user.isAdmin && this.props.user.area === 'Sistemas'
         ? <div>

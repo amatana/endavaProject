@@ -65,7 +65,7 @@ class CandidTable extends React.Component {
                           <button type="button" className="btn btn-secondary textModal" data-dismiss="modal">Cancel</button>
                           <button type="button" className="btn btn-primary textModal" data-dismiss="modal"
                             onClick={() => {
-                              this.props.onClickDelete(candidate.id);
+                              this.props.onClickDelete(this.state.selected);
                             }}>Yes</button>
                         </div>
                       </div>
