@@ -2,6 +2,7 @@
 import React from 'react';
 
 const AddUser = (props) => {
+  console.log('SOY LAS PROPSSSS', props)
   return (
     <div>
       <form onSubmit={props.onSubmit} className='formUser'>
@@ -32,21 +33,30 @@ const AddUser = (props) => {
 
             <div className='form-group formSpace'>
               <h4 id='belongsTo'>Belongs to :</h4>
-              <div className="form-check form-check-inline formSpace">
-                <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio1" value="Sistemas" />
-                <label className="form-check-label labelSpacing" htmlFor="inlineRadio1">    Syst  </label>
-              </div>
 
-              {/* {props.user && (props.user.area === 'RRHH') && */}
-                <div className="form-check form-check-inline formSpace">
-                  <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio2" value="RRHH" />
-                  <label className="form-check-label labelSpacing" htmlFor="inlineRadio2">    HR  </label>
+              {(props.users && props.users.length === 0) || (props.user && (props.user.area === 'RRHH')) 
+                ? <div>
+                  <br/>
+                  <div className="form-check form-check-inline formSpace">
+                    <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio2" value="RRHH" />
+                    <label className="form-check-label labelSpacing" htmlFor="inlineRadio2">    HR  </label>
+                  </div>
+                  <div className="form-check form-check-inline formSpace">
+                    <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio1" value="Sistemas" />
+                    <label className="form-check-label labelSpacing" htmlFor="inlineRadio1">    Syst  </label>
+                  </div>
+
                 </div>
-              {/* } */}
-            </div>
-
-            <div className=" form-check form-check-inline formSpace checkBox" >
-              <input type="checkbox" id='checkboxIsAdm' value={true} onChange={props.onChange} className=" radioScale" id="isAdmin" name="isAdmin" /><span id='textCheckBox'>  isAdmin</span>
+                : <div className="form-check form-check-inline formSpace">
+                  <input onChange={props.onChange} className="form-check-input radioScale" type="radio" name="area" id="inlineRadio1" value="Sistemas" />
+                  <label className="form-check-label labelSpacing" htmlFor="inlineRadio1">    Syst  </label>
+                  <br/><br/>
+                </div>
+              }
+              <br/>
+              <div className=" form-check form-check-inline formSpace checkBox" >
+                <input type="checkbox" id='checkboxIsAdm' value={true} onChange={props.onChange} className=" radioScale" id="isAdmin" name="isAdmin" /><span id='textCheckBox'>  isAdmin</span>
+              </div>
             </div>
 
             <div><button onSubmit={props.onSubmit} type="submit" className="btn boton btn-lg botonLogin">Done</button></div>
