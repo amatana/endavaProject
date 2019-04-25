@@ -4,14 +4,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class CandidTable extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       selected: null
     };
   }
-  render() {
-    
+  render () {
     return (
       <table className="table">
         <thead >
@@ -26,7 +25,7 @@ class CandidTable extends React.Component {
 
         <tbody >
           {this.props.candidates && this.props.candidates.filter(elem => elem.status.toLowerCase().includes(this.props.input)).map((candidate, index = 0) => {
-            console.log('soy de la tablaaaa', candidate.status.slice(0, 8))
+            console.log('soy de la tablaaaa', candidate.status.slice(0, 8));
             return (
               <tr key={index++} className={index % 2 ? 'grey' : 'white'}>
                 <th style={{ verticalAlign: 'middle' }} className='tableHeading ' scope="row">{candidate.name + ' ' + candidate.surname}</th>
@@ -74,7 +73,7 @@ class CandidTable extends React.Component {
                 </td>
               </tr>
             )
-              ;
+            ;
             // };
           })}
         </tbody>
