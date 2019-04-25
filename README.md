@@ -26,7 +26,7 @@
 
 # Developed by:
 ## Gastón d'Hiriart (gastondh91@gmail.com)
-## Juan Manuel Iban (jmiban@gmail.com)
+## Juan Manuel Ibáñez (jmiban@gmail.com)
 ## Joaquin Quiroga (aenoriss@gmail.com)
 ## Leonardo Carroccio (leocarrocio@gmail.com)
 ## Ana Amat (amatana95@gmail.com)
