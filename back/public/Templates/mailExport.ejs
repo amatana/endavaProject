@@ -12,37 +12,35 @@
 
 <body>
     <div style="background-color:#f9f9f9; color: black; padding: 50px;  font-family:  'Roboto Condensed';">
-        <img style="display: block; width: 60%; margin:10px auto" src="https://i.ibb.co/XLJnHKs/logo.png" alt="Logo">
+        <img style="display: block; width: 30%; margin:10px auto" src="https://i.ibb.co/XLJnHKs/logo.png" alt="Logo">
         <h1 style="color:#DE411B;"><strong style="border-bottom: 1px solid #DE411B ">  Candidate</strong></h1>
 
-        <!-- <h2>Information:</h2> -->
-
-        <h2>Fullname: </h2> 
-        <p><%=candidate.name%> <%=candidate.surname%></p>
-
-        <h2>Email: </h2>
-        <p><%=candidate.email%></p>
-
-        <h2>Telephone Number: </h2>
-        <p><%=candidate.telephone%></p>
-
-        <h2>Expertise: </h2>
-        <p><%=candidate.expertise%></p>
+        <div id = 'candidateData'>
+            <h2>Fullname: </h2> 
+            <p><%=candidate.name%> <%=candidate.surname%></p>
+            <h2>Email: </h2>
+            <p><%=candidate.email%></p>
+            <h2>Telephone Number: </h2>
+            <p><%=candidate.telephone%></p>
+            <h2>Expertise: </h2>
+            <p><%=candidate.expertise%></p>
+        </div>
 
         <h1 style="color:#DE411B;"><strong style="border-bottom: 1px solid #DE411B ">HHRR Interview:</strong></h1> 
         <%HHRR.forEach((field)=> {%>
-            <%for (const prop in field){%>
-                <h2><%=field[prop]%></h2>
-            <% } %>
-            <!-- <p>-----------------------------------</p> -->
+            <div>
+                <h2  style = "text-decoration: underline;"><%=field.pregunta%>:</h2>
+                <p><%=field.respuesta%></p>
+            </div>
         <%})%>
 
         <h1 style="color:#DE411B"><strong style="border-bottom: 1px solid #DE411B ">System Interview:</strong></h1>
         <%SYS.forEach((field)=> {%>
-            <%for (const prop in field){%>
-                <h2><%=field[prop]%></h2>
-            <% } %>
-            <!-- <p>-----------------------------------</p> -->
+            <div>
+                <h2  style = "text-decoration: underline;"><%=field.pregunta%>:</h2>
+                <p><b>Observation:</b> <%=field.observation%></p>
+                <p><b>Score:</b> <%=field.score%></p>
+            </div>
         <%})%>
         <div>
     </div>

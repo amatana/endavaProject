@@ -20,7 +20,8 @@ class botonera extends React.Component {
 
   componentDidMount () {
     this.props.fetchSistAnswers(this.props.candidate.InterviewIDId)
-      .then(this.props.fetchSisQuestions(this.props.candidate.InterviewIDId));
+      .then(this.props.fetchSisQuestions(this.props.candidate.InterviewIDId))
+      .then(this.props.questionSIS.length === 0 && this.props.fetchSisQuestions(this.props.candidate.InterviewIDId))
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -65,8 +66,8 @@ class botonera extends React.Component {
 
               {(this.props.candidate.status === 'Rejected Tech' || this.props.candidate.status === 'Tech Approved') &&
               <button
-                className='ActionsBotones ActionsBotonesBlanco'
-                style={{ border: '2px solid #DE411B' }}
+                className='ActionsBotonesNaranja'
+                // style={{ backgroundColor: '' }}
                 onClick={() => this.props.history.push(`/generateReport/${this.props.candidate.id}`)}
               >
                   View Full Report
