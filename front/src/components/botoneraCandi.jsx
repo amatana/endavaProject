@@ -20,7 +20,8 @@ class botonera extends React.Component {
 
   componentDidMount () {
     this.props.fetchSistAnswers(this.props.candidate.InterviewIDId)
-      .then(this.props.fetchSisQuestions(this.props.candidate.InterviewIDId));
+      .then(this.props.fetchSisQuestions(this.props.candidate.InterviewIDId))
+      .then(this.props.questionSIS.length === 0 && this.props.fetchSisQuestions(this.props.candidate.InterviewIDId))
   }
 
   // componentDidUpdate(prevProps, prevState) {
