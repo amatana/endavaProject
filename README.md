@@ -1,4 +1,4 @@
-# Why we did the app ?
+# Why did we do this app ?
 
 ### The main purpose for this app is to help the company with the process of hiring people. You can have different type of users and administrate the candidates flow considering HR and IT areas, through interviews and report generation.
 
